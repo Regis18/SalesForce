@@ -58,8 +58,8 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
-     * Get the name of the Account title
-     * @return name string
+     * Get the name of the Account title.
+     * @return name string.
      */
     @Override
     public String getNameAccount() {
@@ -75,7 +75,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
-     * Click to detailsTab
+     * Click to detailsTab.
      */
     private void clickDetailsTab() {
         detailsTab.click();

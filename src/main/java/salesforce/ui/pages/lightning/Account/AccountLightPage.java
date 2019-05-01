@@ -17,8 +17,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.Account.AccountPageAbstract;
-import salesforce.ui.pages.lightning.NewCampaignPopup;
 
+/**
+ * AccountLightPage.
+ * @author Luis Guardia.
+ */
 public class AccountLightPage extends AccountPageAbstract {
 
     @FindBy(xpath = "//li[@class=\"slds-button slds-button--neutral slds-truncate\"]//a[@title=\"New\"]")

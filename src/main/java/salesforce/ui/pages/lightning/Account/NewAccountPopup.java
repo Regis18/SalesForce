@@ -16,7 +16,6 @@ package salesforce.ui.pages.lightning.Account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Campaign;
 import salesforce.ui.pages.abstracts.Account.NewAccountPageAbstract;
 
 /**
