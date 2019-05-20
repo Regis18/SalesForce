@@ -26,7 +26,8 @@ dependencies {
     testCompile 'io.cucumber:cucumber-junit:2.4.0'
     compile group: 'com.vimalselvam', name: 'cucumber-extentsreport', version: '3.0.2'
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
-
+    // https://mvnrepository.com/artifact/log4j/log4j
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
 }
 
 // Task to define arguments and configurations to properties file
