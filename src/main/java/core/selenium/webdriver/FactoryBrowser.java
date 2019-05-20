@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Factory Browser
  */
 public final class FactoryBrowser {
     private static final String FIREFOX = "firefox";
@@ -23,6 +23,7 @@ public final class FactoryBrowser {
     }
 
     /**
+     * Return the object of the Driver that will use
      * @return Webdriver
      */
     public static WebDriver getWebDriver() {

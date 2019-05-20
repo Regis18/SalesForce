@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Firefox implements IDriver {
 
     /**
+     * Init the driver of Firefox
      * @return WebDriver
      */
     public WebDriver initDriver() {
