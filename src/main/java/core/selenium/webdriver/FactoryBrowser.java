@@ -6,15 +6,24 @@ import org.openqa.selenium.WebDriver;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FactoryBrowser {
-    private static WebDriver webDriver;
-    private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+/**
+ *
+ */
+public final class FactoryBrowser {
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
+    private static WebDriver webDriver;
+    private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
 
     /**
-     *
-     * @return
+     * Constructor.
+     */
+    private FactoryBrowser() {
+
+    }
+
+    /**
+     * @return Webdriver
      */
     public static WebDriver getWebDriver() {
         Map<String, IDriver> strategyBrowser = new HashMap<>();

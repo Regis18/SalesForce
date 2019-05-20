@@ -15,15 +15,13 @@ import java.util.Properties;
 public class WebDriverConfig {
 
     private static final String BROWSER = "browser";
-
+    private static WebDriverConfig instance;
     private String browser;
     private int implicitWaitTime;
     private int explicitWaitTime;
     private int waitSleepTime;
     private Properties prop = new Properties();
     private InputStream input = null;
-
-    private static WebDriverConfig instance;
 
     /**
      * Constructor of WebDriverConfig.
@@ -49,21 +47,19 @@ public class WebDriverConfig {
             event.printStackTrace();
         }
         browser = prop.getProperty(BROWSER);
-        String url_json = "./waitTime.json";
+        String urlJson = "./waitTime.json";
         JsonParser parser = new JsonParser();
         FileReader reader;
         JsonElement json;
         try {
-            reader = new FileReader(url_json);
+            reader = new FileReader(urlJson);
             json = parser.parse(reader);
             implicitWaitTime = Integer.parseInt(json.getAsJsonObject().get("implicitWaitTime").getAsString());
             explicitWaitTime = Integer.parseInt(json.getAsJsonObject().get("explicitWaitTime").getAsString());
             waitSleepTime = Integer.parseInt(json.getAsJsonObject().get("waitSleepTime").getAsString());
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
 
     }
 
