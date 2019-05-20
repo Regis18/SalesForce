@@ -1,0 +1,5 @@
+{
+  "implicitWaitTime" : 30,
+  "explicitWaitTime" : 40,
+  "waitSleepTime" : 500
+}
