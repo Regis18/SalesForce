@@ -14,29 +14,27 @@ package core.utils;
  import org.apache.log4j.Level;
  import org.apache.log4j.Logger;
  import org.apache.log4j.PropertyConfigurator;
-
 /**
- * Logs
- *
- * @author
+ * Logs.
+ * @author Melvi Caballero
  * @version 0.0.1
  */
-public class Logs {
-    protected final static Logger log = Logger.getLogger(Logs.class);
+public final class Logs {
+    private static final Logger LOGGER = Logger.getLogger(Logs.class);
     private static Logs instance = null;
 
     /**
-     * Is the private constructor of our Singleton class
+     * Is the private constructor of our Singleton class.
      */
     private Logs() {
         super();
     }
 
     /**
-     * A instance is created at the beginning and
-     * if it just was created, returns just the object created
+     * A instance is created at the beginning and.
+     * if it just was created, returns just the object created.
      * It has a log4j.properties to config the syntax's logs. That
-     * file is in the folder resources
+     * file is in the folder resources.
      *
      * @return Logger
      */
@@ -44,7 +42,7 @@ public class Logs {
         if (instance == null) {
             instance = new Logs();
             PropertyConfigurator.configure("../SalesForce/log4j.properties");
-            log.setLevel(Level.ALL);
+            LOGGER.setLevel(Level.ALL);
         }
         return instance;
     }
@@ -53,6 +51,6 @@ public class Logs {
      * @return Logger log to do our loggers
      */
     public Logger getLog() {
-        return log;
+        return LOGGER;
     }
 }

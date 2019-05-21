@@ -1,6 +1,8 @@
 package salesforce.ui.pages;
 
 import core.selenium.WebDriverManager;
+import core.utils.Logs;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.utils.Setup;
 
@@ -15,7 +17,7 @@ public class TransporterPage {
     /**
      * It creates to follow up the instruction of the class.
      */
-    // private Logger log = Logs.getInstance().getLog();
+     private Logger log = Logs.getInstance().getLog();
     //private String baseURL = Setup.getInstance().urlBasePath;
     private String baseURL = Setup.getInstance().getUrlBasePath();
     private WebDriver driver;
@@ -24,7 +26,7 @@ public class TransporterPage {
      * Constructor of page transporter.
      */
     protected TransporterPage() {
-        //log.info("Initialize the TransporterPage class");
+        log.info("Initialize the TransporterPage class");
         initialize();
     }
 
@@ -44,7 +46,7 @@ public class TransporterPage {
      * Initializes page transporter.
      */
     private void initialize() {
-        // log.info("Initialize the webDriver");
+        log.info("Initialize the webDriver");
         driver = WebDriverManager.getInstance().getWebDriver();
     }
 
@@ -67,7 +69,7 @@ public class TransporterPage {
      * @return New instance of LoginPage.
      */
     public LoginPage navigateToLoginPage() {
-        // log.info("Navigate in Log in page");
+        log.info("Navigate in Log in page");
         goToURL(Setup.getInstance().getLoginpath());
         return new LoginPage();
     }
@@ -78,7 +80,7 @@ public class TransporterPage {
      * @return New instance of HomePage.
      */
     public HomePage navigateToHomePage() {
-        // log.info("Navigate in Log in page");
+        log.info("Navigate in Log in page");
         goToURL(baseURL + "/lightning/page/home");
         return new HomePage();
     }
