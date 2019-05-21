@@ -2,7 +2,7 @@ Feature: Sign in in the SalesForce Application
 
   Scenario: Create a new task and asigned an user
     Given I sign in to the salesforce Application
-#    When I navigate to home page
+    When I navigate to home page
 #    When I create a new task from home page with the following values
 #      | Asunto    | Task1    |
 #      | Estado    | Untitled |

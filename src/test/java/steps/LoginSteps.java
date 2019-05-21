@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.LoginPage;
 import salesforce.ui.pages.TransporterPage;
+import salesforce.utils.Setup;
 
 /**
  * Login Steps class.
@@ -20,7 +21,7 @@ public class LoginSteps {
     @Given("^I sign in to the salesforce Application$")
     public void signIn() {
         loginPage = transporterPage.navigateToLoginPage();
-        loginPage.login("mel@fundacion-jala.com", "control123*");
+        loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
     }
 
 }
