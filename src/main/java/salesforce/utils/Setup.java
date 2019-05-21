@@ -12,6 +12,7 @@ public class Setup {
     private String username;
     private String password;
     private String loginpath;
+    private String layout;
 
     /**
      * Constructor of page WebDriverManager.
@@ -76,6 +77,14 @@ public class Setup {
     }
 
     /**
+     * Get Layout
+     *
+     * @return layout
+     */
+    public String getLayout() {
+        return layout;
+    }
+    /**
      * Initialize.
      */
     private void initialize() {
@@ -93,5 +102,6 @@ public class Setup {
         username = properties.getProperty("username");
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
+        layout = properties.getProperty("layout");
     }
 }
