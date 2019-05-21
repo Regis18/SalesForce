@@ -20,28 +20,28 @@ import salesforce.entities.Campaign;
 import salesforce.ui.behaves.NewCampaignAbstract;
 
 /**
- * NewCampaignPopup
- * @author Regis Humana
+ * NewCampaignPopup.
+ * @author Regis Humana.
  */
 public class NewCampaignPopup extends NewCampaignAbstract {
     /**
-     * Popup the new campaign
+     * Popup the new campaign.
      */
     @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
     private WebElement newCampaignPopup;
     /**
-     * Campaign Name of the form
+     * Campaign Name of the form.
      */
     @FindBy(xpath = "//input[contains(@id,\"58:1383;a\")]")
     private WebElement nameTxt;
     /**
-     * Save button
+     * Save button.
      */
     @FindBy(xpath = "//button[@title=\"Save\"]")
     private WebElement saveBtn;
 
     /**
-     * Wait for the Popup to initialize
+     * Wait for the Popup to initialize.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -49,24 +49,24 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set all of the values that is required for the new campaign
-     * @param data
+     * Set all of the values that is required for the new campaign.
+     * @param data **this is the data**
      */
     @Override
-    public void setCampaignData(Campaign data) {
+    public void setCampaignData(final Campaign data) {
         setNameTxt(data.getName());
     }
 
     /**
-     * Set the name into NameTxt
-     * @param name
+     * Set the name into NameTxt.
+     * @param name **this is the name**
      */
-    protected void setNameTxt(String name) {
+    protected void setNameTxt(final String name) {
         nameTxt.sendKeys(name);
     }
 
     /**
-     * Click to Save the changes
+     * Click to Save the changes.
      */
     public void clickSaveBtn() {
         saveBtn.click();

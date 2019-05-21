@@ -15,28 +15,27 @@ package salesforce.ui.pages.lightning;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Campaign;
 import salesforce.ui.components.NewCampaignPopup;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 
 /**
- * CampaignPage
- * @author Regis Humana
+ * CampaignPage.
+ * @author Regis Humana.
  */
 public class CampaignLightPage extends CampaignPageAbstract {
     /**
-     * Title of the page "Campaign"
+     * Title of the page "Campaign".
      */
     @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
     private WebElement campaignTitleLbl;
     /**
-     * New button to create Campaign
+     * New button to create Campaign.
      */
     @FindBy(xpath = "//a[@title=\"New\"]")
     private WebElement newCampaignBtn;
 
     /**
-     * Wait for the title appears
+     * Wait for the title appears.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -44,7 +43,7 @@ public class CampaignLightPage extends CampaignPageAbstract {
     }
 
     /**
-     * Click to the New Campaign button and creates NewCampaignPopup object
+     * Click to the New Campaign button and creates NewCampaignPopup object.
      */
     @Override
     public NewCampaignPopup clickNewCampaignBtn() {

@@ -20,28 +20,28 @@ import salesforce.entities.Campaign;
 import salesforce.ui.behaves.NewCampaignAbstract;
 
 /**
- * NewCampaignPage
- * @author Regis Humana
+ * NewCampaignPage.
+ * @author Regis Humana.
  */
 public class NewCampaignPage extends NewCampaignAbstract {
     /**
-     * Main Form of New Campaign
+     * Main Form of New Campaign.
      */
     @FindBy(id = "bodyCell")
     private WebElement newCampaignForm;
     /**
-     * Name TextBox
+     * Name TextBox.
      */
     @FindBy(id = "cpn1")
     private WebElement nameTxt;
     /**
-     * Save bottom Button
+     * Save bottom Button.
      */
     @FindBy (xpath = "//td[@id=\"bottomButtonRow\"]//input[@name=\"save\"]")
     private WebElement saveBottomBtn;
 
     /**
-     * Wait for newCampaignForm
+     * Wait for newCampaignForm.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -49,7 +49,7 @@ public class NewCampaignPage extends NewCampaignAbstract {
     }
 
     /**
-     * Click into Save bottom
+     * Click into Save bottom.
      */
     @Override
     protected void clickSaveBtn() {
@@ -57,20 +57,20 @@ public class NewCampaignPage extends NewCampaignAbstract {
     }
 
     /**
-     * Set name in the name TextBox
-     * @param name
+     * Set name in the name TextBox.
+     * @param name String
      */
     @Override
-    protected void setNameTxt(String name) {
+    protected void setNameTxt(final String name) {
         nameTxt.sendKeys(name);
     }
 
     /**
-     * Set Campaign Data into all the information that campaign needs
-     * @param data
+     * Set Campaign Data into all the information that campaign needs.
+     * @Param data Campaign
      */
     @Override
-    protected void setCampaignData(Campaign data) {
+    protected void setCampaignData(final Campaign data) {
         setNameTxt(data.getName());
     }
 }

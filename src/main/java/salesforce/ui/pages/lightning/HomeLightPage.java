@@ -19,23 +19,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.BasePage;
 
 /**
- * HomeLightPage
+ * HomeLightPage.
  * @author Regis Humana
  */
 public class HomeLightPage extends BasePage {
     /**
-     * Main tool bar of lighting
+     * Main tool bar of lighting.
      */
     @FindBy(css = "div[class=\"slds-context-bar\"]")
     private WebElement lightToolBar;
     /**
-     * Button for opening Campaign
+     * Button for opening Campaign.
      */
     @FindBy(xpath = "//span[@class=\"slds-truncate\"] [contains(text(),\"Campaign\")]")
     private WebElement campaignBtn;
 
     /**
-     * Wait for the element that is required
+     * Wait for the element that is required.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -43,8 +43,8 @@ public class HomeLightPage extends BasePage {
     }
 
     /**
-     * Click in the campaign button
-     * @return CampaignLightPage
+     * Click in the campaign button.
+     * @return CampaignLightPage.
      */
     public CampaignLightPage clickCampaignBtn() {
         campaignBtn.click();

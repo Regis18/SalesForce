@@ -19,23 +19,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 
 /**
- * CampaignPage
- * @author Regis Humana
+ * CampaignPage.
+ * @author Regis Humana.
  */
 public class CampaignPage extends CampaignPageAbstract {
     /**
-     * CampaignForm
+     * CampaignForm.
      */
     @FindBy(id = "bodyCell")
     private WebElement campaignForm;
     /**
-     * Button: New Campaign
+     * Button: New Campaign.
      */
     @FindBy(xpath = "//input[@name=\"new\"]")
     private WebElement newCampaignBtn;
 
     /**
-     * Wait for Campaign Form
+     * Wait for Campaign Form.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -43,8 +43,8 @@ public class CampaignPage extends CampaignPageAbstract {
     }
 
     /**
-     * Click in to New Campaign button and initialize NewCampaignPage
-     * @return
+     * Click in to New Campaign button and initialize NewCampaignPage.
+     * @return NewCampaignPage.
      */
     @Override
     public NewCampaignPage clickNewCampaignBtn() {

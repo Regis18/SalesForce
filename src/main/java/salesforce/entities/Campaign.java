@@ -2,6 +2,10 @@ package salesforce.entities;
 
 import java.util.Date;
 
+/**
+ * Campaign.
+ * @author Regis Humana.
+ */
 public class Campaign {
     private String name;
     private boolean activate;
@@ -16,12 +20,16 @@ public class Campaign {
     private int numSent;
     private String parentCampaign;
 
-    public Campaign(String name) {
+    /**
+     * Constructor Campaign.
+     * @param name *
+     */
+    public Campaign(final String name) {
         this.name = name;
     }
 
     /**
-     * Get Campaign name
+     * Get Campaign name.
      * @return name
      */
     public String getName() {
@@ -29,7 +37,7 @@ public class Campaign {
     }
 
     /**
-     * Get Campaign boolean activate
+     * Get Campaign boolean activate.
      * @return activate
      */
     public boolean isActivate() {
@@ -37,47 +45,47 @@ public class Campaign {
     }
 
     /**
-     * Set boolean activate
-     * @param activate
+     * Set boolean activate.
+     * @param activate *
      */
-    public void setActivate(boolean activate) {
+    public void setActivate(final boolean activate) {
         this.activate = activate;
     }
 
     /**
-     * Get Campaign type
-     * @return type
+     * Get Campaign type.
+     * @return type.
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Set Campaign type
-     * @param type
+     * Set Campaign type.
+     * @param type *
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
     /**
-     * Get Campaign planned
-     * @return
+     * Get Campaign planned.
+     * @return planned
      */
     public String getPlanned() {
         return planned;
     }
 
     /**
-     * Set Campaign planned
-     * @param planned
+     * Set Campaign planned.
+     * @param planned *
      */
-    public void setPlanned(String planned) {
+    public void setPlanned(final String planned) {
         this.planned = planned;
     }
 
     /**
-     * Get start date
+     * Get start date.
      * @return startDate
      */
     public Date getStartDate() {
@@ -85,15 +93,15 @@ public class Campaign {
     }
 
     /**
-     * Set start Date
-     * @param startDate
+     * Set start Date.
+     * @param startDate *
      */
-    public void setStartDate(Date startDate) {
+    public void setStartDate(final Date startDate) {
         this.startDate = startDate;
     }
 
     /**
-     * Get end date
+     * Get end date.
      * @return endDate
      */
     public Date getEndDate() {
@@ -101,31 +109,31 @@ public class Campaign {
     }
 
     /**
-     * Set end Date
-     * @param endDate
+     * Set end Date.
+     * @param endDate *
      */
-    public void setEndDate(Date endDate) {
+    public void setEndDate(final Date endDate) {
         this.endDate = endDate;
     }
 
     /**
-     * Get expected revenue
-     * @return
+     * Get expected revenue.
+     * @return expectedRevenue
      */
     public int getExpectedRevenue() {
         return expectedRevenue;
     }
 
     /**
-     * Set expected revenue
-     * @param expectedRevenue
+     * Set expected revenue.
+     * @param expectedRevenue *
      */
-    public void setExpectedRevenue(int expectedRevenue) {
+    public void setExpectedRevenue(final int expectedRevenue) {
         this.expectedRevenue = expectedRevenue;
     }
 
     /**
-     * Get budgeted cost
+     * Get budgeted cost.
      * @return budgetedCost
      */
     public int getBudgetedCost() {
@@ -133,31 +141,31 @@ public class Campaign {
     }
 
     /**
-     * Set budget Cost
-     * @param budgetedCost
+     * Set budget Cost.
+     * @param budgetedCost **
      */
-    public void setBudgetedCost(int budgetedCost) {
+    public void setBudgetedCost(final int budgetedCost) {
         this.budgetedCost = budgetedCost;
     }
 
     /**
-     * Get actual cost
-     * @return
+     * Get actual cost.
+     * @return actualCost
      */
     public int getActualCost() {
         return actualCost;
     }
 
     /**
-     * Set actual cost
-     * @param actualCost
+     * Set actual cost.
+     * @param actualCost **
      */
-    public void setActualCost(int actualCost) {
+    public void setActualCost(final int actualCost) {
         this.actualCost = actualCost;
     }
 
     /**
-     * Get expected response
+     * Get expected response.
      * @return expectedResponse
      */
     public int getExpectedResponse() {
@@ -165,42 +173,42 @@ public class Campaign {
     }
 
     /**
-     * Set expected response
-     * @param expectedResponse
+     * Set expected response.
+     * @param expectedResponse **
      */
-    public void setExpectedResponse(int expectedResponse) {
+    public void setExpectedResponse(final int expectedResponse) {
         this.expectedResponse = expectedResponse;
     }
 
     /**
-     * Get Num Sent
-     * @return numSent
+     * Get Num Sent.
+     * @return  numSent
      */
     public int getNumSent() {
         return numSent;
     }
 
     /**
-     * Set num sent
-     * @param numSent
+     * Set num sent.
+     * @param numSent **
      */
-    public void setNumSent(int numSent) {
+    public void setNumSent(final int numSent) {
         this.numSent = numSent;
     }
 
     /**
-     * Get parent campaign
-     * @return
+     * Get parent campaign.
+     * @return parentCampaign
      */
     public String getParentCampaign() {
         return parentCampaign;
     }
 
     /**
-     * Set parent campaign
-     * @param parentCampaign
+     * Set parent campaign.
+     * @param parentCampaign **String**
      */
-    public void setParentCampaign(String parentCampaign) {
+    public void setParentCampaign(final String parentCampaign) {
         this.parentCampaign = parentCampaign;
     }
 }

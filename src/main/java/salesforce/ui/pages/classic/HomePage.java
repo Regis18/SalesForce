@@ -19,27 +19,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.BasePage;
 
 /**
- * HomePage
+ * HomePage.
  * @author Regis Humana
  */
 public class HomePage extends BasePage {
     /**
-     * Is the main table of Home
+     * Is the main table of Home.
      */
     @FindBy(css = "table[id=\"bodyTable\"]")
     private WebElement homeTable;
     /**
-     * Campaign tab
+     * Campaign tab.
      */
     @FindBy(id = "Campaign_Tab")
     private WebElement campaignTab;
-    /**
-     * Campaign page object
-     */
-
 
     /**
-     * Wait for homeTable is ready
+     * Wait for homeTable is ready.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -47,7 +43,8 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Click to Campaign and initialize CampaignPage
+     * Click to Campaign and initialize CampaignPage.
+     * @return CampaignPage.
      */
     public CampaignPage clickCampaignTab() {
         campaignTab.click();

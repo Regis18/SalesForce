@@ -17,32 +17,38 @@ import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 
 /**
- * NewCampaignAbstract
+ * NewCampaignAbstract.
  * @author Regis Humana
  */
 public abstract class NewCampaignAbstract extends BasePage {
+
     /**
-     * Create a new campaign, it create for classic and lightning pages
-     * @param data
+     * Create a new campaign, it create for classic and lightning pages.
+     *
+     * @param data Campaign.
      */
-    public void createNewCampaign(Campaign data) {
+    public void createNewCampaign(final Campaign data) {
         setCampaignData(data);
         clickSaveBtn();
     }
+
     /**
-     * Click in Save button
+     * Click in Save button.
      */
     protected abstract void clickSaveBtn();
 
     /**
-     * Set name of campaign
+     * Set name of campaign.
+     *
+     * @param name String
      */
     protected abstract void setNameTxt(String name);
 
     /**
-     * Set Campaign Data
-     * Just is name, can be more
-     * @param data
+     * Set Campaign Data.
+     * Just is name, can be more.
+     *
+     * @param data Campaign
      */
     protected abstract void setCampaignData(Campaign data);
 }
