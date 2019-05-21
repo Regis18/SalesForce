@@ -82,7 +82,4 @@ public class TransporterPage {
         goToURL(baseURL + "/lightning/page/home");
         return new HomePage();
     }
-
-//https://na132.lightning.force.com/lightning/page/home
-////a[span[contains(text(),"Menú de Tareas")]]
 }

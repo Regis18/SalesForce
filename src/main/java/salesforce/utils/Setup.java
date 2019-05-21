@@ -9,11 +9,9 @@ import java.util.Properties;
 public class Setup {
     private static Setup instance;
     private String urlBasePath;
-    // public String browser;
     private String username;
     private String password;
     private String loginpath;
-    //public String token;
 
     /**
      * Constructor of page WebDriverManager.
@@ -92,10 +90,8 @@ public class Setup {
         }
 
         urlBasePath = properties.getProperty("basepath");
-        //browser = properties.getProperty("browser");
         username = properties.getProperty("username");
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
-        //  token = properties.getProperty("token");
     }
 }
