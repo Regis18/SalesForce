@@ -22,7 +22,7 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
  * HomeLightPage.
  * @author Regis Humana
  */
-public class HomePage extends HomePageAbstract {
+public class HomeClassicPage extends HomePageAbstract {
     /**
      * Is the main table of Home.
      */
@@ -43,12 +43,12 @@ public class HomePage extends HomePageAbstract {
     }
 
     /**
-     * Click to Campaign and initialize CampaignPage.
-     * @return CampaignPage.
+     * Click to Campaign and initialize CampaignClassicPage.
+     * @return CampaignClassicPage.
      */
-    public CampaignPage clickCampaignBtn() {
+    public CampaignClassicPage clickCampaignBtn() {
         campaignTab.click();
-        return new CampaignPage();
+        return new CampaignClassicPage();
     }
 
 }

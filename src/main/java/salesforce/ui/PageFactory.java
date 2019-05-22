@@ -15,10 +15,13 @@ package salesforce.ui;
 
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.classic.CampaignPage;
-import salesforce.ui.pages.classic.HomePage;
+import salesforce.ui.pages.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.classic.CampaignClassicPage;
+import salesforce.ui.pages.classic.HomeClassicPage;
+import salesforce.ui.pages.classic.OneCampaignClassicPage;
 import salesforce.ui.pages.lightning.CampaignLightPage;
 import salesforce.ui.pages.lightning.HomeLightPage;
+import salesforce.ui.pages.lightning.OneCampaignLightPage;
 import salesforce.utils.Setup;
 
 public final class PageFactory {
@@ -28,7 +31,7 @@ public final class PageFactory {
     public static HomePageAbstract homePage() {
         switch (setup.getLayout()) {
             case "classic":
-                return new HomePage();
+                return new HomeClassicPage();
             case "light":
                 return new HomeLightPage();
             default:
@@ -39,9 +42,20 @@ public final class PageFactory {
     public static CampaignPageAbstract campaignPage() {
         switch (setup.getLayout()) {
             case "classic":
-                return new CampaignPage();
+                return new CampaignClassicPage();
             case "light":
                 return new CampaignLightPage();
+            default:
+                return null;
+        }
+    }
+
+    public static OneCampaignAbstract oneCampaignPage() {
+        switch (setup.getLayout()) {
+            case "classic":
+                return new OneCampaignClassicPage();
+            case "light":
+                return new OneCampaignLightPage();
             default:
                 return null;
         }

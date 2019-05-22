@@ -1,7 +1,6 @@
 package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
-import salesforce.ui.behaves.NewCampaignAbstract;
 
 /**
  * CampaignPageAbstract.
@@ -14,4 +13,6 @@ public abstract class CampaignPageAbstract extends BasePage {
      * @return clickNewCampaignBtn.
      */
     public abstract NewCampaignAbstract clickNewCampaignBtn();
+
+    public abstract boolean checkCampaignList(String name);
 }

@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.classic.HomePage;
-import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.utils.Setup;
 
 import java.net.MalformedURLException;

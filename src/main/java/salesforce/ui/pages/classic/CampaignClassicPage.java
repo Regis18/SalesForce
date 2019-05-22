@@ -1,5 +1,5 @@
 /*
- * @(#) CampaignPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) CampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -19,10 +19,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 
 /**
- * CampaignPage.
+ * CampaignClassicPage.
  * @author Regis Humana.
  */
-public class CampaignPage extends CampaignPageAbstract {
+public class CampaignClassicPage extends CampaignPageAbstract {
     /**
      * CampaignForm.
      */
@@ -43,12 +43,17 @@ public class CampaignPage extends CampaignPageAbstract {
     }
 
     /**
-     * Click in to New Campaign button and initialize NewCampaignPage.
-     * @return NewCampaignPage.
+     * Click in to New Campaign button and initialize NewCampaignClassicPage.
+     * @return NewCampaignClassicPage.
      */
     @Override
-    public NewCampaignPage clickNewCampaignBtn() {
+    public NewCampaignClassicPage clickNewCampaignBtn() {
         newCampaignBtn.click();
-        return new NewCampaignPage();
+        return new NewCampaignClassicPage();
+    }
+
+    @Override
+    public boolean checkCampaignList(String name) {
+        return true;
     }
 }
