@@ -18,7 +18,9 @@ import org.openqa.selenium.support.FindBy;
 import salesforce.ui.BasePage;
 
 /**
- * NewTaskLightPopUp.
+ * NewTaskLightPopUp class in this popup we fill information for create a new task.
+ * @author Melvi Caballero
+ * @version 0.0.1
  */
 public class NewTaskLightPopUp extends BasePage {
     public static final int MILLIS = 2000;
@@ -81,7 +83,7 @@ public class NewTaskLightPopUp extends BasePage {
      * Create new Task.
      */
     public String createNewTask() {
-        String nameSubject = "Call";
+        String nameSubject = "Call"+(int)Math.random()*10;
         setSubjectTextBox(nameSubject);
         setComments("Test task.");
         clickSaveButton();

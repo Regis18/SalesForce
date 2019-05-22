@@ -13,14 +13,15 @@
 
 package steps;
 
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.lightning.NewTaskLightPopUp;
+import salesforce.ui.pages.lightning.TaskLightPage;
 
 /**
  * Task steps class.
- *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -29,6 +30,7 @@ public class TaskSteps {
     private HomeLightPage homeLightPage;
     private NewTaskLightPopUp newTaskLightPopUp;
     private String nameTaskSubject;
+    private TaskLightPage taskLightPage;
     /**
      * navigate to home page.
      */
@@ -63,6 +65,12 @@ public class TaskSteps {
     @When("^Display Lightning Task Home from home page$")
     public void displayTaskHome() {
         homeLightPage.clickTaskMenuButton();
+    }
+
+    @Then("^I verify the task is displayed$")
+    public  void verifyTaskDisplayed(){
+      taskLightPage.displayListActions();
+      //taskLightPage.clickDisplayAsDropDownButton();
     }
 
 

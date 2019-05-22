@@ -67,11 +67,7 @@ public class HomeLightPage extends BasePage {
         taskMenuButton.click();
     }
 
-    /**
-     * display Create task popup.
-     */
-
-    /**
+      /**
      * display Create task popup.
      *
      * @return NewTaskLightPopUp

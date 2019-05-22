@@ -11,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Tranporter class.
+ * TrasporterPage. *
+ * @author Melvi Caballero
+ * @version 0.0.1
  */
 public class TransporterPage {
     private static TransporterPage instance;
