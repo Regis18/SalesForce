@@ -4,6 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.utils.Setup;
 
 import java.net.MalformedURLException;
@@ -79,9 +80,22 @@ public class TransporterPage {
      *
      * @return New instance of HomePage.
      */
-    public HomePage navigateToHomePage() {
-        log.info("Navigate in Log in page");
+    public HomeLightPage navigateToHomeLightPage() {
+        log.info("Navigate to home page");
         goToURL(baseURL + "/lightning/page/home");
-        return new HomePage();
+        return new HomeLightPage();
     }
+
+    /**
+     * Navigate to Tasks home page.
+     *
+     * @return New instance of HomePage.
+     */
+    public HomeLightPage navigateToTasksHomeLightPage() {
+        log.info("Navigate to tasks home page");
+        goToURL(baseURL + "/lightning/o/Task/home");
+        return new HomeLightPage();
+    }
+
+
 }

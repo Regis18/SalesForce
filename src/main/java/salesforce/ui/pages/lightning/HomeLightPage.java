@@ -13,16 +13,20 @@
 
 package salesforce.ui.pages.lightning;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.BasePage;
+import org.openqa.selenium.interactions.Actions;
 
 /**
  * HomeLightPage.
+ *
  * @author Regis Humana
  */
 public class HomeLightPage extends BasePage {
+    public static final int MILLIS = 2500;
     /**
      * Main tool bar of lighting.
      */
@@ -33,6 +37,64 @@ public class HomeLightPage extends BasePage {
      */
     @FindBy(xpath = "//span[@class=\"slds-truncate\"] [contains(text(),\"Campaign\")]")
     private WebElement campaignBtn;
+    /**
+     * Button for opening the task dropdown.
+     */
+    @FindBy(xpath = "//a[span[contains(text(),\"Tasks Menu\")]]")
+    private WebElement taskDropdownButton;
+    /**
+     * Select item New Task.
+     */
+    @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
+    private WebElement newTaskItem;
+    /**
+     * task menuButton.
+     */
+    @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
+    private WebElement taskMenuButton;
+
+    /**
+     * Event click on tasks dropdown.
+     */
+    public void clickTasksDropDonwButton() {
+        taskDropdownButton.click();
+    }
+
+    /**
+     * Event click on tasks menu option.
+     */
+    public void clickTaskMenuButton() {
+        taskMenuButton.click();
+    }
+
+    /**
+     * display Create task popup.
+     */
+
+    /**
+     * display Create task popup.
+     *
+     * @return NewTaskLightPopUp
+     */
+    public NewTaskLightPopUp displayCreateTask() {
+        clickTasksDropDonwButton();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ARROW_DOWN);
+        actions.sendKeys(Keys.ENTER);
+        actions.perform();
+        return new NewTaskLightPopUp();
+    }
+
+    /**
+     * Event click on new tasks item.
+     */
+    public void clickNewTasksItem() {
+        newTaskItem.click();
+    }
 
     /**
      * Wait for the element that is required.
@@ -44,6 +106,7 @@ public class HomeLightPage extends BasePage {
 
     /**
      * Click in the campaign button.
+     *
      * @return CampaignLightPage.
      */
     public CampaignLightPage clickCampaignBtn() {
