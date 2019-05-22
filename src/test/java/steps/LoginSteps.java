@@ -22,6 +22,7 @@ public class LoginSteps {
     public void signIn() {
         loginPage = transporterPage.navigateToLoginPage();
         loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
+
     }
 
 }

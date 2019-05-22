@@ -13,5 +13,5 @@ public abstract class CampaignPageAbstract extends BasePage {
      * Click in NewCampaign button.
      * @return clickNewCampaignBtn.
      */
-    protected abstract NewCampaignAbstract clickNewCampaignBtn();
+    public abstract NewCampaignAbstract clickNewCampaignBtn();
 }

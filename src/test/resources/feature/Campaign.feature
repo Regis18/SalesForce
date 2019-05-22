@@ -7,10 +7,10 @@ Feature: Create, delete, update campaigns of Salesforce
   Scenario: Create a new Campaign in Salesforce
     Given I navigate to Campaign Form
     When I create a new campaign "New Campaign" in Salesforce
-    Then I should see a message confirmation of a new campaign was created
-    And I should see the page of campaign that was created
-    When I navigate to Campaign Form
-    Then I verify "New Campaign" is in the list of campaigns
+#    Then I should see a message confirmation of a new campaign was created
+#    And I should see the page of campaign that was created
+#    When I navigate to Campaign Form
+#    Then I verify "New Campaign" is in the list of campaigns
 
 #  @deleteCampaign
 #  Scenario: Delete a new Campaign in Salesforce

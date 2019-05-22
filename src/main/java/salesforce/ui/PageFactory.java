@@ -14,12 +14,27 @@
 package salesforce.ui;
 
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.classic.CampaignPage;
+import salesforce.ui.pages.classic.HomePage;
 import salesforce.ui.pages.lightning.CampaignLightPage;
+import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.utils.Setup;
 
 public final class PageFactory {
+
     private static Setup setup = Setup.getInstance();
+
+    public static HomePageAbstract homePage() {
+        switch (setup.getLayout()) {
+            case "classic":
+                return new HomePage();
+            case "light":
+                return new HomeLightPage();
+            default:
+                return null;
+        }
+    }
 
     public static CampaignPageAbstract campaignPage() {
         switch (setup.getLayout()) {
