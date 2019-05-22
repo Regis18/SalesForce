@@ -4,6 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 import salesforce.utils.Setup;
 
 import java.net.MalformedURLException;
@@ -84,4 +85,5 @@ public class TransporterPage {
         goToURL(baseURL + "/lightning/page/home");
         return new HomePage();
     }
+
 }
