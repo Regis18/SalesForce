@@ -25,7 +25,7 @@ import org.openqa.selenium.interactions.Actions;
  *
  * @author Regis Humana
  */
-public class HomeLightPage extends BasePage {
+public class HomeLightPage extends CampaignLightPage {
     public static final int MILLIS = 2500;
     /**
      * Main tool bar of lighting.
