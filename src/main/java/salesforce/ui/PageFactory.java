@@ -24,10 +24,18 @@ import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.lightning.OneCampaignLightPage;
 import salesforce.utils.Setup;
 
+/**
+ * PageFactory.
+ * @author Regis Humana
+ */
 public final class PageFactory {
 
     private static Setup setup = Setup.getInstance();
 
+    /**
+     * Get the Page Object that is correct.
+     * @return HomePageAbstract.
+     */
     public static HomePageAbstract homePage() {
         switch (setup.getLayout()) {
             case "classic":
@@ -39,6 +47,10 @@ public final class PageFactory {
         }
     }
 
+    /**
+     * Get the Page Object that is correct.
+     * @return CampaignPageAbstract.
+     */
     public static CampaignPageAbstract campaignPage() {
         switch (setup.getLayout()) {
             case "classic":
@@ -50,6 +62,10 @@ public final class PageFactory {
         }
     }
 
+    /**
+     * Get the Page Object that is correct.
+     * @return OneCampaignAbstract.
+     */
     public static OneCampaignAbstract oneCampaignPage() {
         switch (setup.getLayout()) {
             case "classic":

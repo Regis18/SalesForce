@@ -55,6 +55,11 @@ public class CampaignLightPage extends CampaignPageAbstract {
         return new NewCampaignPopup();
     }
 
+    /**
+     * Check name in Campaign List.
+     * @param name string.
+     * @return boolean.
+     */
     @Override
     public boolean checkCampaignList(String name) {
         return DriverMethods.waitForElementDisappear(By.xpath(campaignList.replace(CAMPAIGN, name)));

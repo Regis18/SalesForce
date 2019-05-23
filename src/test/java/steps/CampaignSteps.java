@@ -26,6 +26,7 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.lightning.OneCampaignLightPage;
 
+import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -75,6 +76,7 @@ public class CampaignSteps {
 
     @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
     public void verifyIsInTheListOfCampaigns(String name) {
-        assertTrue(campaignPage.checkCampaignList(campaign.getName()));
+        // It is false because means that the element exist in the list.
+        assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 }

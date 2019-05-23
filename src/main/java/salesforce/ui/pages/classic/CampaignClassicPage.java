@@ -52,6 +52,11 @@ public class CampaignClassicPage extends CampaignPageAbstract {
         return new NewCampaignClassicPage();
     }
 
+    /**
+     * Check the campaign name in the list.
+     * @param name string.
+     * @return boolean.
+     */
     @Override
     public boolean checkCampaignList(String name) {
         return true;

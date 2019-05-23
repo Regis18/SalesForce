@@ -18,21 +18,37 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.OneCampaignAbstract;
 
+/**
+ * OneCampaignClassicPage.
+ * @author Regis Humana
+ */
 public class OneCampaignClassicPage extends OneCampaignAbstract {
     @FindBy
     private WebElement campaignPanelTitle;
     private WebElement campaignTitleLbl;
     private WebElement detailsTab;
 
+    /**
+     * Wait for Campaign panel title.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(campaignPanelTitle));
     }
+
+    /**
+     * Verify if the components of the Campaign exist.
+     * @return boolean
+     */
     @Override
     public boolean verifyComponentsCampaign() {
         return true;
     }
 
+    /**
+     * Get the Name Campaign.
+     * @return
+     */
     @Override
     public String getNameCampaign() {
         return "n";

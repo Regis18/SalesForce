@@ -21,10 +21,19 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * DriverMethods.
+ * @author Regis Humana
+ */
 public class DriverMethods {
     private static WebDriver webDriver;
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
 
+    /**
+     * Wait for the locator, if it exists the result is false, if it is not true.
+     * @param locator by.
+     * @return boolean.
+     */
     public static boolean waitForElementDisappear(By locator) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
         int cont = 50;
@@ -47,6 +56,11 @@ public class DriverMethods {
         }
         return result;
     }
+
+    /**
+     * Wait for the configuration time.
+     * @param time integer.
+     */
     public void waitForMilliSeconds(int time) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
 
@@ -60,6 +74,9 @@ public class DriverMethods {
 
     }
 
+    /**
+     * Establish the implicit Wait to the base configuration.
+     */
     public void establishImplicitWait() {
         webDriver = WebDriverManager.getInstance().getWebDriver();
         webDriver.manage()
