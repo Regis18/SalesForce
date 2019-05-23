@@ -13,8 +13,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * TrasporterPage. *
- * @author Melvi Caballero
+ * TrasporterPage.
+ * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class TransporterPage {
@@ -101,11 +101,8 @@ public class TransporterPage {
         return PageFactory.homePage();
     }
 
-
-
     /**
      * Navigate to Tasks home page.
-     *
      * @return New instance of HomePage.
      */
     public TaskLightPage navigateToTasksHomeLightPage() {
@@ -113,6 +110,4 @@ public class TransporterPage {
         goToURL(baseURL + "/lightning/o/Task/home");
         return new TaskLightPage();
     }
-
-
 }

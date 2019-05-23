@@ -16,9 +16,10 @@ package steps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import salesforce.ui.pages.lightning.HomeLightPage;
+import salesforce.entities.Context;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.lightning.NewTaskLightPopUp;
 import salesforce.ui.pages.lightning.TaskLightPage;
 
 /**
@@ -29,18 +30,21 @@ import salesforce.ui.pages.lightning.TaskLightPage;
  */
 public class TaskSteps {
     private TransporterPage transporterPage = TransporterPage.getInstance();
-    private HomeLightPage homeLightPage;
-    private NewTaskLightPopUp newTaskLightPopUp;
+    private HomePageAbstract homePage;
+    private NewTaskAbstract newTaskPage;
     private String nameTaskSubject;
-    private TaskLightPage taskLightPage;
+    private TaskLightPage taskPage;
+    private Context context;
 
-
+    public TaskSteps(Context context) {
+        this.context = context;
+    }
     /**
      * navigate to tasks home page.
      */
-    @When("^I navigate to Lightning Tasks home page$")
+    @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
-        taskLightPage = TransporterPage.getInstance().navigateToTasksHomeLightPage();
+        taskPage = TransporterPage.getInstance().navigateToTasksHomeLightPage();
     }
 
 
@@ -49,8 +53,9 @@ public class TaskSteps {
      */
     @When("^I create a new task in SalesForce$")
     public void createTask() {
-        newTaskLightPopUp = homeLightPage.displayCreateTask();
-        nameTaskSubject = newTaskLightPopUp.createNewTask();
+        homePage = context.getHomePage();
+        newTaskPage = homePage.displayCreateTask();
+        nameTaskSubject = newTaskPage.createNewTask();
     }
 
     /**
@@ -58,7 +63,7 @@ public class TaskSteps {
      */
     @When("^Display Lightning Task Home from home page$")
     public void displayTaskHome() {
-        homeLightPage.clickTaskMenuButton();
+//        homePage.clickTaskMenuButton();
     }
 
     /**
@@ -66,7 +71,7 @@ public class TaskSteps {
      */
     @Then("^I verify the task is displayed$")
     public void verifyTaskDisplayed() {
-        Assert.assertTrue(taskLightPage.verifySubjectExist(nameTaskSubject));
+        Assert.assertTrue(taskPage.verifySubjectExist(nameTaskSubject));
     }
 
     /**
@@ -74,8 +79,8 @@ public class TaskSteps {
      */
     @Then("^I verify the task was deleted$")
     public void verifyTaskIsNotDisplayed() {
-        taskLightPage.clickRecentTasksRefresh();
-        Assert.assertFalse(taskLightPage.verifySubjectExist(nameTaskSubject));
+        taskPage.clickRecentTasksRefresh();
+        Assert.assertFalse(taskPage.verifySubjectExist(nameTaskSubject));
     }
 
     /**
@@ -83,7 +88,7 @@ public class TaskSteps {
      */
     @When("^I update the subject task$")
     public void updateTask() {
-        nameTaskSubject = taskLightPage.updateCurrentTask();
+        nameTaskSubject = taskPage.updateCurrentTask();
     }
 
     /**
@@ -91,7 +96,7 @@ public class TaskSteps {
      */
     @When("^I delete the task$")
     public void deletedTask() {
-        taskLightPage.deleteCurrentTask();
+        taskPage.deleteCurrentTask();
     }
 
 }

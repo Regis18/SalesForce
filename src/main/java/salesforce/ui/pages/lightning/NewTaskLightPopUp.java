@@ -15,18 +15,14 @@ package salesforce.ui.pages.lightning;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.NewTaskAbstract;
 
 /**
- * NewTaskLightPopUp class in this popup we fill information for create a new task.
- *
- * @author Melvi Caballero
+ * This class is for create a new class from light experience skin.
+ * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class NewTaskLightPopUp extends BasePage {
-    public static final int MILLIS = 2000;
-    public static final int MILLIS1 = 3000;
-    public static final int INT = 100;
+public class NewTaskLightPopUp extends NewTaskAbstract {
     /**
      * Subject TextBox.
      */
@@ -49,55 +45,23 @@ public class NewTaskLightPopUp extends BasePage {
     @FindBy(xpath = "//textarea")
     private WebElement commentsTextArea;
 
-    /**
-     * click save button.
-     */
-    public void clickSaveButton() {
+    @Override
+    protected void clickSaveButton() {
         saveButton.click();
     }
 
-    /**
-     * click saved notification.
-     */
-    public void clickCloseNotificationButton() {
+    @Override
+    protected void clickCloseNotificationButton() {
         notificationCloseButton.click();
     }
 
-    /**
-     * Fill the text box.
-     *
-     * @param value the text to set.
-     */
-    public void setSubjectTextBox(final String value) {
+    @Override
+    protected void setSubjectTextBox(final String value) {
         subjectTextBox.sendKeys(value);
     }
 
-    /**
-     * Fill the comments.
-     *
-     * @param value the text to set.
-     */
-    public void setComments(final String value) {
-        commentsTextArea.sendKeys(value);
-    }
-
-    /**
-     * Create new Task.
-     * @return the subject of the task.
-     */
-    public String createNewTask() {
-        String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
-        setSubjectTextBox(nameSubject);
-        setComments("Test task.");
-        clickSaveButton();
-        return nameSubject;
-    }
-
-    /**
-     * Wait for Page.
-     */
     @Override
-    public void waitUntilPageObjectIsLoaded() {
-
+    protected void setComments(final String value) {
+        commentsTextArea.sendKeys(value);
     }
 }

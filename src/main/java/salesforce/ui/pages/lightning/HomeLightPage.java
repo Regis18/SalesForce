@@ -19,6 +19,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
+import salesforce.ui.pages.abstracts.NewTaskAbstract;
 
 /**
  * HomeLightPage.
@@ -55,7 +56,7 @@ public class HomeLightPage extends HomePageAbstract {
     /**
      * Event click on tasks dropdown.
      */
-    public void clickTasksDropDonwButton() {
+    public void clickTasksDropDownButton() {
         taskDropdownButton.click();
     }
 
@@ -71,8 +72,8 @@ public class HomeLightPage extends HomePageAbstract {
      *
      * @return NewTaskLightPopUp
      */
-    public NewTaskLightPopUp displayCreateTask() {
-        clickTasksDropDonwButton();
+    public NewTaskAbstract displayCreateTask() {
+        clickTasksDropDownButton();
         try {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
@@ -97,13 +98,6 @@ public class HomeLightPage extends HomePageAbstract {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(homeForm));
-    }
-
-    /**
-     * Event click on tasks dropdown.
-     */
-    public void clickTasksDropDownButton() {
-        taskDropdownButton.click();
     }
 
     /**

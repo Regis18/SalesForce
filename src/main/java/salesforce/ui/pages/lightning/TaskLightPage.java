@@ -16,19 +16,19 @@ package salesforce.ui.pages.lightning;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.TaskPageAbstract;
 
 /**
- * TaskLightPage class in this class whe navigate for this page the task created are displayed.
- *
- * @author Melvi Caballero
+ * TaskLightPage class in this class whe navigate for this page the
+ * task created are displayed.
+ * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class TaskLightPage extends BasePage {
+public class TaskLightPage extends TaskPageAbstract {
     public static final int MILLIS = 2500;
     public static final int INT = 100;
     /**
-     * task web element.
+     * Task web element.
      */
     @FindBy(css = ".forceRecordLayout:nth-child(1) .slds-split-view__list-item-action .slds-grow")
     private WebElement task;
@@ -37,37 +37,37 @@ public class TaskLightPage extends BasePage {
 //    private WebElement displayAsDropDownButton;
 
     /**
-     * dropdownbutton web element.
+     * Dropdownbutton web element.
      */
     @FindBy(xpath = "//a[contains(@class,\"sldsButtonHeightFix\")]")
     private WebElement getDisplayAsDropDownButton;
     /**
-     * delete task web element.
+     * Delete task web element.
      */
     @FindBy(xpath = "//a[contains(.,'Delete')]")
     private WebElement deletetask;
     /**
-     * delete confirmation web element.
+     * Delete confirmation web element.
      */
     @FindBy(xpath = "//button[span[contains(.,'Delete')]]")
     private WebElement deleteConfirmationtask;
     /**
-     * recent task refresh web element.
+     * Recent task refresh web element.
      */
     @FindBy(xpath = "//button[@name='refreshButton']")
     private WebElement recentTasksRefresh;
     /**
-     * edit subject web element.
+     * Edit subject web element.
      */
     @FindBy(xpath = "//button[@title=\"Edit Subject\"]")
     private WebElement editSubjectTask;
     /**
-     * update new subject task web element.
+     * Update new subject task web element.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[contains(@class,'slds-form-element forceTextEnumLookup')]")
     private WebElement updateNewSubjectTask;
     /**
-     * save update web element.
+     * Save update web element.
      */
     @FindBy(xpath = "//button[contains(@class,'slds-button slds-button--neutral uiButton--brand')]")
     private WebElement saveUpdateTask;
@@ -89,21 +89,21 @@ public class TaskLightPage extends BasePage {
     }
 
     /**
-     * click task.
+     * Click task.
      */
     public void clickDisplayTask() {
         task.click();
     }
 
     /**
-     * click save update.
+     * Click save update.
      */
     public void clickSaveUpdateTask() {
         saveUpdateTask.click();
     }
 
     /**
-     * click recent refresh.
+     * Click recent refresh.
      */
     public void clickRecentTasksRefresh() {
         recentTasksRefresh.click();
@@ -114,35 +114,35 @@ public class TaskLightPage extends BasePage {
     }
 
     /**
-     * click dropdown.
+     * Click dropdown.
      */
     public void clickDropDownButton() {
         getDisplayAsDropDownButton.click();
     }
 
     /**
-     * clic delete item.
+     * click delete item.
      */
     public void clickDeleteItem() {
         deletetask.click();
     }
 
     /**
-     * clic the delete confirmation.
+     * Click the delete confirmation.
      */
     public void clickDeleteConfirmationItem() {
         deleteConfirmationtask.click();
     }
 
     /**
-     * click edit subject.
+     * Click edit subject.
      */
     public void clickEditSubjectTask() {
         editSubjectTask.click();
     }
 
     /**
-     * update task subject.
+     * Update task subject.
      *
      * @param newSubjectTask new subject
      */
@@ -151,7 +151,7 @@ public class TaskLightPage extends BasePage {
     }
 
     /**
-     * delete current task.
+     * Delete current task.
      */
     public void deleteCurrentTask() {
         clickDropDownButton();
@@ -164,7 +164,7 @@ public class TaskLightPage extends BasePage {
     }
 
     /**
-     * update current task.
+     * Update current task.
      *
      * @return new subject.
      */
@@ -177,7 +177,7 @@ public class TaskLightPage extends BasePage {
     }
 
     /**
-     * wait for page to load.
+     * Wait for page to load.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
