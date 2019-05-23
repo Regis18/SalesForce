@@ -11,10 +11,11 @@
  *
  */
 
-package salesforce.ui.behaves;
+package salesforce.ui.pages.abstracts;
 
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
+import salesforce.ui.PageFactory;
 
 /**
  * NewCampaignAbstract.
@@ -27,9 +28,10 @@ public abstract class NewCampaignAbstract extends BasePage {
      *
      * @param data Campaign.
      */
-    public void createNewCampaign(final Campaign data) {
+    public OneCampaignAbstract createNewCampaign(final Campaign data) {
         setCampaignData(data);
         clickSaveBtn();
+        return PageFactory.oneCampaignPage();
     }
 
     /**

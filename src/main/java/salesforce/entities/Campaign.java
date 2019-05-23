@@ -21,10 +21,10 @@ public class Campaign {
     private String parentCampaign;
 
     /**
-     * Constructor Campaign.
-     * @param name *
+     * Get Campaign name.
+     * @param name String
      */
-    public Campaign(final String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 

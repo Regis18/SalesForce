@@ -62,6 +62,9 @@ public class LoginPage extends BasePage {
         signinButton.click();
     }
 
+    /**
+     * Wait for userPasswordTextBox
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(userPasswordTextBox));

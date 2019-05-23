@@ -12,6 +12,8 @@ public class Setup {
     private String username;
     private String password;
     private String loginpath;
+    private String layout;
+    private String urlClassicPath;
 
     /**
      * Constructor of page WebDriverManager.
@@ -76,6 +78,23 @@ public class Setup {
     }
 
     /**
+     * Get Layout
+     *
+     * @return layout
+     */
+    public String getLayout() {
+        return layout;
+    }
+
+    /**
+     * Get urlClassicPath
+     * @return urlClassicPath
+     */
+    public String getUrlClassicPath() {
+        return urlClassicPath;
+    }
+
+    /**
      * Initialize.
      */
     private void initialize() {
@@ -88,10 +107,11 @@ public class Setup {
 //            log.info(e.getMessage());
             e.printStackTrace();
         }
-
+        urlClassicPath = properties.getProperty("classicpath");
         urlBasePath = properties.getProperty("basepath");
         username = properties.getProperty("username");
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
+        layout = properties.getProperty("layout");
     }
 }

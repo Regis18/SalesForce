@@ -17,7 +17,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
 
 /**
@@ -25,17 +25,16 @@ import org.openqa.selenium.interactions.Actions;
  *
  * @author Regis Humana
  */
-public class HomeLightPage extends CampaignLightPage {
+public class HomeLightPage extends HomePageAbstract {
     public static final int MILLIS = 2500;
-    /**
-     * Main tool bar of lighting.
-     */
-    @FindBy(css = "div[class=\"slds-context-bar\"]")
-    private WebElement lightToolBar;
+
+    @FindBy(id = "brandBand_1")
+    private WebElement homeForm;
+
     /**
      * Button for opening Campaign.
      */
-    @FindBy(xpath = "//span[@class=\"slds-truncate\"] [contains(text(),\"Campaign\")]")
+    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Campaign\"]")
     private WebElement campaignBtn;
     /**
      * Button for opening the task dropdown.
@@ -97,7 +96,14 @@ public class HomeLightPage extends CampaignLightPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(lightToolBar));
+        wait.until(ExpectedConditions.visibilityOf(homeForm));
+    }
+
+    /**
+     * Event click on tasks dropdown.
+     */
+    public void clickTasksDropDownButton() {
+        taskDropdownButton.click();
     }
 
     /**

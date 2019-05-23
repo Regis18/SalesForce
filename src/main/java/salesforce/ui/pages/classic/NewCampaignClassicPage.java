@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) NewCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -17,13 +17,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
-import salesforce.ui.behaves.NewCampaignAbstract;
+import salesforce.ui.pages.abstracts.NewCampaignAbstract;
 
 /**
- * NewCampaignPage.
+ * NewCampaignClassicPage.
  * @author Regis Humana.
  */
-public class NewCampaignPage extends NewCampaignAbstract {
+public class NewCampaignClassicPage extends NewCampaignAbstract {
     /**
      * Main Form of New Campaign.
      */

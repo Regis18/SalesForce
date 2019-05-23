@@ -1,6 +1,7 @@
 package steps;
 
 import core.selenium.WebDriverManager;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.LoginPage;
@@ -22,6 +23,6 @@ public class LoginSteps {
     public void signIn() {
         loginPage = transporterPage.navigateToLoginPage();
         loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
-    }
 
+    }
 }
