@@ -28,36 +28,43 @@ import static core.utils.xPathsHelp.distribution;
 /**
  * NewCampaignPopup.
  * @author Regis Humana.
+ * @version 0.0.1.
  */
 public class NewCampaignPopup extends NewCampaignAbstract {
     /**
      * Popup the new campaign.
      */
-    @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
+    @FindBy(css = "div[class='modal-container slds-modal__container']")
     private WebElement newCampaignPopup;
     /**
      * Campaign Name of the form.
      */
-    @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
+    @FindBy(xpath = "//div[@data-aura-class='uiInput uiInputText uiInput--default uiInput--input']//input")
     private WebElement nameTxt;
     /**
      * Save button.
      */
-    @FindBy(xpath = "//button[@title=\"Save\"]")
+    @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveBtn;
 
     @FindBy(xpath = "//div[contains(@class,\"uiInputCheckbox\")]//input[@type=\"checkbox\"]")
     private WebElement activateChk;
 
-    private final String TYPE_STATUS = "//div[@class=\"uiPopupTrigger\"]//a[contains(@class,\"select\")]";
+    @FindBy(xpath = "//div[@class='uiPopupTrigger']//a[contains(@class,'select')][contains(text(),'Conference')]")
+    private WebElement typeCmb;
 
+    @FindBy(xpath = "//div[@class='uiPopupTrigger']//a[contains(@class,'select')][contains(text(),'Planned')]")
+    private WebElement statusCmb;
+
+    @FindBy(xpath = "//div[@class=\"slds-form-element__control\"]//*[contains(text(),'Start Date')]")
+    private WebElement
 
     private final String DATES =  "//div[@class=\"form-element\"]//input[@class]";
 
 
     private final String COSTS_TXT = "//div[contains(@data-aura-class,\"uiInput uiInput--default uiInput--input\")]//input";
 
-    @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputPercent\")]//input")
+    @FindBy(xpath = "//div[contains(@class,'uiInput uiInputPercent')]//input")
     private WebElement expectedResponseTxt;
 
     @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputNumber\")]//input")
@@ -69,13 +76,6 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     private List<WebElement> typeStatusList;
     private List<WebElement> datesList;
     private List<WebElement> costsList;
-
-    public NewCampaignPopup() {
-        typeStatusList = xPathsHelp.distribution(TYPE_STATUS);
-        datesList = xPathsHelp.distribution(DATES);
-        costsList = xPathsHelp.distribution(COSTS_TXT);
-    }
-
 
     /**
      * Wait for the Popup to initialize.
