@@ -12,4 +12,11 @@ public abstract class HomePageAbstract extends BasePage {
      * @return Campaign Page abstract.
      */
     public abstract CampaignPageAbstract clickCampaignBtn();
+
+    /**
+     * This method will implemented for display a created task.
+     * @return
+     */
+    public abstract NewTaskAbstract displayCreateTask();
+
 }
