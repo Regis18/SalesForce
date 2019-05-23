@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.classic;
+package salesforce.ui.pages.classic.campaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.NewCampaignAbstract;
+import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 
 /**
  * NewCampaignClassicPage.
@@ -65,12 +65,58 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
         nameTxt.sendKeys(name);
     }
 
-    /**
-     * Set Campaign Data into all the information that campaign needs.
-     * @Param data Campaign
-     */
     @Override
-    protected void setCampaignData(final Campaign data) {
-        setNameTxt(data.getName());
+    protected void setActiveChk(boolean isActivate) {
+
+    }
+
+    @Override
+    protected void setTypeCmb(String type) {
+
+    }
+
+    @Override
+    protected void setStatusCmb(String status) {
+
+    }
+
+    @Override
+    protected void setStartDate(String startDate) {
+
+    }
+
+    @Override
+    protected void setEndDate(String endDate) {
+
+    }
+
+    @Override
+    protected void setExpectedRevenueTxt(Integer expected) {
+
+    }
+
+    @Override
+    protected void setBudgetedCostTxt(Integer budgeted) {
+
+    }
+
+    @Override
+    protected void setActualCostTxt(Integer actualCost) {
+
+    }
+
+    @Override
+    protected void setNumSent(Integer numSent) {
+
+    }
+
+    @Override
+    protected void setDescriptionTxt(String description) {
+
+    }
+
+    @Override
+    public void setCampaignData(Campaign data) {
+        super.setCampaignData(data);
     }
 }

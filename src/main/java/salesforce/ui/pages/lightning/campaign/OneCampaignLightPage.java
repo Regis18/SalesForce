@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.campaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
  * OneCampaignLightPage.

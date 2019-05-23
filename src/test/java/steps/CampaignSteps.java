@@ -20,12 +20,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
-import salesforce.ui.pages.abstracts.NewCampaignAbstract;
+import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.CampaignPageAbstract;
+import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.OneCampaignAbstract;
-import salesforce.ui.pages.lightning.OneCampaignLightPage;
+import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.ui.pages.lightning.campaign.OneCampaignLightPage;
 
 import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;

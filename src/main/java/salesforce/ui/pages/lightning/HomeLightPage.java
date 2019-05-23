@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
 import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
 
 /**
  * HomeLightPage.
