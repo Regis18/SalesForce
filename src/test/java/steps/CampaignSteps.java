@@ -46,13 +46,9 @@ public class CampaignSteps {
         this.campaign = context.getCampaign();
     }
 
-    @Given("^I navigate to HomePage$")
-    public void navigateToHomePage() {
-        homePage = transporterPage.navigateToHomePage();
-    }
-
     @Given("^I navigate to Campaign Page$")
     public void navigateToCampaignForm() {
+        homePage = context.getHomePage();
         campaignPage = homePage.clickCampaignBtn();
     }
 
