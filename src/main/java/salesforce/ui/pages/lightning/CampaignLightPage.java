@@ -12,14 +12,15 @@
  */
 package salesforce.ui.pages.lightning;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.components.NewCampaignPopup;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
+import salesforce.utils.DriverMethods;
 
 /**
- * CampaignPage.
+ * CampaignClassicPage.
  * @author Regis Humana.
  */
 public class CampaignLightPage extends CampaignPageAbstract {
@@ -33,6 +34,9 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @FindBy(xpath = "//a[@title=\"New\"]")
     private WebElement newCampaignBtn;
+
+    private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
+    private final String CAMPAIGN = "Campaign";
 
     /**
      * Wait for the title appears.
@@ -51,4 +55,13 @@ public class CampaignLightPage extends CampaignPageAbstract {
         return new NewCampaignPopup();
     }
 
+    /**
+     * Check name in Campaign List.
+     * @param name string.
+     * @return boolean.
+     */
+    @Override
+    public boolean checkCampaignList(String name) {
+        return DriverMethods.waitForElementDisappear(By.xpath(campaignList.replace(CAMPAIGN, name)));
+    }
 }

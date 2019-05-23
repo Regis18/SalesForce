@@ -4,6 +4,8 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import salesforce.ui.PageFactory;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.utils.Setup;
 
 import java.net.MalformedURLException;
@@ -17,9 +19,9 @@ public class TransporterPage {
     /**
      * It creates to follow up the instruction of the class.
      */
-     private Logger log = Logs.getInstance().getLog();
-    //private String baseURL = Setup.getInstance().urlBasePath;
+    private Logger log = Logs.getInstance().getLog();
     private String baseURL = Setup.getInstance().getUrlBasePath();
+    private Setup setup = Setup.getInstance();
     private WebDriver driver;
 
     /**
@@ -77,11 +79,23 @@ public class TransporterPage {
     /**
      * Navigate to Home Page.
      *
-     * @return New instance of HomePage.
+     * @return New instance of HomeLightPage.
      */
-    public HomePage navigateToHomePage() {
+    public HomePageAbstract navigateToHomePage() {
         log.info("Navigate in Log in page");
-        goToURL(baseURL + "/lightning/page/home");
-        return new HomePage();
+
+        switch (setup.getLayout()) {
+            case "classic":
+                System.out.println("ENTRO");
+                goToURL(setup.getUrlClassicPath());
+                break;
+            case "light":
+                System.out.println("Entro tmb");
+                goToURL(baseURL + "/lightning/page/home");
+                break;
+        }
+        return PageFactory.homePage();
     }
+
+
 }

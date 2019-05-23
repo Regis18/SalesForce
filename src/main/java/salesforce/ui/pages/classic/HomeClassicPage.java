@@ -1,5 +1,5 @@
 /*
- * @(#) HomePage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) HomeLightPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -16,13 +16,13 @@ package salesforce.ui.pages.classic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
 
 /**
- * HomePage.
+ * HomeLightPage.
  * @author Regis Humana
  */
-public class HomePage extends BasePage {
+public class HomeClassicPage extends HomePageAbstract {
     /**
      * Is the main table of Home.
      */
@@ -43,12 +43,12 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Click to Campaign and initialize CampaignPage.
-     * @return CampaignPage.
+     * Click to Campaign and initialize CampaignClassicPage.
+     * @return CampaignClassicPage.
      */
-    public CampaignPage clickCampaignTab() {
+    public CampaignClassicPage clickCampaignBtn() {
         campaignTab.click();
-        return new CampaignPage();
+        return new CampaignClassicPage();
     }
 
 }

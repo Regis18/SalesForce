@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.components;
+package salesforce.ui.pages.lightning;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
-import salesforce.ui.behaves.NewCampaignAbstract;
+import salesforce.ui.pages.abstracts.NewCampaignAbstract;
 
 /**
  * NewCampaignPopup.
@@ -32,7 +32,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     /**
      * Campaign Name of the form.
      */
-    @FindBy(xpath = "//input[contains(@id,\"58:1383;a\")]")
+    @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
     private WebElement nameTxt;
     /**
      * Save button.
