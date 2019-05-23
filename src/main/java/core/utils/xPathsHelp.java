@@ -13,8 +13,22 @@
 
 package core.utils;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class xPathsHelp {
+import java.util.ArrayList;
+import java.util.List;
 
+public class xPathsHelp {
+    protected static WebDriver driver;
+    public static List<WebElement> distribution(String xPath) {
+        driver = WebDriverManager.getInstance().getWebDriver();
+        List<WebElement> arrayElement = new ArrayList();
+        for (WebElement element: driver.findElements(By.xpath(xPath))) {
+            arrayElement.add(element);
+        }
+        return arrayElement;
+    }
 }

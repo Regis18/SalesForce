@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.lightning.campaign;
 
+import core.utils.xPathsHelp;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,6 +21,9 @@ import salesforce.entities.Campaign;
 import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 
 import java.lang.ref.PhantomReference;
+import java.util.List;
+
+import static core.utils.xPathsHelp.distribution;
 
 /**
  * NewCampaignPopup.
@@ -62,8 +66,14 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputTextArea\")]//textarea")
     private WebElement descriptionTxt;
 
-    public NewCampaignPopup() {
+    private List<WebElement> typeStatusList;
+    private List<WebElement> datesList;
+    private List<WebElement> costsList;
 
+    public NewCampaignPopup() {
+        typeStatusList = xPathsHelp.distribution(TYPE_STATUS);
+        datesList = xPathsHelp.distribution(DATES);
+        costsList = xPathsHelp.distribution(COSTS_TXT);
     }
 
 
@@ -99,37 +109,37 @@ public class NewCampaignPopup extends NewCampaignAbstract {
 
     @Override
     protected void setTypeCmb(String type) {
-
+        typeStatusList.get(0).sendKeys(type);
     }
 
     @Override
     protected void setStatusCmb(String status) {
-
+        typeStatusList.get(1).sendKeys(status);
     }
 
     @Override
     protected void setStartDate(String startDate) {
-
+        datesList.get(0).sendKeys(startDate);
     }
 
     @Override
     protected void setEndDate(String endDate) {
-
+        datesList.get(1).sendKeys(endDate);
     }
 
     @Override
     protected void setExpectedRevenueTxt(Integer expected) {
-
+        costsList.get(0).sendKeys(expected.toString());
     }
 
     @Override
     protected void setBudgetedCostTxt(Integer budgeted) {
-
+        costsList.get(1).sendKeys(budgeted.toString());
     }
 
     @Override
     protected void setActualCostTxt(Integer actualCost) {
-
+        costsList.get(2).sendKeys(actualCost.toString());
     }
 
     @Override
