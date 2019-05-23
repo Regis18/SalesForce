@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.task;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import salesforce.ui.pages.abstracts.TaskPageAbstract;
+import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
@@ -27,6 +27,7 @@ import salesforce.ui.pages.abstracts.TaskPageAbstract;
 public class TaskLightPage extends TaskPageAbstract {
     public static final int MILLIS = 2500;
     public static final int INT = 100;
+
     /**
      * Task web element.
      */
@@ -41,6 +42,7 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//a[contains(@class,\"sldsButtonHeightFix\")]")
     private WebElement getDisplayAsDropDownButton;
+
     /**
      * Delete task web element.
      */
@@ -51,6 +53,7 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[span[contains(.,'Delete')]]")
     private WebElement deleteConfirmationtask;
+
     /**
      * Recent task refresh web element.
      */
@@ -61,11 +64,13 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[@title=\"Edit Subject\"]")
     private WebElement editSubjectTask;
+
     /**
      * Update new subject task web element.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[contains(@class,'slds-form-element forceTextEnumLookup')]")
     private WebElement updateNewSubjectTask;
+
     /**
      * Save update web element.
      */

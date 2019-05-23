@@ -11,11 +11,11 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.task;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
  * This class is for create a new class from light experience skin.
@@ -23,22 +23,26 @@ import salesforce.ui.pages.abstracts.NewTaskAbstract;
  * @version 0.0.1
  */
 public class NewTaskLightPopUp extends NewTaskAbstract {
+
     /**
      * Subject TextBox.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),\"Subject\")]]/div/div/"
             + "lightning-base-combobox/div/div/input")
     private WebElement subjectTextBox;
+
     /**
      * save button.
      */
     @FindBy(xpath = "//button[@title=\"Save\"]")
     private WebElement saveButton;
+
     /**
      * notification close button.
      */
     @FindBy(xpath = "//button[@title=\"Close\"]")
     private WebElement notificationCloseButton;
+
     /**
      * Comments text area.
      */

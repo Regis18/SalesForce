@@ -19,7 +19,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
 
 /**
  * HomeLightPage.
@@ -37,21 +38,34 @@ public class HomeLightPage extends HomePageAbstract {
      */
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Campaign\"]")
     private WebElement campaignBtn;
+
     /**
      * Button for opening the task dropdown.
      */
-    @FindBy(xpath = "//a[span[contains(text(),\"Tasks Menu\")]]")
+    @FindBy(xpath = "//a[span[contains(text(),'Tasks Menu')]]")
     private WebElement taskDropdownButton;
+
     /**
      * Select item New Task.
      */
-    @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
+    @FindBy(xpath = ("//a[span[span[contains(text(),'New Task')]]]"))
     private WebElement newTaskItem;
+
+//    @FindBy(xpath = ("/html[1]/body[1]/div[5]/div[1]/section[1]/header[1]/div[3]" +
+//            "/one-appnav[1]/div[1]/one-app-nav-bar[1]/nav[1]/div[1]/one-app-nav-" +
+//            "bar-item-root[4]/one-app-nav-bar-item-dropdown[1]/div[1]/one-app-nav" +
+//            "-bar-menu-button[1]/div[1]/slot[1]/one-app-nav-bar-menu-item[1]/a[1]" +
+//            "/span[1]/span[1]"))
+//    private WebElement newTaskItem;
+
     /**
      * task menuButton.
      */
-    @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
+    @FindBy(xpath = "//a[span[contains(text(),'Tasks')]]")
     private WebElement taskMenuButton;
+
+//    @FindBy(xpath = "//span[@class='slds-truncate'][contains(text(),'Tasks')]")
+//    private WebElement taskMenuButton;
 
     /**
      * Event click on tasks dropdown.

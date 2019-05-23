@@ -11,14 +11,11 @@
  *
  */
 
-package salesforce.ui.pages.classic;
+package salesforce.ui.pages.classic.task;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
-import salesforce.ui.pages.abstracts.TaskPageAbstract;
-
-import javax.swing.table.TableStringConverter;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 public class NewTaskClassic extends NewTaskAbstract {
 

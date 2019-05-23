@@ -4,7 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import salesforce.ui.pages.lightning.TaskLightPage;
+import salesforce.ui.pages.lightning.task.TaskLightPage;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.utils.Setup;

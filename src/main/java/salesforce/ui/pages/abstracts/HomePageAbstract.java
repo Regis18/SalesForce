@@ -1,6 +1,7 @@
 package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
  * HomePageAbstract.

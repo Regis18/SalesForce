@@ -18,9 +18,9 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.lightning.TaskLightPage;
+import salesforce.ui.pages.lightning.task.TaskLightPage;
 
 /**
  * Task steps class.
@@ -51,11 +51,19 @@ public class TaskSteps {
     /**
      * Create task step.
      */
-    @When("^I create a new task in SalesForce$")
-    public void createTask() {
+//    @When("^I create a new task in SalesForce$")
+//    public void createTask() {
+//        homePage = context.getHomePage();
+//        newTaskPage = homePage.displayCreateTask();
+//        nameTaskSubject = newTaskPage.createNewTask();
+//    }
+
+    @When("^I create a new task with the name \"([^\"]*)\"$")
+    public void createTask(String TaskSubject) {
+        String nameSubject = TaskSubject;
         homePage = context.getHomePage();
         newTaskPage = homePage.displayCreateTask();
-        nameTaskSubject = newTaskPage.createNewTask();
+        nameTaskSubject = newTaskPage.createNewTask(nameSubject);
     }
 
     /**

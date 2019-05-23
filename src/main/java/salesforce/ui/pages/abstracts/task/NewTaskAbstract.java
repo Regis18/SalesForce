@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.task;
 
 import salesforce.ui.BasePage;
 
@@ -27,8 +27,8 @@ public abstract class NewTaskAbstract extends BasePage {
      * Create new Task.
      * @return the subject of the task.
      */
-    public String createNewTask() {
-        String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
+    public String createNewTask(String nameSubject) {
+       // String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
         setSubjectTextBox(nameSubject);
         setComments("Test task.");
         clickSaveButton();
