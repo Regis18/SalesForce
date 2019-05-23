@@ -2,14 +2,14 @@ Feature: Create, delete, update tasks of SalesForce
 
   Scenario: Create a new task
     Given I log in to the SalesForce Application
-    When I navigate to home page
+    When I navigate to HomePage
     When I create a new task in SalesForce
     When I navigate to Lightning Tasks home page
     Then I verify the task is displayed
 
   Scenario: Delete task
     Given I log in to the SalesForce Application
-    When I navigate to home page
+    When I navigate to HomePage
     When I create a new task in SalesForce
     When I navigate to Lightning Tasks home page
     When I delete the task
@@ -17,7 +17,7 @@ Feature: Create, delete, update tasks of SalesForce
 
   Scenario: update task
     Given I log in to the SalesForce Application
-    When I navigate to home page
+    When I navigate to HomePage
     When I create a new task in SalesForce
     When I navigate to Lightning Tasks home page
     When I update the subject task

@@ -12,4 +12,5 @@ public abstract class HomePageAbstract extends BasePage {
      * @return Campaign Page abstract.
      */
     public abstract CampaignPageAbstract clickCampaignBtn();
+
 }

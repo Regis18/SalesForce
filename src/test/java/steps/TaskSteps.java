@@ -34,13 +34,6 @@ public class TaskSteps {
     private String nameTaskSubject;
     private TaskLightPage taskLightPage;
 
-    /**
-     * navigate to home page.
-     */
-    @When("^I navigate to home page$")
-    public void navigateToHome() {
-        homeLightPage = TransporterPage.getInstance().navigateToHomeLightPage();
-    }
 
     /**
      * navigate to tasks home page.
