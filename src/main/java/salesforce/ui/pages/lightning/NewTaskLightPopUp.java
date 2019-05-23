@@ -19,16 +19,18 @@ import salesforce.ui.BasePage;
 
 /**
  * NewTaskLightPopUp class in this popup we fill information for create a new task.
+ *
  * @author Melvi Caballero
  * @version 0.0.1
  */
 public class NewTaskLightPopUp extends BasePage {
     public static final int MILLIS = 2000;
     public static final int MILLIS1 = 3000;
+    public static final int INT = 100;
     /**
      * Subject TextBox.
      */
-     @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),\"Subject\")]]/div/div/"
+    @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),\"Subject\")]]/div/div/"
             + "lightning-base-combobox/div/div/input")
     private WebElement subjectTextBox;
     /**
@@ -81,21 +83,13 @@ public class NewTaskLightPopUp extends BasePage {
 
     /**
      * Create new Task.
+     * @return the subject of the task.
      */
     public String createNewTask() {
-        String nameSubject = "Call"+(int)Math.random()*10;
+        String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
         setSubjectTextBox(nameSubject);
         setComments("Test task.");
         clickSaveButton();
-//        try {
-//            Thread.sleep(MILLIS1);
-//        } catch (Exception e) {
-//        }
-//        clickCloseNotificationButton();
-//        try {
-//            Thread.sleep(MILLIS);
-//        } catch (Exception e) {
-//        }
         return nameSubject;
     }
 

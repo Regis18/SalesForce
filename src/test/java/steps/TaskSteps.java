@@ -15,6 +15,7 @@ package steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.lightning.NewTaskLightPopUp;
@@ -22,6 +23,7 @@ import salesforce.ui.pages.lightning.TaskLightPage;
 
 /**
  * Task steps class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -31,6 +33,7 @@ public class TaskSteps {
     private NewTaskLightPopUp newTaskLightPopUp;
     private String nameTaskSubject;
     private TaskLightPage taskLightPage;
+
     /**
      * navigate to home page.
      */
@@ -44,7 +47,7 @@ public class TaskSteps {
      */
     @When("^I navigate to Lightning Tasks home page$")
     public void navigateToTasksHome() {
-        homeLightPage = TransporterPage.getInstance().navigateToTasksHomeLightPage();
+        taskLightPage = TransporterPage.getInstance().navigateToTasksHomeLightPage();
     }
 
 
@@ -54,9 +57,7 @@ public class TaskSteps {
     @When("^I create a new task in SalesForce$")
     public void createTask() {
         newTaskLightPopUp = homeLightPage.displayCreateTask();
-       // newTaskLightPopUp.createNewTask();
-        nameTaskSubject=newTaskLightPopUp.createNewTask();
-
+        nameTaskSubject = newTaskLightPopUp.createNewTask();
     }
 
     /**
@@ -67,11 +68,37 @@ public class TaskSteps {
         homeLightPage.clickTaskMenuButton();
     }
 
+    /**
+     * verify task is displayed.
+     */
     @Then("^I verify the task is displayed$")
-    public  void verifyTaskDisplayed(){
-      taskLightPage.displayListActions();
-      //taskLightPage.clickDisplayAsDropDownButton();
+    public void verifyTaskDisplayed() {
+        Assert.assertTrue(taskLightPage.verifySubjectExist(nameTaskSubject));
     }
 
+    /**
+     * verify the task was deleted step.
+     */
+    @Then("^I verify the task was deleted$")
+    public void verifyTaskIsNotDisplayed() {
+        taskLightPage.clickRecentTasksRefresh();
+        Assert.assertFalse(taskLightPage.verifySubjectExist(nameTaskSubject));
+    }
+
+    /**
+     * I update the subject task step.
+     */
+    @When("^I update the subject task$")
+    public void updateTask() {
+        nameTaskSubject = taskLightPage.updateCurrentTask();
+    }
+
+    /**
+     * delete the task step.
+     */
+    @When("^I delete the task$")
+    public void deletedTask() {
+        taskLightPage.deleteCurrentTask();
+    }
 
 }
