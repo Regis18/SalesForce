@@ -23,10 +23,12 @@ import salesforce.ui.pages.abstracts.OneCampaignAbstract;
  * @author Regis Humana
  */
 public class OneCampaignClassicPage extends OneCampaignAbstract {
-    @FindBy
+    @FindBy(xpath = "//td[@class=\" oRight\"]")
+    private WebElement campaignDetailForm;
+    @FindBy(xpath = "//h1[@class=\"pageType\"]")
     private WebElement campaignPanelTitle;
+    @FindBy(xpath = "//h2[@class=\"pageDescription\"]")
     private WebElement campaignTitleLbl;
-    private WebElement detailsTab;
 
     /**
      * Wait for Campaign panel title.
@@ -42,7 +44,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public boolean verifyComponentsCampaign() {
-        return true;
+        return campaignDetailForm.isDisplayed();
     }
 
     /**
@@ -51,6 +53,6 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public String getNameCampaign() {
-        return "n";
+        return campaignTitleLbl.getText();
     }
 }

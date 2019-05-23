@@ -64,8 +64,13 @@ public class CampaignSteps {
 
     @Then("^I verify a message confirmation of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
+        try {
         String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
         assertEquals(message, "Campaign \"" + campaign.getName() + "\" was created.");
+        } catch (ClassCastException e) {
+            System.out.println("In Classic Skin there is no message confirmation");
+        }
+
     }
 
 

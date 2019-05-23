@@ -13,10 +13,12 @@
 
 package salesforce.ui.pages.classic;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
+import salesforce.utils.DriverMethods;
 
 /**
  * CampaignClassicPage.
@@ -34,6 +36,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     @FindBy(xpath = "//input[@name=\"new\"]")
     private WebElement newCampaignBtn;
 
+    private String campaignList = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"campaign\")]";
     /**
      * Wait for Campaign Form.
      */
@@ -59,6 +62,6 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(String name) {
-        return true;
+        return DriverMethods.waitForElementDisappear(By.xpath(campaignList.replace("campaign", name)));
     }
 }
