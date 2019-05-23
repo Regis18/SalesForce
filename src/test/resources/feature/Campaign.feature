@@ -12,15 +12,15 @@ Feature: Create, delete, update campaigns of Salesforce
     And I verify the page of campaign that was created
     When I navigate to Campaign Page
     Then I verify "New Campaign" is in the list of campaigns
-#
-#  @deleteCampaign
-#  Scenario: Delete a new Campaign in Salesforce
-#    Given I create a new campaign "New Campaign" in Salesforce
-#    And I navigate to Campaign Form
-#    When I delete a campaign "Delete Campaign" in Salesforce
-#    Then I verify a message confirmation of the campaign was deleted
-#    And I verify "Delete Campaign" is not in the list of campaigns
-#
+
+  @deleteCampaign
+  Scenario: Delete a new Campaign in Salesforce
+    Given I create a new campaign "New Campaign" for Campaigns
+    And I navigate to Campaign Page
+    When I delete a campaign "Delete Campaign" in Salesforce
+    Then I verify a message confirmation of the campaign was deleted
+    And I verify "Delete Campaign" is not in the list of campaigns
+
 #  @deleteCampaign
 #  Scenario: Update a new Campaign in Salesforce
 #    Given I create a new campaign "New Campaign" in Salesforce

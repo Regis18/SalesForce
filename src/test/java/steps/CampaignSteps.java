@@ -14,6 +14,7 @@
 package steps;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -65,8 +66,8 @@ public class CampaignSteps {
     @Then("^I verify a message confirmation of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
         try {
-        String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
-        assertEquals(message, "Campaign \"" + campaign.getName() + "\" was created.");
+            String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
+            assertEquals(message, "Campaign \"" + campaign.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
@@ -83,5 +84,27 @@ public class CampaignSteps {
     public void verifyIsInTheListOfCampaigns(String name) {
         // It is false because means that the element exist in the list.
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
+    }
+
+    @When("^I delete a campaign \"([^\"]*)\" in Salesforce$")
+    public void iDeleteACampaignInSalesforce(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I verify a message confirmation of the campaign was deleted$")
+    public void verifyAMessageConfirmationOfTheCampaignWasDeleted() {
+        try {
+            String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
+            assertEquals(message, "Campaign \"" + campaign.getName() + "\" was deleted.");
+        } catch (ClassCastException e) {
+            System.out.println("In Classic Skin there is no message confirmation");
+        }
+    }
+
+    @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
+    public void iVerifyIsNotInTheListOfCampaigns(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }
