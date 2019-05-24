@@ -55,10 +55,10 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(css = "input[id^='295']")
     private WebElement endDateTxt;
 
-    @FindBy(css = "a[aria-describedby^='126']")
+    @FindBy(css = "div[id^='133']")
     private WebElement typeCmb;
 
-    @FindBy(css = "a[aria-describedby^='190']")
+    @FindBy(css = "div[id^='197']")
     private WebElement statusCmb;
 
     @FindBy(css = "input[id^='336']")
@@ -112,14 +112,16 @@ public class NewCampaignPopup extends NewCampaignAbstract {
 
     @Override
     protected void setTypeCmb(String type) {
-        Select accountRole = new Select(typeCmb);
-        accountRole.selectByVisibleText(type);
+//        Select accountRole = new Select(typeCmb);
+//        accountRole.selectByVisibleText(type);
+        typeCmb.sendKeys(type);
     }
 
     @Override
     protected void setStatusCmb(String status) {
-        Select accountRole = new Select(statusCmb);
-        accountRole.selectByVisibleText(status);
+//        Select accountRole = new Select(statusCmb);
+//        accountRole.selectByVisibleText(status);
+        statusCmb.sendKeys(status);
     }
 
     @Override

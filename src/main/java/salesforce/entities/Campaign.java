@@ -11,19 +11,19 @@ import java.util.Map;
  * @version 0.0.1
  */
 public class Campaign {
-    private String name = "default";
+    private String name;
     private boolean activate;
-    private String type = "default";
-    private String status = "default";
-    private String startDate = "01/01/2019";
-    private String endDate = "01/01/2019";
-    private int expectedRevenue = 0;
-    private int budgetedCost = 0;
-    private int actualCost = 0;
-    private int expectedResponse = 0;
-    private int numSent = 0;
-    private String parentCampaign  = "default";
-    private String description  = "default";
+    private String type;
+    private String status;
+    private String startDate;
+    private String endDate;
+    private int expectedRevenue;
+    private int budgetedCost;
+    private int actualCost;
+    private int expectedResponse;
+    private int numSent;
+    private String parentCampaign;
+    private String description;
     private final String DESCRIPTION = "Description";
     private final String NAME = "Name";
     private final String ACTIVE = "Active";
@@ -237,6 +237,10 @@ public class Campaign {
         this.description = description;
     }
 
+    /**
+     *
+     * @param campaigns
+     */
     public void processInformation(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(campaigns);
         campaigns.keySet().forEach(key -> {
@@ -245,6 +249,11 @@ public class Campaign {
         });
     }
 
+    /**
+     * Compose the values of Campaign
+     * @param campaigns String
+     * @return hashmap
+     */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
         strategyMap.put(NAME, () -> setName(campaigns.get(NAME)));

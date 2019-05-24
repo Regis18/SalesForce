@@ -43,18 +43,28 @@ public class CampaignSteps {
     private Context context;
     private Campaign campaign;
 
-
+    /**
+     * Campaign steps.
+     * @param context string
+     */
     public CampaignSteps(Context context) {
         this.context = context;
         this.campaign = context.getCampaign();
     }
 
+    /**
+     * Navigate to Campaign Page.
+     */
     @Given("^I navigate to Campaign Page$")
     public void navigateToCampaignForm() {
         homePage = context.getHomePage();
         campaignPage = homePage.clickCampaignBtn();
     }
 
+    /**
+     * Create new campaign.
+     * @param mapOut
+     */
     @When("^I create a new campaign for Campaigns$")
     public void createANewCampaign(final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
@@ -62,6 +72,9 @@ public class CampaignSteps {
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign);
     }
 
+    /**
+     * Verify a message confirmation.
+     */
     @Then("^I verify a message confirmation of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
         try {
@@ -70,27 +83,39 @@ public class CampaignSteps {
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
-
     }
 
-
+    /**
+     * Verify campaign.
+     */
     @Then("^I verify the page of campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
         assertTrue(oneCampaignPage.verifyComponentsCampaign());
     }
 
+    /**
+     * Verify campaign to the list.
+     * @param name string.
+     */
     @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
     public void verifyIsInTheListOfCampaigns(String name) {
         // It is false because means that the element exist in the list.
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
+    /**
+     * Delete Campaign.
+     * @param arg0 string
+     */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
     public void iDeleteACampaignInSalesforce(String arg0) {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
+    /**
+     * Verify message confirmation.
+     */
     @Then("^I verify a message confirmation of the campaign was deleted$")
     public void verifyAMessageConfirmationOfTheCampaignWasDeleted() {
         try {
@@ -101,10 +126,13 @@ public class CampaignSteps {
         }
     }
 
+    /**
+     * Verify campaign is not the list.
+     * @param name
+     */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
-    public void iVerifyIsNotInTheListOfCampaigns(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void verifyIsNotInTheListOfCampaigns(String name) {
+        assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
 
 }
