@@ -11,11 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.campaign;
 
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
+
+import java.util.Date;
 
 /**
  * NewCampaignAbstract.
@@ -46,11 +48,43 @@ public abstract class NewCampaignAbstract extends BasePage {
      */
     protected abstract void setNameTxt(String name);
 
+    protected abstract void setActiveChk(boolean isActivate);
+
+    protected abstract void setTypeCmb(String type);
+
+    protected abstract void setStatusCmb(String status);
+
+    protected abstract void setStartDate(String startDate);
+
+    protected abstract void setEndDate(String endDate);
+
+    protected abstract void setExpectedRevenueTxt(Integer expected);
+
+    protected abstract void setBudgetedCostTxt(Integer budgeted);
+
+    protected abstract void setActualCostTxt(Integer actualCost);
+
+    protected abstract void setNumSent(Integer numSent);
+
+    protected abstract void setDescriptionTxt(String description);
+
     /**
      * Set Campaign Data.
      * Just is name, can be more.
      *
      * @param data Campaign
      */
-    protected abstract void setCampaignData(Campaign data);
+    public void setCampaignData(Campaign data) {
+        setNameTxt(data.getName());
+        setActiveChk(data.isActivate());
+        setTypeCmb(data.getType());
+        setStatusCmb(data.getStatus());
+        setStartDate(data.getStartDate());
+        setEndDate(data.getEndDate());
+        setExpectedRevenueTxt(data.getExpectedRevenue());
+        setBudgetedCostTxt(data.getBudgetedCost());
+        setActualCostTxt(data.getActualCost());
+        setNumSent(data.getNumSent());
+        setDescriptionTxt(data.getDescription());
+    }
 }

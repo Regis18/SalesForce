@@ -10,15 +10,16 @@ public class Campaign {
     private String name;
     private boolean activate;
     private String type;
-    private String planned;
-    private Date startDate;
-    private Date endDate;
+    private String status;
+    private String startDate;
+    private String endDate;
     private int expectedRevenue;
     private int budgetedCost;
     private int actualCost;
     private int expectedResponse;
     private int numSent;
     private String parentCampaign;
+    private String description;
 
     /**
      * Get Campaign name.
@@ -69,26 +70,26 @@ public class Campaign {
     }
 
     /**
-     * Get Campaign planned.
-     * @return planned
+     * Get Campaign status.
+     * @return status
      */
-    public String getPlanned() {
-        return planned;
+    public String getStatus() {
+        return status;
     }
 
     /**
-     * Set Campaign planned.
-     * @param planned *
+     * Set Campaign status.
+     * @param status *
      */
-    public void setPlanned(final String planned) {
-        this.planned = planned;
+    public void setStatus(final String status) {
+        this.status = status;
     }
 
     /**
      * Get start date.
      * @return startDate
      */
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
@@ -96,7 +97,7 @@ public class Campaign {
      * Set start Date.
      * @param startDate *
      */
-    public void setStartDate(final Date startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
@@ -104,7 +105,7 @@ public class Campaign {
      * Get end date.
      * @return endDate
      */
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
@@ -112,7 +113,7 @@ public class Campaign {
      * Set end Date.
      * @param endDate *
      */
-    public void setEndDate(final Date endDate) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
@@ -210,5 +211,13 @@ public class Campaign {
      */
     public void setParentCampaign(final String parentCampaign) {
         this.parentCampaign = parentCampaign;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

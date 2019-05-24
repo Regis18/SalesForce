@@ -10,13 +10,13 @@
  * with Jala Foundation.
  *
  */
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.campaign;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.CampaignPageAbstract;
+import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 import salesforce.utils.DriverMethods;
 
 /**
