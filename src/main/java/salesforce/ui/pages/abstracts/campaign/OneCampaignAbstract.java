@@ -29,4 +29,9 @@ public abstract class OneCampaignAbstract extends BasePage {
      * Implement get name to assert with steps.
      */
     public abstract String getNameCampaign();
+
+    /**
+     * Delete Campaign of Salesforce
+     */
+    public abstract void deleteCampaign();
 }

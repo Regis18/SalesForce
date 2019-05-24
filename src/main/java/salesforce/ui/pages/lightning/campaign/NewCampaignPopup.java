@@ -17,13 +17,13 @@ import core.utils.xPathsHelp;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Campaign;
 import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 
 import java.lang.ref.PhantomReference;
 import java.util.List;
 
-import static core.utils.xPathsHelp.distribution;
 
 /**
  * NewCampaignPopup.
@@ -43,38 +43,41 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     /**
      * Save button.
      */
-    @FindBy(xpath = "//button[@title=\"Save\"]")
+    @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveBtn;
 
-    @FindBy(xpath = "//div[contains(@class,\"uiInputCheckbox\")]//input[@type=\"checkbox\"]")
+    @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
     private WebElement activateChk;
 
-    private final String TYPE_STATUS = "//div[@class=\"uiPopupTrigger\"]//a[contains(@class,\"select\")]";
+    @FindBy(css = "input[id^='254']")
+    private WebElement startDateTxt;
 
+    @FindBy(css = "input[id^='295']")
+    private WebElement endDateTxt;
 
-    private final String DATES =  "//div[@class=\"form-element\"]//input[@class]";
+    @FindBy(css = "a[aria-describedby^='126']")
+    private WebElement typeCmb;
 
+    @FindBy(css = "a[aria-describedby^='190']")
+    private WebElement statusCmb;
 
-    private final String COSTS_TXT = "//div[contains(@data-aura-class,\"uiInput uiInput--default uiInput--input\")]//input";
+    @FindBy(css = "input[id^='336']")
+    private WebElement expectedRevenueTxt;
 
-    @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputPercent\")]//input")
+    @FindBy(css = "input[id^='372']")
+    private WebElement budgetedCostTxt;
+
+    @FindBy(css = "input[id^='408']")
+    private WebElement actualCostTxt;
+
+    @FindBy(css = "input[id^='444']")
     private WebElement expectedResponseTxt;
 
-    @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputNumber\")]//input")
+    @FindBy(css = "input[id^='480']")
     private WebElement numSentTxt;
 
-    @FindBy(xpath = "//div[contains(@class,\"uiInput uiInputTextArea\")]//textarea")
+    @FindBy(css = "textarea[id^='621']")
     private WebElement descriptionTxt;
-
-    private List<WebElement> typeStatusList;
-    private List<WebElement> datesList;
-    private List<WebElement> costsList;
-
-    public NewCampaignPopup() {
-        typeStatusList = xPathsHelp.distribution(TYPE_STATUS);
-        datesList = xPathsHelp.distribution(DATES);
-        costsList = xPathsHelp.distribution(COSTS_TXT);
-    }
 
 
     /**
@@ -109,37 +112,39 @@ public class NewCampaignPopup extends NewCampaignAbstract {
 
     @Override
     protected void setTypeCmb(String type) {
-        typeStatusList.get(0).sendKeys(type);
+        Select accountRole = new Select(typeCmb);
+        accountRole.selectByVisibleText(type);
     }
 
     @Override
     protected void setStatusCmb(String status) {
-        typeStatusList.get(1).sendKeys(status);
+        Select accountRole = new Select(statusCmb);
+        accountRole.selectByVisibleText(status);
     }
 
     @Override
     protected void setStartDate(String startDate) {
-        datesList.get(0).sendKeys(startDate);
+        startDateTxt.sendKeys(startDate);
     }
 
     @Override
     protected void setEndDate(String endDate) {
-        datesList.get(1).sendKeys(endDate);
+        endDateTxt.sendKeys(endDate);
     }
 
     @Override
     protected void setExpectedRevenueTxt(Integer expected) {
-        costsList.get(0).sendKeys(expected.toString());
+        expectedRevenueTxt.sendKeys(expected.toString());
     }
 
     @Override
     protected void setBudgetedCostTxt(Integer budgeted) {
-        costsList.get(1).sendKeys(budgeted.toString());
+        budgetedCostTxt.sendKeys(budgeted.toString());
     }
 
     @Override
     protected void setActualCostTxt(Integer actualCost) {
-        costsList.get(2).sendKeys(actualCost.toString());
+        actualCostTxt.sendKeys(actualCost.toString());
     }
 
     @Override

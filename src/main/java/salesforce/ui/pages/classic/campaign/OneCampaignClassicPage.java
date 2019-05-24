@@ -55,4 +55,9 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     public String getNameCampaign() {
         return campaignTitleLbl.getText();
     }
+
+    @Override
+    public void deleteCampaign() {
+
+    }
 }

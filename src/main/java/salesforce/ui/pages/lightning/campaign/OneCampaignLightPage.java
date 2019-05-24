@@ -16,6 +16,7 @@ package salesforce.ui.pages.lightning.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
@@ -37,6 +38,10 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
+
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']")
+    private WebElement mainMenuCmb;
+
 
     /**
      * Wait for Campaign Panel Title.
@@ -78,5 +83,11 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      */
     private void clickDetailsTab() {
         detailsTab.click();
+    }
+
+    @Override
+    public void deleteCampaign() {
+        Select accountRole = new Select(mainMenuCmb);
+        accountRole.selectByVisibleText("Delete");
     }
 }

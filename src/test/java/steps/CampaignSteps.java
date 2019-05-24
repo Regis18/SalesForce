@@ -85,8 +85,8 @@ public class CampaignSteps {
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
-    @When("^I delete a campaign \"([^\"]*)\" in Salesforce$")
-    public void iDeleteACampaignInSalesforce(String arg0) throws Throwable {
+    @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
+    public void iDeleteACampaignInSalesforce(String arg0) {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
