@@ -29,13 +29,13 @@ public class GenerateReport {
 
 
     public static void generateMasterReport() {
-        logs.info("The user is logging in to the application Pivotal Tracker");
+        logs.info("The user is logging in to the application Salesforce");
         File reportOutputDirectory = new File("target");
         List<String> jsonFiles = new ArrayList<>();
         jsonFiles.add(new File("").getAbsolutePath() + "\\target\\cucumber.json");
 
         String buildNumber = "1";
-        String projectName = "Pivotel tracker Accounts";
+        String projectName = "Salesforce";
         boolean runWithJenkins = false;
 
         Configuration configuration = new Configuration(reportOutputDirectory, projectName);
