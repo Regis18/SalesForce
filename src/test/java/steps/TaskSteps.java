@@ -17,10 +17,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import salesforce.entities.Context;
+import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.lightning.task.TaskLightPage;
+
+import java.util.Map;
 
 /**
  * Task steps class.
@@ -35,10 +38,15 @@ public class TaskSteps {
     private String nameTaskSubject;
     private TaskLightPage taskPage;
     private Context context;
+    private Task task;
 
-    public TaskSteps(Context context) {
-        this.context = context;
+    public TaskSteps(Task task) {
+        this.task = task;
     }
+
+//    public TaskSteps(Context context) {
+//        this.context = context;
+//    }
     /**
      * navigate to tasks home page.
      */
@@ -58,12 +66,11 @@ public class TaskSteps {
 //        nameTaskSubject = newTaskPage.createNewTask();
 //    }
 
-    @When("^I create a new task with the name \"([^\"]*)\"$")
-    public void createTask(String TaskSubject) {
-        String nameSubject = TaskSubject;
-        homePage = context.getHomePage();
+    @When("^I create a new task with this information$")
+    public void createTask(Map<String, String> taskMap) {
+        task.proccessInformation(taskMap);
         newTaskPage = homePage.displayCreateTask();
-        nameTaskSubject = newTaskPage.createNewTask(nameSubject);
+        newTaskPage.createNewTask(task);
     }
 
     /**
