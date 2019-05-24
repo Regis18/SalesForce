@@ -27,6 +27,9 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 import salesforce.ui.pages.lightning.campaign.OneCampaignLightPage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -52,9 +55,9 @@ public class CampaignSteps {
         campaignPage = homePage.clickCampaignBtn();
     }
 
-    @When("^I create a new campaign \"([^\"]*)\" for Campaigns$")
-    public void createANewCampaign(final String name) {
-        campaign.setName(name);
+    @When("^I create a new campaign for Campaigns$")
+    public void createANewCampaign(final Map<String, String> mapOut) {
+        campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign);
     }
@@ -103,4 +106,5 @@ public class CampaignSteps {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
 }

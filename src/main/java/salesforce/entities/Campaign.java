@@ -1,25 +1,41 @@
 package salesforce.entities;
 
-import java.util.Date;
+import core.utils.StrategySetter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Campaign.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public class Campaign {
-    private String name;
+    private String name = "default";
     private boolean activate;
-    private String type;
-    private String status;
-    private String startDate;
-    private String endDate;
-    private int expectedRevenue;
-    private int budgetedCost;
-    private int actualCost;
-    private int expectedResponse;
-    private int numSent;
-    private String parentCampaign;
-    private String description;
+    private String type = "default";
+    private String status = "default";
+    private String startDate = "01/01/2019";
+    private String endDate = "01/01/2019";
+    private int expectedRevenue = 0;
+    private int budgetedCost = 0;
+    private int actualCost = 0;
+    private int expectedResponse = 0;
+    private int numSent = 0;
+    private String parentCampaign  = "default";
+    private String description  = "default";
+    private final String DESCRIPTION = "Description";
+    private final String NAME = "Name";
+    private final String ACTIVE = "Active";
+    private final String TYPE = "Type";
+    private final String STATUS = "Status";
+    private final String START_DATE = "Star Date";
+    private final String END_DATE = "End Date";
+    private final String EXPECTED_REVENUE = "Expected Revenue";
+    private final String BUDGETED_COST = "Budgeted Cost";
+    private final String ACTUAL_COST = "Actual Cost";
+    private final String EXPECTED_RESPONSE = "Expected Response";
+    private final String NUM_SENT = "Num Sent";
 
     /**
      * Get Campaign name.
@@ -219,5 +235,30 @@ public class Campaign {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void processInformation(final Map<String, String> campaigns) {
+        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(campaigns);
+        campaigns.keySet().forEach(key -> {
+            strategyMap.get(key).executedMethod();
+            System.out.println(key);
+        });
+    }
+
+    private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> campaigns) {
+        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
+        strategyMap.put(NAME, () -> setName(campaigns.get(NAME)));
+        strategyMap.put(ACTIVE, () -> setActivate(campaigns.get(ACTIVE).equals("True")));
+        strategyMap.put(TYPE, () -> setType(campaigns.get(TYPE)));
+        strategyMap.put(STATUS, () -> setStatus(campaigns.get(STATUS)));
+        strategyMap.put(START_DATE, () -> setStartDate(campaigns.get(START_DATE)));
+        strategyMap.put(END_DATE, () -> setEndDate(campaigns.get(END_DATE)));
+        strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
+        strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
+        strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));
+        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(Integer.parseInt(campaigns.get(EXPECTED_RESPONSE))));
+        strategyMap.put(NUM_SENT, () -> setNumSent(Integer.parseInt(campaigns.get(NUM_SENT))));
+        strategyMap.put(DESCRIPTION, () -> setDescription(campaigns.get(DESCRIPTION)));
+        return strategyMap;
     }
 }
