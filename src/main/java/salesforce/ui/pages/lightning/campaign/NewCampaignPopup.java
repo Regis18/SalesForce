@@ -56,8 +56,8 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(xpath = "//div[@class='uiPopupTrigger']//a[contains(@class,'select')][contains(text(),'Planned')]")
     private WebElement statusCmb;
 
-    @FindBy(xpath = "//div[@class=\"slds-form-element__control\"]//*[contains(text(),'Start Date')]")
-    private WebElement
+    @FindBy(xpath = "//div[//span[contains(text(),'Start')]]//div[@class=\"form-element\"]//input[ @class=' input']")
+    private WebElement //solo pa dos
 
     private final String DATES =  "//div[@class=\"form-element\"]//input[@class]";
 
