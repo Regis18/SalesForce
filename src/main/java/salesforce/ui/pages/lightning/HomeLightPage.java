@@ -87,6 +87,10 @@ public class HomeLightPage extends HomePageAbstract {
      * @return NewTaskLightPopUp
      */
     public NewTaskAbstract displayCreateTask() {
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
         clickTasksDropDownButton();
         try {
             Thread.sleep(MILLIS);

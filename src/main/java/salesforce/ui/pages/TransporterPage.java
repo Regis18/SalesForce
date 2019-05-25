@@ -99,6 +99,7 @@ public class TransporterPage {
                 System.out.println("Entro tmb");
                 goToURL(baseURL + "/lightning/page/home");
                 break;
+            default:
         }
         return PageFactory.homePage();
     }

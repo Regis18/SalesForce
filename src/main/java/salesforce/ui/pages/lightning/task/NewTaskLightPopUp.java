@@ -15,6 +15,7 @@ package salesforce.ui.pages.lightning.task;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
@@ -67,5 +68,19 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @Override
     protected void setComments(final String value) {
         commentsTextArea.sendKeys(value);
+    }
+
+    /**
+     * Create Task.
+     * @param task
+     * @return string
+     */
+    @Override
+    public String createNewTask(final Task task) {
+        //log.info("Set information of project.");
+        setSubjectTextBox(task.getSubject());
+        setComments(task.getComment());
+        clickSaveButton();
+        return task.getSubject();
     }
 }

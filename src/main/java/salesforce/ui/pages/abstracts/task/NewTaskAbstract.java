@@ -25,34 +25,22 @@ import salesforce.ui.BasePage;
 public abstract class NewTaskAbstract extends BasePage {
     public static final int INT = 100;
 
-//    public String createNewTask(String nameSubject) {
-//       // String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
-//        setSubjectTextBox(nameSubject);
-//        setComments("Test task.");
-//        clickSaveButton();
-//        return nameSubject;
-//    }
 
     /**
      * Create Task.
-     * @param task
+     * @param task of type Task.
      * @return string
      */
-    public String createNewTask(final Task task) {
-        //log.info("Set information of project.");
-        setSubjectTextBox(task.getSubject());
-        setComments(task.getComment());
-        clickSaveButton();
-        return task.getSubject();
-    }
+    public abstract String createNewTask(final Task task);
+
 
     /**
-     * click save button.
+     * Click save button.
      */
     protected abstract void clickSaveButton();
 
     /**
-     * click saved notification.
+     * Click saved notification.
      */
     protected abstract void clickCloseNotificationButton();
 

@@ -13,6 +13,14 @@
 
 package salesforce.utils;
 
+/**
+ * Interface Strategy.
+ * @author: Melvi Caballero.
+ * @version: 0.0.1
+ */
 public interface Strategy {
+    /**
+     * This method strategy for execute methods.
+     */
     public void executeMethod();
 }

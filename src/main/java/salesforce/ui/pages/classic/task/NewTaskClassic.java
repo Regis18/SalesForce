@@ -15,6 +15,7 @@ package salesforce.ui.pages.classic.task;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
@@ -45,6 +46,11 @@ public class NewTaskClassic extends NewTaskAbstract {
 
     @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
     private WebElement updateTask;
+
+    @Override
+    public String createNewTask(Task task) {
+        return null;
+    }
 
     @Override
     protected void clickSaveButton() {
