@@ -1,5 +1,5 @@
 /*
- * @(#) HomeAccountPageAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountPageAbstract.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,18 +11,19 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.Account;
+package salesforce.ui.pages.abstracts.account;
 
 import salesforce.ui.BasePage;
 
 /**
- * HomeAccountPageAbstract.
- * @author Luis Guardia
+ * AccountPageAbstract.
+ * @author Luis Guardia.
  */
-public abstract class HomeAccountPageAbstract extends BasePage {
+public abstract class AccountPageAbstract extends BasePage {
     /**
-     * Click in the button Campaign button.
-     * @return Account Page abstract.
+     * Click in New account button.
+     * @return clickNewAccountBtn.
      */
-    public abstract AccountPageAbstract clickAccountBtn();
+    public abstract NewAccountPageAbstract clickNewAccountBtn();
+
 }

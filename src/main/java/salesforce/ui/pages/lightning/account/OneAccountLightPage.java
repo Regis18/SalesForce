@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.Account;
+package salesforce.ui.pages.lightning.account;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.Account.OneAccountAbstract;
+import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 
 /**
  * OneAccountLightPage.
@@ -40,7 +40,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     private WebElement detailsForm;
 
     /**
-     * Wait for Account Panel Title.
+     * Wait for account Panel Title.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -58,7 +58,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
-     * Get the name of the Account title.
+     * Get the name of the account title.
      * @return name string.
      */
     @Override

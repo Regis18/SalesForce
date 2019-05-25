@@ -1,5 +1,5 @@
 /*
- * @(#) AccountPageAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) OneAccountAbstract.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,19 +11,22 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.Account;
+package salesforce.ui.pages.abstracts.account;
 
 import salesforce.ui.BasePage;
 
 /**
- * AccountPageAbstract.
+ * OneAccountAbstract.
  * @author Luis Guardia.
  */
-public abstract class AccountPageAbstract extends BasePage {
+public abstract class OneAccountAbstract extends BasePage {
     /**
-     * Click in New Account button.
-     * @return clickNewAccountBtn.
+     * Implement verifyComponentsAccount.
      */
-    public abstract NewAccountPageAbstract clickNewAccountBtn();
+    public abstract boolean verifyComponentsAccount();
 
+    /**
+     * Implement get name to assert with steps.
+     */
+    public abstract String getNameAccount();
 }

@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.Account;
+package salesforce.ui.pages.lightning.account;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.Account.AccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 
 /**
  * AccountLightPage.
@@ -36,7 +36,7 @@ public class AccountLightPage extends AccountPageAbstract {
     }
 
     /**
-     * Click to the New Account button and creates NewAccountPopup object.
+     * Click to the New account button and creates NewAccountPopup object.
      */
     @Override
     public NewAccountPopup clickNewAccountBtn() {

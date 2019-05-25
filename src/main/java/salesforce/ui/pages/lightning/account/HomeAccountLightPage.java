@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.Account;
+package salesforce.ui.pages.lightning.account;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.Account.HomeAccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 
 /**
  * HomeAccountLightPage.
@@ -24,7 +24,7 @@ import salesforce.ui.pages.abstracts.Account.HomeAccountPageAbstract;
  */
 public class HomeAccountLightPage extends HomeAccountPageAbstract {
 
-    @FindBy(xpath = "//div[@id=\"brandBand_1\"]")
+    @FindBy(id = "brandBand_1")
     private WebElement homeForm;
 
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Account\"]")

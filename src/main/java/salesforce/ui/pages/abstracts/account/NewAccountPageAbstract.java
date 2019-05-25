@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.Account;
+package salesforce.ui.pages.abstracts.account;
 
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
@@ -45,7 +45,7 @@ public abstract class NewAccountPageAbstract extends BasePage {
     protected abstract void setNameTxt(String name);
 
     /**
-     * Set Account Data.
+     * Set account Data.
      * Just is name, can be more.
      *
      * @param data Campaign

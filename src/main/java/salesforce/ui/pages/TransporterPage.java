@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.lightning.TaskLightPage;
 import salesforce.ui.PageFactory;
-import salesforce.ui.pages.abstracts.Account.HomeAccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.utils.Setup;
 

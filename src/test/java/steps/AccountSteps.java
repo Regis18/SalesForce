@@ -18,11 +18,11 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import salesforce.entities.Account;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.Account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.Account.HomeAccountPageAbstract;
-import salesforce.ui.pages.abstracts.Account.NewAccountPageAbstract;
-import salesforce.ui.pages.abstracts.Account.OneAccountAbstract;
-import salesforce.ui.pages.lightning.Account.OneAccountLightPage;
+import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
+import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
+import salesforce.ui.pages.lightning.account.OneAccountLightPage;
 
 import java.util.Map;
 
@@ -54,17 +54,19 @@ public class AccountSteps {
     @When("^I create a new account in Salesforce with the following value")
     public void createNewAccount(Map<String, String> accountInformation) throws InterruptedException {
         account = new Account();
-        account.setInformation(accountInformation);
+        account.setAccountInformation(accountInformation);
         String nameAccount = account.getName();
+        String phoneAccount = account.getPhone();
         newAccountPage = accountPage.clickNewAccountBtn();
         oneAccountPage = newAccountPage.createNewAccount(nameAccount);
+
     }
 
     @Then("^I verify a message confirmation of a new account was created$")
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "Account \"" + account.getName() + "\" was created.");
+            assertEquals(message, "account \"" + account.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
