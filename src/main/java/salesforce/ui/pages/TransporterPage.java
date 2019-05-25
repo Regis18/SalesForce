@@ -4,6 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.pages.lightning.task.TaskLightPage;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
@@ -14,6 +15,7 @@ import java.net.URL;
 
 /**
  * TrasporterPage.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -22,7 +24,7 @@ public class TransporterPage {
     /**
      * It creates to follow up the instruction of the class.
      */
-     private Logger log = Logs.getInstance().getLog();
+    private Logger log = Logs.getInstance().getLog();
     //private String baseURL = Setup.getInstance().urlBasePath;
     private String baseURL = Setup.getInstance().getUrlBasePath();
     private Setup setup = Setup.getInstance();
@@ -103,9 +105,10 @@ public class TransporterPage {
 
     /**
      * Navigate to Tasks home page.
+     *
      * @return New instance of HomePage.
      */
-    public TaskLightPage navigateToTasksHomeLightPage() {
+    public TaskPageAbstract navigateToTasksHomePage() {
         log.info("Navigate to tasks home page");
         goToURL(baseURL + "/lightning/o/Task/home");
         return new TaskLightPage();

@@ -18,26 +18,45 @@ import core.StrategySetter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Task.
+ */
 public class Task {
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
+    private String subject;
+    private String comment;
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
+    /**
+     *
+     * @return subject
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     *
+     * @param subject subject.
+     */
+    public void setSubject(final String subject) {
+        this.subject = subject;
+    }
+
+    /**
+     *
+     * @return comment
+     */
     public String getComment() {
         return comment;
     }
 
-    private String subject;
-    private String comment;
+    /**
+     *
+     * @param comment comment.
+     */
+    public void setComment(final String comment) {
+        this.comment = comment;
+    }
 
 //    private String status;
 //    private String email;
@@ -75,18 +94,26 @@ public class Task {
 //        this.priority = priority;
 //    }
 
-    public void proccessInformation (final Map<String,String> taskMap){
-        HashMap<String, StrategySetter> strategyMap = composeStrategyMap (taskMap);
+    /**
+     *
+     * @param taskMap the task map.
+     */
+    public void proccessInformation(final Map<String, String> taskMap) {
+        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(taskMap);
 
-        taskMap.keySet().forEach(key-> {
+        taskMap.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
         });
     }
 
+    /**
+     * @param taskMap the task map.
+     * @return setters
+     */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> taskMap) {
-        HashMap<String,StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put("subject", () -> setSubject(taskMap.get(subject)));
-        strategyMap.put("comment", () -> setComment(taskMap.get(comment)));
+        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
+        strategyMap.put("subject", () -> setSubject(taskMap.get("subject")));
+        strategyMap.put("comment", () -> setComment(taskMap.get("comment")));
 //        strategyMap.put("status",()->setStatus(taskMap.get(status)));
 //        strategyMap.put("email",()->setStatus(taskMap.get(email)));
 //        strategyMap.put("dueDate",()->setStatus(taskMap.get(dueDate)));

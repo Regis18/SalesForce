@@ -7,6 +7,7 @@ Feature: Create, delete, update tasks of SalesForce
     When I create a new task with this information
       | subject    | callTask |
       | comment    | test task|
+    Then I navigate to Tasks Homepage
     Then I verify the task is displayed
 
 #  Scenario: Delete task

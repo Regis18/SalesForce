@@ -21,6 +21,7 @@ import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 /**
  * TaskLightPage class in this class whe navigate for this page the
  * task created are displayed.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */

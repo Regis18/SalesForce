@@ -18,9 +18,11 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
+import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
+import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.pages.lightning.task.TaskLightPage;
 
 import java.util.Map;
@@ -36,23 +38,26 @@ public class TaskSteps {
     private HomePageAbstract homePage;
     private NewTaskAbstract newTaskPage;
     private String nameTaskSubject;
-    private TaskLightPage taskPage;
+    private TaskPageAbstract taskPage;
     private Context context;
     private Task task;
 
     public TaskSteps(Task task) {
+
         this.task = task;
+        homePage = PageFactory.homePage();
     }
 
 //    public TaskSteps(Context context) {
 //        this.context = context;
 //    }
+
     /**
      * navigate to tasks home page.
      */
     @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
-        taskPage = TransporterPage.getInstance().navigateToTasksHomeLightPage();
+        taskPage = transporterPage.navigateToTasksHomePage();
     }
 
 
@@ -65,7 +70,6 @@ public class TaskSteps {
 //        newTaskPage = homePage.displayCreateTask();
 //        nameTaskSubject = newTaskPage.createNewTask();
 //    }
-
     @When("^I create a new task with this information$")
     public void createTask(Map<String, String> taskMap) {
         task.proccessInformation(taskMap);
@@ -86,7 +90,7 @@ public class TaskSteps {
      */
     @Then("^I verify the task is displayed$")
     public void verifyTaskDisplayed() {
-        Assert.assertTrue(taskPage.verifySubjectExist(nameTaskSubject));
+        Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
     }
 
     /**

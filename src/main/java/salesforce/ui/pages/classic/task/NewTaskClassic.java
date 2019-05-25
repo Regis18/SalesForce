@@ -17,6 +17,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
+/**
+ * New Task.
+ */
 public class NewTaskClassic extends NewTaskAbstract {
 
     @FindBy(css = "#createNewButton")
@@ -26,7 +29,7 @@ public class NewTaskClassic extends NewTaskAbstract {
     private WebElement createNewTaskMenu;
 
     @FindBy(css = "#createNewMenu,.taskMru menuButtonMenuLink")
-    private WebElement Task;
+    private WebElement task;
 
     @FindBy(css = "input#tsk5")
     private WebElement subjectTextBox;
@@ -54,12 +57,12 @@ public class NewTaskClassic extends NewTaskAbstract {
     }
 
     @Override
-    protected void setSubjectTextBox(String value) {
+    protected void setSubjectTextBox(final String value) {
         subjectTextBox.sendKeys(value);
     }
 
     @Override
-    protected void setComments(String value) {
+    protected void setComments(final String value) {
         commentTextArea.sendKeys(value);
     }
 }

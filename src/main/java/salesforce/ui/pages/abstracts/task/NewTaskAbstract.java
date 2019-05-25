@@ -13,22 +13,18 @@
 
 package salesforce.ui.pages.abstracts.task;
 
+import salesforce.entities.Task;
 import salesforce.ui.BasePage;
-
-import java.util.Map;
 
 /**
  * This abstract class is for create a new task.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public abstract class NewTaskAbstract extends BasePage {
     public static final int INT = 100;
 
-    /**
-     * Create new Task.
-     * @return the subject of the task.
-     */
 //    public String createNewTask(String nameSubject) {
 //       // String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
 //        setSubjectTextBox(nameSubject);
@@ -36,12 +32,18 @@ public abstract class NewTaskAbstract extends BasePage {
 //        clickSaveButton();
 //        return nameSubject;
 //    }
-    public String createNewTask(final Map<String, String> taskMap) {
+
+    /**
+     * Create Task.
+     * @param task
+     * @return string
+     */
+    public String createNewTask(final Task task) {
         //log.info("Set information of project.");
-        setSubjectTextBox (taskMap.get("subject"));
-        setComments(taskMap.get("comment"));
+        setSubjectTextBox(task.getSubject());
+        setComments(task.getComment());
         clickSaveButton();
-        return taskMap.get("subject");
+        return task.getSubject();
     }
 
     /**
