@@ -1,5 +1,5 @@
 /*
- * @(#) OneCampaignAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) OneAccountAbstract.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,29 +11,23 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.campaign;
+package salesforce.ui.pages.abstracts.account;
 
 import salesforce.ui.BasePage;
 
 /**
- * OneCampaignAbstract class.
- * @author Regis Humana
+ * OneAccountAbstract.
+ * @author Luis Guardia.
  * @version 0.0.1
  */
-public abstract class OneCampaignAbstract extends BasePage {
+public abstract class OneAccountAbstract extends BasePage {
     /**
-     * Implement verifyComponentsCampaign.
+     * Implement verifyComponentsAccount.
      */
-    public abstract boolean verifyComponentsCampaign();
+    public abstract boolean verifyComponentsAccount();
 
     /**
      * Implement get name to assert with steps.
      */
-    public abstract String getNameCampaign();
-
-    /**
-     * Delete Campaign of Salesforce with specific name.
-     * @param nameCampaign string
-     */
-    public abstract void deleteCampaign(String nameCampaign);
+    public abstract String getNameAccount();
 }

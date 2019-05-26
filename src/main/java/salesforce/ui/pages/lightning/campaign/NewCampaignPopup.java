@@ -13,7 +13,6 @@
 
 package salesforce.ui.pages.lightning.campaign;
 
-import core.utils.xPathsHelp;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,21 +27,16 @@ import java.util.List;
 /**
  * NewCampaignPopup.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public class NewCampaignPopup extends NewCampaignAbstract {
-    /**
-     * Popup the new campaign.
-     */
+
     @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
     private WebElement newCampaignPopup;
-    /**
-     * Campaign Name of the form.
-     */
+
     @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
     private WebElement nameTxt;
-    /**
-     * Save button.
-     */
+
     @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveBtn;
 
@@ -103,6 +97,10 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         saveBtn.click();
     }
 
+    /**
+     * Set Activate checkbox.
+     * @param isActivate boolean
+     */
     @Override
     protected void setActiveChk(boolean isActivate) {
         if(isActivate) {
@@ -110,6 +108,10 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         }
     }
 
+    /**
+     * Set type combo box.
+     * @param type string.
+     */
     @Override
     protected void setTypeCmb(String type) {
 //        Select accountRole = new Select(typeCmb);
@@ -117,6 +119,10 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         typeCmb.sendKeys(type);
     }
 
+    /**
+     * Set status combo box.
+     * @param status string.
+     */
     @Override
     protected void setStatusCmb(String status) {
 //        Select accountRole = new Select(statusCmb);
@@ -124,41 +130,73 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         statusCmb.sendKeys(status);
     }
 
+    /**
+     * Set start date text box.
+     * @param startDate string.
+     */
     @Override
     protected void setStartDate(String startDate) {
         startDateTxt.sendKeys(startDate);
     }
 
+    /**
+     * Set end date text box.
+     * @param endDate string.
+     */
     @Override
     protected void setEndDate(String endDate) {
         endDateTxt.sendKeys(endDate);
     }
 
+    /**
+     * Set expected revenue text box.
+     * @param expected integer.
+     */
     @Override
     protected void setExpectedRevenueTxt(Integer expected) {
         expectedRevenueTxt.sendKeys(expected.toString());
     }
 
+    /**
+     * Set budgeted cost text box.
+     * @param budgeted integer.
+     */
     @Override
     protected void setBudgetedCostTxt(Integer budgeted) {
         budgetedCostTxt.sendKeys(budgeted.toString());
     }
 
+    /**
+     * Set actual cost text box.
+     * @param actualCost integer.
+     */
     @Override
     protected void setActualCostTxt(Integer actualCost) {
         actualCostTxt.sendKeys(actualCost.toString());
     }
 
+    /**
+     * Set num sent text box.
+     * @param numSent integer.
+     */
     @Override
     protected void setNumSent(Integer numSent) {
         numSentTxt.sendKeys(numSent.toString());
     }
 
+    /**
+     * Set description text box.
+     * @param description string.
+     */
     @Override
     protected void setDescriptionTxt(String description) {
         descriptionTxt.sendKeys(description);
     }
 
+    /**
+     * Set campaign data into Campaign form.
+     * @param data Campaign
+     */
     @Override
     public void setCampaignData(Campaign data) {
         super.setCampaignData(data);

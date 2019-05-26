@@ -11,7 +11,7 @@
  *
  */
 
-package core.utils;
+package salesforce.utils;
 
 /**
  * StrategySetter.

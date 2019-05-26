@@ -6,6 +6,7 @@ import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 /**
  * HomePageAbstract.
  * @author Regis Humana
+ * @version 0.0.1
  */
 public abstract class HomePageAbstract extends BasePage {
 

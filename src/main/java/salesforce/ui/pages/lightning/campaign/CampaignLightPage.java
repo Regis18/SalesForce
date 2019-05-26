@@ -22,20 +22,18 @@ import salesforce.utils.DriverMethods;
 /**
  * CampaignClassicPage.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public class CampaignLightPage extends CampaignPageAbstract {
-    /**
-     * Title of the page "Campaign".
-     */
+
     @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
     private WebElement campaignTitleLbl;
-    /**
-     * New button to create Campaign.
-     */
+
     @FindBy(xpath = "//a[@title=\"New\"]")
     private WebElement newCampaignBtn;
 
     private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
+
     private final String CAMPAIGN = "Campaign";
 
     /**

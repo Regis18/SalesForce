@@ -1,6 +1,6 @@
 package salesforce.entities;
 
-import core.utils.StrategySetter;
+import salesforce.utils.StrategySetter;
 
 import java.util.HashMap;
 import java.util.Map;

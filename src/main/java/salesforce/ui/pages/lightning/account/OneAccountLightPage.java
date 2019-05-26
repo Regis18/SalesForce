@@ -1,5 +1,5 @@
 /*
- * @(#) OneCampaignLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) OneAccountLightPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,28 +11,28 @@
  *
  */
 
-package salesforce.ui.pages.lightning.campaign;
+package salesforce.ui.pages.lightning.account;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 
 /**
- * OneCampaignLightPage.
- * @author Regis Humana.
+ * OneAccountLightPage.
+ * @author Luis Guardia.
  * @version 0.0.1
  */
-public class OneCampaignLightPage extends OneCampaignAbstract {
-    @FindBy(xpath = "//div[contains(@class,\"s1FixedTop forceHighlightsStencilDesktop\")]")
-    private WebElement campaignPanelTitle;
+public class OneAccountLightPage extends OneAccountAbstract {
+
+    @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
+    private WebElement accountPanelTitle;
 
     @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
     private WebElement messageConfirmation;
 
     @FindBy(xpath = "//div[contains(@class,\"OutputName\")]//span[contains(@class,\"OutputText\")]")
-    private WebElement campaignTitleLbl;
+    private WebElement accountTitleLbl;
 
     @FindBy(xpath = "//a[@title=\"Details\" ]//span[@class=\"title\"]")
     private WebElement detailsTab;
@@ -40,35 +40,31 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']")
-    private WebElement mainMenuCmb;
-
-
     /**
-     * Wait for Campaign Panel Title.
+     * Wait for account Panel Title.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(campaignPanelTitle));
+        wait.until(ExpectedConditions.visibilityOf(accountPanelTitle));
     }
 
     /**
-     * Verify the components of the campaign.
+     * Verify the components of the account.
      * @return
      */
     @Override
-    public boolean verifyComponentsCampaign() {
+    public boolean verifyComponentsAccount() {
         clickDetailsTab();
         return detailsForm.isDisplayed();
     }
 
     /**
-     * Get the name of the Campaign title
-     * @return name string
+     * Get the name of the account title.
+     * @return name string.
      */
     @Override
-    public String getNameCampaign() {
-        return campaignTitleLbl.getText();
+    public String getNameAccount() {
+        return accountTitleLbl.getText();
     }
 
     /**
@@ -80,19 +76,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     }
 
     /**
-     * Click to detailsTab
+     * Click to detailsTab.
      */
     private void clickDetailsTab() {
         detailsTab.click();
-    }
-
-    /**
-     * Delete campaign
-     * @param nameCampaign string
-     */
-    @Override
-    public void deleteCampaign(String nameCampaign) {
-        Select accountRole = new Select(mainMenuCmb);
-        accountRole.selectByVisibleText("Delete");
     }
 }

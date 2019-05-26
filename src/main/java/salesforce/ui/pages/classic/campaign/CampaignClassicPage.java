@@ -23,6 +23,7 @@ import salesforce.utils.DriverMethods;
 /**
  * CampaignClassicPage.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public class CampaignClassicPage extends CampaignPageAbstract {
     /**

@@ -18,6 +18,7 @@ import salesforce.ui.BasePage;
 /**
  * CampaignPageAbstract.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public abstract class CampaignPageAbstract extends BasePage {
 

@@ -21,6 +21,7 @@ import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 /**
  * OneCampaignClassicPage.
  * @author Regis Humana
+ * @version 0.0.1
  */
 public class OneCampaignClassicPage extends OneCampaignAbstract {
     @FindBy(xpath = "//td[@class=\" oRight\"]")
@@ -49,15 +50,19 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Get the Name Campaign.
-     * @return
+     * @return string
      */
     @Override
     public String getNameCampaign() {
         return campaignTitleLbl.getText();
     }
 
+    /**
+     * Delete campaign
+     * @param nameCampaign string
+     */
     @Override
-    public void deleteCampaign() {
+    public void deleteCampaign(String nameCampaign) {
 
     }
 }

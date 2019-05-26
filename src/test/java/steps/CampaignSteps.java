@@ -34,6 +34,11 @@ import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+/**
+ * Campaign steps
+ * @author Regis Humana
+ * @version 0.0.1
+ */
 public class CampaignSteps {
     private CampaignPageAbstract campaignPage;
     private HomePageAbstract homePage;

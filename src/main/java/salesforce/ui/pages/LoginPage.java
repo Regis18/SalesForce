@@ -7,6 +7,8 @@ import salesforce.ui.BasePage;
 
 /**
  * Login page class.
+ * @author Melvi Caballero.
+ * @version 0.0.1
  */
 public class LoginPage extends BasePage {
     /**

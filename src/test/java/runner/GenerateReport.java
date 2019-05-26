@@ -24,10 +24,18 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GenerateReport.
+ * @author Regis Humana
+ * @version 0.0.1
+ */
 public class GenerateReport {
+
     private static Logger logs = Logs.getInstance().getLog();
 
-
+    /**
+     * Generate report of the test.
+     */
     public static void generateMasterReport() {
         logs.info("The user is logging in to the application Salesforce");
         File reportOutputDirectory = new File("target");
