@@ -19,7 +19,9 @@ import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
- * New Task.
+ * New Task classic skin.
+ * @author Melvi Caballero.
+ * @version 0.0.1
  */
 public class NewTaskClassic extends NewTaskAbstract {
 

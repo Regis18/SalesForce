@@ -33,13 +33,13 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     private WebElement subjectTextBox;
 
     /**
-     * save button.
+     * Save button.
      */
     @FindBy(xpath = "//button[@title=\"Save\"]")
     private WebElement saveButton;
 
     /**
-     * notification close button.
+     * Notification close button.
      */
     @FindBy(xpath = "//button[@title=\"Close\"]")
     private WebElement notificationCloseButton;
@@ -72,8 +72,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Create Task.
-     * @param task
-     * @return string
+     * @param task object.
+     * @return string subject task.
      */
     @Override
     public String createNewTask(final Task task) {

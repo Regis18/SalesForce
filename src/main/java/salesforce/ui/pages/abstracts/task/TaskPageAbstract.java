@@ -24,6 +24,7 @@ import salesforce.ui.BasePage;
 public abstract class TaskPageAbstract extends BasePage {
 
     /**
+     * Verify subject task exist.
      * @param subjectTask subject Task.
      * @return boolean
      */
@@ -47,7 +48,7 @@ public abstract class TaskPageAbstract extends BasePage {
     public abstract String updateCurrentTask();
 
     /**
-     * wait for load.
+     * Wait for load.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
