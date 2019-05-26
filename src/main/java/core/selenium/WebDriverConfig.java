@@ -11,6 +11,8 @@ import java.util.Properties;
 
 /**
  * Class to manage the config of web driver.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public class WebDriverConfig {
 

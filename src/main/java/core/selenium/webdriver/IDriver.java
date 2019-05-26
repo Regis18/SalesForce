@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * IDriver Interface.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public interface IDriver {
     /**

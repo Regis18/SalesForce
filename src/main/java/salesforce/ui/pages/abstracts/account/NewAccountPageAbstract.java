@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) NewAccountPageAbstract.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,27 +11,26 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.account;
 
-import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
 
 /**
- * NewCampaignAbstract.
- * @author Regis Humana
+ * NewAccountPageAbstract.
+ * @author Luis Guardia.
+ * @version 0.0.1
  */
-public abstract class NewCampaignAbstract extends BasePage {
-
+public abstract class NewAccountPageAbstract extends BasePage {
     /**
-     * Create a new campaign, it create for classic and lightning pages.
+     * Create a new account, it create for classic and lightning pages.
      *
-     * @param data Campaign.
+     * @param data String.
      */
-    public OneCampaignAbstract createNewCampaign(final Campaign data) {
-        setCampaignData(data);
+    public OneAccountAbstract createNewAccount(final String data) {
+        setAccountData(data);
         clickSaveBtn();
-        return PageFactory.oneCampaignPage();
+        return PageFactory.oneAccountPage();
     }
 
     /**
@@ -40,17 +39,17 @@ public abstract class NewCampaignAbstract extends BasePage {
     protected abstract void clickSaveBtn();
 
     /**
-     * Set name of campaign.
+     * Set name of account.
      *
      * @param name String
      */
     protected abstract void setNameTxt(String name);
 
     /**
-     * Set Campaign Data.
+     * Set account Data.
      * Just is name, can be more.
      *
      * @param data Campaign
      */
-    protected abstract void setCampaignData(Campaign data);
+    protected abstract void setAccountData(String data);
 }

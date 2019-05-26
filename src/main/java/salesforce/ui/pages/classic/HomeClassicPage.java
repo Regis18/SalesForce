@@ -18,17 +18,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
 
 /**
  * HomeLightPage.
  * @author Regis Humana
  */
 public class HomeClassicPage extends HomePageAbstract {
+  
     /**
      * Is the main table of Home.
      */
     @FindBy(css = "table[id=\"bodyTable\"]")
     private WebElement homeTable;
+  
     /**
      * Campaign tab.
      */

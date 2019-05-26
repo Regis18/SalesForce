@@ -21,51 +21,35 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
+import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
 
 /**
  * HomeLightPage.
  *
  * @author Regis Humana
+ * @version 0.0.1
  */
 public class HomeLightPage extends HomePageAbstract {
+
     public static final int MILLIS = 2500;
 
     @FindBy(id = "brandBand_1")
     private WebElement homeForm;
 
-    /**
-     * Button for opening Campaign.
-     */
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Campaign\"]")
     private WebElement campaignBtn;
 
-    /**
-     * Button for opening the task dropdown.
-     */
-    @FindBy(xpath = "//a[span[contains(text(),'Tasks Menu')]]")
+    @FindBy(xpath = "//a[span[contains(text(),\"Tasks Menu\")]]")
     private WebElement taskDropdownButton;
 
-    /**
-     * Select item New Task.
-     */
-    @FindBy(xpath = ("//a[span[span[contains(text(),'New Task')]]]"))
+    @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
     private WebElement newTaskItem;
 
-//    @FindBy(xpath = ("/html[1]/body[1]/div[5]/div[1]/section[1]/header[1]/div[3]" +
-//            "/one-appnav[1]/div[1]/one-app-nav-bar[1]/nav[1]/div[1]/one-app-nav-" +
-//            "bar-item-root[4]/one-app-nav-bar-item-dropdown[1]/div[1]/one-app-nav" +
-//            "-bar-menu-button[1]/div[1]/slot[1]/one-app-nav-bar-menu-item[1]/a[1]" +
-//            "/span[1]/span[1]"))
-//    private WebElement newTaskItem;
-
-    /**
-     * task menuButton.
-     */
-    @FindBy(xpath = "//a[span[contains(text(),'Tasks')]]")
+    @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
     private WebElement taskMenuButton;
 
-//    @FindBy(xpath = "//span[@class='slds-truncate'][contains(text(),'Tasks')]")
-//    private WebElement taskMenuButton;
+    @FindBy(xpath = "//span[@class='slds-truncate'][contains(text(),'Tasks')]")
+    private WebElement taskMenuButton;
 
     /**
      * Event click on tasks dropdown.

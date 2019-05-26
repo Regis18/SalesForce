@@ -1,5 +1,5 @@
 /*
- * @(#) OneCampaignAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) StrategySetter.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,22 +11,16 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
-
-import salesforce.ui.BasePage;
+package salesforce.utils;
 
 /**
- * OneCampaignAbstract class.
+ * StrategySetter.
  * @author Regis Humana
+ * @version 0.0.1
  */
-public abstract class OneCampaignAbstract extends BasePage {
+public interface StrategySetter {
     /**
-     * Implement verifyComponentsCampaign.
+     * Executed method ofr a Page or an Entity.
      */
-    public abstract boolean verifyComponentsCampaign();
-
-    /**
-     * Implement get name to assert with steps.
-     */
-    public abstract String getNameCampaign();
+    void executeMethod();
 }
