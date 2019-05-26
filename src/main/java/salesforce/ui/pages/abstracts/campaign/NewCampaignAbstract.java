@@ -16,8 +16,10 @@ package salesforce.ui.pages.abstracts.campaign;
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
+import salesforce.utils.StrategySetter;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * NewCampaignAbstract.
@@ -26,13 +28,25 @@ import java.util.Date;
  */
 public abstract class NewCampaignAbstract extends BasePage {
 
+    private final String DESCRIPTION = "Description";
+    private final String NAME = "Name";
+    private final String ACTIVE = "Active";
+    private final String TYPE = "Type";
+    private final String STATUS = "Status";
+    private final String START_DATE = "Star Date";
+    private final String END_DATE = "End Date";
+    private final String EXPECTED_REVENUE = "Expected Revenue";
+    private final String BUDGETED_COST = "Budgeted Cost";
+    private final String ACTUAL_COST = "Actual Cost";
+    private final String EXPECTED_RESPONSE = "Expected Response";
+    private final String NUM_SENT = "Num Sent";
     /**
      * Create a new campaign, it create for classic and lightning pages.
      *
      * @param data Campaign.
      */
-    public OneCampaignAbstract createNewCampaign(final Campaign data) {
-        setCampaignData(data);
+    public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
+        setCampaignData(data, mapOut);
         clickSaveBtn();
         return PageFactory.oneCampaignPage();
     }
@@ -110,22 +124,44 @@ public abstract class NewCampaignAbstract extends BasePage {
     protected abstract void setDescriptionTxt(String description);
 
     /**
+     * Set Expected Response string.
+     * @param expectedResponse string
+     */
+    protected abstract void setExpectedResponse(Integer expectedResponse);
+
+    /**
      * Set Campaign Data.
      * Just is name, can be more.
      *
      * @param data Campaign
      */
-    public void setCampaignData(Campaign data) {
-        setNameTxt(data.getName());
-        setActiveChk(data.isActivate());
-        setTypeCmb(data.getType());
-        setStatusCmb(data.getStatus());
-        setStartDate(data.getStartDate());
-        setEndDate(data.getEndDate());
-        setExpectedRevenueTxt(data.getExpectedRevenue());
-        setBudgetedCostTxt(data.getBudgetedCost());
-        setActualCostTxt(data.getActualCost());
-        setNumSent(data.getNumSent());
-        setDescriptionTxt(data.getDescription());
+    public void setCampaignData(final Campaign data, final Map<String, String> map) {
+        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data, map);
+        map.keySet().forEach(key -> {
+            strategyMap.get(key).executeMethod();
+            System.out.println(key);
+        });
+    }
+
+    /**
+     * Compose the values of Campaign.
+     * @param campaigns String
+     * @return Hashmap
+     */
+    private HashMap<String, StrategySetter> composeStrategyMap(final Campaign data, final Map<String, String> campaigns) {
+        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
+        strategyMap.put(NAME, () -> setNameTxt(data.getName()));
+        strategyMap.put(ACTIVE, () -> setActiveChk(data.isActivate()));
+        strategyMap.put(TYPE, () -> setTypeCmb(data.getType()));
+        strategyMap.put(STATUS, () -> setStatusCmb(data.getStatus()));
+        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
+        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
+        strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenueTxt(data.getExpectedRevenue()));
+        strategyMap.put(BUDGETED_COST, () -> setBudgetedCostTxt(data.getBudgetedCost()));
+        strategyMap.put(ACTUAL_COST, () -> setActualCostTxt(data.getActualCost()));
+        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(data.getExpectedResponse()));
+        strategyMap.put(NUM_SENT, () -> setNumSent(data.getNumSent()));
+        strategyMap.put(DESCRIPTION, () -> setDescriptionTxt(data.getDescription()));
+        return strategyMap;
     }
 }

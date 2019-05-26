@@ -13,7 +13,6 @@
 
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -27,7 +26,6 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 import salesforce.ui.pages.lightning.campaign.OneCampaignLightPage;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertFalse;
@@ -74,7 +72,7 @@ public class CampaignSteps {
     public void createANewCampaign(final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
-        oneCampaignPage = newCampaignPage.createNewCampaign(campaign);
+        oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
     }
 
     /**
@@ -110,12 +108,11 @@ public class CampaignSteps {
 
     /**
      * Delete Campaign.
-     * @param arg0 string
+     * @param name string
      */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
-    public void iDeleteACampaignInSalesforce(String arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void iDeleteACampaignInSalesforce(String name) {
+        oneCampaignPage.deleteCampaign(name);
     }
 
     /**
