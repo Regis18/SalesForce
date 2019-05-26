@@ -43,17 +43,17 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
     private WebElement activateChk;
 
+    @FindBy(css = "div[id^='133'] a")
+    private WebElement typeCmb;
+
+    @FindBy(css = "div[id^='197'] a")
+    private WebElement statusCmb;
+
     @FindBy(css = "input[id^='254']")
     private WebElement startDateTxt;
 
     @FindBy(css = "input[id^='295']")
     private WebElement endDateTxt;
-
-    @FindBy(css = "div[id^='133']")
-    private WebElement typeCmb;
-
-    @FindBy(css = "div[id^='197']")
-    private WebElement statusCmb;
 
     @FindBy(css = "input[id^='336']")
     private WebElement expectedRevenueTxt;
@@ -114,8 +114,6 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setTypeCmb(String type) {
-//        Select accountRole = new Select(typeCmb);
-//        accountRole.selectByVisibleText(type);
         typeCmb.sendKeys(type);
     }
 
@@ -125,8 +123,6 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setStatusCmb(String status) {
-//        Select accountRole = new Select(statusCmb);
-//        accountRole.selectByVisibleText(status);
         statusCmb.sendKeys(status);
     }
 

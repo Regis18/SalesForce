@@ -13,6 +13,8 @@
 
 package salesforce.entities;
 
+import salesforce.utils.StrategySetter;
+
 import java.util.HashMap;
 import java.util.Map;
 
