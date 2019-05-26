@@ -48,24 +48,64 @@ public abstract class NewCampaignAbstract extends BasePage {
      */
     protected abstract void setNameTxt(String name);
 
+    /**
+     * Set Active checkbox.
+     * @param isActivate boolean
+     */
     protected abstract void setActiveChk(boolean isActivate);
 
+    /**
+     * Set Type of the campaign.
+     * @param type string.
+     */
     protected abstract void setTypeCmb(String type);
 
+    /**
+     * Set Status combo box.
+     * @param status string.
+     */
     protected abstract void setStatusCmb(String status);
 
+    /**
+     * Set Start Date.
+     * @param startDate string.
+     */
     protected abstract void setStartDate(String startDate);
 
+    /**
+     * Set End Date.
+     * @param endDate string.
+     */
     protected abstract void setEndDate(String endDate);
 
+    /**
+     * Set Expected Revenue text.
+     * @param expected integer.
+     */
     protected abstract void setExpectedRevenueTxt(Integer expected);
 
+    /**
+     * Set Budgeted cost.
+     * @param budgeted integer.
+     */
     protected abstract void setBudgetedCostTxt(Integer budgeted);
 
+    /**
+     * Set actual Cost text box.
+     * @param actualCost integer.
+     */
     protected abstract void setActualCostTxt(Integer actualCost);
 
+    /**
+     * Set num sent text box.
+     * @param numSent integer.
+     */
     protected abstract void setNumSent(Integer numSent);
 
+    /**
+     * Set Description text box.
+     * @param description string.
+     */
     protected abstract void setDescriptionTxt(String description);
 
     /**

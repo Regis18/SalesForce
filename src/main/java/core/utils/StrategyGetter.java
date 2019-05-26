@@ -13,6 +13,14 @@
 
 package core.utils;
 
+/**
+ * StrategyGetter.
+ * @author Regis Humana
+ * @version 0.0.1
+ */
 public interface StrategyGetter {
-    void executedMethod();
+    /**
+     * Execute the method of get.
+     */
+    void executeMethod();
 }

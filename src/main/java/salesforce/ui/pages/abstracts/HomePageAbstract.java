@@ -8,6 +8,7 @@ import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
  * @author Regis Humana
  */
 public abstract class HomePageAbstract extends BasePage {
+
     /**
      * Click in the button Campaign button.
      * @return Campaign Page abstract.

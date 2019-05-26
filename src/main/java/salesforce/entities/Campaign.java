@@ -207,7 +207,7 @@ public class Campaign {
 
     /**
      * Set num sent.
-     * @param numSent **
+     * @param numSent int
      */
     public void setNumSent(final int numSent) {
         this.numSent = numSent;
@@ -223,36 +223,44 @@ public class Campaign {
 
     /**
      * Set parent campaign.
-     * @param parentCampaign **String**
+     * @param parentCampaign String
      */
     public void setParentCampaign(final String parentCampaign) {
         this.parentCampaign = parentCampaign;
     }
 
+    /**
+     * Get description.
+     * @return string.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Set description.
+     * @param description string.
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     *
-     * @param campaigns
+     * Process information of the map and sent to composeStrategyMap.
+     * @param campaigns Map.
      */
     public void processInformation(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(campaigns);
         campaigns.keySet().forEach(key -> {
-            strategyMap.get(key).executedMethod();
+            strategyMap.get(key).executeMethod();
             System.out.println(key);
         });
     }
 
     /**
-     * Compose the values of Campaign
+     * Compose the values of Campaign.
      * @param campaigns String
-     * @return hashmap
+     * @return Hashmap
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();

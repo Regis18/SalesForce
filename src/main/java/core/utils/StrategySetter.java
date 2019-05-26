@@ -13,9 +13,14 @@
 
 package core.utils;
 
+/**
+ * StrategySetter.
+ * @author Regis Humana
+ * @version 0.0.1
+ */
 public interface StrategySetter {
     /**
      * Executed method ofr a Page or an Entity.
      */
-    void executedMethod();
+    void executeMethod();
 }
