@@ -20,36 +20,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
 import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
 
 /**
  * HomeLightPage.
  *
  * @author Regis Humana
+ * @version 0.0.1
  */
 public class HomeLightPage extends HomePageAbstract {
+
     public static final int MILLIS = 2500;
 
     @FindBy(id = "brandBand_1")
     private WebElement homeForm;
 
-    /**
-     * Button for opening Campaign.
-     */
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Campaign\"]")
     private WebElement campaignBtn;
-    /**
-     * Button for opening the task dropdown.
-     */
+
     @FindBy(xpath = "//a[span[contains(text(),\"Tasks Menu\")]]")
     private WebElement taskDropdownButton;
-    /**
-     * Select item New Task.
-     */
+
     @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
     private WebElement newTaskItem;
-    /**
-     * task menuButton.
-     */
+
     @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
     private WebElement taskMenuButton;
 

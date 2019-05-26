@@ -21,6 +21,7 @@ import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 /**
  * HomeAccountLightPage.
  * @author Luis Guardia.
+ * @version 0.0.1
  */
 public class HomeAccountLightPage extends HomeAccountPageAbstract {
 

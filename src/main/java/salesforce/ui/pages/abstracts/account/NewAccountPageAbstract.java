@@ -19,6 +19,7 @@ import salesforce.ui.PageFactory;
 /**
  * NewAccountPageAbstract.
  * @author Luis Guardia.
+ * @version 0.0.1
  */
 public abstract class NewAccountPageAbstract extends BasePage {
     /**

@@ -18,6 +18,7 @@ import salesforce.ui.BasePage;
 /**
  * AccountPageAbstract.
  * @author Luis Guardia.
+ * @version 0.0.1
  */
 public abstract class AccountPageAbstract extends BasePage {
     /**

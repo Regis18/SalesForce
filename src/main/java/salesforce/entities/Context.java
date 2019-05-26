@@ -35,7 +35,7 @@ public class Context {
 
     /**
      * Set home page.
-     * @param homePage.
+     * @param homePage HomePageAbstract.
      */
     public void setHomePage(HomePageAbstract homePage) {
         this.homePage = homePage;

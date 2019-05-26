@@ -21,6 +21,7 @@ import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
 /**
  * NewAccountPopup.
  * @author Luis Guardia.
+ * @version 0.0.1
  */
 public class NewAccountPopup extends NewAccountPageAbstract {
 

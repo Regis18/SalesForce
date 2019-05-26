@@ -11,13 +11,14 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.campaign;
 
 import salesforce.ui.BasePage;
 
 /**
  * OneCampaignAbstract class.
  * @author Regis Humana
+ * @version 0.0.1
  */
 public abstract class OneCampaignAbstract extends BasePage {
     /**
@@ -29,4 +30,10 @@ public abstract class OneCampaignAbstract extends BasePage {
      * Implement get name to assert with steps.
      */
     public abstract String getNameCampaign();
+
+    /**
+     * Delete Campaign of Salesforce with specific name.
+     * @param nameCampaign string
+     */
+    public abstract void deleteCampaign(String nameCampaign);
 }

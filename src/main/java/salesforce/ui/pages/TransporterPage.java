@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * TrasporterPage.
+ * TransporterPage.
  * @author Melvi Caballero.
  * @version 0.0.1
  */

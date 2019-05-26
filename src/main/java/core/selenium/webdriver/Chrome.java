@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 /**
  * Handles Chrome driver initialization.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public class Chrome implements IDriver {
     /**

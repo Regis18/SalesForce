@@ -18,6 +18,7 @@ import salesforce.ui.BasePage;
 /**
  * OneAccountAbstract.
  * @author Luis Guardia.
+ * @version 0.0.1
  */
 public abstract class OneAccountAbstract extends BasePage {
     /**

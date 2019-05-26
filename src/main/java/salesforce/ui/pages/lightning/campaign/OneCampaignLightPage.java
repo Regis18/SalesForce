@@ -11,16 +11,18 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.campaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.OneCampaignAbstract;
+import org.openqa.selenium.support.ui.Select;
+import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
  * OneCampaignLightPage.
  * @author Regis Humana.
+ * @version 0.0.1
  */
 public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,\"s1FixedTop forceHighlightsStencilDesktop\")]")
@@ -37,6 +39,10 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
+
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']")
+    private WebElement mainMenuCmb;
+
 
     /**
      * Wait for Campaign Panel Title.
@@ -78,5 +84,15 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      */
     private void clickDetailsTab() {
         detailsTab.click();
+    }
+
+    /**
+     * Delete campaign
+     * @param nameCampaign string
+     */
+    @Override
+    public void deleteCampaign(String nameCampaign) {
+        Select accountRole = new Select(mainMenuCmb);
+        accountRole.selectByVisibleText("Delete");
     }
 }

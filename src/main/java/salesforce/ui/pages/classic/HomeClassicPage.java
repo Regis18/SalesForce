@@ -18,6 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
 
 /**
  * HomeLightPage.

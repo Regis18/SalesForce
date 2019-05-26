@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Firefox class.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public class Firefox implements IDriver {
 
