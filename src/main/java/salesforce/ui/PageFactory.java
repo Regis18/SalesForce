@@ -16,12 +16,15 @@ package salesforce.ui;
 import salesforce.ui.pages.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.pages.classic.CampaignClassicPage;
 import salesforce.ui.pages.classic.HomeClassicPage;
 import salesforce.ui.pages.classic.OneCampaignClassicPage;
+import salesforce.ui.pages.classic.task.TaskPageClassic;
 import salesforce.ui.pages.lightning.CampaignLightPage;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.lightning.OneCampaignLightPage;
+import salesforce.ui.pages.lightning.task.TaskPageLightning;
 import salesforce.utils.Setup;
 
 /**
@@ -72,6 +75,17 @@ public final class PageFactory {
                 return new OneCampaignClassicPage();
             case "light":
                 return new OneCampaignLightPage();
+            default:
+                return null;
+        }
+    }
+
+    public static TaskPageAbstract taskHomePage() {
+        switch (setup.getLayout()) {
+            case "classic":
+                return new TaskPageClassic();
+            case "light":
+                return new TaskPageLightning();
             default:
                 return null;
         }

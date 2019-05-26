@@ -23,7 +23,6 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
-import salesforce.ui.pages.lightning.task.TaskLightPage;
 
 import java.util.Map;
 
@@ -64,15 +63,10 @@ public class TaskSteps {
     /**
      * Create task step.
      */
-//    @When("^I create a new task in SalesForce$")
-//    public void createTask() {
-//        homePage = context.getHomePage();
-//        newTaskPage = homePage.displayCreateTask();
-//        nameTaskSubject = newTaskPage.createNewTask();
-//    }
     @When("^I create a new task with this information$")
     public void createTask(Map<String, String> taskMap) {
         task.proccessInformation(taskMap);
+        task.setSubject(task.getSubject().replace("<random>",String.valueOf((int)(Math.random()*100))));
         newTaskPage = homePage.displayCreateTask();
         newTaskPage.createNewTask(task);
     }
@@ -99,7 +93,7 @@ public class TaskSteps {
     @Then("^I verify the task was deleted$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
-        Assert.assertFalse(taskPage.verifySubjectExist(nameTaskSubject));
+        Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
     /**
@@ -107,7 +101,7 @@ public class TaskSteps {
      */
     @When("^I update the subject task$")
     public void updateTask() {
-        nameTaskSubject = taskPage.updateCurrentTask();
+        task = taskPage.updateCurrentTask(task);
     }
 
     /**
@@ -115,7 +109,7 @@ public class TaskSteps {
      */
     @When("^I delete the task$")
     public void deletedTask() {
-        taskPage.deleteCurrentTask();
+        taskPage.deleteCurrentTask(task);
     }
 
 }

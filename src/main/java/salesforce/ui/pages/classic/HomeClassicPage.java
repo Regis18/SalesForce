@@ -18,6 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.classic.task.NewTaskClassic;
 
 /**
  * HomeLightPage.
@@ -29,6 +30,7 @@ public class HomeClassicPage extends HomePageAbstract {
      */
     @FindBy(css = "table[id=\"bodyTable\"]")
     private WebElement homeTable;
+
     /**
      * Campaign tab.
      */
@@ -54,6 +56,6 @@ public class HomeClassicPage extends HomePageAbstract {
 
     @Override
     public NewTaskAbstract displayCreateTask() {
-        return null;
+        return  new NewTaskClassic();
     }
 }

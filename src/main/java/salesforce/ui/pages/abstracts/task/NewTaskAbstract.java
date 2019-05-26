@@ -33,12 +33,6 @@ public abstract class NewTaskAbstract extends BasePage {
      */
     public abstract String createNewTask(final Task task);
 
-
-    /**
-     * Click save button.
-     */
-    protected abstract void clickSaveButton();
-
     /**
      * Click saved notification.
      */

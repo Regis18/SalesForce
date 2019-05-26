@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.abstracts.task;
 
+import salesforce.entities.Task;
 import salesforce.ui.BasePage;
 
 /**
@@ -38,14 +39,14 @@ public abstract class TaskPageAbstract extends BasePage {
     /**
      * Delete current task.
      */
-    public abstract void deleteCurrentTask();
+    public abstract void deleteCurrentTask(Task task);
 
     /**
      * Update current task.
      *
      * @return new subject.
      */
-    public abstract String updateCurrentTask();
+    public abstract Task updateCurrentTask(Task task);
 
     /**
      * Wait for load.

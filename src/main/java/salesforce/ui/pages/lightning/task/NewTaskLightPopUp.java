@@ -50,8 +50,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//textarea")
     private WebElement commentsTextArea;
 
-    @Override
-    protected void clickSaveButton() {
+    public void clickSaveButton() {
         saveButton.click();
     }
 

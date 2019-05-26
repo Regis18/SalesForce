@@ -5,7 +5,6 @@ import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
-import salesforce.ui.pages.lightning.task.TaskLightPage;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.utils.Setup;
@@ -110,8 +109,17 @@ public class TransporterPage {
      * @return New instance of HomePage.
      */
     public TaskPageAbstract navigateToTasksHomePage() {
-        log.info("Navigate to tasks home page");
-        goToURL(baseURL + "/lightning/o/Task/home");
-        return new TaskLightPage();
+
+        switch (setup.getLayout()) {
+            case "classic":
+                goToURL(baseURL + "/home/home.jsp");
+                break;
+            case "light":
+                log.info("Navigate to tasks home page");
+                goToURL(baseURL + "/lightning/o/Task/home");
+                break;
+            default:
+        }
+        return PageFactory.taskHomePage();
     }
 }

@@ -31,32 +31,26 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(css = "#createNewMenu")
     private WebElement createNewTaskMenu;
 
-    @FindBy(css = "#createNewMenu,.taskMru menuButtonMenuLink")
-    private WebElement task;
+    @FindBy(xpath = "//div[@id='createNewMenu']/a[@class='taskMru menuButtonMenuLink']")
+    private WebElement taskMenuItem;
 
     @FindBy(css = "input#tsk5")
     private WebElement subjectTextBox;
 
-    @FindBy(css = "//textarea[@id='tsk6']")
+    @FindBy(xpath = "//textarea[@id='tsk6']")
     private WebElement commentTextArea;
 
     @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
     private WebElement saveTask;
 
-    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='delete']")
-    private WebElement deleteTask;
-
-    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
-    private WebElement updateTask;
 
     @Override
     public String createNewTask(Task task) {
-        return null;
-    }
-
-    @Override
-    protected void clickSaveButton() {
+        createNewTaskDropDown.click();
+        taskMenuItem.click();
+        subjectTextBox.sendKeys(task.getSubject());
         saveTask.click();
+        return task.getSubject();
     }
 
     @Override
