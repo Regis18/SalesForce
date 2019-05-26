@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * Factory Browser.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public final class FactoryBrowser {
     private static final String FIREFOX = "firefox";

@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.PageFactory;
+import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.utils.Setup;
 
@@ -13,8 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * TrasporterPage.
- *
+ * TransporterPage.
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -103,6 +103,26 @@ public class TransporterPage {
         return PageFactory.homePage();
     }
 
+    /**
+     * Navigate to Home Page.
+     *
+     * @return New instance of HomeLightPage.
+     */
+    public HomeAccountPageAbstract navigateToAccountHomePage() {
+        log.info("Navigate in Log in page");
+
+        switch (setup.getLayout()) {
+            case "classic":
+                System.out.println("ENTRO");
+                goToURL(setup.getUrlClassicPath());
+                break;
+            case "light":
+                System.out.println("Entro tmb");
+                goToURL(baseURL + "/lightning/page/home");
+                break;
+        }
+        return PageFactory.homeAccountPage();
+    }
     /**
      * Navigate to Tasks home page.
      *

@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Silvia Valencia on 2/2/2018.
  * Class to manage web driver.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public class WebDriverManager {
     private WebDriver webDriver;
