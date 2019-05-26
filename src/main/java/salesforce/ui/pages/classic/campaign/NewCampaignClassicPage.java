@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Campaign;
 import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 
+import java.util.Map;
+
 /**
  * NewCampaignClassicPage.
  * @author Regis Humana.
@@ -187,9 +189,19 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     /**
      * Set campaign data into Campaign form.
      * @param data Campaign
+     * @param map Map
      */
     @Override
-    public void setCampaignData(Campaign data) {
-        super.setCampaignData(data);
+    public void setCampaignData(Campaign data, Map<String, String> map) {
+        super.setCampaignData(data, map);
+    }
+
+    /**
+     * Set to Expected Response text.
+     * @param expectedResponse string
+     */
+    @Override
+    protected void setExpectedResponse(Integer expectedResponse) {
+        expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }
