@@ -19,7 +19,7 @@ public abstract class HomePageAbstract extends BasePage {
 
     /**
      * This method will implemented for display a created task.
-     * @return
+     * @return NewTaskAbstract.
      */
     public abstract NewTaskAbstract displayCreateTask();
 }

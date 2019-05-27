@@ -16,7 +16,6 @@ package salesforce.ui.pages.lightning.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
@@ -40,7 +39,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']//a")
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]" +
+                    "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
     @FindBy(css = "div[class^=\"branding-actions \"] a[title='Delete']")
@@ -70,7 +70,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     }
 
     /**
-     * Get the name of the Campaign title
+     * Get the name of the Campaign title.
      * @return name string
      */
     @Override
@@ -87,18 +87,18 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     }
 
     /**
-     * Click to detailsTab
+     * Click to detailsTab.
      */
     private void clickDetailsTab() {
         detailsTab.click();
     }
 
     /**
-     * Delete campaign
+     * Delete campaign.
      * @param nameCampaign string
      */
     @Override
-    public void deleteCampaign(String nameCampaign) {
+    public void deleteCampaign(final String nameCampaign) {
         mainMenuCmb.click();
         deleteMainMenuCmb.click();
         deletePopupBtn.click();

@@ -97,8 +97,8 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     }
 
     @Override
-    protected void setActiveChk(boolean isActivate) {
-        if(isActivate) {
+    protected void setActiveChk(final boolean isActivate) {
+        if (isActivate) {
             activateChk.click();
         }
     }
@@ -108,7 +108,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param type string.
      */
     @Override
-    protected void setTypeCmb(String type) {
+    protected void setTypeCmb(final String type) {
         Select accountRole = new Select(typeCmb);
         accountRole.selectByVisibleText(type);
     }
@@ -118,7 +118,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param status string.
      */
     @Override
-    protected void setStatusCmb(String status) {
+    protected void setStatusCmb(final String status) {
         Select accountRole = new Select(statusCmb);
         accountRole.selectByVisibleText(status);
     }
@@ -128,7 +128,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param startDate string.
      */
     @Override
-    protected void setStartDate(String startDate) {
+    protected void setStartDate(final String startDate) {
         startDateTxt.sendKeys(startDate);
     }
 
@@ -137,7 +137,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param endDate string.
      */
     @Override
-    protected void setEndDate(String endDate) {
+    protected void setEndDate(final String endDate) {
         endDateTxt.sendKeys(endDate);
     }
 
@@ -146,7 +146,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param expected integer.
      */
     @Override
-    protected void setExpectedRevenueTxt(Integer expected) {
+    protected void setExpectedRevenueTxt(final Integer expected) {
         expectedRevenueTxt.sendKeys(expected.toString());
     }
 
@@ -155,7 +155,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param budgeted integer.
      */
     @Override
-    protected void setBudgetedCostTxt(Integer budgeted) {
+    protected void setBudgetedCostTxt(final Integer budgeted) {
         budgetedCostTxt.sendKeys(budgeted.toString());
     }
 
@@ -164,7 +164,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param actualCost integer.
      */
     @Override
-    protected void setActualCostTxt(Integer actualCost) {
+    protected void setActualCostTxt(final Integer actualCost) {
         actualCostTxt.sendKeys(actualCost.toString());
     }
 
@@ -173,7 +173,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param numSent integer.
      */
     @Override
-    protected void setNumSent(Integer numSent) {
+    protected void setNumSent(final Integer numSent) {
         numSentTxt.sendKeys(numSent.toString());
     }
 
@@ -182,7 +182,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param description string.
      */
     @Override
-    protected void setDescriptionTxt(String description) {
+    protected void setDescriptionTxt(final String description) {
         descriptionTxt.sendKeys(description);
     }
 
@@ -192,7 +192,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param map Map
      */
     @Override
-    public void setCampaignData(Campaign data, Map<String, String> map) {
+    public void setCampaignData(final Campaign data, final Map<String, String> map) {
         super.setCampaignData(data, map);
     }
 
@@ -201,7 +201,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      * @param expectedResponse string
      */
     @Override
-    protected void setExpectedResponse(Integer expectedResponse) {
+    protected void setExpectedResponse(final Integer expectedResponse) {
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }

@@ -11,12 +11,16 @@
  *
  */
 
-package salesforce.utils;
+package core.utils;
 
-public interface StrategyGetter {
 /**
- * adfsd
+ * StrategyGetter.
+ * @author Regis Humana
+ * @version 0.0.1
  */
-
+public interface StrategySetter {
+    /**
+     * Executed method ofr a Page or an Entity.
+     */
+    void executeMethod();
 }
-

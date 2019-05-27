@@ -83,24 +83,23 @@ public class TransporterPage {
 
     /**
      * Navigate to Home Page.
-     *
+     * @param  setupPage SetupPage.
      * @return New instance of HomePage.
      */
-    public HomePageAbstract navigateToHomePage() {
+    public HomePageAbstract navigateToHomePage(final SetupPage setupPage) {
         log.info("Navigate in Log in page");
-
+        HomePageAbstract homePage = null;
         switch (setup.getLayout()) {
             case "classic":
-                System.out.println("ENTRO");
-                goToURL(setup.getUrlClassicPath());
+                homePage = setupPage.navigateHomeClassic();
                 break;
             case "light":
-                System.out.println("Entro tmb");
-                goToURL(baseURL + "/lightning/page/home");
+                homePage = setupPage.navigateHomeLight();
                 break;
             default:
+                break;
         }
-        return PageFactory.homePage();
+        return homePage;
     }
 
     /**
@@ -120,9 +119,12 @@ public class TransporterPage {
                 System.out.println("Entro tmb");
                 goToURL(baseURL + "/lightning/page/home");
                 break;
+            default:
+                break;
         }
         return PageFactory.homeAccountPage();
     }
+
     /**
      * Navigate to Tasks home page.
      *

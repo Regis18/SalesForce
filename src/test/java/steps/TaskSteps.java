@@ -72,14 +72,6 @@ public class TaskSteps {
     }
 
     /**
-     * Display task home.
-     */
-    @When("^Display Lightning Task Home from home page$")
-    public void displayTaskHome() {
-//        homePage.clickTaskMenuButton();
-    }
-
-    /**
      * verify task is displayed.
      */
     @Then("^I verify the task is displayed$")

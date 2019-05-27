@@ -13,6 +13,7 @@
 
 package steps;
 
+import core.utils.Logs;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -68,21 +69,8 @@ public class AccountSteps {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
             assertEquals(message, "account \"" + account.getName() + "\" was created.");
         } catch (ClassCastException e) {
-            System.out.println("In Classic Skin there is no message confirmation");
+            Logs.getInstance().getLog().error("In Classic Skin there is no message confirmation", e);
         }
 
     }
-/*
-    @And("^I verify the page of account that was created$")
-    public void goListAccountPage() throws InterruptedException {
-        Thread.sleep(5000);
-        listAccountPage = pageTransporter.navigateToListAccountPage(urlListAccounts);
-        Thread.sleep(5000);
-    }
-
-    @Then("^I verify new account is in the list of accounts$")
-    public void verifyNewAccount() {
-        System.out.println("");
-        //accountPage = pageTransporter.navigateToAccountPage(urlAccount);
-    }*/
 }

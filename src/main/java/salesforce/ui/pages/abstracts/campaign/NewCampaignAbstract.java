@@ -16,7 +16,7 @@ package salesforce.ui.pages.abstracts.campaign;
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
-import salesforce.utils.StrategySetter;
+import core.utils.StrategySetter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +44,8 @@ public abstract class NewCampaignAbstract extends BasePage {
      * Create a new campaign, it create for classic and lightning pages.
      *
      * @param data Campaign.
+     * @param mapOut Map.
+     * @return OneCampaignAbstract.
      */
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
         setCampaignData(data, mapOut);
@@ -134,9 +136,10 @@ public abstract class NewCampaignAbstract extends BasePage {
      * Just is name, can be more.
      *
      * @param data Campaign
+     * @param map Map
      */
     public void setCampaignData(final Campaign data, final Map<String, String> map) {
-        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data, map);
+        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data);
         map.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
             System.out.println(key);
@@ -145,10 +148,10 @@ public abstract class NewCampaignAbstract extends BasePage {
 
     /**
      * Compose the values of Campaign.
-     * @param campaigns String
+     * @param data Campaign.
      * @return Hashmap
      */
-    private HashMap<String, StrategySetter> composeStrategyMap(final Campaign data, final Map<String, String> campaigns) {
+    private HashMap<String, StrategySetter> composeStrategyMap(final Campaign data) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
         strategyMap.put(NAME, () -> setNameTxt(data.getName()));
         strategyMap.put(ACTIVE, () -> setActiveChk(data.isActivate()));

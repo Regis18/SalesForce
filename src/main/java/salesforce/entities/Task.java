@@ -13,8 +13,8 @@
 
 package salesforce.entities;
 
-import core.StrategySetter;
-import core.utils.StrategyGetter;
+
+import core.utils.StrategySetter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -155,7 +155,6 @@ public class Task {
         });
     }
 
-
     /**
      * Set the strategy map.
      *
@@ -178,8 +177,8 @@ public class Task {
      *
      * @return strategyMap
      */
-    public HashMap<String, StrategyGetter> composeGetStrategyMap() {
-        HashMap<String, StrategyGetter> strategyMap = new HashMap<>();
+    public HashMap<String, StrategySetter> composeGetStrategyMap() {
+        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
         strategyMap.put("subject", () -> getSubject());
         strategyMap.put("comment", () -> getComment());
         strategyMap.put("status", () -> getStatus());

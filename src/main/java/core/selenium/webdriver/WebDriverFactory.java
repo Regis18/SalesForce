@@ -11,7 +11,7 @@ import java.util.Map;
  * @author Regis Humana
  * @version 0.0.1
  */
-public final class FactoryBrowser {
+public final class WebDriverFactory {
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
     private static WebDriver webDriver;
@@ -20,7 +20,7 @@ public final class FactoryBrowser {
     /**
      * Constructor.
      */
-    private FactoryBrowser() {
+    private WebDriverFactory() {
 
     }
 

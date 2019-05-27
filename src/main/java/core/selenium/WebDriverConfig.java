@@ -17,8 +17,10 @@ import java.util.Properties;
 public class WebDriverConfig {
 
     private static final String BROWSER = "browser";
+    private static final String SKIN = "layout";
     private static WebDriverConfig instance;
     private String browser;
+    private static String skin;
     private int implicitWaitTime;
     private int explicitWaitTime;
     private int waitSleepTime;
@@ -49,6 +51,7 @@ public class WebDriverConfig {
             event.printStackTrace();
         }
         browser = prop.getProperty(BROWSER);
+        skin = prop.getProperty(SKIN);
         String urlJson = "./waitTime.json";
         JsonParser parser = new JsonParser();
         FileReader reader;
@@ -99,5 +102,9 @@ public class WebDriverConfig {
      */
     public int getWaitSleepTime() {
         return waitSleepTime;
+    }
+
+    public static String getSkin() {
+        return skin;
     }
 }

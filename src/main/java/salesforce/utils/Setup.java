@@ -1,10 +1,12 @@
 package salesforce.utils;
 
+import core.selenium.WebDriverConfig;
+
 import java.io.FileInputStream;
 import java.util.Properties;
 
 /**
- * Setup class.
+ * SetupPage class.
  */
 public class Setup {
     private static Setup instance;
@@ -23,8 +25,8 @@ public class Setup {
     }
 
     /**
-     * Constructor of Setup.
-     * Gets Setup as Singleton.
+     * Constructor of SetupPage.
+     * Gets SetupPage as Singleton.
      *
      * @return a instance.
      */
@@ -78,7 +80,7 @@ public class Setup {
     }
 
     /**
-     * Get Layout
+     * Get Layout.
      *
      * @return layout
      */
@@ -87,7 +89,7 @@ public class Setup {
     }
 
     /**
-     * Get urlClassicPath
+     * Get urlClassicPath.
      * @return urlClassicPath
      */
     public String getUrlClassicPath() {
@@ -112,6 +114,6 @@ public class Setup {
         username = properties.getProperty("username");
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
-        layout = properties.getProperty("layout");
+        layout = WebDriverConfig.getSkin();
     }
 }

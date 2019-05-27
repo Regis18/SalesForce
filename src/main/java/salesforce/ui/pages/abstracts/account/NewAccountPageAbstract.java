@@ -26,6 +26,7 @@ public abstract class NewAccountPageAbstract extends BasePage {
      * Create a new account, it create for classic and lightning pages.
      *
      * @param data String.
+     * @return OneAccountAbstract.
      */
     public OneAccountAbstract createNewAccount(final String data) {
         setAccountData(data);

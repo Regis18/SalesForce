@@ -32,11 +32,13 @@ public class LoginPage extends BasePage {
      *
      * @param userName     the user name.
      * @param userPassword the password.
+     * @return SetupPage.
      */
-    public void login(final String userName, final String userPassword) {
+    public SetupPage login(final String userName, final String userPassword) {
         setUserNameTextBox(userName);
         setUserPasswordTextBox(userPassword);
         clickOnSigninButton();
+        return new SetupPage();
     }
 
     /**
@@ -65,7 +67,7 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Wait for userPasswordTextBox
+     * Wait for userPasswordTextBox.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
