@@ -38,13 +38,14 @@ public abstract class TaskPageAbstract extends BasePage {
 
     /**
      * Delete current task.
+     * @param task task
      */
     public abstract void deleteCurrentTask(Task task);
 
     /**
      * Update current task.
-     *
-     * @return new subject.
+     * @param task task
+     * @return updated task
      */
     public abstract Task updateCurrentTask(Task task);
 

@@ -14,6 +14,7 @@
 package salesforce.entities;
 
 import core.StrategySetter;
+import core.utils.StrategyGetter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class Task {
      *
      * @param status to task.
      */
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -101,7 +102,7 @@ public class Task {
      *
      * @param email task.
      */
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -119,7 +120,7 @@ public class Task {
      *
      * @param dueDate to task.
      */
-    public void setDueDate(String dueDate) {
+    public void setDueDate(final String dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -137,7 +138,7 @@ public class Task {
      *
      * @param priority to task.
      */
-    public void setPriority(String priority) {
+    public void setPriority(final String priority) {
         this.priority = priority;
     }
 
@@ -154,6 +155,7 @@ public class Task {
         });
     }
 
+
     /**
      * Set the strategy map.
      *
@@ -168,6 +170,22 @@ public class Task {
         strategyMap.put("email", () -> setStatus(taskMap.get("email")));
         strategyMap.put("dueDate", () -> setStatus(taskMap.get("dueDate")));
         strategyMap.put("priority", () -> setStatus(taskMap.get("priority")));
+        return strategyMap;
+    }
+
+    /**
+     * get strategy map.
+     *
+     * @return strategyMap
+     */
+    public HashMap<String, StrategyGetter> composeGetStrategyMap() {
+        HashMap<String, StrategyGetter> strategyMap = new HashMap<>();
+        strategyMap.put("subject", () -> getSubject());
+        strategyMap.put("comment", () -> getComment());
+        strategyMap.put("status", () -> getStatus());
+        strategyMap.put("email", () -> getEmail());
+        strategyMap.put("dueDate", () -> getDueDate());
+        strategyMap.put("priority", () -> getPriority());
         return strategyMap;
     }
 }

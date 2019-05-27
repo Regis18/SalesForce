@@ -17,9 +17,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.utils.Strategy;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * This class is for create a new class from light experience skin.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -50,6 +56,9 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//textarea")
     private WebElement commentsTextArea;
 
+    /**
+     * Save button.
+     */
     public void clickSaveButton() {
         saveButton.click();
     }
@@ -71,15 +80,39 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Create Task.
+     *
      * @param task object.
      * @return string subject task.
      */
     @Override
     public String createNewTask(final Task task) {
         //log.info("Set information of project.");
-        setSubjectTextBox(task.getSubject());
-        setComments(task.getComment());
+        List<String> fields = new ArrayList();
+        fields.add("subject");
+        fields.add("comment");
+
+        HashMap<String, Strategy> strategyMap = composeTextBoxStrategyMap(task);
+
+        fields.forEach(field -> {
+            strategyMap.get(field).executeMethod();
+        });
+
         clickSaveButton();
         return task.getSubject();
+    }
+
+    /**
+     * Set text Map strategy.
+     *
+     * @param myTask task
+     * @return strategyMap
+     */
+    private HashMap<String, Strategy> composeTextBoxStrategyMap(final Task myTask) {
+        HashMap<String, Strategy> strategyMap = new HashMap<>();
+        strategyMap.put("subject", () -> setSubjectTextBox(myTask.getSubject()));
+        strategyMap.put("comment", () -> setComments(myTask.getComment()));
+        //strategyMap.put("status", () -> setStatus(myTask.getComment()));
+        //strategyMap.put("email", () -> setEmail(myTask.getEmail()));
+        return strategyMap;
     }
 }

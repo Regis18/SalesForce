@@ -13,11 +13,11 @@
 
 package salesforce.ui.pages.lightning.task;
 
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebElement;
-        import org.openqa.selenium.support.FindBy;
-        import salesforce.entities.Task;
-        import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import salesforce.entities.Task;
+import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
@@ -159,8 +159,9 @@ public class TaskPageLightning extends TaskPageAbstract {
 
     /**
      * Delete current task.
+     * @param task the task
      */
-    public void deleteCurrentTask(Task task) {
+    public void deleteCurrentTask(final Task task) {
         clickDropDownButton();
         clickDeleteItem();
         try {
@@ -170,12 +171,12 @@ public class TaskPageLightning extends TaskPageAbstract {
         clickDeleteConfirmationItem();
     }
 
-        /**
+    /**
      * Update current task.
-     *
-     * @return new subject.
+     * @param task the task
+     * @return updated task
      */
-    public Task updateCurrentTask(Task task) {
+    public Task updateCurrentTask(final Task task) {
         clickEditSubjectTask();
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
