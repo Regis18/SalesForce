@@ -1,6 +1,7 @@
 package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 
 /**
@@ -21,5 +22,4 @@ public abstract class HomePageAbstract extends BasePage {
      * @return
      */
     public abstract NewTaskAbstract displayCreateTask();
-
 }

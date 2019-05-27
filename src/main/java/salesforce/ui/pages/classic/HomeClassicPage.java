@@ -17,19 +17,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
+import salesforce.ui.pages.classic.task.NewTaskClassic;
 
 /**
  * HomeLightPage.
  * @author Regis Humana
  */
 public class HomeClassicPage extends HomePageAbstract {
+
     /**
      * Is the main table of Home.
      */
     @FindBy(css = "table[id=\"bodyTable\"]")
     private WebElement homeTable;
+
     /**
      * Campaign tab.
      */
@@ -55,6 +58,6 @@ public class HomeClassicPage extends HomePageAbstract {
 
     @Override
     public NewTaskAbstract displayCreateTask() {
-        return null;
+        return  new NewTaskClassic();
     }
 }

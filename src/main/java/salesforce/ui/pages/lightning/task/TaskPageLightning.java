@@ -1,5 +1,5 @@
 /*
- * @(#) TaskLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) TaskPageLightning.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,22 +11,25 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.lightning.task;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import salesforce.ui.pages.abstracts.TaskPageAbstract;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebElement;
+        import org.openqa.selenium.support.FindBy;
+        import salesforce.entities.Task;
+        import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
  * task created are displayed.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class TaskLightPage extends TaskPageAbstract {
+public class TaskPageLightning extends TaskPageAbstract {
     public static final int MILLIS = 2500;
     public static final int INT = 100;
+
     /**
      * Task web element.
      */
@@ -41,6 +44,7 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//a[contains(@class,\"sldsButtonHeightFix\")]")
     private WebElement getDisplayAsDropDownButton;
+
     /**
      * Delete task web element.
      */
@@ -51,6 +55,7 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[span[contains(.,'Delete')]]")
     private WebElement deleteConfirmationtask;
+
     /**
      * Recent task refresh web element.
      */
@@ -61,11 +66,13 @@ public class TaskLightPage extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[@title=\"Edit Subject\"]")
     private WebElement editSubjectTask;
+
     /**
      * Update new subject task web element.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[contains(@class,'slds-form-element forceTextEnumLookup')]")
     private WebElement updateNewSubjectTask;
+
     /**
      * Save update web element.
      */
@@ -153,7 +160,7 @@ public class TaskLightPage extends TaskPageAbstract {
     /**
      * Delete current task.
      */
-    public void deleteCurrentTask() {
+    public void deleteCurrentTask(Task task) {
         clickDropDownButton();
         clickDeleteItem();
         try {
@@ -163,17 +170,18 @@ public class TaskLightPage extends TaskPageAbstract {
         clickDeleteConfirmationItem();
     }
 
-    /**
+        /**
      * Update current task.
      *
      * @return new subject.
      */
-    public String updateCurrentTask() {
+    public Task updateCurrentTask(Task task) {
         clickEditSubjectTask();
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         clickSaveUpdateTask();
-        return nameTaskSubject;
+        task.setSubject(nameTaskSubject);
+        return task;
     }
 
     /**
@@ -184,3 +192,4 @@ public class TaskLightPage extends TaskPageAbstract {
 
     }
 }
+

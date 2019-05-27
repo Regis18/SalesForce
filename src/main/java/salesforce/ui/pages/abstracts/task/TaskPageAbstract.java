@@ -11,17 +11,46 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.task;
 
+import salesforce.entities.Task;
 import salesforce.ui.BasePage;
 
 /**
  * This abstract class is for delete and update a task.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public abstract class TaskPageAbstract extends BasePage {
 
+    /**
+     * Verify subject task exist.
+     * @param subjectTask subject Task.
+     * @return boolean
+     */
+    public abstract boolean verifySubjectExist(final String subjectTask);
+
+    /**
+     * Click recent refresh.
+     */
+    public abstract void clickRecentTasksRefresh();
+
+    /**
+     * Delete current task.
+     */
+    public abstract void deleteCurrentTask(Task task);
+
+    /**
+     * Update current task.
+     *
+     * @return new subject.
+     */
+    public abstract Task updateCurrentTask(Task task);
+
+    /**
+     * Wait for load.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
