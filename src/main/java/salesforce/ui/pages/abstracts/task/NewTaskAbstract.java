@@ -11,37 +11,30 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.ui.pages.abstracts.task;
 
+import salesforce.entities.Task;
 import salesforce.ui.BasePage;
 
 /**
  * This abstract class is for create a new task.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public abstract class NewTaskAbstract extends BasePage {
     public static final int INT = 100;
 
-    /**
-     * Create new Task.
-     * @return the subject of the task.
-     */
-    public String createNewTask() {
-        String nameSubject = "Call" + String.valueOf((int) (Math.random() * INT));
-        setSubjectTextBox(nameSubject);
-        setComments("Test task.");
-        clickSaveButton();
-        return nameSubject;
-    }
 
     /**
-     * click save button.
+     * Create Task.
+     * @param task of type Task.
+     * @return string
      */
-    protected abstract void clickSaveButton();
+    public abstract String createNewTask(final Task task);
 
     /**
-     * click saved notification.
+     * Click saved notification.
      */
     protected abstract void clickCloseNotificationButton();
 
