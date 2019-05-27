@@ -29,7 +29,7 @@ public abstract class TaskPageAbstract extends BasePage {
      * @param subjectTask subject Task.
      * @return boolean
      */
-    public abstract boolean verifySubjectExist(final String subjectTask);
+    public abstract boolean verifySubjectExist(String subjectTask);
 
     /**
      * Click recent refresh.

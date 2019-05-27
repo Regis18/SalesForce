@@ -45,7 +45,7 @@ public class NewTaskClassic extends NewTaskAbstract {
 
 
     @Override
-    public String createNewTask(final Task task) {
+    public String createNewTask(Task task) {
         createNewTaskDropDown.click();
         taskMenuItem.click();
         subjectTextBox.sendKeys(task.getSubject());
