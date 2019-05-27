@@ -24,7 +24,7 @@ public class TransporterPage {
      * It creates to follow up the instruction of the class.
      */
      private Logger log = Logs.getInstance().getLog();
-    //private String baseURL = Setup.getInstance().urlBasePath;
+    //private String baseURL = SetupPage.getInstance().urlBasePath;
     private String baseURL = Setup.getInstance().getUrlBasePath();
     private Setup setup = Setup.getInstance();
     private WebDriver driver;
@@ -83,23 +83,23 @@ public class TransporterPage {
 
     /**
      * Navigate to Home Page.
-     *
+     * @param  setupPage SetupPage.
      * @return New instance of HomePage.
      */
-    public HomePageAbstract navigateToHomePage() {
+    public HomePageAbstract navigateToHomePage(final SetupPage setupPage) {
         log.info("Navigate in Log in page");
-
+        HomePageAbstract homePage = null;
         switch (setup.getLayout()) {
             case "classic":
-                System.out.println("ENTRO");
-                goToURL(setup.getUrlClassicPath());
+                homePage = setupPage.navigateHomeClassic();
                 break;
             case "light":
-                System.out.println("Entro tmb");
-                goToURL(baseURL + "/lightning/page/home");
+                homePage = setupPage.navigateHomeLight();
+                break;
+            default:
                 break;
         }
-        return PageFactory.homePage();
+        return homePage;
     }
 
     /**
@@ -118,6 +118,8 @@ public class TransporterPage {
             case "light":
                 System.out.println("Entro tmb");
                 goToURL(baseURL + "/lightning/page/home");
+                break;
+            default:
                 break;
         }
         return PageFactory.homeAccountPage();

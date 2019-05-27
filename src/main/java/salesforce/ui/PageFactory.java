@@ -34,7 +34,7 @@ import salesforce.utils.Setup;
  * PageFactory.
  * @author Regis Humana
  */
-public final class PageFactory {
+public class PageFactory {
 
     private static Setup setup = Setup.getInstance();
 

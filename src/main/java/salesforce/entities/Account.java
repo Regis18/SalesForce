@@ -13,7 +13,7 @@
 
 package salesforce.entities;
 
-import salesforce.utils.StrategySetter;
+import core.utils.StrategySetter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ import java.util.Map;
  */
 public class Account {
     private String name;
-    private String Rating;
+    private String rating;
     private String phone;
     private String parent;
     private String fax;
@@ -78,7 +78,7 @@ public class Account {
      * @return rating
      */
     public String getRating() {
-        return Rating;
+        return rating;
     }
 
     /**
@@ -86,7 +86,7 @@ public class Account {
      * @param rating
      */
     public void setRating(String rating) {
-        Rating = rating;
+        this.rating = rating;
     }
 
     /**

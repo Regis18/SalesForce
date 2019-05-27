@@ -37,10 +37,15 @@ public class Firefox implements IDriver {
         firefoxProfile.setPreference("browser.download.dir", file.getAbsolutePath());
         // Skipping Save As dialog box for types of files with their MIME
         firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk",
-                "text/csv,application/java-archive, application/x-msexcel,application/excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/x-excel,application/vnd.ms-excel,image/png,image/jpeg,text/html,text/plain,application/msword,application/xml,application/vnd.microsoft.portable-executable");
+                "text/csv,application/java-archive, application/x-msexcel," +
+                "application/excel,application/vnd.openxmlformats-officedocument" +
+                ".wordprocessingml.document,application/x-excel,application/vnd.ms-excel," +
+                "image/png,image/jpeg,text/html,text/plain,application/msword,application/xml," +
+                "application/vnd.microsoft.portable-executable");
 
         firefoxProfile.setPreference("browser.urlbar.showPopup", true);
-        firefoxProfile.setPreference("dom. popup_allowed_events", "change click dblclick mouseup pointerup notificationclick reset submit touchend");
+        firefoxProfile.setPreference("dom. popup_allowed_events", "change click dblclick mouseup pointerup " +
+                                    "notificationclick reset submit touchend");
 
         firefoxOptions.setProfile(firefoxProfile);
 

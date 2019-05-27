@@ -28,26 +28,28 @@ import java.util.concurrent.TimeUnit;
 public class DriverMethods {
     private static WebDriver webDriver;
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+    private static int cont = 50;
+    private static final int TIMEWAIT = 500;
 
     /**
-     * Wait for the locator, if it exists the result is false, if it is not true.
+     * Wait for the locator, if it exists the result is true, if it is not false.
      * @param locator by.
      * @return boolean.
      */
-    public static boolean waitForElementDisappear(By locator) {
+    public static boolean isElementExist(final By locator) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
-        int cont = 50;
-        boolean result = false;
+
+        boolean result = true;
         while (cont > 0) {
             try {
                 webDriver.manage()
                         .timeouts()
-                        .implicitlyWait(500, TimeUnit.MILLISECONDS);
+                        .implicitlyWait(TIMEWAIT, TimeUnit.MILLISECONDS);
                 webDriver.findElement(locator);
                 cont--;
             } catch (NoSuchElementException e) {
                 cont = -1;
-                result = true;
+                result = false;
             } finally {
                 webDriver.manage()
                         .timeouts()
@@ -55,33 +57,5 @@ public class DriverMethods {
             }
         }
         return result;
-    }
-
-    /**
-     * Wait for the configuration time.
-     * @param time integer.
-     */
-    public void waitForMilliSeconds(int time) {
-        webDriver = WebDriverManager.getInstance().getWebDriver();
-
-        webDriver.manage()
-                .timeouts()
-                .implicitlyWait(time, TimeUnit.MILLISECONDS);
-
-        webDriver.manage()
-                .timeouts()
-                .implicitlyWait(webDriverConfig.getImplicitWaitTime(), TimeUnit.SECONDS);
-
-    }
-
-    /**
-     * Establish the implicit Wait to the base configuration.
-     */
-    public void establishImplicitWait() {
-        webDriver = WebDriverManager.getInstance().getWebDriver();
-        webDriver.manage()
-                .timeouts()
-                .implicitlyWait(webDriverConfig.getImplicitWaitTime(), TimeUnit.SECONDS);
-
     }
 }

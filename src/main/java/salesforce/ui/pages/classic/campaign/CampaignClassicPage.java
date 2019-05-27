@@ -34,10 +34,10 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     /**
      * Button: New Campaign.
      */
-    @FindBy(xpath = "//input[@name=\"new\"]")
+    @FindBy(xpath = "//input[@name='new']")
     private WebElement newCampaignBtn;
 
-    private String campaignList = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"campaign\")]";
+    private String campaignList = "//tr[@onmouseout='if (window.hiOff){hiOff(this);}']//a[contains(text(),'campaign')]";
     /**
      * Wait for Campaign Form.
      */
@@ -62,7 +62,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      * @return boolean.
      */
     @Override
-    public boolean checkCampaignList(String name) {
-        return DriverMethods.waitForElementDisappear(By.xpath(campaignList.replace("campaign", name)));
+    public boolean checkCampaignList(final String name) {
+        return DriverMethods.isElementExist(By.xpath(campaignList.replace("campaign", name)));
     }
 }

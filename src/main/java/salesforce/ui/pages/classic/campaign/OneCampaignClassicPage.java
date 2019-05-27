@@ -58,11 +58,11 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
     /**
-     * Delete campaign
+     * Delete campaign.
      * @param nameCampaign string
      */
     @Override
-    public void deleteCampaign(String nameCampaign) {
+    public void deleteCampaign(final String nameCampaign) {
 
     }
 }

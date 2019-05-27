@@ -1,6 +1,6 @@
 package salesforce.entities;
 
-import salesforce.utils.StrategySetter;
+import core.utils.StrategySetter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -241,7 +241,7 @@ public class Campaign {
      * Set description.
      * @param description string.
      */
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -273,7 +273,8 @@ public class Campaign {
         strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
         strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
         strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));
-        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(Integer.parseInt(campaigns.get(EXPECTED_RESPONSE))));
+        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(Integer
+                                                                    .parseInt(campaigns.get(EXPECTED_RESPONSE))));
         strategyMap.put(NUM_SENT, () -> setNumSent(Integer.parseInt(campaigns.get(NUM_SENT))));
         strategyMap.put(DESCRIPTION, () -> setDescription(campaigns.get(DESCRIPTION)));
         return strategyMap;
