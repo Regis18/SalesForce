@@ -20,6 +20,7 @@ import java.util.Map;
 
 /**
  * Task entity Task.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -34,6 +35,7 @@ public class Task {
 
     /**
      * Get subject to task.
+     *
      * @return subject to task.
      */
     public String getSubject() {
@@ -42,6 +44,7 @@ public class Task {
 
     /**
      * Set subject to task.
+     *
      * @param subject to task.
      */
     public void setSubject(final String subject) {
@@ -50,6 +53,7 @@ public class Task {
 
     /**
      * Get comment to task.
+     *
      * @return comment to task.
      */
     public String getComment() {
@@ -58,6 +62,7 @@ public class Task {
 
     /**
      * Set comment to task.
+     *
      * @param comment to task.
      */
     public void setComment(final String comment) {
@@ -66,6 +71,7 @@ public class Task {
 
     /**
      * Get status to task.
+     *
      * @return status to taask.
      */
     public String getStatus() {
@@ -74,6 +80,7 @@ public class Task {
 
     /**
      * Set status to task.
+     *
      * @param status to task.
      */
     public void setStatus(String status) {
@@ -82,6 +89,7 @@ public class Task {
 
     /**
      * Get email attribute to task.
+     *
      * @return email task.
      */
     public String getEmail() {
@@ -90,6 +98,7 @@ public class Task {
 
     /**
      * Set email attribute to task.
+     *
      * @param email task.
      */
     public void setEmail(String email) {
@@ -98,6 +107,7 @@ public class Task {
 
     /**
      * Get due date attribute to task.
+     *
      * @return date task.
      */
     public String getDueDate() {
@@ -106,6 +116,7 @@ public class Task {
 
     /**
      * Set due date attribute to task.
+     *
      * @param dueDate to task.
      */
     public void setDueDate(String dueDate) {
@@ -114,6 +125,7 @@ public class Task {
 
     /**
      * Get priority attribute to task.
+     *
      * @return priority to task.
      */
     public String getPriority() {
@@ -122,6 +134,7 @@ public class Task {
 
     /**
      * Set priority attribute to task.
+     *
      * @param priority to task.
      */
     public void setPriority(String priority) {
@@ -130,6 +143,7 @@ public class Task {
 
     /**
      * Process task information.
+     *
      * @param taskMap the task map.
      */
     public void proccessInformation(final Map<String, String> taskMap) {
@@ -142,6 +156,7 @@ public class Task {
 
     /**
      * Set the strategy map.
+     *
      * @param taskMap the task map.
      * @return Strategy map
      */
@@ -149,10 +164,10 @@ public class Task {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
         strategyMap.put("subject", () -> setSubject(taskMap.get("subject")));
         strategyMap.put("comment", () -> setComment(taskMap.get("comment")));
-        strategyMap.put("status",()->setStatus(taskMap.get("status")));
-        strategyMap.put("email",()->setStatus(taskMap.get("email")));
-        strategyMap.put("dueDate",()->setStatus(taskMap.get("dueDate")));
-        strategyMap.put("priority",()->setStatus(taskMap.get("priority")));
+        strategyMap.put("status", () -> setStatus(taskMap.get("status")));
+        strategyMap.put("email", () -> setStatus(taskMap.get("email")));
+        strategyMap.put("dueDate", () -> setStatus(taskMap.get("dueDate")));
+        strategyMap.put("priority", () -> setStatus(taskMap.get("priority")));
         return strategyMap;
     }
 }

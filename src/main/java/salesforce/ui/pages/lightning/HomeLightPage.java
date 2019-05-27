@@ -48,9 +48,6 @@ public class HomeLightPage extends HomePageAbstract {
     @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
     private WebElement taskMenuButton;
 
-    @FindBy(xpath = "//span[@class='slds-truncate'][contains(text(),'Tasks')]")
-    private WebElement taskMenuButton;
-
     /**
      * Event click on tasks dropdown.
      */

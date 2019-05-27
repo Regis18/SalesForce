@@ -21,7 +21,8 @@ import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
 /**
  * Task Page classic.
- * @autor Melvi Caballero.
+ *
+ * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class TaskPageClassic extends TaskPageAbstract {
@@ -42,17 +43,22 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
     private WebElement saveTask;
 
-    public void clickTask(){
+    /**
+     * Click on task list.
+     */
+    public void clickTask() {
         taskList.click();
     }
 
+    /**
+     * Display the task list.
+     */
     public void clickDisplayTask() {
         taskList.click();
     }
 
-
     @Override
-    public boolean verifySubjectExist(String subjectTask) {
+    public boolean verifySubjectExist(final String subjectTask) {
         try {
             WebElement subjectExist =
                     driver.findElement(By.xpath("//a[contains(text(),\"" + subjectTask + "\")][1]"));
@@ -68,15 +74,17 @@ public class TaskPageClassic extends TaskPageAbstract {
     }
 
     @Override
-    public void deleteCurrentTask(Task task) {
-        WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'" + task.getSubject()+ "')]]"));
+    public void deleteCurrentTask(final Task task) {
+        WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'"
+                + task.getSubject() + "')]]"));
         currentTask.click();
         deleteTask.click();
     }
 
     @Override
-    public Task updateCurrentTask(Task task) {
-        WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'" + task.getSubject() + "')]]"));
+    public Task updateCurrentTask(final Task task) {
+        WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'"
+                + task.getSubject() + "')]]"));
         currentTask.click();
         updateTask.click();
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
@@ -86,8 +94,11 @@ public class TaskPageClassic extends TaskPageAbstract {
         return task;
     }
 
-    public void setUpdateNewSubjectTask(String task){
+    /**
+     * Update the subject in the task.
+     * @param task map of attributes task.
+     */
+    public void setUpdateNewSubjectTask(final String task) {
         subjectTextBox.sendKeys(task);
-
     }
 }
