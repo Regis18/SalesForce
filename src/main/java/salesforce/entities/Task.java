@@ -167,9 +167,9 @@ public class Task {
         strategyMap.put("subject", () -> setSubject(taskMap.get("subject")));
         strategyMap.put("comment", () -> setComment(taskMap.get("comment")));
         strategyMap.put("status", () -> setStatus(taskMap.get("status")));
-        strategyMap.put("email", () -> setStatus(taskMap.get("email")));
-        strategyMap.put("dueDate", () -> setStatus(taskMap.get("dueDate")));
-        strategyMap.put("priority", () -> setStatus(taskMap.get("priority")));
+        strategyMap.put("email", () -> setEmail(taskMap.get("email")));
+        strategyMap.put("dueDate", () -> setDueDate(taskMap.get("dueDate")));
+        strategyMap.put("priority", () -> setPriority(taskMap.get("priority")));
         return strategyMap;
     }
 
