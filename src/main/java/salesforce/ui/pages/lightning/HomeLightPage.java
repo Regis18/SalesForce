@@ -19,7 +19,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import org.openqa.selenium.interactions.Actions;
-import salesforce.ui.pages.abstracts.NewTaskAbstract;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
 import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
 
 /**
@@ -67,6 +68,10 @@ public class HomeLightPage extends HomePageAbstract {
      * @return NewTaskLightPopUp
      */
     public NewTaskAbstract displayCreateTask() {
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
         clickTasksDropDownButton();
         try {
             Thread.sleep(MILLIS);

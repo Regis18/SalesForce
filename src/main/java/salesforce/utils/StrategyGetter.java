@@ -1,5 +1,5 @@
 /*
- * @(#) TaskPageAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) StrategyGetter.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,19 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.abstracts;
+package salesforce.utils;
 
-import salesforce.ui.BasePage;
-
+public interface StrategyGetter {
 /**
- * This abstract class is for delete and update a task.
- * @author Melvi Caballero.
- * @version 0.0.1
+ * adfsd
  */
-public abstract class TaskPageAbstract extends BasePage {
 
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
 }
+
