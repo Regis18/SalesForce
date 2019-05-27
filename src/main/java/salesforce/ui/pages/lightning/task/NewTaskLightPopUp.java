@@ -13,11 +13,11 @@
 
 package salesforce.ui.pages.lightning.task;
 
+import core.utils.StrategySetter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
-import salesforce.utils.Strategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,7 +91,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         fields.add("subject");
         fields.add("comment");
 
-        HashMap<String, Strategy> strategyMap = composeTextBoxStrategyMap(task);
+        HashMap<String, StrategySetter> strategyMap = composeTextBoxStrategyMap(task);
 
         fields.forEach(field -> {
             strategyMap.get(field).executeMethod();
@@ -107,8 +107,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @param myTask task
      * @return strategyMap
      */
-    private HashMap<String, Strategy> composeTextBoxStrategyMap(final Task myTask) {
-        HashMap<String, Strategy> strategyMap = new HashMap<>();
+    private HashMap<String, StrategySetter> composeTextBoxStrategyMap(final Task myTask) {
+        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
         strategyMap.put("subject", () -> setSubjectTextBox(myTask.getSubject()));
         strategyMap.put("comment", () -> setComments(myTask.getComment()));
         //strategyMap.put("status", () -> setStatus(myTask.getComment()));

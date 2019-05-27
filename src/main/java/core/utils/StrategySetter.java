@@ -1,5 +1,5 @@
 /*
- * @(#) StrategySetter.java Copyright (c) 2019 Jala Foundation.
+ * @(#) StrategyGetter.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -14,7 +14,7 @@
 package core.utils;
 
 /**
- * StrategySetter.
+ * StrategyGetter.
  * @author Regis Humana
  * @version 0.0.1
  */
