@@ -40,8 +40,15 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']")
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
+
+    @FindBy(css = "div[class^=\"branding-actions \"] a[title='Delete']")
+    private WebElement deleteMainMenuCmb;
+
+    //**can be removed
+    @FindBy(css = "button[title='Delete']")
+    private WebElement deletePopupBtn;
 
 
     /**
@@ -92,7 +99,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      */
     @Override
     public void deleteCampaign(String nameCampaign) {
-        Select accountRole = new Select(mainMenuCmb);
-        accountRole.selectByVisibleText("Delete");
+        mainMenuCmb.click();
+        deleteMainMenuCmb.click();
+        deletePopupBtn.click();
     }
 }
