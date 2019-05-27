@@ -55,7 +55,6 @@ public class NewTaskClassic extends NewTaskAbstract {
 
     @Override
     protected void clickCloseNotificationButton() {
-
     }
 
     @Override

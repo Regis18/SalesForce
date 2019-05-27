@@ -28,6 +28,7 @@ import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 public class TaskPageClassic extends TaskPageAbstract {
 
     public static final int INT = 100;
+    
     @FindBy(xpath = "//a[span[contains(text(),'callTask2')]]")
     private WebElement taskList;
 
@@ -70,7 +71,6 @@ public class TaskPageClassic extends TaskPageAbstract {
 
     @Override
     public void clickRecentTasksRefresh() {
-
     }
 
     @Override
