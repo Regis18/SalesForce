@@ -253,7 +253,6 @@ public class Campaign {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(campaigns);
         campaigns.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
-            System.out.println(key);
         });
     }
 
