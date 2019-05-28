@@ -4,7 +4,7 @@ Feature: Create, read, update and delete a Account
     Given I log in to the SalesForce Application
     And I navigate to Home Page
 
-  @deleteAccount
+  #@deleteAccount
   Scenario: Create a new account in SalesForce
     Given   I navigate to account page
     When   I create a new account in Salesforce with the following value
@@ -15,7 +15,7 @@ Feature: Create, read, update and delete a Account
     Then I verify "New Account" is in the list of accounts
 
 
-  @deleteAccount
+  #@deleteAccount
   Scenario: Create a new account in SalesForce
     Given   I navigate to account page
     When   I create a new account in Salesforce with the following value
