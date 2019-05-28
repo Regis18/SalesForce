@@ -29,9 +29,15 @@ public abstract class CampaignPageAbstract extends BasePage {
     public abstract NewCampaignAbstract clickNewCampaignBtn();
 
     /**
-     * Implement: check the campaign list.
+     * Check the campaign list.
      * @param name string.
      * @return boolean.
      */
-    public abstract boolean checkCampaignList(String name);
+    public abstract boolean checkCampaignList(final String name);
+
+    /**
+     * Delete the campaign from the list of campaigns.
+     * @param id string.
+     */
+    public abstract void deleteCampaign(final String id);
 }

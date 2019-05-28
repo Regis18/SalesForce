@@ -13,6 +13,7 @@
 
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -102,7 +103,7 @@ public class CampaignSteps {
      */
     @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
     public void verifyIsInTheListOfCampaigns(String name) {
-        // It is false because means that the element exist in the list.
+        // It is true because means that the element exist in the list.
         assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
 
@@ -130,11 +131,19 @@ public class CampaignSteps {
 
     /**
      * Verify campaign is not the list.
-     * @param name
+     * @param name string.
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
     public void verifyIsNotInTheListOfCampaigns(String name) {
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
+    /**
+     * Delete from campaigns list.
+     * @param name string.
+     */
+    @When("^I delete a campaign \"([^\"]*)\" from Campaigns Page$")
+    public void deleteACampaignFromCampaignsPage(String name) {
+        campaignPage.deleteCampaign("put Id");
+    }
 }
