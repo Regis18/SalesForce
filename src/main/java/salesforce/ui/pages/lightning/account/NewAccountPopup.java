@@ -131,7 +131,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     private WebElement saveAccountBtn;
 
     /**
-     * Wait for the Popup to initialize.
+     * Wait for the Pop up to initialize.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
