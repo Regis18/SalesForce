@@ -4,21 +4,22 @@ Feature: Create, read, update and delete a Account
     Given I log in to the SalesForce Application
     And I navigate to Home Page
 
-  @deleteAccount
+  #@deleteAccount
   Scenario: Create a new account in SalesForce
     Given   I navigate to account page
     When   I create a new account in Salesforce with the following value
-      |  name      | new Acount |
+      |  name      | new Account 0 |
     Then   I verify a message confirmation of a new account was created
-    And    I verify the page of account that was created
-    When   I navigate to account form
-    Then   I verify new account is in the list of accounts
+    And I verify the page of account that was created
+    When I navigate to account Page
+    Then I verify "New Account" is in the list of accounts
 
-  @deleteAccount
+
+#  @deleteAccount
   Scenario: Create a new account in SalesForce
     Given   I navigate to account page
     When   I create a new account in Salesforce with the following value
-      | name         |  new Acount   |
+      | name         |  new Account 1   |
       | phone        |  71717379     |
       | fax          |  123456789    |
       | number       |  12345667     |
@@ -34,5 +35,5 @@ Feature: Create, read, update and delete a Account
       | bill state   |  bill state   |
     Then   I verify a message confirmation of a new account was created
     And    I verify the page of account that was created
-    When   I navigate to account form
-    Then   I verify new account is in the list of accounts
+    When   I navigate to account Page
+    Then   I verify "New Account" is in the list of accounts

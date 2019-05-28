@@ -81,4 +81,12 @@ public class OneAccountLightPage extends OneAccountAbstract {
     private void clickDetailsTab() {
         detailsTab.click();
     }
+
+    /**
+     * Delete account
+     * @param nameAccount string
+     */
+    @Override
+    public void deleteAccount(String nameAccount) {
+    }
 }

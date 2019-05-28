@@ -26,7 +26,9 @@ import salesforce.ui.pages.lightning.account.OneAccountLightPage;
 
 import java.util.Map;
 
+import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * AccountSteps.
@@ -52,37 +54,38 @@ public class AccountSteps {
     }
 
     @When("^I create a new account in Salesforce with the following value")
-    public void createNewAccount(Map<String, String> accountInformation) throws InterruptedException {
+    public void createNewAccount(Map<String, String> accountInformation) {
         account = new Account();
         account.setAccountInformation(accountInformation);
-        String nameAccount = account.getName();
-        String phoneAccount = account.getPhone();
         newAccountPage = accountPage.clickNewAccountBtn();
-        oneAccountPage = newAccountPage.createNewAccount(nameAccount);
-
+        oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
     }
 
     @Then("^I verify a message confirmation of a new account was created$")
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "account \"" + account.getName() + "\" was created.");
+            assertEquals(message, "Account \"" + account.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
 
     }
-/*
-    @And("^I verify the page of account that was created$")
-    public void goListAccountPage() throws InterruptedException {
-        Thread.sleep(5000);
-        listAccountPage = pageTransporter.navigateToListAccountPage(urlListAccounts);
-        Thread.sleep(5000);
+
+    /**
+     * Verify account.
+     */
+    @Then("^I verify the page of account that was created$")
+    public void verifyThePageOfAccountThatWasCreated() {
+        assertTrue(oneAccountPage.verifyComponentsAccount());
     }
 
-    @Then("^I verify new account is in the list of accounts$")
-    public void verifyNewAccount() {
-        System.out.println("");
-        //accountPage = pageTransporter.navigateToAccountPage(urlAccount);
-    }*/
+    /**
+     * Verify account to the list.
+     * @param name string.
+     */
+    @Then("^I verify \"([^\"]*)\" is in the list of accounts$")
+    public void verifyIsInTheListOfAccounts(String name) {
+        assertFalse(accountPage.checkAccountList(account.getName()));
+    }
 }

@@ -13,10 +13,12 @@
 
 package salesforce.ui.pages.lightning.account;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
+import salesforce.utils.DriverMethods;
 
 /**
  * AccountLightPage.
@@ -25,15 +27,21 @@ import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
  */
 public class AccountLightPage extends AccountPageAbstract {
 
+    @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
+    private WebElement accountTitleLbl;
+
     @FindBy(xpath = "//li[@class=\"slds-button slds-button--neutral slds-truncate\"]//a[@title=\"New\"]")
     private WebElement newAccountBtn;
+
+    private String accountList = "//a[@data-refid=\"recordId\" and contains(text(),\"Account\")]";
+    private final String ACCOUNT = "account";
 
     /**
      * Wait for the title appears.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newAccountBtn));
+        wait.until(ExpectedConditions.visibilityOf(accountTitleLbl));
     }
 
     /**
@@ -43,5 +51,15 @@ public class AccountLightPage extends AccountPageAbstract {
     public NewAccountPopup clickNewAccountBtn() {
         newAccountBtn.click();
         return new NewAccountPopup();
+    }
+
+    /**
+     * Check name in Campaign List.
+     * @param name string.
+     * @return boolean.
+     */
+    @Override
+    public boolean checkAccountList(String name) {
+        return DriverMethods.waitForElementDisappear(By.xpath(accountList.replace(ACCOUNT, name)));
     }
 }

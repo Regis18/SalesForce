@@ -27,4 +27,10 @@ public abstract class AccountPageAbstract extends BasePage {
      */
     public abstract NewAccountPageAbstract clickNewAccountBtn();
 
+    /**
+     * Implement: check the account list.
+     * @param name string.
+     * @return boolean.
+     */
+    public abstract boolean checkAccountList(String name);
 }
