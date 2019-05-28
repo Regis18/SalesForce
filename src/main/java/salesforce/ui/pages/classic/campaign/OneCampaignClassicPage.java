@@ -26,11 +26,15 @@ import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 public class OneCampaignClassicPage extends OneCampaignAbstract {
     @FindBy(xpath = "//td[@class=\" oRight\"]")
     private WebElement campaignDetailForm;
+
     @FindBy(xpath = "//h1[@class=\"pageType\"]")
     private WebElement campaignPanelTitle;
+
     @FindBy(xpath = "//h2[@class=\"pageDescription\"]")
     private WebElement campaignTitleLbl;
 
+    @FindBy(css = "td[id='topButtonRow'] input[value='Delete']")
+    private WebElement deleteUpBtn;
     /**
      * Wait for Campaign panel title.
      */
@@ -63,6 +67,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public void deleteCampaign(final String nameCampaign) {
-
+        deleteUpBtn.click();
+        driver.switchTo().alert().accept();
     }
 }
