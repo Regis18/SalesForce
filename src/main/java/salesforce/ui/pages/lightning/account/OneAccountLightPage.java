@@ -13,6 +13,8 @@
 
 package salesforce.ui.pages.lightning.account;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +26,8 @@ import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
  * @version 0.0.1
  */
 public class OneAccountLightPage extends OneAccountAbstract {
+
+    private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
     @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
     private WebElement accountPanelTitle;
@@ -72,6 +76,8 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return message string.
      */
     public String getMessageConfirmation() {
+        String url = driver.getCurrentUrl();
+        System.out.println("miiiiiiiiiiiiiiiiiiiiiii uuuuuuuuuuuurrrrrrrrrrlllllllllllll: "+url);
         return messageConfirmation.getText();
     }
 

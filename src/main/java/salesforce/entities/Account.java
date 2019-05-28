@@ -23,6 +23,7 @@ import java.util.Map;
  * @author Luis Guardia.
  */
 public class Account {
+    private String id;
     private String name;
     private String Rating;
     private String phone;
