@@ -54,7 +54,7 @@ public class AccountLightPage extends AccountPageAbstract {
     }
 
     /**
-     * Check name in Campaign List.
+     * Check name in Account List.
      * @param name string.
      * @return boolean.
      */

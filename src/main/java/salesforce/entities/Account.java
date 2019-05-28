@@ -59,6 +59,22 @@ public class Account {
     private String description;
 
     /**
+     * Get account id.
+     * @return id.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Get account id.
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
      * Get account name.
      * @return name
      */
@@ -595,6 +611,11 @@ public class Account {
         accountInformation.keySet().forEach(key -> {strategyMap.get(key).executeMethod();});
     }
 
+    /**
+     * Compose the values of Account.
+     * @param accountInformation String
+     * @return Hashmap
+     */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> accountInformation){
         HashMap<String, StrategySetter> strategyMap  = new HashMap<>();
         strategyMap.put("name",        () -> setName(accountInformation.get("name")));

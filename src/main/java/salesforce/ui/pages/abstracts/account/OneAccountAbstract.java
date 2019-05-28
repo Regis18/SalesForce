@@ -37,4 +37,9 @@ public abstract class OneAccountAbstract extends BasePage {
      * @param nameAccount string
      */
     public abstract void deleteAccount(String nameAccount);
+
+    /**
+     * Get current url account of Salesforce.
+     */
+    public abstract String getCurrentUrl();
 }

@@ -76,8 +76,6 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return message string.
      */
     public String getMessageConfirmation() {
-        String url = driver.getCurrentUrl();
-        System.out.println("miiiiiiiiiiiiiiiiiiiiiii uuuuuuuuuuuurrrrrrrrrrlllllllllllll: "+url);
         return messageConfirmation.getText();
     }
 
@@ -94,5 +92,15 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     @Override
     public void deleteAccount(String nameAccount) {
+    }
+
+    /**
+     * Get current account
+     * @return currentUrl string.
+     */
+    @Override
+    public String getCurrentUrl() {
+        String currentUrl = driver.getCurrentUrl();
+        return currentUrl;
     }
 }

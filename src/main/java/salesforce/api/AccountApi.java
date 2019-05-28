@@ -16,11 +16,15 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class AccountApi {
-    public void deleteAccount() {
-        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/0014P000026q11OQAQ";
-        String token = "00D4P000000gLN4!AQQAQP.osXGMgRHRMXKObYotXXuzfoVeYhYLlrdiFnp3PAIWExSPhqlKHl0rXm26DN_xFvXXu.sdFwW6Y5DiLhcCaCYLikNn";
+    public void deleteAccount(String id) {
+        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/"+id;
+        String token = "00D4P000000gLN4!AQQAQPHZ51eqO2c4wR5RVWKdgJpWy6UFC4MUYqF82WBSrJEjqO5qdeOs.5TwEUIGa.1aAXLbD4XSrXPEWiAALpp9FxAncVUp";
         System.out.println(url +"  "+ token);
         Response response = given().headers("Content-Type", "application/json").
                 auth().oauth2(token).when().request("DELETE", url);
+    }
+
+    public static AccountApi getInstance() {
+        return new AccountApi();
     }
 }

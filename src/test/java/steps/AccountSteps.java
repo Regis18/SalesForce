@@ -41,26 +41,36 @@ public class AccountSteps {
     NewAccountPageAbstract newAccountPage;
     OneAccountAbstract oneAccountPage;
     TransporterPage transporterPage = TransporterPage.getInstance();
-    Account account;
+    Account account = new Account();
 
     @Given("^I navigate to Home Page$")
     public void navigateToAccountHomePage() {
         homeAccountPage = transporterPage.navigateToAccountHomePage();
     }
 
+    /**
+     * Navigate to Account Page.
+     */
     @Given("^I navigate to account page$")
     public void goAccountPage() {
         accountPage = homeAccountPage.clickAccountBtn();
     }
 
+    /**
+     * Create new account.
+     * @param accountInformation
+     */
     @When("^I create a new account in Salesforce with the following value")
     public void createNewAccount(Map<String, String> accountInformation) {
-        account = new Account();
         account.setAccountInformation(accountInformation);
         newAccountPage = accountPage.clickNewAccountBtn();
         oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
+        account.setId(oneAccountPage.getCurrentUrl());
     }
 
+    /**
+     * Verify a message confirmation.
+     */
     @Then("^I verify a message confirmation of a new account was created$")
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {

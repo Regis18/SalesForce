@@ -36,7 +36,7 @@ public class HomeAccountLightPage extends HomeAccountPageAbstract {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountBtn));
+        wait.until(ExpectedConditions.visibilityOf(homeForm));
     }
 
     /**
