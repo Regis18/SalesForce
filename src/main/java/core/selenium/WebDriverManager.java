@@ -1,6 +1,6 @@
 package core.selenium;
 
-import core.selenium.webdriver.FactoryBrowser;
+import core.selenium.webdriver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,8 +9,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Silvia Valencia on 2/2/2018.
  * Class to manage web driver.
- * @author Regis Humana
- * @version 0.0.1
  */
 public class WebDriverManager {
     private WebDriver webDriver;
@@ -43,7 +41,7 @@ public class WebDriverManager {
      */
     private void initialize() {
         webDriverConfig.initialize();
-        this.webDriver = FactoryBrowser.getWebDriver();
+        this.webDriver = WebDriverFactory.getWebDriver();
         this.webDriver.manage().window().maximize();
         this.webDriver.manage()
                 .timeouts()

@@ -103,7 +103,7 @@ public class CampaignSteps {
     @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
     public void verifyIsInTheListOfCampaigns(String name) {
         // It is false because means that the element exist in the list.
-        assertFalse(campaignPage.checkCampaignList(campaign.getName()));
+        assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
 
     /**
@@ -111,7 +111,7 @@ public class CampaignSteps {
      * @param name string
      */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
-    public void iDeleteACampaignInSalesforce(String name) {
+    public void deleteACampaignInSalesforce(String name) {
         oneCampaignPage.deleteCampaign(name);
     }
 
@@ -134,7 +134,7 @@ public class CampaignSteps {
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
     public void verifyIsNotInTheListOfCampaigns(String name) {
-        assertTrue(campaignPage.checkCampaignList(campaign.getName()));
+        assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
 }

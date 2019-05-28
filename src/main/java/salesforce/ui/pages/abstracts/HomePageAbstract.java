@@ -1,6 +1,7 @@
 package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 
 /**
@@ -18,8 +19,7 @@ public abstract class HomePageAbstract extends BasePage {
 
     /**
      * This method will implemented for display a created task.
-     * @return
+     * @return NewTaskAbstract.
      */
     public abstract NewTaskAbstract displayCreateTask();
-
 }
