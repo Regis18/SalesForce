@@ -13,12 +13,14 @@
 
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
+import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
 import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
@@ -41,10 +43,12 @@ public class CampaignSteps {
     private CampaignPageAbstract campaignPage;
     private HomePageAbstract homePage;
     private NewCampaignAbstract newCampaignPage;
+    private EditCampaignAbstract editCampaignPage;
     private OneCampaignAbstract oneCampaignPage;
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Campaign campaign;
+    private Map<String, String> mapOut;
 
     /**
      * Campaign steps.
@@ -58,8 +62,8 @@ public class CampaignSteps {
     /**
      * Navigate to Campaign Page.
      */
-    @Given("^I navigate to Campaign Page$")
-    public void navigateToCampaignForm() {
+    @Given("^I open to Campaign Page$")
+    public void openToCampaignForm() {
         homePage = context.getHomePage();
         campaignPage = homePage.clickCampaignBtn();
     }
@@ -70,6 +74,7 @@ public class CampaignSteps {
      */
     @When("^I create a new campaign for Campaigns$")
     public void createANewCampaign(final Map<String, String> mapOut) {
+        this.mapOut = mapOut;
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
@@ -137,4 +142,27 @@ public class CampaignSteps {
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
+    /**
+     * Update the characteristics of a campaign.
+     * @param nameUpdate string
+     */
+    @When("^I update the campaign the characteristics of \"([^\"]*)\" with the following characteristics:$")
+    public void updateTheCampaignTheCharacteristics(final String nameUpdate, final Map<String, String> mapOut) {
+//        campaign.processInformation(mapOut);
+//        newCampaignPage = campaignPage.clickNewCampaignBtn();
+//        oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
+    }
+
+    /**
+     * Open to the Edit Popup to initialize Edit Campaign.
+     */
+    @When("^I open the Edit Popup of the Campaign$")
+    public void openTheEditPopupOfTheCampaign() {
+        editCampaignPage = oneCampaignPage.openEditCampaign();
+    }
+
+    @Then("^I verify all of the values from the \"([^\"]*)\" are in Edit fields Popup$")
+    public void verifyAllOfTheValuesFromTheAreInEditFieldsPopup(String nameCampaign) {
+        assertEquals(campaign, editCampaignPage.getCampaignValues(mapOut));
+    }
 }

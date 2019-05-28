@@ -122,7 +122,7 @@ public class TransporterPage {
             default:
                 break;
         }
-        return PageFactory.homeAccountPage();
+        return PageFactory.getHomeAccountPage();
     }
 
     /**
@@ -142,6 +142,6 @@ public class TransporterPage {
                 break;
             default:
         }
-        return PageFactory.taskHomePage();
+        return PageFactory.getTaskHomePage();
     }
 }

@@ -36,7 +36,7 @@ public abstract class NewAccountPageAbstract extends BasePage {
     public OneAccountAbstract createNewAccount(final Account account, final Map accountInformation) {
         setAccountData(account, accountInformation);
         clickSaveBtn();
-        return PageFactory.oneAccountPage();
+        return PageFactory.getOneAccountPage();
     }
 
     /**

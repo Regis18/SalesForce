@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignPopup.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EditCampaignLightPopup.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -16,87 +16,85 @@ package salesforce.ui.pages.lightning.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 
-import java.util.Map;
+import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
 
 /**
- * NewCampaignPopup.
- * @author Regis Humana.
+ * EditCampaignLightPopup.
+ * @author Regis Humana
  * @version 0.0.1
  */
-public class NewCampaignPopup extends NewCampaignAbstract {
+public class EditCampaignLightPopup extends EditCampaignAbstract {
 
-    @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
-    private WebElement newCampaignPopup;
+    @FindBy(xpath = "[class='modal-container slds-modal__container']")
+    private WebElement editCampaignPopup;
 
-    @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
+    @FindBy(css = "[class^='uiInput uiInputText'] input")
     private WebElement nameTxt;
 
-    @FindBy(xpath = "//button[@title='Save']")
+    @FindBy(css = "[class^='slds-button slds-button--neutral uiButton--default']")
     private WebElement saveBtn;
 
-    @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
+    @FindBy(xpath = "[class^='uiInput uiInputCheckbox'] input")
     private WebElement activateChk;
 
-    @FindBy(css = "div[id^='133'] a")
+    @FindBy(css = "//child::div[4][contains(@class'Row')]//a")
     private WebElement typeCmb;
 
-    @FindBy(css = "div[id^='197'] a")
+    @FindBy(css = "d//child::div[5][contains(@class,'Row')]//a")
     private WebElement statusCmb;
 
-    @FindBy(css = "input[id^='254']")
+    @FindBy(css = "//child::div[6][contains(@class,\"Row\")]//input")
     private WebElement startDateTxt;
 
-    @FindBy(css = "input[id^='295']")
+    @FindBy(css = "//child::div[7][contains(@class,\"Row\")]//input")
     private WebElement endDateTxt;
 
-    @FindBy(css = "input[id^='336']")
+    @FindBy(css = "//child::div[8][contains(@class,\"Row\")]//input")
     private WebElement expectedRevenueTxt;
 
-    @FindBy(css = "input[id^='372']")
+    @FindBy(css = "//child::div[9][contains(@class,\"Row\")]//input")
     private WebElement budgetedCostTxt;
 
-    @FindBy(css = "input[id^='408']")
+    @FindBy(css = "//child::div[10][contains(@class,\"Row\")]//input")
     private WebElement actualCostTxt;
 
-    @FindBy(css = "input[id^='444']")
+    @FindBy(css = "//child::div[11][contains(@class,\"Row\")]//input")
     private WebElement expectedResponseTxt;
 
-    @FindBy(css = "input[id^='480']")
+    @FindBy(css = "//child::div[12][contains(@class,\"Row\")]//input")
     private WebElement numSentTxt;
 
-    @FindBy(css = "textarea[id^='621']")
+    @FindBy(css = "[class=' textarea']")
     private WebElement descriptionTxt;
 
-
     /**
-     * Wait for the Popup to initialize.
+     * Waits for the Edit Campaign Popup appears.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newCampaignPopup));
+        wait.until(ExpectedConditions.visibilityOf(editCampaignPopup));
     }
 
+    //SETTERS
     /**
-     * Set the name into NameTxt.
+     * Sets the name into NameTxt.
      * @param name **this is the name**
      */
     protected void setNameTxt(final String name) {
+        nameTxt.clear();
         nameTxt.sendKeys(name);
     }
 
     /**
-     * Click to Save the changes.
+     * Clicks to Save the changes.
      */
     public void clickSaveBtn() {
         saveBtn.click();
     }
 
     /**
-     * Set Activate checkbox.
+     * Sets Activate checkbox.
      * @param isActivate boolean
      */
     @Override
@@ -107,7 +105,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set type combo box.
+     * Sets type combo box.
      * @param type string.
      */
     @Override
@@ -116,7 +114,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set status combo box.
+     * Sets status combo box.
      * @param status string.
      */
     @Override
@@ -125,7 +123,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set start date text box.
+     * Sets start date text box.
      * @param startDate string.
      */
     @Override
@@ -135,7 +133,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set end date text box.
+     * Sets end date text box.
      * @param endDate string.
      */
     @Override
@@ -145,7 +143,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set expected revenue text box.
+     * Sets expected revenue text box.
      * @param expected integer.
      */
     @Override
@@ -155,7 +153,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set budgeted cost text box.
+     * Sets budgeted cost text box.
      * @param budgeted integer.
      */
     @Override
@@ -165,7 +163,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set actual cost text box.
+     * Sets actual cost text box.
      * @param actualCost integer.
      */
     @Override
@@ -175,7 +173,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set num sent text box.
+     * Sets num sent text box.
      * @param numSent integer.
      */
     @Override
@@ -185,7 +183,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set description text box.
+     * Sets description text box.
      * @param description string.
      */
     @Override
@@ -194,15 +192,104 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         descriptionTxt.sendKeys(description);
     }
 
+    //Getters
+
     /**
-     * Set campaign data into Campaign form.
-     * @param data Campaign
-     * @param map Map
+     * Gets Name of Campaign.
+     * @return string
      */
-    @Override
-    public void setCampaignData(final Campaign data, final Map<String, String> map) {
-        super.setCampaignData(data, map);
+    protected String getNameTxt() {
+        return nameTxt.getText();
     }
+
+    /**
+     * Gets Active of Campaign.
+     * @return boolean
+     */
+    protected boolean getActivateChk() {
+        return activateChk.isSelected();
+    }
+
+    /**
+     * Gets Type text.
+     * @return string
+     */
+    protected String getTypeCmb() {
+        return typeCmb.getText();
+    }
+
+    /**
+     * Gets Status text.
+     * @return string.
+     */
+    protected String getStatusCmb() {
+        return statusCmb.getText();
+    }
+
+    /**
+     * Gets Start Date text.
+     * @return string
+     */
+    protected String getStartDateTxt() {
+        return startDateTxt.getText();
+    }
+
+    /**
+     * Gets End Date Text.
+     * @return string.
+     */
+    protected String getEndDateTxt() {
+        return endDateTxt.getText();
+    }
+
+    /**
+     * Gets Expected Revenue text.
+     * @return string.
+     */
+    protected String getExpectedRevenueTxt() {
+        return expectedRevenueTxt.getText();
+    }
+
+    /**
+     * Gets budgeted cost text.
+     * @return string.
+     */
+    protected String getBudgetedCostTxt() {
+        return budgetedCostTxt.getText();
+    }
+
+    /**
+     * Gets Actual Cost text.
+     * @return string.
+     */
+    protected String getActualCostTxt() {
+        return actualCostTxt.getText();
+    }
+
+    /**
+     * Gets Expected response text.
+     * @return string
+     */
+    protected String getExpectedResponseTxt() {
+        return expectedResponseTxt.getText();
+    }
+
+    /**
+     * Gets Num sent text.
+     * @return string.
+     */
+    protected String getNumSentTxt() {
+        return numSentTxt.getText();
+    }
+
+    /**
+     * Gets Description text.
+     * @return string.
+     */
+    protected String getDescriptionTxt() {
+        return descriptionTxt.getText();
+    }
+    // End Getters
 
     /**
      * Set to Expected Response text.
@@ -213,4 +300,5 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         expectedResponseTxt.clear();
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
+
 }

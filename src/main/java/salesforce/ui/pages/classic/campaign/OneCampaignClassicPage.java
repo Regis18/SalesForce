@@ -16,6 +16,8 @@ package salesforce.ui.pages.classic.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
+import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
@@ -69,5 +71,11 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     public void deleteCampaign(final String nameCampaign) {
         deleteUpBtn.click();
         driver.switchTo().alert().accept();
+    }
+//todo DO it
+
+    @Override
+    public EditCampaignAbstract openEditCampaign() {
+        return null;
     }
 }

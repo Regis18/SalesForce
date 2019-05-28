@@ -44,7 +44,7 @@ public class TaskSteps {
     public TaskSteps(Task task) {
 
         this.task = task;
-        homePage = PageFactory.homePage();
+        homePage = PageFactory.getHomePage();
     }
 
 //    public TaskSteps(Context context) {

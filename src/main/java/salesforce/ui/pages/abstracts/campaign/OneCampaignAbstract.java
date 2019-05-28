@@ -22,12 +22,12 @@ import salesforce.ui.BasePage;
  */
 public abstract class OneCampaignAbstract extends BasePage {
     /**
-     * Implement verifyComponentsCampaign.
+     * VerifyComponentsCampaign.
      */
     public abstract boolean verifyComponentsCampaign();
 
     /**
-     * Implement get name to assert with steps.
+     * Get name to assert with steps.
      */
     public abstract String getNameCampaign();
 
@@ -36,4 +36,9 @@ public abstract class OneCampaignAbstract extends BasePage {
      * @param nameCampaign string
      */
     public abstract void deleteCampaign(String nameCampaign);
+
+    /**
+     * Open Edit Campaign
+     */
+    public abstract EditCampaignAbstract openEditCampaign();
 }

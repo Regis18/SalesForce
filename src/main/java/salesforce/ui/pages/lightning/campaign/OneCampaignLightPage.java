@@ -16,6 +16,8 @@ package salesforce.ui.pages.lightning.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
+import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 
 /**
@@ -43,8 +45,11 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
                     "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
-    @FindBy(css = "div[class^=\"branding-actions \"] a[title='Delete']")
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
     private WebElement deleteMainMenuCmb;
+
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[2]//a")
+    private WebElement editMainMenuCmb;
 
     //**can be removed
     @FindBy(css = "button[title='Delete']")
@@ -102,5 +107,16 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
         mainMenuCmb.click();
         deleteMainMenuCmb.click();
         deletePopupBtn.click();
+    }
+
+    /**
+     * Open the Edit Popup doing click in the menu.
+     * @return EditCampaignAbstract could be Light o Classic.
+     */
+    @Override
+    public EditCampaignAbstract openEditCampaign() {
+        mainMenuCmb.click();
+        editMainMenuCmb.click();
+        return new EditCampaignLightPopup();
     }
 }

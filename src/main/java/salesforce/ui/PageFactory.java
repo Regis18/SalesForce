@@ -45,7 +45,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return HomePageAbstract.
      */
-    public static HomePageAbstract homePage() {
+    public static HomePageAbstract getHomePage() {
         switch (setup.getLayout()) {
             case "classic":
                 return new HomeClassicPage();
@@ -60,7 +60,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return CampaignPageAbstract.
      */
-    public static CampaignPageAbstract campaignPage() {
+    public static CampaignPageAbstract getCampaignPage() {
         switch (setup.getLayout()) {
             case "classic":
                 return new CampaignClassicPage();
@@ -75,7 +75,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return OneCampaignAbstract.
      */
-    public static OneCampaignAbstract oneCampaignPage() {
+    public static OneCampaignAbstract getOneCampaignPage() {
         switch (setup.getLayout()) {
             case "classic":
                 return new OneCampaignClassicPage();
@@ -86,7 +86,7 @@ public class PageFactory {
         }
     }
 
-    public static TaskPageAbstract taskHomePage() {
+    public static TaskPageAbstract getTaskHomePage() {
         switch (setup.getLayout()) {
             case "classic":
                 return new TaskPageClassic();
@@ -101,7 +101,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return HomePageAbstract.
      */
-    public static HomeAccountPageAbstract homeAccountPage() {
+    public static HomeAccountPageAbstract getHomeAccountPage() {
         switch (setup.getLayout()) {
             //case "classic":
             //    return new HomeClassicPage();
@@ -116,7 +116,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return AccountPageAbstract.
      */
-    public static AccountPageAbstract accountPage() {
+    public static AccountPageAbstract getAccountPage() {
         switch (setup.getLayout()) {
             //case "classic":
              //  return new AccountClassicPage();
@@ -131,7 +131,7 @@ public class PageFactory {
      * Get the Page Object that is correct.
      * @return OneAccountAbstract.
      */
-    public static OneAccountAbstract oneAccountPage() {
+    public static OneAccountAbstract getOneAccountPage() {
         switch (setup.getLayout()) {
             //case "classic":
               //  return new OneAccountClassicPage();
