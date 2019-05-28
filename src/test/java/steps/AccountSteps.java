@@ -13,22 +13,21 @@
 
 package steps;
 
-import cucumber.api.java.en.Given;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import salesforce.entities.Account;
+import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 import salesforce.ui.pages.lightning.account.OneAccountLightPage;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertFalse;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 /**
  * AccountSteps.
@@ -36,56 +35,61 @@ import static org.testng.Assert.assertTrue;
  */
 public class AccountSteps {
 
-    AccountPageAbstract accountPage;
-    HomeAccountPageAbstract homeAccountPage;
-    NewAccountPageAbstract newAccountPage;
-    OneAccountAbstract oneAccountPage;
-    TransporterPage transporterPage = TransporterPage.getInstance();
-    Account account = new Account();
+    private HomePageAbstract homePage;
+    private AccountPageAbstract accountPage;
+    private NewAccountPageAbstract newAccountPage;
+    private OneAccountAbstract oneAccountPage;
+    private TransporterPage transporterPage = TransporterPage.getInstance();
+    private Context context;
+    private Account account;
 
-    @Given("^I navigate to Home Page$")
-    public void navigateToAccountHomePage() {
-        homeAccountPage = transporterPage.navigateToAccountHomePage();
+    /**
+     * Account steps.
+     * @param context string
+     */
+    public AccountSteps(Context context) {
+        this.context = context;
+        this.account = context.getAccount();
     }
 
     /**
      * Navigate to Account Page.
      */
-    @Given("^I navigate to account page$")
-    public void goAccountPage() {
-        accountPage = homeAccountPage.clickAccountBtn();
+    @When("^I open the Account Page$")
+    public void navigateToAccountPage() {
+        homePage = context.getHomePage();
+        accountPage = homePage.clickAccountBtn();
     }
 
     /**
      * Create new account.
      * @param accountInformation
      */
-    @When("^I create a new account in Salesforce with the following value")
+    @And("^I create a new Account from Accounts Page with the following values$")
     public void createNewAccount(Map<String, String> accountInformation) {
         account.setAccountInformation(accountInformation);
         newAccountPage = accountPage.clickNewAccountBtn();
         oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
-        account.setId(oneAccountPage.getCurrentUrl());
+        context.getAccount().setId(oneAccountPage.getAccountId());
     }
 
     /**
      * Verify a message confirmation.
      */
-    @Then("^I verify a message confirmation of a new account was created$")
+    @When("^I verify a message that confirms the new Account was created is displayed$")
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "Account \"" + account.getName() + "\" was created.");
+            assertEquals(message, "Account \"" + context.getAccount().getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
-
     }
 
     /**
      * Verify account.
      */
-    @Then("^I verify the page of account that was created$")
+    @And("^I verify the page of account that was created$")
     public void verifyThePageOfAccountThatWasCreated() {
         assertTrue(oneAccountPage.verifyComponentsAccount());
     }
@@ -94,8 +98,17 @@ public class AccountSteps {
      * Verify account to the list.
      * @param name string.
      */
-    @Then("^I verify \"([^\"]*)\" is in the list of accounts$")
+    @Then("^I verify the Account \"([^\"]*)\" in the Accounts list in Accounts Page$")
     public void verifyIsInTheListOfAccounts(String name) {
-        assertFalse(accountPage.checkAccountList(account.getName()));
+        assertFalse(accountPage.checkAccountList(context.getAccount().getName()));
+    }
+
+    /**
+     * Navigate to Account Page.
+     */
+    @When("^I open Accounts Page from Accounts Page$")
+    public void AccountPage() {
+        homePage = context.getHomePage();
+        accountPage = homePage.clickAccountBtn();
     }
 }

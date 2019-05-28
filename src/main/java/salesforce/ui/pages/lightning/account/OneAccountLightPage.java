@@ -99,8 +99,10 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return currentUrl string.
      */
     @Override
-    public String getCurrentUrl() {
+    public String getAccountId() {
         String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
+        String[] arrayIdAccount = currentUrl.split("/");
+        String idAccount = arrayIdAccount[arrayIdAccount.length-2];
+        return idAccount;
     }
 }

@@ -20,18 +20,19 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import salesforce.api.AccountApi;
 import salesforce.entities.Account;
+import salesforce.entities.Context;
 
 public class AccountHook {
     private Logger logs = Logs.getInstance().getLog();
     private WebDriver driver;
-    Account account;
+    private Context context;
 
     /**
      * Constructor to initialize context and driver.
-     * @param account
+     * @param context
      */
-    public AccountHook(Account account) {
-        this.account = account;
+    public AccountHook(Context context) {
+        this.context = context;
         driver = WebDriverManager.getInstance().getWebDriver();
     }
 
@@ -41,6 +42,6 @@ public class AccountHook {
     @After("@deleteAccount")
     public void deleteNewAccount() {
         AccountApi accountApi = new AccountApi();
-        accountApi.deleteAccount(account.getId());
+        accountApi.deleteAccount(context.getAccount().getId());
     }
 }

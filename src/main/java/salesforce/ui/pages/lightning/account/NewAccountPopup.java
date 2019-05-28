@@ -131,7 +131,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     private WebElement saveAccountBtn;
 
     /**
-     * Wait for the Popup to initialize.
+     * Wait for the Pop up to initialize.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -163,55 +163,55 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setSite(String site) { siteAccountTxt.sendKeys(site); }
     @Override
-    public void setTicker(String ticker) { tickerSimbolAccountTxt.sendKeys(ticker); }
+    public void setTicker(String ticker) { parentAccountTxt.sendKeys(ticker); }
     @Override
-    public void setType(String type) { employeeAccountTxt.sendKeys(type); }
+    public void setType(String type) { parentAccountTxt.sendKeys(type); }
     @Override
-    public void setOwnership(String ownership) { ownershipAccountLst.sendKeys(ownership); }
+    public void setOwnership(String ownership) { parentAccountTxt.sendKeys(ownership); }
     @Override
-    public void setIndustry(String industry) { industryAccountLst.sendKeys(industry); }
+    public void setIndustry(String industry) { parentAccountTxt.sendKeys(industry); }
     @Override
-    public void setEmployee(String employee) { phoneAccountTxt.sendKeys(employee); }
+    public void setEmployee(String employee) { parentAccountTxt.sendKeys(employee); }
     @Override
-    public void setAnualRevenue(String anualRevenue) { annualRevenueAccountTxt.sendKeys(anualRevenue); }
+    public void setAnualRevenue(String anualRevenue) { parentAccountTxt.sendKeys(anualRevenue); }
     @Override
-    public void setSicCode(String sicCode) { sicCodeAccountTxt.sendKeys(sicCode); }
+    public void setSicCode(String sicCode) { parentAccountTxt.sendKeys(sicCode); }
     @Override
-    public void setBillingStreet(String billingStreet) { billingStreetAccountArea.sendKeys(billingStreet); }
+    public void setBillingStreet(String billingStreet) { parentAccountTxt.sendKeys(billingStreet); }
     @Override
-    public void setShippingStreet(String shippingStreet) { shippingStreetAccountArea.sendKeys(shippingStreet); }
+    public void setShippingStreet(String shippingStreet) { parentAccountTxt.sendKeys(shippingStreet); }
     @Override
-    public void setBillingCity(String billingCity) { phoneAccountTxt.sendKeys(billingCity); }
+    public void setBillingCity(String billingCity) { parentAccountTxt.sendKeys(billingCity); }
     @Override
-    public void setBillingState(String billingState) { phoneAccountTxt.sendKeys(billingState); }
+    public void setBillingState(String billingState) { parentAccountTxt.sendKeys(billingState); }
     @Override
-    public void setShippingCity(String shippingCity) { shippingCityAccountTxt.sendKeys(shippingCity); }
+    public void setShippingCity(String shippingCity) { parentAccountTxt.sendKeys(shippingCity); }
     @Override
-    public void setShippingState(String shippingState) { shipppingStateAccountTxt.sendKeys(shippingState); }
+    public void setShippingState(String shippingState) { parentAccountTxt.sendKeys(shippingState); }
     @Override
-    public void setBillingZip(String billingZip) { billingZipAccountTxt.sendKeys(billingZip); }
+    public void setBillingZip(String billingZip) { parentAccountTxt.sendKeys(billingZip); }
     @Override
-    public void setBillingCountry(String billingCountry) { billingCountryAccountTxt.sendKeys(billingCountry); }
+    public void setBillingCountry(String billingCountry) { parentAccountTxt.sendKeys(billingCountry); }
     @Override
-    public void setShippingZip(String shippingZip) { shipppingZipAccountTxt.sendKeys(shippingZip); }
+    public void setShippingZip(String shippingZip) { parentAccountTxt.sendKeys(shippingZip); }
     @Override
-    public void setShippingCountry(String shippingCountry) { shipppingCountryAccountTxt.sendKeys(shippingCountry); }
+    public void setShippingCountry(String shippingCountry) { parentAccountTxt.sendKeys(shippingCountry); }
     @Override
-    public void setCustomerPriority(String customerPriority) { customerAccountLst.sendKeys(customerPriority); }
+    public void setCustomerPriority(String customerPriority) { parentAccountTxt.sendKeys(customerPriority); }
     @Override
-    public void setSlaAccount(String slaAccount) { slaStateAccountTxt.sendKeys(slaAccount); }
+    public void setSlaAccount(String slaAccount) { parentAccountTxt.sendKeys(slaAccount); }
     @Override
-    public void setSlaDate(String slaDate) { slaDateAccountTxt.sendKeys(slaDate); }
+    public void setSlaDate(String slaDate) { parentAccountTxt.sendKeys(slaDate); }
     @Override
-    public void setSlaSerial(String slaSerial) { slaSerialStateAccountTxt.sendKeys(slaSerial); }
+    public void setSlaSerial(String slaSerial) { parentAccountTxt.sendKeys(slaSerial); }
     @Override
-    public void setNumberLocations(String numberLocations) { locationAccountLst.sendKeys(numberLocations); }
+    public void setNumberLocations(String numberLocations) { parentAccountTxt.sendKeys(numberLocations); }
     @Override
-    public void setUpsellOportunity(String upsellOportunity) { upsellStateAccountLst.sendKeys(upsellOportunity); }
+    public void setUpsellOportunity(String upsellOportunity) { parentAccountTxt.sendKeys(upsellOportunity); }
     @Override
-    public void setActive(String active) { activeStateAccountLst.sendKeys(active); }
+    public void setActive(String active) { parentAccountTxt.sendKeys(active); }
     @Override
-    public void setDescription(String description) { descriptionStateAccountArea.sendKeys(description); }
+    public void setDescription(String description) { parentAccountTxt.sendKeys(description); }
 
     /**
      * Click to Save the changes.

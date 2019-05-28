@@ -41,5 +41,5 @@ public abstract class OneAccountAbstract extends BasePage {
     /**
      * Get current url account of Salesforce.
      */
-    public abstract String getCurrentUrl();
+    public abstract String getAccountId();
 }

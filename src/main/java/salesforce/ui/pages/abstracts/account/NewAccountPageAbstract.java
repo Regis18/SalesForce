@@ -258,20 +258,20 @@ public abstract class NewAccountPageAbstract extends BasePage {
 
     private HashMap<String, StrategySetter> composeStrategyMap(final Account account, final Map<String, String> accountInformation){
         HashMap<String, StrategySetter> strategyMap  = new HashMap<>();
-        strategyMap.put("name",        () -> setNameTxt(accountInformation.get("name")));
-        strategyMap.put("phone",       () -> setPhone(accountInformation.get("phone")));
-        strategyMap.put("fax",         () -> setFax(accountInformation.get("fax")));
-        strategyMap.put("number",      () -> setNumberAccount(accountInformation.get("number")));
-        strategyMap.put("website",     () -> setWebSite(accountInformation.get("website")));
-        strategyMap.put("site",        () -> setSite(accountInformation.get("site")));
-        strategyMap.put("ticker",      () -> setTicker(accountInformation.get("ticker")));
-        strategyMap.put("employee",    () -> setEmployee(accountInformation.get("employee")));
-        strategyMap.put("revenue",     () -> setAnualRevenue(accountInformation.get("revenue")));
-        strategyMap.put("sic code",    () -> setSicCode(accountInformation.get("sic code")));
-        strategyMap.put("bill street", () -> setBillingStreet(accountInformation.get("bill street")));
-        strategyMap.put("shipp street",() -> setShippingStreet(accountInformation.get("shipp street")));
-        strategyMap.put("bill city",   () -> setBillingCity(accountInformation.get("bill city")));
-        strategyMap.put("bill state",  () -> setBillingState(accountInformation.get("bill state")));
+        strategyMap.put("Name",        () -> setNameTxt(accountInformation.get("Name")));
+        strategyMap.put("Phone",       () -> setPhone(accountInformation.get("Phone")));
+        strategyMap.put("Fax",         () -> setFax(accountInformation.get("Fax")));
+        strategyMap.put("Number",      () -> setNumberAccount(accountInformation.get("Number")));
+        strategyMap.put("Website",     () -> setWebSite(accountInformation.get("Website")));
+        strategyMap.put("Site",        () -> setSite(accountInformation.get("Ticker")));
+        strategyMap.put("Ticker",      () -> setTicker(accountInformation.get("ticker")));
+        strategyMap.put("Employee",    () -> setEmployee(accountInformation.get("Employee")));
+        strategyMap.put("Revenue",     () -> setAnualRevenue(accountInformation.get("Revenue")));
+        strategyMap.put("Sic Code",    () -> setSicCode(accountInformation.get("Sic Code")));
+        strategyMap.put("Bill Street", () -> setBillingStreet(accountInformation.get("Bill Street")));
+        strategyMap.put("Shipp Street",() -> setShippingStreet(accountInformation.get("Shipp Street")));
+        strategyMap.put("Bill City",   () -> setBillingCity(accountInformation.get("Bill City")));
+        strategyMap.put("Bill State",  () -> setBillingState(accountInformation.get("Bill State")));
 
         return strategyMap;
     }

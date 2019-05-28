@@ -21,8 +21,9 @@ import salesforce.ui.BasePage;
  * @version 0.0.1
  */
 public abstract class AccountPageAbstract extends BasePage {
+
     /**
-     * Click in New account button.
+     * Click in New Account button.
      * @return clickNewAccountBtn.
      */
     public abstract NewAccountPageAbstract clickNewAccountBtn();

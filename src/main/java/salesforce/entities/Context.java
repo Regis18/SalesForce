@@ -8,12 +8,14 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
  */
 public class Context {
     private Campaign campaign;
+    private Account account;
     private HomePageAbstract homePage;
 
     /**
      * This is the context for creation of the constructor.
      */
     public Context() {
+        this.account = new Account();
         this.campaign = new Campaign();
     }
 
@@ -39,5 +41,13 @@ public class Context {
      */
     public void setHomePage(final HomePageAbstract homePage) {
         this.homePage = homePage;
+    }
+
+    /**
+     * Get the Account object.
+     * @return account.
+     */
+    public Account getAccount() {
+        return account;
     }
 }
