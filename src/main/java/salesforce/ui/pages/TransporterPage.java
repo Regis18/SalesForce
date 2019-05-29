@@ -110,14 +110,34 @@ public class TransporterPage {
 
         switch (setup.getLayout()) {
             case "classic":
+                log.info("Navigate to tasks home page classic skin");
                 goToURL(baseURL + "/home/home.jsp");
                 break;
             case "light":
-                log.info("Navigate to tasks home page");
+                log.info("Navigate to tasks home page lightning skin");
                 goToURL(baseURL + "/lightning/o/Task/home");
                 break;
             default:
         }
         return PageFactory.taskHomePage();
+    }
+
+    /**
+     * Navigate to Tasks home page.
+     *
+     * @return New instance of HomePage.
+     */
+    public HomePageAbstract navigateToSalesForceHomePage() {
+
+        switch (setup.getLayout()) {
+            case "classic":
+                goToURL(baseURL + "/home/home.jsp");
+                break;
+            case "light":
+                 goToURL(baseURL + "/lightning/page/home");
+                break;
+            default:
+        }
+        return PageFactory.homePage();
     }
 }

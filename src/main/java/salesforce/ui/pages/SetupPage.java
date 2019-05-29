@@ -20,9 +20,11 @@ import salesforce.ui.BasePage;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.classic.HomeClassicPage;
 import salesforce.ui.pages.lightning.HomeLightPage;
+import salesforce.utils.Setup;
 
 /**
  * SetupPage.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -66,7 +68,20 @@ public class SetupPage extends BasePage {
         while (driver.getTitle().equals("") || driver.getTitle().equals("Lightning Experience")) {
             continue;
         }
-        isLight = driver.getTitle().equals("Home | Salesforce");
+
+        switch (Setup.getInstance().getLayout()) {
+            case "classic":
+                isLight = false;
+                break;
+            case "light":
+                isLight = true;
+                break;
+            default:
+                isLight = true;
+                break;
+        }
+
+     //   isLight = driver.getTitle().equals("Home | Salesforce");
         if (isLight) {
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {
@@ -76,6 +91,7 @@ public class SetupPage extends BasePage {
 
     /**
      * It navigates to Home Classic from setup classic or light.
+     *
      * @return HomePageAbstract.
      */
     public HomePageAbstract navigateHomeClassic() {
@@ -92,6 +108,7 @@ public class SetupPage extends BasePage {
 
     /**
      * It navigates to Home Light from setup classic or light.
+     *
      * @return HomePageAbstract.
      */
     public HomePageAbstract navigateHomeLight() {

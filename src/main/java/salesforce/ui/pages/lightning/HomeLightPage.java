@@ -13,12 +13,12 @@
 
 package salesforce.ui.pages.lightning;
 
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import org.openqa.selenium.interactions.Actions;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.lightning.account.AccountLightPage;
 import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
@@ -66,7 +66,7 @@ public class HomeLightPage extends HomePageAbstract {
         taskMenuButton.click();
     }
 
-      /**
+    /**
      * display Create task popup.
      *
      * @return NewTaskLightPopUp
@@ -81,10 +81,17 @@ public class HomeLightPage extends HomePageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
-        Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.ARROW_DOWN);
-        actions.sendKeys(Keys.ENTER);
-        actions.perform();
+//        if (WebDriverConfig.getInstance().getBrowser().toLowerCase() == "chrome") {
+//            Actions actions = new Actions(driver);
+//            actions.sendKeys(Keys.ARROW_DOWN);
+//            actions.sendKeys(Keys.ENTER);
+//            actions.perform();
+//        } else {
+            WebElement itemToSelect = wait.until(ExpectedConditions.
+                    visibilityOfElementLocated(By.xpath("//a[span/span[contains(text(),'New Task')]]")));
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click();", itemToSelect);
+        //}
         return new NewTaskLightPopUp();
     }
 
