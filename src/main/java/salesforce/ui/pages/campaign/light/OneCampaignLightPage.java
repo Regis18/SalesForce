@@ -11,16 +11,16 @@
  *
  */
 
-package salesforce.ui.pages.lightning.campaign;
+package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.utils.DriverMethods;
 
 import java.util.Map;
 
@@ -153,5 +153,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
             e.getMessage();
         }
         return result;
+    }
+
+    public boolean isCampaignFieldValueDisplayed(String key, String value) {
+        return DriverMethods.isElementPresent(By.xpath(dataCampaign.replace(ELEMENT, value)));
     }
 }

@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.campaign;
+package salesforce.ui.pages.campaign.abstracts;
 
 import core.utils.StrategySetter;
 import salesforce.entities.Campaign;
@@ -20,7 +20,6 @@ import salesforce.ui.PageFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * EditCampaignAbstract.

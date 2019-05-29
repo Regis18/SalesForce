@@ -17,11 +17,13 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import salesforce.api.CampaignApi;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
 
@@ -39,6 +41,8 @@ public class CampaignHook {
 
     private WebDriver driver;
 
+    private CampaignApi campaignApi;
+
     /**
      * Constructor to initialize context and driver.
      * @param context
@@ -46,6 +50,15 @@ public class CampaignHook {
     public CampaignHook(Context context) {
         this.context = context;
         driver = WebDriverManager.getInstance().getWebDriver();
+    }
+
+    /**
+     * Delete an Account.
+     */
+    @After("@deleteAccount")
+    public void deleteNewAccount() {
+        campaignApi = new CampaignApi();
+        campaignApi.deleteCampaign(context.getCampaign().getId());
     }
 
     /**

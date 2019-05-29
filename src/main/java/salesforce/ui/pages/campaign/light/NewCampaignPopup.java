@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) NewCampaignPopup.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,91 +11,95 @@
  *
  */
 
-package salesforce.ui.pages.classic.campaign;
+package salesforce.ui.pages.campaign.light;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 
 import java.util.Map;
 
 /**
- * NewCampaignClassicPage.
+ * NewCampaignPopup.
  * @author Regis Humana.
  * @version 0.0.1
  */
-public class NewCampaignClassicPage extends NewCampaignAbstract {
+public class NewCampaignPopup extends NewCampaignAbstract {
 
-    @FindBy(id = "bodyCell")
-    private WebElement newCampaignForm;
+    @FindBy(css = "div[class='modal-container slds-modal__container']")
+    private WebElement newCampaignPopup;
 
-    @FindBy(id = "cpn1")
+    @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
     private WebElement nameTxt;
 
-    @FindBy (xpath = "//td[@id=\"bottomButtonRow\"]//input[@name=\"save\"]")
-    private WebElement saveBottomBtn;
+    @FindBy(xpath = "//button[@title='Save']")
+    private WebElement saveBtn;
 
-    @FindBy(id = "cpn16")
+    @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
     private WebElement activateChk;
 
-    @FindBy(id = "cpn5")
-    private WebElement startDateTxt;
-
-    @FindBy(id = "cpn6")
-    private WebElement endDateTxt;
-
-    @FindBy(id = "cpn2")
+    @FindBy(css = "div[id^='133'] a")
     private WebElement typeCmb;
 
-    @FindBy(id = "cpn3")
+    @FindBy(css = "div[id^='197'] a")
     private WebElement statusCmb;
 
-    @FindBy(id = "cpn8")
+    @FindBy(css = "input[id^='254']")
+    private WebElement startDateTxt;
+
+    @FindBy(css = "input[id^='295']")
+    private WebElement endDateTxt;
+
+    @FindBy(css = "input[id^='336']")
     private WebElement expectedRevenueTxt;
 
-    @FindBy(id = "cpn9")
+    @FindBy(css = "input[id^='372']")
     private WebElement budgetedCostTxt;
 
-    @FindBy(id = "cpn10")
+    @FindBy(css = "input[id^='408']")
     private WebElement actualCostTxt;
 
-    @FindBy(id = "cpn11")
+    @FindBy(css = "input[id^='444']")
     private WebElement expectedResponseTxt;
 
-    @FindBy(id = "cpn13")
+    @FindBy(css = "input[id^='480']")
     private WebElement numSentTxt;
 
-    @FindBy(id = "cpn4")
+    @FindBy(css = "textarea[id^='621']")
     private WebElement descriptionTxt;
 
+    private String statusElements = "li[role='presentation'] a[title='element']";
+
     /**
-     * Wait for newCampaignForm.
+     * Wait for the Popup to initialize.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newCampaignForm));
+        wait.until(ExpectedConditions.visibilityOf(newCampaignPopup));
     }
 
     /**
-     * Click into Save bottom.
+     * Set the name into NameTxt.
+     * @param name **this is the name**
      */
-    @Override
-    protected void clickSaveBtn() {
-        saveBottomBtn.click();
-    }
-
-    /**
-     * Set name in the name TextBox.
-     * @param name String
-     */
-    @Override
     protected void setNameTxt(final String name) {
         nameTxt.sendKeys(name);
     }
 
+    /**
+     * Click to Save the changes.
+     */
+    public void clickSaveBtn() {
+        saveBtn.click();
+    }
+
+    /**
+     * Set Activate checkbox.
+     * @param isActivate boolean
+     */
     @Override
     protected void setActiveChk(final boolean isActivate) {
         if (isActivate) {
@@ -104,40 +108,43 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     }
 
     /**
-     * Set Type of Lightning.
+     * Set type combo box.
      * @param type string.
      */
     @Override
     protected void setTypeCmb(final String type) {
-        Select accountRole = new Select(typeCmb);
-        accountRole.selectByVisibleText(type);
+        typeCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
     }
 
     /**
-     * Set Status Combo Box,
+     * Set status combo box.
      * @param status string.
      */
     @Override
     protected void setStatusCmb(final String status) {
-        Select accountRole = new Select(statusCmb);
-        accountRole.selectByVisibleText(status);
+        //--None--, Planned, Completed, In Progress, Aborted
+        statusCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", status))).click();
     }
 
     /**
-     * Set start date.
+     * Set start date text box.
      * @param startDate string.
      */
     @Override
     protected void setStartDate(final String startDate) {
+        startDateTxt.clear();
         startDateTxt.sendKeys(startDate);
     }
 
     /**
-     * Set End Date.
+     * Set end date text box.
      * @param endDate string.
      */
     @Override
     protected void setEndDate(final String endDate) {
+        endDateTxt.clear();
         endDateTxt.sendKeys(endDate);
     }
 
@@ -147,6 +154,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setExpectedRevenueTxt(final Integer expected) {
+        expectedRevenueTxt.clear();
         expectedRevenueTxt.sendKeys(expected.toString());
     }
 
@@ -156,6 +164,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setBudgetedCostTxt(final Integer budgeted) {
+        budgetedCostTxt.clear();
         budgetedCostTxt.sendKeys(budgeted.toString());
     }
 
@@ -165,6 +174,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setActualCostTxt(final Integer actualCost) {
+        actualCostTxt.clear();
         actualCostTxt.sendKeys(actualCost.toString());
     }
 
@@ -174,6 +184,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setNumSent(final Integer numSent) {
+        numSentTxt.clear();
         numSentTxt.sendKeys(numSent.toString());
     }
 
@@ -183,6 +194,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setDescriptionTxt(final String description) {
+        descriptionTxt.clear();
         descriptionTxt.sendKeys(description);
     }
 
@@ -202,6 +214,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setExpectedResponse(final Integer expectedResponse) {
+        expectedResponseTxt.clear();
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }

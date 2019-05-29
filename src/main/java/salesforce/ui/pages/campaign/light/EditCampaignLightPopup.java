@@ -11,18 +11,17 @@
  *
  */
 
-package salesforce.ui.pages.lightning.campaign;
+package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 
 /**
  * EditCampaignLightPopup.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -71,6 +70,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
     private WebElement descriptionTxt;
 
     private String statusElements = "div[role=\"menu\"] li[role='presentation'] a[title='element']";
+
     /**
      * Waits for the Edit Campaign Popup appears.
      */
@@ -80,8 +80,10 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
     }
 
     //SETTERS
+
     /**
      * Sets the name into NameTxt.
+     *
      * @param name **this is the name**
      */
     protected void setNameTxt(final String name) {
@@ -98,17 +100,19 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets Activate checkbox.
+     *
      * @param isActivate boolean
      */
     @Override
     protected void setActiveChk(final boolean isActivate) {
-        if(isActivate) {
+        if (isActivate) {
             activateChk.click();
         }
     }
 
     /**
      * Set type combo box.
+     *
      * @param type string.
      */
     @Override
@@ -119,6 +123,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Set status combo box.
+     *
      * @param status string.
      */
     @Override
@@ -130,6 +135,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets start date text box.
+     *
      * @param startDate string.
      */
     @Override
@@ -140,6 +146,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets end date text box.
+     *
      * @param endDate string.
      */
     @Override
@@ -150,6 +157,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets expected revenue text box.
+     *
      * @param expected integer.
      */
     @Override
@@ -160,6 +168,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets budgeted cost text box.
+     *
      * @param budgeted integer.
      */
     @Override
@@ -170,6 +179,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets actual cost text box.
+     *
      * @param actualCost integer.
      */
     @Override
@@ -180,6 +190,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets num sent text box.
+     *
      * @param numSent integer.
      */
     @Override
@@ -190,6 +201,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Sets description text box.
+     *
      * @param description string.
      */
     @Override
@@ -202,6 +214,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Name of Campaign.
+     *
      * @return string
      */
     protected String getNameTxt() {
@@ -211,6 +224,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Active of Campaign.
+     *
      * @return boolean
      */
     protected boolean getActivateChk() {
@@ -220,6 +234,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Type text.
+     *
      * @return string
      */
     protected String getTypeCmb() {
@@ -230,6 +245,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Status text.
+     *
      * @return string.
      */
     protected String getStatusCmb() {
@@ -239,6 +255,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Start Date text.
+     *
      * @return string
      */
     protected String getStartDateTxt() {
@@ -248,6 +265,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets End Date Text.
+     *
      * @return string.
      */
     protected String getEndDateTxt() {
@@ -256,6 +274,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Expected Revenue text.
+     *
      * @return string.
      */
     protected String getExpectedRevenueTxt() {
@@ -264,6 +283,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets budgeted cost text.
+     *
      * @return string.
      */
     protected String getBudgetedCostTxt() {
@@ -272,6 +292,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Actual Cost text.
+     *
      * @return string.
      */
     protected String getActualCostTxt() {
@@ -280,6 +301,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Expected response text.
+     *
      * @return string
      */
     protected String getExpectedResponseTxt() {
@@ -288,6 +310,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Num sent text.
+     *
      * @return string.
      */
     protected String getNumSentTxt() {
@@ -297,6 +320,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Gets Description text.
+     *
      * @return string.
      */
     protected String getDescriptionTxt() {
@@ -306,6 +330,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
 
     /**
      * Set to Expected Response text.
+     *
      * @param expectedResponse string
      */
     @Override

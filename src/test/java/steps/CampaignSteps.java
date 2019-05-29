@@ -13,20 +13,21 @@
 
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.path.json.JsonPath;
+import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
-import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
-import salesforce.ui.pages.lightning.campaign.OneCampaignLightPage;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
 
 import java.util.Map;
 
@@ -48,6 +49,8 @@ public class CampaignSteps {
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Campaign campaign;
+    private CampaignApi campaignApi;
+    private JsonPath jsonPath;
     private Map<String, String> mapOut;
 
     /**
@@ -62,7 +65,7 @@ public class CampaignSteps {
     /**
      * Navigate to Campaign Page.
      */
-    @Given("^I open to Campaign Page$")
+    @Given("^I open the Campaigns Page$")
     public void openToCampaignForm() {
         homePage = context.getHomePage();
         campaignPage = homePage.clickCampaignBtn();
@@ -105,7 +108,7 @@ public class CampaignSteps {
      * Verify campaign to the list.
      * @param name string.
      */
-    @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
+    @Then("^I verify the Campaign name was \"([^\"]*)\" in the list of campaigns in Campaigns Page$")
     public void verifyIsInTheListOfCampaigns(String name) {
         // It is false because means that the element exist in the list.
         assertTrue(campaignPage.checkCampaignList(campaign.getName()));
@@ -146,7 +149,7 @@ public class CampaignSteps {
      * Update the characteristics of a campaign.
      * @param nameUpdate string
      */
-    @When("^I update the campaign the characteristics of \"([^\"]*)\" with the following characteristics:$")
+    @When("^I update the Campaign \"New Campaign\" with the following values$")
     public void updateTheCampaignTheCharacteristics(final String nameUpdate, final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
         oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
@@ -156,7 +159,7 @@ public class CampaignSteps {
     /**
      * Open to the Edit Popup to initialize Edit Campaign.
      */
-    @When("^I open the Edit Popup of the Campaign$")
+    @When("^I open the Edit Campaign Popup$")
     public void openTheEditPopupOfTheCampaign() {
         editCampaignPage = oneCampaignPage.openEditCampaign();
     }
@@ -174,8 +177,29 @@ public class CampaignSteps {
         }
     }
 
-    @Then("^I verify the data updated of Campaign in its own Page$")
+    /**
+     * Verify the updated
+     */
+    @Then("^I verify the updated values of Campaign in its own Page$")
     public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
         assertTrue(oneCampaignPage.verifyDataCampaign(campaign, mapOut));
+        // Update mapOut with the values from the entity
+        mapOut.forEach((key, value) -> {
+            assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
+                    "The field " + key + "was not displayed. Expected value "
+                            + value);
+        });
+    }
+
+    @Given("^I have a Campaign with the following values$")
+    public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
+        campaignApi = new CampaignApi();
+        jsonPath = campaignApi.createCampaign(mapOut);
+        campaign.setJsonValues(jsonPath);
+    }
+
+    @When("^I navigate to the Campaign Page$")
+    public void navigateToTheCampaignPage() {
+        oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
     }
 }

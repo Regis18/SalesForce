@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.campaign;
+package salesforce.ui.pages.campaign.abstracts;
 
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;

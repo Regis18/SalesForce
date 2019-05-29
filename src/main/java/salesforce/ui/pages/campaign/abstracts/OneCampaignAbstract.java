@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.campaign;
+package salesforce.ui.pages.campaign.abstracts;
 
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
@@ -46,4 +46,6 @@ public abstract class OneCampaignAbstract extends BasePage {
     public abstract EditCampaignAbstract openEditCampaign();
 
     public abstract boolean verifyDataCampaign(Campaign campaign, Map<String, String> mapOut);
+
+    public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
 }

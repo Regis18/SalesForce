@@ -11,15 +11,16 @@
  *
  */
 
-package salesforce.ui.pages.classic.campaign;
+package salesforce.ui.pages.campaign.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+
+import java.util.Map;
 
 /**
  * OneCampaignClassicPage.
@@ -80,9 +81,14 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
         return null;
     }
 
-    //TODO Do it verifydata campaign
+//    //TODO Do it verifydata campaign
     @Override
-    public boolean verifyDataCampaign(Campaign campaign) {
+    public boolean verifyDataCampaign(final Campaign campaign, final Map<String, String> mapOut) {
+        return false;
+    }
+
+    @Override
+    public boolean isCampaignFieldValueDisplayed(String key, String value) {
         return false;
     }
 }
