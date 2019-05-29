@@ -30,7 +30,6 @@ public class TransporterPage {
     private Setup setup = Setup.getInstance();
     private WebDriver driver;
 
-
     /**
      * Constructor of page transporter.
      */
@@ -134,10 +133,11 @@ public class TransporterPage {
 
         switch (setup.getLayout()) {
             case CLASSIC:
-                goToURL(baseLightURL + "/home/home.jsp");
+                log.info("Navigate to tasks home page classic skin");
+                goToURL(baseClassicURL + "/home/home.jsp");
                 break;
             case LIGHT:
-                log.info("Navigate to tasks home page");
+                log.info("Navigate to tasks home page lightning skin");
                 goToURL(baseLightURL + "/lightning/o/Task/home");
                 break;
             default:
@@ -162,5 +162,24 @@ public class TransporterPage {
                 break;
         }
         return PageFactory.getOneCampaignPage();
+    }
+
+    /**
+     * Navigate to Tasks home page.
+     *
+     * @return New instance of HomePage.
+     */
+    public HomePageAbstract navigateToSalesForceHomePage() {
+
+        switch (setup.getLayout()) {
+            case "classic":
+                goToURL(baseClassicURL + "/home/home.jsp");
+                break;
+            case "light":
+                 goToURL(baseLightURL + "/lightning/page/home");
+                break;
+            default:
+        }
+        return PageFactory.getHomePage();
     }
 }

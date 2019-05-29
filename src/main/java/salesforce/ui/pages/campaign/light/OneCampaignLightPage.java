@@ -61,6 +61,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     private String dataCampaign =  "//*[contains(@class,'test-id__field-value')]" +
                                     "//span[contains(text(), 'element')]";
+
+    private String keyValue = "//div[contains(@class, 'test-id__field-label-container')]//span[contains(text(),'element')]";
     private final String ELEMENT = "element";
 
     /**
@@ -140,8 +142,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getName())));
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getType())));
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStatus())));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStartDate())));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getEndDate())));
+//            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStartDate())));
+//            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getEndDate())));
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getExpectedRevenue()))));
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getBudgetedCost()))));
             driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getActualCost()))));
@@ -156,6 +158,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     }
 
     public boolean isCampaignFieldValueDisplayed(String key, String value) {
+        //falta
+//div[@class="test-id__field-label-container slds-form-element__label"][span[starts-with(text(),'Type')]]//ancestor::div[1][contains
         return DriverMethods.isElementPresent(By.xpath(dataCampaign.replace(ELEMENT, value)));
     }
 }

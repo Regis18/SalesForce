@@ -50,6 +50,11 @@ public abstract class TaskPageAbstract extends BasePage {
     public abstract Task updateCurrentTask(Task task);
 
     /**
+     * Logout.
+     */
+    public abstract void logout();
+
+    /**
      * Wait for load.
      */
     @Override

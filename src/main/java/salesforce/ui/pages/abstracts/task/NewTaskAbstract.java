@@ -31,7 +31,7 @@ public abstract class NewTaskAbstract extends BasePage {
      * @param task of type Task.
      * @return string
      */
-    public abstract String createNewTask(final Task task);
+    public abstract String createNewTask(Task task);
 
     /**
      * Click saved notification.
