@@ -20,6 +20,7 @@ import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
 /**
  * New Task classic skin.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -31,7 +32,7 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(css = "#createNewMenu")
     private WebElement createNewTaskMenu;
 
-    @FindBy(xpath = "//div[@id='createNewMenu']/a[@class='taskMru menuButtonMenuLink']")
+    @FindBy(xpath = "//div[@id='createNewMenu']/a[@class='taskMru menuButtonMenuLink' and contains(text(),'Task')]")
     private WebElement taskMenuItem;
 
     @FindBy(css = "input#tsk5")
@@ -43,12 +44,28 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
     private WebElement saveTask;
 
+    @FindBy(xpath = "//input[@id='tsk4']")
+    private WebElement dueDateTextBox;
+
+    @FindBy(xpath = "//input[@id='reminder_select_check']")
+    private WebElement reminderCheckBox;
+
+    @FindBy(xpath = "//select[@id='tsk13']")
+    private WebElement priorityDropDown;
+
+    @FindBy(xpath = "//select[@id='tsk12']")
+    private WebElement statusDropDown;
 
     @Override
     public String createNewTask(Task task) {
         createNewTaskDropDown.click();
         taskMenuItem.click();
         subjectTextBox.sendKeys(task.getSubject());
+        dueDateTextBox.sendKeys(task.getDueDate());
+        commentTextArea.sendKeys(task.getComment());
+        priorityDropDown.sendKeys(task.getPriority());
+        statusDropDown.sendKeys(task.getStatus());
+        reminderCheckBox.click();
         saveTask.click();
         return task.getSubject();
     }

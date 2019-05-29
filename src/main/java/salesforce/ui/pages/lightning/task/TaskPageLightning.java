@@ -13,9 +13,12 @@
 
 package salesforce.ui.pages.lightning.task;
 
+import core.selenium.WebDriverConfig;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
@@ -79,6 +82,9 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(xpath = "//button[contains(@class,'slds-button slds-button--neutral uiButton--brand')]")
     private WebElement saveUpdateTask;
 
+    @FindBy(xpath = "//div[span[img[@title='User']]]")
+    private WebElement userIcon;
+
     /**
      * Verify subject is displayed.
      *
@@ -88,7 +94,8 @@ public class TaskPageLightning extends TaskPageAbstract {
     public boolean verifySubjectExist(final String subjectTask) {
         try {
             WebElement subjectExist =
-                    driver.findElement(By.xpath("//span[contains(text(),\"" + subjectTask + "\")][1]"));
+                    driver.findElement(By.xpath("//span[contains(text(),\""
+                            + subjectTask + "\")][1]"));
         } catch (Exception e) {
             return false;
         }
@@ -124,7 +131,13 @@ public class TaskPageLightning extends TaskPageAbstract {
      * Click dropdown.
      */
     public void clickDropDownButton() {
-        getDisplayAsDropDownButton.click();
+
+        if (WebDriverConfig.getInstance().getBrowser().toLowerCase() == "chrome") {
+            getDisplayAsDropDownButton.click();
+        } else {
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click();", getDisplayAsDropDownButton);
+        }
     }
 
     /**
@@ -159,6 +172,7 @@ public class TaskPageLightning extends TaskPageAbstract {
 
     /**
      * Delete current task.
+     *
      * @param task the task
      */
     public void deleteCurrentTask(final Task task) {
@@ -173,6 +187,7 @@ public class TaskPageLightning extends TaskPageAbstract {
 
     /**
      * Update current task.
+     *
      * @param task the task
      * @return updated task
      */
@@ -181,8 +196,26 @@ public class TaskPageLightning extends TaskPageAbstract {
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         clickSaveUpdateTask();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
         task.setSubject(nameTaskSubject);
         return task;
+    }
+
+    /**
+     * Logout.
+     */
+    public void logout() {
+        userIcon.click();
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[text()='Log Out']")));
+        itemToSelect.click();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
     }
 
     /**
