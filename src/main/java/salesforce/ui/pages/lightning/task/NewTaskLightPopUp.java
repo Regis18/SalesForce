@@ -14,8 +14,10 @@
 package salesforce.ui.pages.lightning.task;
 
 import core.utils.StrategySetter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 
@@ -56,6 +58,15 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//textarea")
     private WebElement commentsTextArea;
 
+    @FindBy(xpath = "//input[@class='inputDate input']")
+    private WebElement dueDateTextBox;
+
+    @FindBy(xpath = "//a[@title='High']")
+    private WebElement priorityDropDown;
+
+    @FindBy(xpath = "//input[@id='reminder_select_check']")
+    private WebElement statusDropDown;
+
     /**
      * Save button.
      */
@@ -79,6 +90,43 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     }
 
     /**
+     * set Due Date.
+     *
+     * @param value Value
+     */
+    protected void setDueDate(final String value) {
+        dueDateTextBox.sendKeys(value);
+    }
+
+    /**
+     * Set priority.
+     *
+     * @param value value
+     */
+    protected void setPriority(final String value) {
+        // Wait for visibility of combobox and click on it to open drop-down list
+        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[span/span[text()='Priority']]/div/div/div/div/a[@class='select']")));
+        combobox.click();
+        //Select Option
+        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
+        itemToSelect.click();
+    }
+
+    /**
+     * Set status.
+     *
+     * @param value value
+     */
+    protected void setStatus(final String value) {
+        // Wait for visibility of combobox and click on it to open drop-down list
+        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[span/span[text()='Status']]/div/div/div/div/a[@class='select']")));
+        combobox.click();
+        //Select Option
+        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
+        itemToSelect.click();
+    }
+
+    /**
      * Create Task.
      *
      * @param task object.
@@ -88,8 +136,11 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     public String createNewTask(final Task task) {
         //log.info("Set information of project.");
         List<String> fields = new ArrayList();
-        fields.add("subject");
-        fields.add("comment");
+        fields.add("Subject");
+        fields.add("Comment");
+        fields.add("DueDate");
+        fields.add("Priority");
+        fields.add("Status");
 
         HashMap<String, StrategySetter> strategyMap = composeTextBoxStrategyMap(task);
 
@@ -109,10 +160,11 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      */
     private HashMap<String, StrategySetter> composeTextBoxStrategyMap(final Task myTask) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put("subject", () -> setSubjectTextBox(myTask.getSubject()));
-        strategyMap.put("comment", () -> setComments(myTask.getComment()));
-        //strategyMap.put("status", () -> setStatus(myTask.getComment()));
-        //strategyMap.put("email", () -> setEmail(myTask.getEmail()));
+        strategyMap.put("Subject", () -> setSubjectTextBox(myTask.getSubject()));
+        strategyMap.put("Comment", () -> setComments(myTask.getComment()));
+        strategyMap.put("DueDate", () -> setDueDate(myTask.getDueDate()));
+        strategyMap.put("Priority", () -> setPriority(myTask.getPriority()));
+        strategyMap.put("Status", () -> setStatus(myTask.getStatus()));
         return strategyMap;
     }
 }

@@ -22,6 +22,12 @@ public class Firefox implements IDriver {
      */
     public WebDriver initDriver() {
         FirefoxDriverManager.getInstance().setup();
-        return new FirefoxDriver();
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        FirefoxProfile firefoxProfile = new FirefoxProfile();
+
+        firefoxProfile.setPreference("dom.webnotifications.enabled", false);
+        firefoxOptions.setProfile(firefoxProfile);
+
+        return new FirefoxDriver(firefoxOptions);
     }
 }

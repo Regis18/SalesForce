@@ -16,6 +16,7 @@ package salesforce.ui.pages.classic.task;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
@@ -26,9 +27,9 @@ import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
  * @version 0.0.1
  */
 public class TaskPageClassic extends TaskPageAbstract {
-
+    public static final int MILLIS = 2500;
     public static final int INT = 100;
-    
+
     @FindBy(xpath = "//a[span[contains(text(),'callTask2')]]")
     private WebElement taskList;
 
@@ -43,6 +44,9 @@ public class TaskPageClassic extends TaskPageAbstract {
 
     @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
     private WebElement saveTask;
+
+    @FindBy(xpath = "//div[span[@id='userNavLabel']]")
+    private WebElement userIcon;
 
     /**
      * Click on task list.
@@ -95,7 +99,22 @@ public class TaskPageClassic extends TaskPageAbstract {
     }
 
     /**
+     * Logout.
+     */
+    @Override
+    public void logout() {
+        userIcon.click();
+        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Logout')]")));
+        itemToSelect.click();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
+    }
+
+    /**
      * Update the subject in the task.
+     *
      * @param task map of attributes task.
      */
     public void setUpdateNewSubjectTask(final String task) {

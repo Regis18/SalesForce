@@ -29,10 +29,10 @@ public class Task {
 
     private String subject;
     private String comment;
-    private String status;
+    private String status;//Not Started, In Progress, Completed, Waiting on someone else, Deferred
     private String email;
     private String dueDate;
-    private String priority;
+    private String priority;//High, Normal, Low
 
     /**
      * Get subject to task.
@@ -163,12 +163,12 @@ public class Task {
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> taskMap) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put("subject", () -> setSubject(taskMap.get("subject")));
-        strategyMap.put("comment", () -> setComment(taskMap.get("comment")));
-        strategyMap.put("status", () -> setStatus(taskMap.get("status")));
-        strategyMap.put("email", () -> setEmail(taskMap.get("email")));
-        strategyMap.put("dueDate", () -> setDueDate(taskMap.get("dueDate")));
-        strategyMap.put("priority", () -> setPriority(taskMap.get("priority")));
+        strategyMap.put("Subject", () -> setSubject(taskMap.get("Subject")));
+        strategyMap.put("Comment", () -> setComment(taskMap.get("Comment")));
+        strategyMap.put("Status", () -> setStatus(taskMap.get("Status")));
+        strategyMap.put("Email", () -> setEmail(taskMap.get("Email")));
+        strategyMap.put("DueDate", () -> setDueDate(taskMap.get("DueDate")));
+        strategyMap.put("Priority", () -> setPriority(taskMap.get("Priority")));
         return strategyMap;
     }
 
@@ -179,12 +179,12 @@ public class Task {
      */
     public HashMap<String, StrategySetter> composeGetStrategyMap() {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put("subject", () -> getSubject());
-        strategyMap.put("comment", () -> getComment());
-        strategyMap.put("status", () -> getStatus());
-        strategyMap.put("email", () -> getEmail());
-        strategyMap.put("dueDate", () -> getDueDate());
-        strategyMap.put("priority", () -> getPriority());
+        strategyMap.put("Subject", () -> getSubject());
+        strategyMap.put("Comment", () -> getComment());
+        strategyMap.put("Status", () -> getStatus());
+        strategyMap.put("Email", () -> getEmail());
+        strategyMap.put("DueDate", () -> getDueDate());
+        strategyMap.put("Priority", () -> getPriority());
         return strategyMap;
     }
 }

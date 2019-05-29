@@ -13,6 +13,8 @@
 
 package steps;
 
+import core.selenium.WebDriverConfig;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -59,6 +61,13 @@ public class TaskSteps {
         taskPage = transporterPage.navigateToTasksHomePage();
     }
 
+    /**
+     * navigate to homepage.
+     */
+    @Given("^I navigate to SalesForce HomePage$")
+    public void navigateToSalesForceHomePage() {
+        homePage = transporterPage.navigateToSalesForceHomePage();
+    }
 
     /**
      * Create task step.
@@ -66,7 +75,7 @@ public class TaskSteps {
     @When("^I create a new task with this information$")
     public void createTask(Map<String, String> taskMap) {
         task.proccessInformation(taskMap);
-        task.setSubject(task.getSubject().replace("<random>",String.valueOf((int)(Math.random()*100))));
+        task.setSubject(task.getSubject().replace("<random>", String.valueOf((int) (Math.random() * 100))));
         newTaskPage = homePage.displayCreateTask();
         newTaskPage.createNewTask(task);
     }
@@ -102,6 +111,15 @@ public class TaskSteps {
     @When("^I delete the task$")
     public void deletedTask() {
         taskPage.deleteCurrentTask(task);
+    }
+
+    /**
+     * delete the task step.
+     */
+    @Then("^I logout of the SalesForce Application$")
+    public void logoutTask() {
+        taskPage = transporterPage.navigateToTasksHomePage();
+        taskPage.logout();
     }
 
 }
