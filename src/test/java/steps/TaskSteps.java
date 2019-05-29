@@ -13,7 +13,6 @@
 
 package steps;
 
-import core.selenium.WebDriverConfig;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -38,8 +37,8 @@ public class TaskSteps {
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private HomePageAbstract homePage;
     private NewTaskAbstract newTaskPage;
-    private String nameTaskSubject;
     private TaskPageAbstract taskPage;
+    private String nameTaskSubject;
     private Context context;
     private Task task;
 
@@ -74,7 +73,7 @@ public class TaskSteps {
      */
     @When("^I create a new task with this information$")
     public void createTask(Map<String, String> taskMap) {
-        task.proccessInformation(taskMap);
+        task.processInformation(taskMap);
         task.setSubject(task.getSubject().replace("<random>", String.valueOf((int) (Math.random() * 100))));
         newTaskPage = homePage.displayCreateTask();
         newTaskPage.createNewTask(task);

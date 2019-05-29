@@ -20,7 +20,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 
 /**
@@ -95,7 +94,8 @@ public class TaskPageLightning extends TaskPageAbstract {
     public boolean verifySubjectExist(final String subjectTask) {
         try {
             WebElement subjectExist =
-                    driver.findElement(By.xpath("//span[contains(text(),\"" + subjectTask + "\")][1]"));
+                    driver.findElement(By.xpath("//span[contains(text(),\""
+                            + subjectTask + "\")][1]"));
         } catch (Exception e) {
             return false;
         }
@@ -209,7 +209,8 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     public void logout() {
         userIcon.click();
-        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Log Out']")));
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[text()='Log Out']")));
         itemToSelect.click();
         try {
             Thread.sleep(MILLIS);

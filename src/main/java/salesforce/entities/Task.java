@@ -13,7 +13,6 @@
 
 package salesforce.entities;
 
-
 import core.utils.StrategySetter;
 
 import java.util.HashMap;
@@ -29,10 +28,10 @@ public class Task {
 
     private String subject;
     private String comment;
-    private String status;//Not Started, In Progress, Completed, Waiting on someone else, Deferred
+    private String status; //Not Started, In Progress, Completed, Waiting on someone else, Deferred.
     private String email;
     private String dueDate;
-    private String priority;//High, Normal, Low
+    private String priority; //High, Normal, Low.
 
     /**
      * Get subject to task.
@@ -147,7 +146,7 @@ public class Task {
      *
      * @param taskMap the task map.
      */
-    public void proccessInformation(final Map<String, String> taskMap) {
+    public void processInformation(final Map<String, String> taskMap) {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(taskMap);
 
         taskMap.keySet().forEach(key -> {

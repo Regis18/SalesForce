@@ -69,19 +69,19 @@ public class SetupPage extends BasePage {
             continue;
         }
 
-//        switch (Setup.getInstance().getLayout()) {
-//            case "classic":
-//                isLight = false;
-//                break;
-//            case "light":
-//                isLight = true;
-//                break;
-//            default:
-//                isLight = true;
-//                break;
-//        }
+        switch (Setup.getInstance().getLayout()) {
+            case "classic":
+                isLight = false;
+                break;
+            case "light":
+                isLight = true;
+                break;
+            default:
+                isLight = true;
+                break;
+        }
 
-        isLight = driver.getTitle().equals("Home | Salesforce");
+     //   isLight = driver.getTitle().equals("Home | Salesforce");
         if (isLight) {
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {

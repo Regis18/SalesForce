@@ -104,7 +104,8 @@ public class TaskPageClassic extends TaskPageAbstract {
     @Override
     public void logout() {
         userIcon.click();
-        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Logout')]")));
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[contains(text(),'Logout')]")));
         itemToSelect.click();
         try {
             Thread.sleep(MILLIS);

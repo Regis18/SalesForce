@@ -105,10 +105,14 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      */
     protected void setPriority(final String value) {
         // Wait for visibility of combobox and click on it to open drop-down list
-        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[span/span[text()='Priority']]/div/div/div/div/a[@class='select']")));
+      //  String locator=""
+        WebElement combobox = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[span/span[text()='Priority']]" +
+                        "/div/div/div/div/a[@class='select']")));
         combobox.click();
         //Select Option
-        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
         itemToSelect.click();
     }
 
@@ -119,10 +123,12 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      */
     protected void setStatus(final String value) {
         // Wait for visibility of combobox and click on it to open drop-down list
-        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[span/span[text()='Status']]/div/div/div/div/a[@class='select']")));
+        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[span/span[text()='Status']]/div/div/div/div/a[@class='select']")));
         combobox.click();
         //Select Option
-        WebElement itemToSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
         itemToSelect.click();
     }
 

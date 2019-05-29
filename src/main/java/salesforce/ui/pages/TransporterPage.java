@@ -134,10 +134,11 @@ public class TransporterPage {
 
         switch (setup.getLayout()) {
             case "classic":
+                log.info("Navigate to tasks home page classic skin");
                 goToURL(baseURL + "/home/home.jsp");
                 break;
             case "light":
-                log.info("Navigate to tasks home page");
+                log.info("Navigate to tasks home page lightning skin");
                 goToURL(baseURL + "/lightning/o/Task/home");
                 break;
             default:
