@@ -18,6 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.classic.account.AccountClassicPage;
 import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
 import salesforce.ui.pages.classic.task.NewTaskClassic;
 
@@ -26,6 +27,12 @@ import salesforce.ui.pages.classic.task.NewTaskClassic;
  * @author Regis Humana
  */
 public class HomeClassicPage extends HomePageAbstract {
+
+    /**
+     * Account tab.
+     */
+    @FindBy(id = "Account_Tab")
+    private WebElement accountTab;
 
     /**
      * Is the main table of Home.
@@ -45,6 +52,15 @@ public class HomeClassicPage extends HomePageAbstract {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(homeTable));
+    }
+
+    /**
+     * Click to Account and initialize AccountClassicPage.
+     * @return AccountClassicPage.
+     */
+    public AccountClassicPage clickAccountBtn() {
+        accountTab.click();
+        return new AccountClassicPage();
     }
 
     /**

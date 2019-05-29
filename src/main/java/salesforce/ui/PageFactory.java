@@ -15,17 +15,17 @@ package salesforce.ui;
 
 import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.HomeAccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.ui.pages.classic.account.AccountClassicPage;
+import salesforce.ui.pages.classic.account.OneAccountClassicPage;
 import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.pages.classic.HomeClassicPage;
 import salesforce.ui.pages.classic.campaign.OneCampaignClassicPage;
 import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
 import salesforce.ui.pages.lightning.account.AccountLightPage;
-import salesforce.ui.pages.lightning.account.HomeAccountLightPage;
 import salesforce.ui.pages.lightning.account.OneAccountLightPage;
 import salesforce.ui.pages.classic.task.TaskPageClassic;
 import salesforce.ui.pages.lightning.HomeLightPage;
@@ -99,27 +99,12 @@ public class PageFactory {
 
     /**
      * Get the Page Object that is correct.
-     * @return HomePageAbstract.
-     */
-    public static HomeAccountPageAbstract homeAccountPage() {
-        switch (setup.getLayout()) {
-            //case "classic":
-            //    return new HomeClassicPage();
-            case "light":
-                return new HomeAccountLightPage();
-            default:
-                return null;
-        }
-    }
-
-    /**
-     * Get the Page Object that is correct.
      * @return AccountPageAbstract.
      */
     public static AccountPageAbstract accountPage() {
         switch (setup.getLayout()) {
-            //case "classic":
-             //  return new AccountClassicPage();
+            case "classic":
+                return new AccountClassicPage();
             case "light":
                 return new AccountLightPage();
             default:
@@ -133,8 +118,8 @@ public class PageFactory {
      */
     public static OneAccountAbstract oneAccountPage() {
         switch (setup.getLayout()) {
-            //case "classic":
-              //  return new OneAccountClassicPage();
+            case "classic":
+                return new OneAccountClassicPage();
             case "light":
                 return new OneAccountLightPage();
             default:

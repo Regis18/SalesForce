@@ -1,5 +1,5 @@
 /*
- * @(#) AccountLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.lightning.account;
+package salesforce.ui.pages.classic.account;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,40 +21,46 @@ import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 import salesforce.utils.DriverMethods;
 
 /**
- * AccountLightPage.
+ * AccountClassicPage.
  * @author Luis Guardia.
  * @version 0.0.1
  */
-public class AccountLightPage extends AccountPageAbstract {
-
-    @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
-    private WebElement accountTitleLbl;
-
-    @FindBy(xpath = "//li[@class=\"slds-button slds-button--neutral slds-truncate\"]//a[@title=\"New\"]")
-    private WebElement newAccountBtn;
-
-    private String accountList = "//a[@data-refid=\"recordId\" and contains(text(),\"Account\")]";
+public class AccountClassicPage extends AccountPageAbstract {
     private final String ACCOUNT = "account";
+    private String accountList = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"account\")]";
 
     /**
-     * Wait for the title appears.
+     * AccountForm.
+     */
+    @FindBy(xpath = "//li[@id='Account_Tab']")
+    private WebElement accountForm;
+
+    /**
+     * Button: New Account.
+     */
+    @FindBy(xpath = "//input[@name=\"new\"]")
+    private WebElement newAccountBtn;
+
+    /**
+     * Wait for Account Form.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountTitleLbl));
+        wait.until(ExpectedConditions.visibilityOf(accountForm));
     }
 
     /**
-     * Click to the New account button and creates NewAccountPopup object.
+     * Click in to New Account button and initialize NewAccountClassicPage.
+     * @return NewAccountClassicPage.
      */
     @Override
-    public NewAccountPopup clickNewAccountBtn() {
+    public NewAccountClassicPage clickNewAccountBtn() {
         newAccountBtn.click();
-        return new NewAccountPopup();
+        return new NewAccountClassicPage();
     }
 
     /**
-     * Check name in Account List.
+     * Check the account name in the list.
      * @param name string.
      * @return boolean.
      */
@@ -63,3 +69,4 @@ public class AccountLightPage extends AccountPageAbstract {
         return DriverMethods.isElementExist(By.xpath(accountList.replace(ACCOUNT, name)));
     }
 }
+
