@@ -13,25 +13,21 @@
 
 package steps;
 
-import core.selenium.WebDriverManager;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.jsoup.nodes.Entities;
-import org.openqa.selenium.WebDriver;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
-import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 import salesforce.ui.pages.lightning.account.OneAccountLightPage;
-import salesforce.utils.EntitiesId;
-
+import salesforce.utils.EntityId;
 import java.util.Map;
-
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
 
 /**
  * AccountSteps.
@@ -43,11 +39,9 @@ public class AccountSteps {
     private AccountPageAbstract accountPage;
     private NewAccountPageAbstract newAccountPage;
     private OneAccountAbstract oneAccountPage;
-    private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Account account;
-    private EntitiesId entitiesId;
-    private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
+    private EntityId entitiesId;
 
     /**
      * Account steps.
@@ -56,7 +50,7 @@ public class AccountSteps {
     public AccountSteps(Context context) {
         this.context = context;
         this.account = context.getAccount();
-        this.entitiesId = new EntitiesId();
+        this.entitiesId = new EntityId();
     }
 
     /**

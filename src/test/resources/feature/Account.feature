@@ -9,19 +9,19 @@ Feature: Create, read, update and delete a Account
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
 
-      | Name             | New Account 16 |
+      | Name             | New Account   |
       | Parent           | New Parent    |
       | Number           | 12345667      |
       | Site             | new site      |
       | Type             | Prospect      |
       | Industry         | Technology    |
       | Revenue          | 2500          |
-      | Rating           | War          |
+      | Rating           | War           |
       | Phone            | 71717379      |
       | Fax              | 123456789     |
       | Website          | new web Site  |
       | Ticker           | ticker        |
-      | Ownership        | Private        |
+      | Ownership        | Private       |
       | Employee         | employee      |
       | Sic Code         | 100-2540      |
       | Billing Street   | bill street   |

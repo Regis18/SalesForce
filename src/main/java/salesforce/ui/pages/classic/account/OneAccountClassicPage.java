@@ -57,12 +57,4 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public String getNameAccount() {
         return accountTitleLbl.getText();
     }
-
-    /**
-     * Delete account
-     * @param nameAccount string
-     */
-    @Override
-    public void deleteAccount(String nameAccount) {
-    }
 }

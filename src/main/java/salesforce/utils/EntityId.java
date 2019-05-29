@@ -1,5 +1,5 @@
 /*
- * @(#) EntitiesId.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EntityId.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -21,7 +21,7 @@ import org.openqa.selenium.WebDriver;
  * @author Luis Guardia.
  * @version 0.0.1
  */
-public class EntitiesId {
+public class EntityId {
     private static Setup setup = Setup.getInstance();
     private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
@@ -31,19 +31,14 @@ public class EntitiesId {
      */
     public String getIdEntitie() {
         String currentUrl = driver.getCurrentUrl();
-        //driver.getCurrentUrl();
-        System.out.println("currentttttttttttttttt "+currentUrl);
         String[] arrayIdAccount = currentUrl.split("/");
         String idObject = "";
         switch (setup.getLayout()) {
             case "classic":
                 idObject = arrayIdAccount[arrayIdAccount.length-1];
-                System.out.println("111111111111111111111 "+idObject);
             case "light":
                 idObject = arrayIdAccount[arrayIdAccount.length-2];
-                System.out.println("22222222222222222222 "+idObject);
         }
-        System.out.println("33333333333333333333333333333333333333333333 "+idObject);
         return idObject;
     }
 }
