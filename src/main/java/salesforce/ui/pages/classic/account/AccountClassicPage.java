@@ -20,6 +20,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 import salesforce.utils.DriverMethods;
 
+/**
+ * AccountClassicPage.
+ * @author Luis Guardia.
+ * @version 0.0.1
+ */
 public class AccountClassicPage extends AccountPageAbstract {
     private final String ACCOUNT = "account";
     private String accountList = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"account\")]";

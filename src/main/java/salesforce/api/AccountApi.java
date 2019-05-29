@@ -12,18 +12,25 @@
  */
 
 package salesforce.api;
+
+
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
-
+/**
+ * AccountApi.
+ * @author Luis Guardia.
+ * @version 0.0.1
+ */
 public class AccountApi {
+
     /**
      * Delete an account by id.
      * @param id String.
      */
     public void deleteAccount(String id) {
         String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/"+id;
-        String token = "00D4P000000gLN4!AQQAQBHSCdrFiDu1l9.nrWPe8SvaJ.De6B.6zBDghyEieldR28Ss2WXL8t4NjSvwgJnx86alCBvt3ApzV2gx0iXypWpM88cm";
+        String token = "00D4P000000gLN4!AQQAQHn3pwWYSd28KeMHMz8t1_CFzJYrzmAp6.cg2vubpNVGZxk5RM.ZPLEKwjaC.ixGoHQtguVJLJbEAd..cYo9iUQsIOll";
         Response response = given().headers("Content-Type", "application/json").
                 auth().oauth2(token).when().request("DELETE", url);
     }

@@ -13,9 +13,12 @@
 
 package steps;
 
+import core.selenium.WebDriverManager;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.jsoup.nodes.Entities;
+import org.openqa.selenium.WebDriver;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
@@ -24,6 +27,7 @@ import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
 import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 import salesforce.ui.pages.lightning.account.OneAccountLightPage;
+import salesforce.utils.EntitiesId;
 
 import java.util.Map;
 
@@ -42,6 +46,8 @@ public class AccountSteps {
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Account account;
+    private EntitiesId entitiesId;
+    private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
     /**
      * Account steps.
@@ -50,6 +56,7 @@ public class AccountSteps {
     public AccountSteps(Context context) {
         this.context = context;
         this.account = context.getAccount();
+        this.entitiesId = new EntitiesId();
     }
 
     /**
@@ -70,7 +77,7 @@ public class AccountSteps {
         account.setAccountInformation(accountInformation);
         newAccountPage = accountPage.clickNewAccountBtn();
         oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
-        context.getAccount().setId(oneAccountPage.getAccountId());
+        context.getAccount().setId(entitiesId.getIdEntitie());
     }
 
     /**
@@ -98,7 +105,7 @@ public class AccountSteps {
      * Verify account to the list.
      * @param name string.
      */
-    @Then("^I verify the Account \"([^\"]*)\" in the Accounts list in Accounts Page$")
+    @Then("^I verify the Account is in the Accounts list in Accounts Page$")
     public void verifyIsInTheListOfAccounts(String name) {
         assertFalse(accountPage.checkAccountList(context.getAccount().getName()));
     }

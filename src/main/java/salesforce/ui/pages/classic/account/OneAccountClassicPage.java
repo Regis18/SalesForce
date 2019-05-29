@@ -18,6 +18,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
 
+/**
+ * OneAccountClassicPage.
+ * @author Luis Guardia.
+ * @version 0.0.1
+ */
 public class OneAccountClassicPage extends OneAccountAbstract {
 
     @FindBy(xpath = "//td[@class=\" oRight\"]")
@@ -59,17 +64,5 @@ public class OneAccountClassicPage extends OneAccountAbstract {
      */
     @Override
     public void deleteAccount(String nameAccount) {
-    }
-
-    /**
-     * Get id account
-     * @return idAccount string.
-     */
-    @Override
-    public String getAccountId() {
-        String currentUrl = driver.getCurrentUrl();
-        String[] arrayIdAccount = currentUrl.split("/");
-        String idAccount = arrayIdAccount[arrayIdAccount.length-1];
-        return idAccount;
     }
 }

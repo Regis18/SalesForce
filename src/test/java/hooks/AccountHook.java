@@ -22,6 +22,11 @@ import salesforce.api.AccountApi;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 
+/**
+ * AccountHook.
+ * @author Luis Guardia.
+ * @version 0.0.1
+ */
 public class AccountHook {
     private Logger logs = Logs.getInstance().getLog();
     private WebDriver driver;

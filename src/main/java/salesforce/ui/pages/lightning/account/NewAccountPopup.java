@@ -16,6 +16,9 @@ package salesforce.ui.pages.lightning.account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import salesforce.entities.Account;
+import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
 
 /**
@@ -28,11 +31,14 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
     private WebElement newAccountPopup;
 
-    @FindBy(xpath = "//div[@class=\"uiInput witsSuggestedNameField uiInput--default\"]//input[@class=\"input uiInput uiInputText uiInput--default uiInput--input\"]")
+    @FindBy(css = "input[id^='90']")
     private WebElement nameAccountTxt;
 
     @FindBy(css = "div[id^='47']")
-    private WebElement ratingAccountTxt;
+    private WebElement ratingAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Warm\"]")
+    private WebElement ratingWarElement;
 
     @FindBy(css = "input[id^='115']")
     private WebElement phoneAccountTxt;
@@ -65,13 +71,22 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     private WebElement sicCodeAccountTxt;
 
     @FindBy(css = "div[id^='311']")
-    private WebElement typeAccountLst;
+    private WebElement typeAccountCmb;
 
-    @FindBy(css = "input[id^='357']")
-    private WebElement ownershipAccountLst;
+    @FindBy(xpath = "//a[@title=\"Prospect\"]")
+    private WebElement typeProspectElement;
 
-    @FindBy(css = "input[id^='407']")
-    private WebElement industryAccountLst;
+    @FindBy(css = "div[id^='357']")
+    private WebElement ownershipAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Private\"]")
+    private WebElement ownerPrivateElement;
+
+    @FindBy(css = "div[id^='407']")
+    private WebElement industryAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Technology\"]")
+    private WebElement industryTechnologyElement;
 
     @FindBy(css = "textarea[id^='547']")
     private WebElement billingStreetAccountArea;
@@ -104,10 +119,19 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     private WebElement shipppingCountryAccountTxt;
 
     @FindBy(css = "div[id^='675']")
-    private WebElement customerAccountLst;
+    private WebElement customerAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"High\"]")
+    private WebElement customerHighElement;
+
+    @FindBy(xpath = "//a[@title=\"Hight\"]")
+    private WebElement optionHightCustomer;
 
     @FindBy(css = "div[id^='721']")
-    private WebElement slaStateAccountTxt;
+    private WebElement slaStateAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Platinum\"]")
+    private WebElement slaPlatinumElement;
 
     @FindBy(css = "input[id^='764']")
     private WebElement slaDateAccountTxt;
@@ -116,13 +140,20 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     private WebElement slaSerialStateAccountTxt;
 
     @FindBy(css = "input[id^='807']")
-    private WebElement locationAccountLst;
+    private WebElement locationAccountCmb;
 
-    @FindBy(css = "input[id^='832']")
-    private WebElement upsellStateAccountLst;
+    @FindBy(css = "div[id^='832']")
+    private WebElement upsellStateAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Maybe\"]")
+    private WebElement upsellMaybeElement;
 
     @FindBy(css = "div[id^='882']")
-    private WebElement activeStateAccountLst;
+    private WebElement activeStateAccountCmb;
+
+    @FindBy(xpath = "//a[@title=\"Yes\"]")
+    private WebElement activeYesElement;
+
 
     @FindBy(css = "textarea[id^='950']")
     private WebElement descriptionStateAccountArea;
@@ -138,20 +169,21 @@ public class NewAccountPopup extends NewAccountPageAbstract {
         wait.until(ExpectedConditions.visibilityOf(newAccountPopup));
     }
 
-
-    @Override
-    protected void setNameTxt(String name) { nameAccountTxt.sendKeys(name); }
-
     /**
-     * Set the phone into NameTxt.
-     * @param phone
+     * Set name in the name TextBox.
+     * @param name String
      */
+    @Override
+    public void setNameTxt(String name) { nameAccountTxt.sendKeys(name); }
+
     @Override
     public void setPhone(String phone) { phoneAccountTxt.sendKeys(phone); }
 
     @Override
-    public void setRating(String rating) { ratingAccountTxt.sendKeys(rating); }
-
+    public void setRating(String rating) {
+        ratingAccountCmb.click();
+        ratingWarElement.click();
+    }
     @Override
     public void setParent(String parent) { parentAccountTxt.sendKeys(parent); }
     @Override
@@ -163,55 +195,76 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setSite(String site) { siteAccountTxt.sendKeys(site); }
     @Override
-    public void setTicker(String ticker) { parentAccountTxt.sendKeys(ticker); }
+    public void setTicker(String ticker) { tickerSimbolAccountTxt.sendKeys(ticker); }
     @Override
-    public void setType(String type) { parentAccountTxt.sendKeys(type); }
+    public void setType(String type) {
+        typeAccountCmb.click();
+        typeProspectElement.click();
+    }
     @Override
-    public void setOwnership(String ownership) { parentAccountTxt.sendKeys(ownership); }
+    public void setOwnership(String ownership) {
+        ownershipAccountCmb.click();
+        ownerPrivateElement.click();
+    }
     @Override
-    public void setIndustry(String industry) { parentAccountTxt.sendKeys(industry); }
+    public void setIndustry(String industry) {
+        industryAccountCmb.click();
+        industryTechnologyElement.click();
+    }
     @Override
-    public void setEmployee(String employee) { parentAccountTxt.sendKeys(employee); }
+    public void setEmployee(String employee) { employeeAccountTxt.sendKeys(employee); }
     @Override
-    public void setAnualRevenue(String anualRevenue) { parentAccountTxt.sendKeys(anualRevenue); }
+    public void setAnualRevenue(String anualRevenue) { annualRevenueAccountTxt.sendKeys(anualRevenue); }
     @Override
-    public void setSicCode(String sicCode) { parentAccountTxt.sendKeys(sicCode); }
+    public void setSicCode(String sicCode) { sicCodeAccountTxt.sendKeys(sicCode); }
     @Override
-    public void setBillingStreet(String billingStreet) { parentAccountTxt.sendKeys(billingStreet); }
+    public void setBillingStreet(String billingStreet) { billingStreetAccountArea.sendKeys(billingStreet); }
     @Override
-    public void setShippingStreet(String shippingStreet) { parentAccountTxt.sendKeys(shippingStreet); }
+    public void setShippingStreet(String shippingStreet) { shippingStreetAccountArea.sendKeys(shippingStreet); }
     @Override
-    public void setBillingCity(String billingCity) { parentAccountTxt.sendKeys(billingCity); }
+    public void setBillingCity(String billingCity) { billingCityAccountTxt.sendKeys(billingCity); }
     @Override
-    public void setBillingState(String billingState) { parentAccountTxt.sendKeys(billingState); }
+    public void setBillingState(String billingState) { billingStateAccountTxt.sendKeys(billingState); }
     @Override
-    public void setShippingCity(String shippingCity) { parentAccountTxt.sendKeys(shippingCity); }
+    public void setShippingCity(String shippingCity) { shippingCityAccountTxt.sendKeys(shippingCity); }
     @Override
-    public void setShippingState(String shippingState) { parentAccountTxt.sendKeys(shippingState); }
+    public void setShippingState(String shippingState) { shipppingStateAccountTxt.sendKeys(shippingState); }
     @Override
-    public void setBillingZip(String billingZip) { parentAccountTxt.sendKeys(billingZip); }
+    public void setBillingZip(String billingZip) { billingZipAccountTxt.sendKeys(billingZip); }
     @Override
-    public void setBillingCountry(String billingCountry) { parentAccountTxt.sendKeys(billingCountry); }
+    public void setBillingCountry(String billingCountry) { billingCountryAccountTxt.sendKeys(billingCountry); }
     @Override
-    public void setShippingZip(String shippingZip) { parentAccountTxt.sendKeys(shippingZip); }
+    public void setShippingZip(String shippingZip) { shipppingZipAccountTxt.sendKeys(shippingZip); }
     @Override
-    public void setShippingCountry(String shippingCountry) { parentAccountTxt.sendKeys(shippingCountry); }
+    public void setShippingCountry(String shippingCountry) { shipppingCountryAccountTxt.sendKeys(shippingCountry); }
     @Override
-    public void setCustomerPriority(String customerPriority) { parentAccountTxt.sendKeys(customerPriority); }
+    public void setCustomerPriority(String customerPriority) {
+        customerAccountCmb.click();
+        customerHighElement.click();
+    }
     @Override
-    public void setSlaAccount(String slaAccount) { parentAccountTxt.sendKeys(slaAccount); }
+    public void setSlaAccount(String slaAccount) {
+        slaStateAccountCmb.click();
+        slaPlatinumElement.click();
+    }
     @Override
-    public void setSlaDate(String slaDate) { parentAccountTxt.sendKeys(slaDate); }
+    public void setSlaDate(String slaDate) { slaDateAccountTxt.sendKeys(slaDate); }
     @Override
-    public void setSlaSerial(String slaSerial) { parentAccountTxt.sendKeys(slaSerial); }
+    public void setSlaSerial(String slaSerial) { slaSerialStateAccountTxt.sendKeys(slaSerial); }
     @Override
-    public void setNumberLocations(String numberLocations) { parentAccountTxt.sendKeys(numberLocations); }
+    public void setNumberLocations(String numberLocations) { locationAccountCmb.sendKeys(numberLocations); }
     @Override
-    public void setUpsellOportunity(String upsellOportunity) { parentAccountTxt.sendKeys(upsellOportunity); }
+    public void setUpsellOportunity(String upsellOportunity) {
+        upsellStateAccountCmb.click();
+        upsellMaybeElement.click();
+    }
     @Override
-    public void setActive(String active) { parentAccountTxt.sendKeys(active); }
+    public void setActive(String active) {
+        activeStateAccountCmb.click();
+        activeYesElement.click();
+    }
     @Override
-    public void setDescription(String description) { parentAccountTxt.sendKeys(description); }
+    public void setDescription(String description) { descriptionStateAccountArea.sendKeys(description); }
 
     /**
      * Click to Save the changes.

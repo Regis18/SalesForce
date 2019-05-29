@@ -28,9 +28,9 @@ import java.util.Map;
  * @version 0.0.1
  */
 public abstract class NewAccountPageAbstract extends BasePage {
+
     /**
      * Create a new account, it create for classic and lightning pages.
-     *
      * @param account String.
      */
     public OneAccountAbstract createNewAccount(final Account account, final Map accountInformation) {
@@ -46,7 +46,6 @@ public abstract class NewAccountPageAbstract extends BasePage {
 
     /**
      * Set name of account.
-     *
      * @param name String
      */
     protected abstract void setNameTxt(String name);
@@ -241,7 +240,6 @@ public abstract class NewAccountPageAbstract extends BasePage {
      */
     public abstract void setDescription(String description);
 
-
     /**
      * Set Campaign Data.
      * Just is name, can be more.
@@ -256,22 +254,46 @@ public abstract class NewAccountPageAbstract extends BasePage {
         });
     }
 
+    /**
+     * Compose the values of Account.
+     * @param account Account.
+     * @return Hashmap
+     */
     private HashMap<String, StrategySetter> composeStrategyMap(final Account account, final Map<String, String> accountInformation){
         HashMap<String, StrategySetter> strategyMap  = new HashMap<>();
         strategyMap.put("Name",        () -> setNameTxt(accountInformation.get("Name")));
+        strategyMap.put("Parent",        () -> setParent(accountInformation.get("Parent")));
+        strategyMap.put("Number",      () -> setNumberAccount(accountInformation.get("Number")));
+        strategyMap.put("Site",        () -> setSite(accountInformation.get("Ticker")));
+        strategyMap.put("Type",        () -> setType(accountInformation.get("Type")));
+        strategyMap.put("Industry",        () -> setIndustry(accountInformation.get("Industry")));
+        strategyMap.put("Revenue",     () -> setAnualRevenue(accountInformation.get("Revenue")));
+        strategyMap.put("Rating",     () -> setRating(accountInformation.get("Rating")));
         strategyMap.put("Phone",       () -> setPhone(accountInformation.get("Phone")));
         strategyMap.put("Fax",         () -> setFax(accountInformation.get("Fax")));
-        strategyMap.put("Number",      () -> setNumberAccount(accountInformation.get("Number")));
         strategyMap.put("Website",     () -> setWebSite(accountInformation.get("Website")));
-        strategyMap.put("Site",        () -> setSite(accountInformation.get("Ticker")));
-        strategyMap.put("Ticker",      () -> setTicker(accountInformation.get("ticker")));
+        strategyMap.put("Ticker",      () -> setTicker(accountInformation.get("Ticker")));
+        strategyMap.put("Ownership",      () -> setOwnership(accountInformation.get("Ownership")));
         strategyMap.put("Employee",    () -> setEmployee(accountInformation.get("Employee")));
-        strategyMap.put("Revenue",     () -> setAnualRevenue(accountInformation.get("Revenue")));
         strategyMap.put("Sic Code",    () -> setSicCode(accountInformation.get("Sic Code")));
-        strategyMap.put("Bill Street", () -> setBillingStreet(accountInformation.get("Bill Street")));
-        strategyMap.put("Shipp Street",() -> setShippingStreet(accountInformation.get("Shipp Street")));
-        strategyMap.put("Bill City",   () -> setBillingCity(accountInformation.get("Bill City")));
-        strategyMap.put("Bill State",  () -> setBillingState(accountInformation.get("Bill State")));
+        strategyMap.put("Billing Street", () -> setBillingStreet(accountInformation.get("Billing Street")));
+        strategyMap.put("Billing City", () -> setBillingCity(accountInformation.get("Billing City")));
+        strategyMap.put("Billing State", () -> setBillingState(accountInformation.get("Billing State")));
+        strategyMap.put("Billing Zip", () -> setBillingZip(accountInformation.get("Billing Zip")));
+        strategyMap.put("Billing Country", () -> setBillingCountry(accountInformation.get("Billing Country")));
+        strategyMap.put("Shipping Street", () -> setShippingStreet(accountInformation.get("Shipping Street")));
+        strategyMap.put("Shipping City", () -> setShippingCity(accountInformation.get("Shipping City")));
+        strategyMap.put("Shipping State", () -> setShippingState(accountInformation.get("Shipping State")));
+        strategyMap.put("Shipping Zip", () -> setShippingZip(accountInformation.get("Shipping Zip")));
+        strategyMap.put("Shipping Country", () -> setShippingCountry(accountInformation.get("Shipping Country")));
+        strategyMap.put("Customer", () -> setCustomerPriority(accountInformation.get("Customer")));
+        strategyMap.put("Sla Date",    () -> setSlaDate(accountInformation.get("Sla Date")));
+        strategyMap.put("Locations", () -> setNumberLocations(accountInformation.get("Locations")));
+        strategyMap.put("Active",() -> setActive(accountInformation.get("Active")));
+        strategyMap.put("Sla",   () -> setSlaAccount(accountInformation.get("Sla")));
+        strategyMap.put("Sla Serial",   () -> setSlaSerial(accountInformation.get("Sla Serial")));
+        strategyMap.put("Upsell",  () -> setUpsellOportunity(accountInformation.get("Upsell")));
+        strategyMap.put("Description",  () -> setDescription(accountInformation.get("Description")));
 
         return strategyMap;
     }
