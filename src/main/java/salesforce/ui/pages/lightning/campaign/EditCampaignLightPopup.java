@@ -13,10 +13,12 @@
 
 package salesforce.ui.pages.lightning.campaign;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
 
 /**
@@ -26,7 +28,7 @@ import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
  */
 public class EditCampaignLightPopup extends EditCampaignAbstract {
 
-    @FindBy(xpath = "[class='modal-container slds-modal__container']")
+    @FindBy(css = "[class='modal-container slds-modal__container']")
     private WebElement editCampaignPopup;
 
     @FindBy(css = "[class^='uiInput uiInputText'] input")
@@ -35,39 +37,40 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
     @FindBy(css = "[class^='slds-button slds-button--neutral uiButton--default']")
     private WebElement saveBtn;
 
-    @FindBy(xpath = "[class^='uiInput uiInputCheckbox'] input")
+    @FindBy(css = "[class^='uiInput uiInputCheckbox'] input")
     private WebElement activateChk;
 
-    @FindBy(css = "//child::div[4][contains(@class'Row')]//a")
+    @FindBy(xpath = "//child::div[4][contains(@class,'Row')]//a")
     private WebElement typeCmb;
 
-    @FindBy(css = "d//child::div[5][contains(@class,'Row')]//a")
+    @FindBy(xpath = "//child::div[5][contains(@class,'Row')]//a")
     private WebElement statusCmb;
 
-    @FindBy(css = "//child::div[6][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[6][contains(@class,'Row')]//input")
     private WebElement startDateTxt;
 
-    @FindBy(css = "//child::div[7][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[7][contains(@class,'Row')]//input")
     private WebElement endDateTxt;
 
-    @FindBy(css = "//child::div[8][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[8][contains(@class,'Row')]//input")
     private WebElement expectedRevenueTxt;
 
-    @FindBy(css = "//child::div[9][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[9][contains(@class,'Row')]//input")
     private WebElement budgetedCostTxt;
 
-    @FindBy(css = "//child::div[10][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[10][contains(@class,'Row')]//input")
     private WebElement actualCostTxt;
 
-    @FindBy(css = "//child::div[11][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[11][contains(@class,'Row')]//input")
     private WebElement expectedResponseTxt;
 
-    @FindBy(css = "//child::div[12][contains(@class,\"Row\")]//input")
+    @FindBy(xpath = "//child::div[12][contains(@class,'Row')]//input")
     private WebElement numSentTxt;
 
     @FindBy(css = "[class=' textarea']")
     private WebElement descriptionTxt;
 
+    private String statusElements = "div[role=\"menu\"] li[role='presentation'] a[title='element']";
     /**
      * Waits for the Edit Campaign Popup appears.
      */
@@ -105,21 +108,24 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
     }
 
     /**
-     * Sets type combo box.
+     * Set type combo box.
      * @param type string.
      */
     @Override
     protected void setTypeCmb(final String type) {
-        typeCmb.sendKeys(type);
+        typeCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
     }
 
     /**
-     * Sets status combo box.
+     * Set status combo box.
      * @param status string.
      */
     @Override
     protected void setStatusCmb(final String status) {
-        statusCmb.sendKeys(status);
+        //--None--, Planned, Completed, In Progress, Aborted
+        statusCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", status))).click();
     }
 
     /**
@@ -199,6 +205,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return string
      */
     protected String getNameTxt() {
+        System.out.println("HEYYY NAME:" + nameTxt.getText());
         return nameTxt.getText();
     }
 
@@ -207,6 +214,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return boolean
      */
     protected boolean getActivateChk() {
+        System.out.println(activateChk.isSelected());
         return activateChk.isSelected();
     }
 
@@ -215,6 +223,8 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return string
      */
     protected String getTypeCmb() {
+//        Select type = new Select(typeCmb);
+//        return type.getFirstSelectedOption().getText();
         return typeCmb.getText();
     }
 
@@ -223,6 +233,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return string.
      */
     protected String getStatusCmb() {
+        System.out.println(statusCmb.getText());
         return statusCmb.getText();
     }
 
@@ -231,6 +242,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return string
      */
     protected String getStartDateTxt() {
+        System.out.println(startDateTxt.getText());
         return startDateTxt.getText();
     }
 
@@ -279,6 +291,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @return string.
      */
     protected String getNumSentTxt() {
+        System.out.println("Ver NUMSENT " + numSentTxt.getText());
         return numSentTxt.getText();
     }
 

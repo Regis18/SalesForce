@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.lightning.campaign;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +30,7 @@ import java.util.Map;
  */
 public class NewCampaignPopup extends NewCampaignAbstract {
 
-    @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
+    @FindBy(css = "div[class='modal-container slds-modal__container']")
     private WebElement newCampaignPopup;
 
     @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
@@ -71,6 +72,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(css = "textarea[id^='621']")
     private WebElement descriptionTxt;
 
+    private String statusElements = "li[role='presentation'] a[title='element']";
 
     /**
      * Wait for the Popup to initialize.
@@ -112,7 +114,8 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setTypeCmb(final String type) {
-        typeCmb.sendKeys(type);
+        typeCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
     }
 
     /**
@@ -121,7 +124,9 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setStatusCmb(final String status) {
-        statusCmb.sendKeys(status);
+        //--None--, Planned, Completed, In Progress, Aborted
+        statusCmb.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", status))).click();
     }
 
     /**

@@ -20,6 +20,7 @@ import salesforce.ui.PageFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * EditCampaignAbstract.
@@ -57,7 +58,7 @@ public abstract class EditCampaignAbstract extends BasePage {
      * @return OneCampaignAbstract.
      */
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
-        setCampaignData(data, mapOut, true);
+        setCampaignData(data, mapOut);
         clickSaveBtn();
         return PageFactory.getOneCampaignPage();
     }
@@ -141,97 +142,17 @@ public abstract class EditCampaignAbstract extends BasePage {
     protected abstract void setExpectedResponse(Integer expectedResponse);
 
     /**
-     * Gets Name of Campaign.
-     * @return string
-     */
-    protected abstract String getNameTxt();
-
-    /**
-     * Gets Active of Campaign.
-     * @return boolean
-     */
-    protected abstract boolean getActivateChk();
-
-    /**
-     * Gets Type text.
-     * @return string
-     */
-    protected abstract String getTypeCmb();
-
-    /**
-     * Gets Status text.
-     * @return string.
-     */
-    protected abstract String getStatusCmb();
-
-    /**
-     * Gets Start Date text.
-     * @return string
-     */
-    protected abstract String getStartDateTxt();
-
-    /**
-     * Gets End Date Text.
-     * @return string.
-     */
-    protected abstract String getEndDateTxt();
-
-    /**
-     * Gets Expected Revenue text.
-     * @return string.
-     */
-    protected abstract String getExpectedRevenueTxt();
-
-    /**
-     * Gets budgeted cost text.
-     * @return string.
-     */
-    protected abstract String getBudgetedCostTxt();
-
-    /**
-     * Gets Actual Cost text.
-     * @return string.
-     */
-    protected abstract String getActualCostTxt();
-
-    /**
-     * Gets Expected response text.
-     * @return string
-     */
-    protected abstract String getExpectedResponseTxt();
-
-    /**
-     * Gets Num sent text.
-     * @return string.
-     */
-    protected abstract String getNumSentTxt();
-
-    /**
-     * Gets Description text.
-     * @return string.
-     */
-    protected abstract String getDescriptionTxt();
-
-    /**
      * Set Campaign Data.
      * Just is name, can be more.
      *
      * @param data Campaign
      * @param map Map
      */
-    public void setCampaignData(final Campaign data, final Map<String, String> map, boolean isSet) {
-        if (isSet) {
-            HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data);
-            map.keySet().forEach(key -> {
-                strategyMap.get(key).executeMethod();
-            });
-        } else {
-            HashMap<String, StrategySetter> strategyMap = composeCampaignFromEdit();
-            map.keySet().forEach(key -> {
-                strategyMap.get(key).executeMethod();
-                System.out.println(key);
-            });
-        }
+    public void setCampaignData(final Campaign data, final Map<String, String> map) {
+        HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data);
+        map.keySet().forEach(key -> {
+            strategyMap.get(key).executeMethod();
+        });
     }
 
     /**
@@ -253,39 +174,6 @@ public abstract class EditCampaignAbstract extends BasePage {
         strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(data.getExpectedResponse()));
         strategyMap.put(NUM_SENT, () -> setNumSent(data.getNumSent()));
         strategyMap.put(DESCRIPTION, () -> setDescriptionTxt(data.getDescription()));
-        return strategyMap;
-    }
-
-    /**
-     * Get all of the values of the campaign that contains the Edit form.
-     * @param mapOut mapOut.
-     * @return Campaign.
-     */
-    public Campaign getCampaignValues(Map<String, String> mapOut) {
-        setCampaignData(campaignValues, mapOut, false);
-        return campaignValues;
-    }
-
-    /**
-     * Compose the values of Campaign.
-     * @return Hashmap
-     */
-    private HashMap<String, StrategySetter> composeCampaignFromEdit() {
-        HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put(NAME, () -> campaignValues.setName(getNameTxt()));
-        strategyMap.put(ACTIVE, () -> campaignValues.setActivate(getActivateChk()));
-        strategyMap.put(TYPE, () -> campaignValues.setType(getTypeCmb()));
-        strategyMap.put(STATUS, () -> campaignValues.setStatus(getStatusCmb()));
-        strategyMap.put(START_DATE, () -> campaignValues.setStartDate(getStartDateTxt()));
-        strategyMap.put(END_DATE, () -> campaignValues.setEndDate(getEndDateTxt()));
-        strategyMap.put(EXPECTED_REVENUE, () -> campaignValues.setExpectedRevenue(Integer
-                                                .parseInt(getExpectedRevenueTxt())));
-        strategyMap.put(BUDGETED_COST, () -> campaignValues.setBudgetedCost(Integer.parseInt(getBudgetedCostTxt())));
-        strategyMap.put(ACTUAL_COST, () -> campaignValues.setActualCost(Integer.parseInt(getActualCostTxt())));
-        strategyMap.put(EXPECTED_RESPONSE, () -> campaignValues.setExpectedResponse(Integer
-                                                .parseInt(getExpectedResponseTxt())));
-        strategyMap.put(NUM_SENT, () -> campaignValues.setNumSent(Integer.parseInt(getNumSentTxt())));
-        strategyMap.put(DESCRIPTION, () -> campaignValues.setDescription(getDescriptionTxt()));
         return strategyMap;
     }
 }

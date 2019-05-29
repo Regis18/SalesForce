@@ -142,7 +142,6 @@ public abstract class NewCampaignAbstract extends BasePage {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data);
         map.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
-            System.out.println(key);
         });
     }
 

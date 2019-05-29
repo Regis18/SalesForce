@@ -83,7 +83,7 @@ public class CampaignSteps {
     /**
      * Verify a message confirmation.
      */
-    @Then("^I verify a message confirmation of a new campaign was created$")
+    @Then("^I verify a confirmation message of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
         try {
             String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
@@ -148,9 +148,8 @@ public class CampaignSteps {
      */
     @When("^I update the campaign the characteristics of \"([^\"]*)\" with the following characteristics:$")
     public void updateTheCampaignTheCharacteristics(final String nameUpdate, final Map<String, String> mapOut) {
-//        campaign.processInformation(mapOut);
-//        newCampaignPage = campaignPage.clickNewCampaignBtn();
-//        oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
+        campaign.processInformation(mapOut);
+        oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
     }
 
     /**
@@ -161,8 +160,13 @@ public class CampaignSteps {
         editCampaignPage = oneCampaignPage.openEditCampaign();
     }
 
-    @Then("^I verify all of the values from the \"([^\"]*)\" are in Edit fields Popup$")
-    public void verifyAllOfTheValuesFromTheAreInEditFieldsPopup(String nameCampaign) {
-        assertEquals(campaign, editCampaignPage.getCampaignValues(mapOut));
+    @Then("^I verify a confirmation message of the campaign was saved$")
+    public void verifyAConfirmationMessageOfTheCampaignWasSaved() {
+        try {
+            String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
+            assertEquals(message, "Campaign \"" + campaign.getName() + "\" was saved.");
+        } catch (ClassCastException e) {
+            System.out.println("In Classic Skin there is no message confirmation");
+        }
     }
 }
