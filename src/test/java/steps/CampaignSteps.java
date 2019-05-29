@@ -160,6 +160,9 @@ public class CampaignSteps {
         editCampaignPage = oneCampaignPage.openEditCampaign();
     }
 
+    /**
+     * Verify if a confirmation message is displayed in Light.
+     */
     @Then("^I verify a confirmation message of the campaign was saved$")
     public void verifyAConfirmationMessageOfTheCampaignWasSaved() {
         try {
