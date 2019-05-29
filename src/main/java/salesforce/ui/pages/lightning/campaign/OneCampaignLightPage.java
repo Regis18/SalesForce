@@ -13,12 +13,16 @@
 
 package salesforce.ui.pages.lightning.campaign;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Campaign;
 import salesforce.ui.pages.abstracts.campaign.EditCampaignAbstract;
 import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
 import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+
+import java.util.Map;
 
 /**
  * OneCampaignLightPage.
@@ -55,6 +59,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(css = "button[title='Delete']")
     private WebElement deletePopupBtn;
 
+    private String dataCampaign =  "//*[contains(@class,'test-id__field-value')]" +
+                                    "//span[contains(text(), 'element')]";
+    private final String ELEMENT = "element";
 
     /**
      * Wait for Campaign Panel Title.
@@ -118,5 +125,33 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
         mainMenuCmb.click();
         editMainMenuCmb.click();
         return new EditCampaignLightPopup();
+    }
+
+    /**
+     * Verifies the data that has the campaign.
+     * @param campaign campaign
+     * @return boolean
+     */
+    //TODO DO it with Strategy
+    @Override
+    public boolean verifyDataCampaign(final Campaign campaign, final Map<String, String> mapOut) {
+        boolean result = false;
+        try {
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getName())));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getType())));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStatus())));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStartDate())));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getEndDate())));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getExpectedRevenue()))));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getBudgetedCost()))));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getActualCost()))));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getExpectedResponse()))));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getNumSent()))));
+            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getDescription())));
+            result = true;
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return result;
     }
 }

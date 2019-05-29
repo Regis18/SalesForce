@@ -150,6 +150,7 @@ public class CampaignSteps {
     public void updateTheCampaignTheCharacteristics(final String nameUpdate, final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
         oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
+        this.mapOut = mapOut;
     }
 
     /**
@@ -171,5 +172,10 @@ public class CampaignSteps {
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
+    }
+
+    @Then("^I verify the data updated of Campaign in its own Page$")
+    public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
+        assertTrue(oneCampaignPage.verifyDataCampaign(campaign, mapOut));
     }
 }

@@ -64,7 +64,9 @@ Feature: Create, delete, update campaigns of Salesforce
     |Num Sent         |70              |
     |Description      |Good Night      |
     Then I verify a confirmation message of the campaign was saved
-#    And I verify "Update Campaign" is in the list of campaigns
+    And I verify the data updated of Campaign in its own Page
+    When I open to Campaign Page
+    And I verify "Update Campaign" is in the list of campaigns
 
 #  @deleteCampaign
 #  Scenario: Search a new Campaign in Salesforce
