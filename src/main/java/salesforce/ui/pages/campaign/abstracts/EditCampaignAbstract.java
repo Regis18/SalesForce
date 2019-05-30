@@ -165,8 +165,8 @@ public abstract class EditCampaignAbstract extends BasePage {
         strategyMap.put(ACTIVE, () -> setActiveChk(data.isActivate()));
         strategyMap.put(TYPE, () -> setTypeCmb(data.getType()));
         strategyMap.put(STATUS, () -> setStatusCmb(data.getStatus()));
-        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
-        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
+//        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
+//        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
         strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenueTxt(data.getExpectedRevenue()));
         strategyMap.put(BUDGETED_COST, () -> setBudgetedCostTxt(data.getBudgetedCost()));
         strategyMap.put(ACTUAL_COST, () -> setActualCostTxt(data.getActualCost()));

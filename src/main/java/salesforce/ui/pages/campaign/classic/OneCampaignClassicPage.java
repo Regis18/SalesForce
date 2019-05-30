@@ -82,10 +82,6 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
 //    //TODO Do it verifydata campaign
-    @Override
-    public boolean verifyDataCampaign(final Campaign campaign, final Map<String, String> mapOut) {
-        return false;
-    }
 
     @Override
     public boolean isCampaignFieldValueDisplayed(String key, String value) {

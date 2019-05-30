@@ -28,6 +28,7 @@ import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.utils.EntityId;
 
 import java.util.Map;
 
@@ -52,6 +53,7 @@ public class CampaignSteps {
     private CampaignApi campaignApi;
     private JsonPath jsonPath;
     private Map<String, String> mapOut;
+    private EntityId entityId;
 
     /**
      * Campaign steps.
@@ -60,10 +62,11 @@ public class CampaignSteps {
     public CampaignSteps(Context context) {
         this.context = context;
         this.campaign = context.getCampaign();
+        entityId = new EntityId();
     }
 
     /**
-     * Navigate to Campaign Page.
+     * Navigates to Campaign Page.
      */
     @Given("^I open the Campaigns Page$")
     public void openToCampaignForm() {
@@ -72,7 +75,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Create new campaign.
+     * Creates new campaign.
      * @param mapOut
      */
     @When("^I create a new campaign for Campaigns$")
@@ -81,10 +84,12 @@ public class CampaignSteps {
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
+        campaign.setId(entityId.getIdEntitie());
+        System.out.println(campaign.getId());
     }
 
     /**
-     * Verify a message confirmation.
+     * Verifies a message confirmation.
      */
     @Then("^I verify a confirmation message of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
@@ -97,7 +102,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify campaign.
+     * Verifies campaign.
      */
     @Then("^I verify the page of campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
@@ -115,7 +120,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Delete Campaign.
+     * Deletes Campaign.
      * @param name string
      */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
@@ -124,7 +129,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify message confirmation.
+     * Verifies message confirmation.
      */
     @Then("^I verify a message confirmation of the campaign was deleted$")
     public void verifyAMessageConfirmationOfTheCampaignWasDeleted() {
@@ -137,7 +142,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify campaign is not the list.
+     * Verifies campaign is not the list.
      * @param name
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
@@ -146,18 +151,17 @@ public class CampaignSteps {
     }
 
     /**
-     * Update the characteristics of a campaign.
-     * @param nameUpdate string
+     * Updates the characteristics of a campaign.
      */
     @When("^I update the Campaign \"New Campaign\" with the following values$")
-    public void updateTheCampaignTheCharacteristics(final String nameUpdate, final Map<String, String> mapOut) {
+    public void updateTheCampaignTheCharacteristics(final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
         oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
         this.mapOut = mapOut;
     }
 
     /**
-     * Open to the Edit Popup to initialize Edit Campaign.
+     * Opens to the Edit Popup to initialize Edit Campaign.
      */
     @When("^I open the Edit Campaign Popup$")
     public void openTheEditPopupOfTheCampaign() {
@@ -165,7 +169,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify if a confirmation message is displayed in Light.
+     * Verifies if a confirmation message is displayed in Light.
      */
     @Then("^I verify a confirmation message of the campaign was saved$")
     public void verifyAConfirmationMessageOfTheCampaignWasSaved() {
@@ -178,12 +182,10 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify the updated
+     * Verifies the updated
      */
     @Then("^I verify the updated values of Campaign in its own Page$")
     public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
-        assertTrue(oneCampaignPage.verifyDataCampaign(campaign, mapOut));
-        // Update mapOut with the values from the entity
         mapOut.forEach((key, value) -> {
             assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
                     "The field " + key + "was not displayed. Expected value "
@@ -191,6 +193,10 @@ public class CampaignSteps {
         });
     }
 
+    /**
+     * Create a Campaign with API Testing.
+     * @param mapOut
+     */
     @Given("^I have a Campaign with the following values$")
     public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
         campaignApi = new CampaignApi();
@@ -198,6 +204,9 @@ public class CampaignSteps {
         campaign.setJsonValues(jsonPath);
     }
 
+    /**
+     *Navigate to Campaign Page.
+     */
     @When("^I navigate to the Campaign Page$")
     public void navigateToTheCampaignPage() {
         oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());

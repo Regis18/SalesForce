@@ -59,11 +59,11 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(css = "button[title='Delete']")
     private WebElement deletePopupBtn;
 
-    private String dataCampaign =  "//*[contains(@class,'test-id__field-value')]" +
-                                    "//span[contains(text(), 'element')]";
+    private String valueCampaign = "//div[div[span[contains(text(),'key')]]]//*//span[contains(text(),'element')]";
 
-    private String keyValue = "//div[contains(@class, 'test-id__field-label-container')]//span[contains(text(),'element')]";
     private final String ELEMENT = "element";
+
+    private final String KEY = "key";
 
     /**
      * Wait for Campaign Panel Title.
@@ -130,36 +130,12 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     }
 
     /**
-     * Verifies the data that has the campaign.
-     * @param campaign campaign
-     * @return boolean
+     * Check if the values of Campaign is correct in the list.
+     * @param key String.
+     * @param value Value.
+     * @return Boolean
      */
-    //TODO DO it with Strategy
-    @Override
-    public boolean verifyDataCampaign(final Campaign campaign, final Map<String, String> mapOut) {
-        boolean result = false;
-        try {
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getName())));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getType())));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStatus())));
-//            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getStartDate())));
-//            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getEndDate())));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getExpectedRevenue()))));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getBudgetedCost()))));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getActualCost()))));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getExpectedResponse()))));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, String.valueOf(campaign.getNumSent()))));
-            driver.findElement(By.xpath(dataCampaign.replace(ELEMENT, campaign.getDescription())));
-            result = true;
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return result;
-    }
-
     public boolean isCampaignFieldValueDisplayed(String key, String value) {
-        //falta
-//div[@class="test-id__field-label-container slds-form-element__label"][span[starts-with(text(),'Type')]]//ancestor::div[1][contains
-        return DriverMethods.isElementPresent(By.xpath(dataCampaign.replace(ELEMENT, value)));
+        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 }

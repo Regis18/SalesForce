@@ -41,11 +41,15 @@ public abstract class OneCampaignAbstract extends BasePage {
     public abstract void deleteCampaign(String nameCampaign);
 
     /**
-     * Open Edit Campaign
+     * Open Edit Campaign.
      */
     public abstract EditCampaignAbstract openEditCampaign();
 
-    public abstract boolean verifyDataCampaign(Campaign campaign, Map<String, String> mapOut);
-
+    /**
+     * Check if the values of Campaign is correct in the list.
+     * @param key String.
+     * @param value Value.
+     * @return Boolean
+     */
     public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
 }

@@ -35,8 +35,7 @@ public class CampaignApi {
     private final String GET = "GET";
     private final String POST = "POST";
     private final String PUT = "PUT";
-    private final String token = "00D4P000000gLN4!AQQAQLo9rpc2CGwwx.rLMs._Boj05m5qZ2OYb3vx.GrY8" +
-            ".tGhYIKxrld4RzWjmrSq2zfq3F0y6CO2P.K.gsHLZyq6VUFX0DD";
+    private final String token = Setup.getInstance().getToken();
     private String url;
 
     /**

@@ -35,7 +35,9 @@ Feature: Create, delete, update campaigns of Salesforce
 
   @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
-    Given I have a Campaign with the following values
+    //Given I have a Campaign with the following values
+    Given I open the Campaigns Page
+    And I create a new campaign for Campaigns
     | Name             | New Campaign |
     | Active           | True         |
     | Type             | Webinar      |
