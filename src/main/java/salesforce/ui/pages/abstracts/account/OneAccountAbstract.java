@@ -31,15 +31,4 @@ public abstract class OneAccountAbstract extends BasePage {
      * Implement get name to assert with steps.
      */
     public abstract String getNameAccount();
-
-    /**
-     * Delete Account of Salesforce with specific name.
-     * @param nameAccount string
-     */
-    public abstract void deleteAccount(String nameAccount);
-
-    /**
-     * Get current url account of Salesforce.
-     */
-    public abstract String getCurrentUrl();
 }

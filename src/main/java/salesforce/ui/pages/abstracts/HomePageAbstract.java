@@ -1,6 +1,7 @@
 package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
+import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 
@@ -22,4 +23,10 @@ public abstract class HomePageAbstract extends BasePage {
      * @return NewTaskAbstract.
      */
     public abstract NewTaskAbstract displayCreateTask();
+
+    /**
+     * Click in the button Account button.
+     * @return Account Page abstract.
+     */
+    public abstract AccountPageAbstract clickAccountBtn();
 }

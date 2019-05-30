@@ -27,8 +27,6 @@ import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
  */
 public class OneAccountLightPage extends OneAccountAbstract {
 
-    private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
-
     @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
     private WebElement accountPanelTitle;
 
@@ -84,23 +82,5 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     private void clickDetailsTab() {
         detailsTab.click();
-    }
-
-    /**
-     * Delete account
-     * @param nameAccount string
-     */
-    @Override
-    public void deleteAccount(String nameAccount) {
-    }
-
-    /**
-     * Get current account
-     * @return currentUrl string.
-     */
-    @Override
-    public String getCurrentUrl() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
     }
 }

@@ -28,10 +28,10 @@ public class Task {
 
     private String subject;
     private String comment;
-    private String status; //Not Started, In Progress, Completed, Waiting on someone else, Deferred.
+    private String status;
     private String email;
     private String dueDate;
-    private String priority; //High, Normal, Low.
+    private String priority;
 
     /**
      * Get subject to task.

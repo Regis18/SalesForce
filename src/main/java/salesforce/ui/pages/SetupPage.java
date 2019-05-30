@@ -29,7 +29,7 @@ import salesforce.utils.Setup;
  * @version 0.0.1
  */
 public class SetupPage extends BasePage {
-    //Lightning Page
+
     @FindBy(css = "[data-aura-class='onesetupSetupHeader']")
     private WebElement setupHeader;
 
@@ -81,7 +81,6 @@ public class SetupPage extends BasePage {
                 break;
         }
 
-     //   isLight = driver.getTitle().equals("Home | Salesforce");
         if (isLight) {
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {

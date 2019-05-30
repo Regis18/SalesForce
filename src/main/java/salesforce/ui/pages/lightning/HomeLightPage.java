@@ -20,6 +20,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.lightning.account.AccountLightPage;
 import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 
@@ -44,6 +45,9 @@ public class HomeLightPage extends HomePageAbstract {
 
     @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
     private WebElement newTaskItem;
+
+    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Account']")
+    private WebElement accountBtn;
 
     @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
     private WebElement taskMenuButton;
@@ -89,6 +93,15 @@ public class HomeLightPage extends HomePageAbstract {
             executor.executeScript("arguments[0].click();", itemToSelect);
         //}
         return new NewTaskLightPopUp();
+    }
+
+    /**
+     * Click to Account and initialize AccountLightPage.
+     * @return AccountLightPage.
+     */
+    public AccountLightPage clickAccountBtn() {
+        accountBtn.click();
+        return new AccountLightPage();
     }
 
     /**
