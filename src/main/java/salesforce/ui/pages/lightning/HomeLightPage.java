@@ -22,7 +22,7 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.lightning.account.AccountLightPage;
 import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
-import salesforce.ui.pages.lightning.campaign.CampaignLightPage;
+import salesforce.ui.pages.campaign.light.CampaignLightPage;
 
 /**
  * HomeLightPage.

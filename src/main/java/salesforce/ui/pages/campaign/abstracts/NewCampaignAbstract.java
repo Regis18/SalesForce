@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.campaign;
+package salesforce.ui.pages.campaign.abstracts;
 
 import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
@@ -50,7 +50,7 @@ public abstract class NewCampaignAbstract extends BasePage {
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
         setCampaignData(data, mapOut);
         clickSaveBtn();
-        return PageFactory.oneCampaignPage();
+        return PageFactory.getOneCampaignPage();
     }
 
     /**
@@ -142,7 +142,6 @@ public abstract class NewCampaignAbstract extends BasePage {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(data);
         map.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
-            System.out.println(key);
         });
     }
 
@@ -157,8 +156,8 @@ public abstract class NewCampaignAbstract extends BasePage {
         strategyMap.put(ACTIVE, () -> setActiveChk(data.isActivate()));
         strategyMap.put(TYPE, () -> setTypeCmb(data.getType()));
         strategyMap.put(STATUS, () -> setStatusCmb(data.getStatus()));
-        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
-        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
+//        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
+//        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
         strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenueTxt(data.getExpectedRevenue()));
         strategyMap.put(BUDGETED_COST, () -> setBudgetedCostTxt(data.getBudgetedCost()));
         strategyMap.put(ACTUAL_COST, () -> setActualCostTxt(data.getActualCost()));

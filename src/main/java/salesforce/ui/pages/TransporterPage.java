@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.Setup;
 
 import java.net.MalformedURLException;
@@ -19,12 +20,12 @@ import java.net.URL;
  */
 public class TransporterPage {
     private static TransporterPage instance;
-    /**
-     * It creates to follow up the instruction of the class.
-     */
+    private final String CLASSIC = "classic";
+    private final String LIGHT = "light";
     private Logger log = Logs.getInstance().getLog();
-    //private String baseURL = Setup.getInstance().urlBasePath;
-    private String baseURL = Setup.getInstance().getUrlBasePath();
+
+    private String baseLightURL = Setup.getInstance().getUrlBasePath();
+    private String baseClassicURL = Setup.getInstance().getUrlClassicPath();
     private Setup setup = Setup.getInstance();
     private WebDriver driver;
 
@@ -89,10 +90,10 @@ public class TransporterPage {
         log.info("Navigate in Log in page");
         HomePageAbstract homePage = null;
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 homePage = setupPage.navigateHomeClassic();
                 break;
-            case "light":
+            case LIGHT:
                 homePage = setupPage.navigateHomeLight();
                 break;
             default:
@@ -109,17 +110,36 @@ public class TransporterPage {
     public TaskPageAbstract navigateToTasksHomePage() {
 
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 log.info("Navigate to tasks home page classic skin");
-                goToURL(baseURL + "/home/home.jsp");
+                goToURL(baseClassicURL + "/home/home.jsp");
                 break;
-            case "light":
+            case LIGHT:
                 log.info("Navigate to tasks home page lightning skin");
-                goToURL(baseURL + "/lightning/o/Task/home");
+                goToURL(baseLightURL + "/lightning/o/Task/home");
                 break;
             default:
         }
-        return PageFactory.taskHomePage();
+        return PageFactory.getTaskHomePage();
+    }
+
+    /**
+     *
+     * @param urlCampaign
+     * @return
+     */
+    public OneCampaignAbstract navigateToOneCampaign(String urlCampaign) {
+        switch (setup.getLayout()) {
+            case CLASSIC:
+                goToURL(baseClassicURL + "/" + urlCampaign);
+                break;
+            case LIGHT:
+                goToURL(baseLightURL + "/lightning/r/Campaign/" + urlCampaign + "/view");
+                break;
+            default:
+                break;
+        }
+        return PageFactory.getOneCampaignPage();
     }
 
     /**
@@ -131,13 +151,13 @@ public class TransporterPage {
 
         switch (setup.getLayout()) {
             case "classic":
-                goToURL(baseURL + "/home/home.jsp");
+                goToURL(baseClassicURL + "/home/home.jsp");
                 break;
             case "light":
-                 goToURL(baseURL + "/lightning/page/home");
+                 goToURL(baseLightURL + "/lightning/page/home");
                 break;
             default:
         }
-        return PageFactory.homePage();
+        return PageFactory.getHomePage();
     }
 }

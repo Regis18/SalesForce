@@ -11,12 +11,18 @@
  *
  */
 
-package salesforce.ui.pages.lightning.campaign;
+package salesforce.ui.pages.campaign.light;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.entities.Campaign;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.utils.DriverMethods;
+
+import java.util.Map;
 
 /**
  * OneCampaignLightPage.
@@ -43,13 +49,21 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
                     "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
-    @FindBy(css = "div[class^=\"branding-actions \"] a[title='Delete']")
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
     private WebElement deleteMainMenuCmb;
+
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[2]//a")
+    private WebElement editMainMenuCmb;
 
     //**can be removed
     @FindBy(css = "button[title='Delete']")
     private WebElement deletePopupBtn;
 
+    private String valueCampaign = "//div[div[span[contains(text(),'key')]]]//*//span[contains(text(),'element')]";
+
+    private final String ELEMENT = "element";
+
+    private final String KEY = "key";
 
     /**
      * Wait for Campaign Panel Title.
@@ -102,5 +116,26 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
         mainMenuCmb.click();
         deleteMainMenuCmb.click();
         deletePopupBtn.click();
+    }
+
+    /**
+     * Open the Edit Popup doing click in the menu.
+     * @return EditCampaignAbstract could be Light o Classic.
+     */
+    @Override
+    public EditCampaignAbstract openEditCampaign() {
+        mainMenuCmb.click();
+        editMainMenuCmb.click();
+        return new EditCampaignLightPopup();
+    }
+
+    /**
+     * Check if the values of Campaign is correct in the list.
+     * @param key String.
+     * @param value Value.
+     * @return Boolean
+     */
+    public boolean isCampaignFieldValueDisplayed(String key, String value) {
+        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 }

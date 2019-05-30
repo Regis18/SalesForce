@@ -17,14 +17,18 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.path.json.JsonPath;
+import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
-import salesforce.ui.pages.lightning.campaign.OneCampaignLightPage;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.utils.EntityId;
 
 import java.util.Map;
 
@@ -41,10 +45,15 @@ public class CampaignSteps {
     private CampaignPageAbstract campaignPage;
     private HomePageAbstract homePage;
     private NewCampaignAbstract newCampaignPage;
+    private EditCampaignAbstract editCampaignPage;
     private OneCampaignAbstract oneCampaignPage;
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Campaign campaign;
+    private CampaignApi campaignApi;
+    private JsonPath jsonPath;
+    private Map<String, String> mapOut;
+    private EntityId entityId;
 
     /**
      * Campaign steps.
@@ -53,32 +62,36 @@ public class CampaignSteps {
     public CampaignSteps(Context context) {
         this.context = context;
         this.campaign = context.getCampaign();
+        entityId = new EntityId();
     }
 
     /**
-     * Navigate to Campaign Page.
+     * Navigates to Campaign Page.
      */
-    @Given("^I navigate to Campaign Page$")
-    public void navigateToCampaignForm() {
+    @Given("^I open the Campaigns Page$")
+    public void openToCampaignForm() {
         homePage = context.getHomePage();
         campaignPage = homePage.clickCampaignBtn();
     }
 
     /**
-     * Create new campaign.
+     * Creates new campaign.
      * @param mapOut
      */
     @When("^I create a new campaign for Campaigns$")
     public void createANewCampaign(final Map<String, String> mapOut) {
+        this.mapOut = mapOut;
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
+        campaign.setId(entityId.getIdEntitie());
+        System.out.println(campaign.getId());
     }
 
     /**
-     * Verify a message confirmation.
+     * Verifies a message confirmation.
      */
-    @Then("^I verify a message confirmation of a new campaign was created$")
+    @Then("^I verify a confirmation message of a new campaign was created$")
     public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
         try {
             String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
@@ -89,7 +102,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify campaign.
+     * Verifies campaign.
      */
     @Then("^I verify the page of campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
@@ -100,14 +113,14 @@ public class CampaignSteps {
      * Verify campaign to the list.
      * @param name string.
      */
-    @Then("^I verify \"([^\"]*)\" is in the list of campaigns$")
+    @Then("^I verify the Campaign name was \"([^\"]*)\" in the list of campaigns in Campaigns Page$")
     public void verifyIsInTheListOfCampaigns(String name) {
         // It is false because means that the element exist in the list.
         assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
 
     /**
-     * Delete Campaign.
+     * Deletes Campaign.
      * @param name string
      */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
@@ -116,7 +129,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify message confirmation.
+     * Verifies message confirmation.
      */
     @Then("^I verify a message confirmation of the campaign was deleted$")
     public void verifyAMessageConfirmationOfTheCampaignWasDeleted() {
@@ -129,7 +142,7 @@ public class CampaignSteps {
     }
 
     /**
-     * Verify campaign is not the list.
+     * Verifies campaign is not the list.
      * @param name
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
@@ -137,4 +150,65 @@ public class CampaignSteps {
         assertFalse(campaignPage.checkCampaignList(campaign.getName()));
     }
 
+    /**
+     * Updates the characteristics of a campaign.
+     */
+    @When("^I update the Campaign \"New Campaign\" with the following values$")
+    public void updateTheCampaignTheCharacteristics(final Map<String, String> mapOut) {
+        campaign.processInformation(mapOut);
+        oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
+        this.mapOut = mapOut;
+    }
+
+    /**
+     * Opens to the Edit Popup to initialize Edit Campaign.
+     */
+    @When("^I open the Edit Campaign Popup$")
+    public void openTheEditPopupOfTheCampaign() {
+        editCampaignPage = oneCampaignPage.openEditCampaign();
+    }
+
+    /**
+     * Verifies if a confirmation message is displayed in Light.
+     */
+    @Then("^I verify a confirmation message of the campaign was saved$")
+    public void verifyAConfirmationMessageOfTheCampaignWasSaved() {
+        try {
+            String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
+            assertEquals(message, "Campaign \"" + campaign.getName() + "\" was saved.");
+        } catch (ClassCastException e) {
+            System.out.println("In Classic Skin there is no message confirmation");
+        }
+    }
+
+    /**
+     * Verifies the updated
+     */
+    @Then("^I verify the updated values of Campaign in its own Page$")
+    public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
+        mapOut.forEach((key, value) -> {
+            assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
+                    "The field " + key + "was not displayed. Expected value "
+                            + value);
+        });
+    }
+
+    /**
+     * Create a Campaign with API Testing.
+     * @param mapOut
+     */
+    @Given("^I have a Campaign with the following values$")
+    public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
+        campaignApi = new CampaignApi();
+        jsonPath = campaignApi.createCampaign(mapOut);
+        campaign.setJsonValues(jsonPath);
+    }
+
+    /**
+     *Navigate to Campaign Page.
+     */
+    @When("^I navigate to the Campaign Page$")
+    public void navigateToTheCampaignPage() {
+        oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
+    }
 }

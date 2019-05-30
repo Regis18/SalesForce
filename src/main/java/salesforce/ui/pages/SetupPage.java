@@ -45,7 +45,7 @@ public class SetupPage extends BasePage {
     @FindBy(css = "[class^=\"bare slds-icon-waffle_container slds-context-bar__button\"]")
     private WebElement appLauncherBtn;
 
-    @FindBy(css = "a[class^=\"app-launcher-link slds-text-link--reset\"][title='Home']")
+    @FindBy(css = "a[class^='app-launcher-link slds-text-link--reset'][title='Home']")
     private WebElement homeLink;
 
     //Classic Page

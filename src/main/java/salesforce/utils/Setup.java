@@ -16,6 +16,8 @@ public class Setup {
     private String loginpath;
     private String layout;
     private String urlClassicPath;
+    private String apiPath;
+    private String token;
 
     /**
      * Constructor of page WebDriverManager.
@@ -97,6 +99,22 @@ public class Setup {
     }
 
     /**
+     * Gets API path.
+     * @return string
+     */
+    public String getApiPath() {
+        return apiPath;
+    }
+
+    /**
+     * Gets Token.
+     * @return string.
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
      * Initialize.
      */
     private void initialize() {
@@ -114,6 +132,8 @@ public class Setup {
         username = properties.getProperty("username");
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
+        apiPath = properties.getProperty("apipath");
         layout = WebDriverConfig.getSkin();
+        token = properties.getProperty("token");
     }
 }

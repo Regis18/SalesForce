@@ -11,12 +11,16 @@
  *
  */
 
-package salesforce.ui.pages.classic.campaign;
+package salesforce.ui.pages.campaign.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
+import salesforce.entities.Campaign;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+
+import java.util.Map;
 
 /**
  * OneCampaignClassicPage.
@@ -26,11 +30,15 @@ import salesforce.ui.pages.abstracts.campaign.OneCampaignAbstract;
 public class OneCampaignClassicPage extends OneCampaignAbstract {
     @FindBy(xpath = "//td[@class=\" oRight\"]")
     private WebElement campaignDetailForm;
+
     @FindBy(xpath = "//h1[@class=\"pageType\"]")
     private WebElement campaignPanelTitle;
+
     @FindBy(xpath = "//h2[@class=\"pageDescription\"]")
     private WebElement campaignTitleLbl;
 
+    @FindBy(css = "td[id='topButtonRow'] input[value='Delete']")
+    private WebElement deleteUpBtn;
     /**
      * Wait for Campaign panel title.
      */
@@ -63,6 +71,20 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public void deleteCampaign(final String nameCampaign) {
+        deleteUpBtn.click();
+        driver.switchTo().alert().accept();
+    }
+//todo DO it
 
+    @Override
+    public EditCampaignAbstract openEditCampaign() {
+        return null;
+    }
+
+//    //TODO Do it verifydata campaign
+
+    @Override
+    public boolean isCampaignFieldValueDisplayed(String key, String value) {
+        return false;
     }
 }

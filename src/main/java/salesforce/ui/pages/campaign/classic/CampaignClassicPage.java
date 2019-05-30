@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.classic.campaign;
+package salesforce.ui.pages.campaign.classic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.campaign.CampaignPageAbstract;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.utils.DriverMethods;
 
 /**
@@ -63,6 +63,6 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        return DriverMethods.isElementExist(By.xpath(campaignList.replace("campaign", name)));
+        return DriverMethods.isElementPresent(By.xpath(campaignList.replace("campaign", name)));
     }
 }

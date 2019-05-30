@@ -18,8 +18,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
 import salesforce.ui.pages.classic.account.AccountClassicPage;
-import salesforce.ui.pages.classic.campaign.CampaignClassicPage;
 import salesforce.ui.pages.classic.task.NewTaskClassic;
 
 /**

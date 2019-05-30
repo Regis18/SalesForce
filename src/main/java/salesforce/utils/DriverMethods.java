@@ -36,7 +36,7 @@ public class DriverMethods {
      * @param locator by.
      * @return boolean.
      */
-    public static boolean isElementExist(final By locator) {
+    public static boolean isElementPresent(final By locator) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
 
         boolean result = true;

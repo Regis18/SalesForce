@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignPopup.java Copyright (c) 2019 Jala Foundation.
+ * @(#) NewCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,121 +11,120 @@
  *
  */
 
-package salesforce.ui.pages.lightning.campaign;
+package salesforce.ui.pages.campaign.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Campaign;
-import salesforce.ui.pages.abstracts.campaign.NewCampaignAbstract;
+import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 
 import java.util.Map;
 
 /**
- * NewCampaignPopup.
+ * NewCampaignClassicPage.
  * @author Regis Humana.
  * @version 0.0.1
  */
-public class NewCampaignPopup extends NewCampaignAbstract {
+public class NewCampaignClassicPage extends NewCampaignAbstract {
 
-    @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
-    private WebElement newCampaignPopup;
+    @FindBy(id = "bodyCell")
+    private WebElement newCampaignForm;
 
-    @FindBy(xpath = "//div[@data-aura-class=\"uiInput uiInputText uiInput--default uiInput--input\"]//input")
+    @FindBy(id = "cpn1")
     private WebElement nameTxt;
 
-    @FindBy(xpath = "//button[@title='Save']")
-    private WebElement saveBtn;
+    @FindBy (xpath = "//td[@id=\"bottomButtonRow\"]//input[@name=\"save\"]")
+    private WebElement saveBottomBtn;
 
-    @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
+    @FindBy(id = "cpn16")
     private WebElement activateChk;
 
-    @FindBy(css = "div[id^='133'] a")
-    private WebElement typeCmb;
-
-    @FindBy(css = "div[id^='197'] a")
-    private WebElement statusCmb;
-
-    @FindBy(css = "input[id^='254']")
+    @FindBy(id = "cpn5")
     private WebElement startDateTxt;
 
-    @FindBy(css = "input[id^='295']")
+    @FindBy(id = "cpn6")
     private WebElement endDateTxt;
 
-    @FindBy(css = "input[id^='336']")
+    @FindBy(id = "cpn2")
+    private WebElement typeCmb;
+
+    @FindBy(id = "cpn3")
+    private WebElement statusCmb;
+
+    @FindBy(id = "cpn8")
     private WebElement expectedRevenueTxt;
 
-    @FindBy(css = "input[id^='372']")
+    @FindBy(id = "cpn9")
     private WebElement budgetedCostTxt;
 
-    @FindBy(css = "input[id^='408']")
+    @FindBy(id = "cpn10")
     private WebElement actualCostTxt;
 
-    @FindBy(css = "input[id^='444']")
+    @FindBy(id = "cpn11")
     private WebElement expectedResponseTxt;
 
-    @FindBy(css = "input[id^='480']")
+    @FindBy(id = "cpn13")
     private WebElement numSentTxt;
 
-    @FindBy(css = "textarea[id^='621']")
+    @FindBy(id = "cpn4")
     private WebElement descriptionTxt;
 
-
     /**
-     * Wait for the Popup to initialize.
+     * Wait for newCampaignForm.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newCampaignPopup));
+        wait.until(ExpectedConditions.visibilityOf(newCampaignForm));
     }
 
     /**
-     * Set the name into NameTxt.
-     * @param name **this is the name**
+     * Click into Save bottom.
      */
+    @Override
+    protected void clickSaveBtn() {
+        saveBottomBtn.click();
+    }
+
+    /**
+     * Set name in the name TextBox.
+     * @param name String
+     */
+    @Override
     protected void setNameTxt(final String name) {
         nameTxt.sendKeys(name);
     }
 
-    /**
-     * Click to Save the changes.
-     */
-    public void clickSaveBtn() {
-        saveBtn.click();
-    }
-
-    /**
-     * Set Activate checkbox.
-     * @param isActivate boolean
-     */
     @Override
     protected void setActiveChk(final boolean isActivate) {
-        if(isActivate) {
+        if (isActivate) {
             activateChk.click();
         }
     }
 
     /**
-     * Set type combo box.
+     * Set Type of Lightning.
      * @param type string.
      */
     @Override
     protected void setTypeCmb(final String type) {
-        typeCmb.sendKeys(type);
+        Select accountRole = new Select(typeCmb);
+        accountRole.selectByVisibleText(type);
     }
 
     /**
-     * Set status combo box.
+     * Set Status Combo Box,
      * @param status string.
      */
     @Override
     protected void setStatusCmb(final String status) {
-        statusCmb.sendKeys(status);
+        Select accountRole = new Select(statusCmb);
+        accountRole.selectByVisibleText(status);
     }
 
     /**
-     * Set start date text box.
+     * Set start date.
      * @param startDate string.
      */
     @Override
@@ -134,7 +133,7 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     }
 
     /**
-     * Set end date text box.
+     * Set End Date.
      * @param endDate string.
      */
     @Override
