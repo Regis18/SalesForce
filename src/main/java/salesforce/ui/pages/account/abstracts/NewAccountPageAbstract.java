@@ -32,6 +32,8 @@ public abstract class NewAccountPageAbstract extends BasePage {
     /**
      * Create a new account, it create for classic and lightning pages.
      * @param account String.
+     * @param accountInformation Map
+     * @return OneAccountPage
      */
     public OneAccountAbstract createNewAccount(final Account account, final Map accountInformation) {
         setAccountData(account, accountInformation);
@@ -243,8 +245,8 @@ public abstract class NewAccountPageAbstract extends BasePage {
     /**
      * Set Campaign Data.
      * Just is name, can be more.
-     *
-     * @param account
+     * @param account Account
+     * @param accountInformation Map
      */
     public void setAccountData(final Account account, final Map<String, String> accountInformation) {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(account, accountInformation);
@@ -257,9 +259,10 @@ public abstract class NewAccountPageAbstract extends BasePage {
     /**
      * Compose the values of Account.
      * @param account Account.
+     * @param accountInformation Map
      * @return Hashmap
      */
-    private HashMap<String, StrategySetter> composeStrategyMap(final Account account, final Map<String, String> accountInformation){
+    private HashMap<String, StrategySetter> composeStrategyMap(final Account account, final Map<String, String> accountInformation) {
         HashMap<String, StrategySetter> strategyMap  = new HashMap<>();
         strategyMap.put("Name",        () -> setNameTxt(accountInformation.get("Name")));
         strategyMap.put("Parent",        () -> setParent(accountInformation.get("Parent")));
@@ -289,7 +292,7 @@ public abstract class NewAccountPageAbstract extends BasePage {
         strategyMap.put("Customer", () -> setCustomerPriority(accountInformation.get("Customer")));
         strategyMap.put("Sla Date",    () -> setSlaDate(accountInformation.get("Sla Date")));
         strategyMap.put("Locations", () -> setNumberLocations(accountInformation.get("Locations")));
-        strategyMap.put("Active",() -> setActive(accountInformation.get("Active")));
+        strategyMap.put("Active", () -> setActive(accountInformation.get("Active")));
         strategyMap.put("Sla",   () -> setSlaAccount(accountInformation.get("Sla")));
         strategyMap.put("Sla Serial",   () -> setSlaSerial(accountInformation.get("Sla Serial")));
         strategyMap.put("Upsell",  () -> setUpsellOportunity(accountInformation.get("Upsell")));

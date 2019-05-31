@@ -46,8 +46,8 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//button[@title=\"Delete\"]")
     private WebElement deleteBtn;
 
-    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]" +
-            "//div[@data-aura-class='uiPopupTrigger']//a")
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]"
+            + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
     /**

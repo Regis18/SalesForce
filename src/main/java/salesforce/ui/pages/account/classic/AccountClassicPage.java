@@ -64,7 +64,7 @@ public class AccountClassicPage extends AccountPageAbstract {
      * @return boolean.
      */
     @Override
-    public boolean checkAccountList(String name) {
+    public boolean checkAccountList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace("account", name)));
     }
 }

@@ -59,8 +59,7 @@ public class AccountLightPage extends AccountPageAbstract {
      * @return boolean.
      */
     @Override
-    public boolean checkAccountList(String name) {
-        //return DriverMethods.waitForElementDisappear(By.xpath(accountList.replace(ACCOUNT, name)));
+    public boolean checkAccountList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace(ACCOUNT, name)));
     }
 }
