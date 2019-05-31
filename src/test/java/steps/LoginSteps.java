@@ -29,7 +29,7 @@ public class LoginSteps {
     /**
      * Sign in step.
      */
-    @Given("^I log in to the SalesForce Application$")
+    @Given("^I log in to the Salesforce Application$")
     public void signIn() {
         loginPage = transporterPage.navigateToLoginPage();
         setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());

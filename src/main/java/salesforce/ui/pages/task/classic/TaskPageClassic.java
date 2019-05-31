@@ -11,14 +11,14 @@
  *
  */
 
-package salesforce.ui.pages.classic.task;
+package salesforce.ui.pages.task.classic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
 /**
  * Task Page classic.
@@ -94,7 +94,7 @@ public class TaskPageClassic extends TaskPageAbstract {
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         saveTask.click();
-        task.setSubject(nameTaskSubject);
+        task.setSubject(task.getSubject() + nameTaskSubject);
         return task;
     }
 

@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.lightning.task;
+package salesforce.ui.pages.task.lightning;
 
 import core.selenium.WebDriverConfig;
 import org.openqa.selenium.By;
@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
@@ -84,6 +84,7 @@ public class TaskPageLightning extends TaskPageAbstract {
 
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
+
 
     /**
      * Verify subject is displayed.
@@ -193,6 +194,7 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     public Task updateCurrentTask(final Task task) {
         clickEditSubjectTask();
+
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         clickSaveUpdateTask();
@@ -200,7 +202,7 @@ public class TaskPageLightning extends TaskPageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
-        task.setSubject(nameTaskSubject);
+        task.setSubject(task.getSubject() + nameTaskSubject);
         return task;
     }
 
