@@ -36,8 +36,11 @@ public class EntityId {
         switch (setup.getLayout()) {
             case "classic":
                 idObject = arrayIdAccount[arrayIdAccount.length-1];
+                break;
             case "light":
                 idObject = arrayIdAccount[arrayIdAccount.length-2];
+                System.out.println(idObject+" ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+                break;
         }
         return idObject;
     }

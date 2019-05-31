@@ -31,4 +31,10 @@ public abstract class OneAccountAbstract extends BasePage {
      * Implement get name to assert with steps.
      */
     public abstract String getNameAccount();
+
+    /**
+     * Delete Account of Salesforce with specific name.
+     * @param nameAccount string
+     */
+    public abstract void deleteAccount(String nameAccount) throws InterruptedException;
 }

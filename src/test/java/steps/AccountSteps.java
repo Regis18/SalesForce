@@ -16,6 +16,7 @@ package steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
@@ -81,7 +82,7 @@ public class AccountSteps {
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "Account \"" + context.getAccount().getName() + "\" was created.");
+            assertEquals(message, "Account \"" +account.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
@@ -97,19 +98,34 @@ public class AccountSteps {
 
     /**
      * Verify account to the list.
-     * @param name string.
      */
-    @Then("^I verify the Account is in the Accounts list in Accounts Page$")
-    public void verifyIsInTheListOfAccounts(String name) {
-        assertFalse(accountPage.checkAccountList(context.getAccount().getName()));
+    @Then("^I verify the Account is in the accounts list in Accounts page$")
+    public void verifyIsInTheListOfAccounts() {
+        assertTrue(accountPage.checkAccountList(context.getAccount().getName()));
     }
 
     /**
      * Navigate to Account Page.
      */
-    @When("^I open Accounts Page from Accounts Page$")
+    @When("^I open Accounts page from Accounts page$")
     public void AccountPage() {
         homePage = context.getHomePage();
         accountPage = homePage.clickAccountBtn();
+    }
+
+    /**
+     * Deletes Account.
+     */
+    @When("^I delete a Account in its own Page$")
+    public void deleteAnAccountInSalesforce() throws InterruptedException {
+        oneAccountPage.deleteAccount(account.getName());
+    }
+
+    /**
+     * Verifies account is not the list.
+     */
+    @And("^I verify the account is not in the list of accounts$")
+    public void verifyIsNotInTheListOfAccounts() {
+        assertFalse(accountPage.checkAccountList(account.getName()));
     }
 }

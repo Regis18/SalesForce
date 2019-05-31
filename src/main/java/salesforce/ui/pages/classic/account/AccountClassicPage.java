@@ -26,7 +26,7 @@ import salesforce.utils.DriverMethods;
  * @version 0.0.1
  */
 public class AccountClassicPage extends AccountPageAbstract {
-    private final String ACCOUNT = "account";
+    //private final String ACCOUNT = "account";
     private String accountList = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"account\")]";
 
     /**
@@ -66,7 +66,7 @@ public class AccountClassicPage extends AccountPageAbstract {
      */
     @Override
     public boolean checkAccountList(String name) {
-        return DriverMethods.isElementPresent(By.xpath(accountList.replace(ACCOUNT, name)));
+        return DriverMethods.isElementPresent(By.xpath(accountList.replace("account", name)));
     }
 }
 

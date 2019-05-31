@@ -122,7 +122,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
     @FindBy(id = "00N4P0000072sEB")
     private WebElement upsellOportunityCmb;
 
-    @FindBy(id = "00N4P0000072sE7")
+    @FindBy(id = "00N4P0000072sE9")
     private WebElement slaDateTxt;
 
     @FindBy(id = "acc20")
@@ -168,7 +168,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param parent String
      */
     @Override
-    public void setParent(String parent) { parentTxt.sendKeys(parent); }
+    public void setParent(String parent) { websiteTxt.sendKeys(parent); }
 
     /**
      * Set name in the fax Text.
@@ -240,7 +240,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param employee String
      */
     @Override
-    public void setEmployee(String employee) { employeesTxt.sendKeys(employee); }
+    public void setEmployee(String employee) { websiteTxt.sendKeys(employee); }
 
     /**
      * Set name in the anualRevenue Text.

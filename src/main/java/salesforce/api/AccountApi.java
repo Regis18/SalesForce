@@ -30,7 +30,7 @@ public class AccountApi {
      * @param id String.
      */
     public void deleteAccount(String id) {
-        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/"+id;
+        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/" + id;
         String token = Setup.getInstance().getToken();
         Response response = given().headers("Content-Type", "application/json").
                 auth().oauth2(token).when().request("DELETE", url);

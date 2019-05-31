@@ -27,10 +27,12 @@ public class OneAccountClassicPage extends OneAccountAbstract {
 
     @FindBy(xpath = "//td[@class=\" oRight\"]")
     private WebElement accountDetailForm;
-    @FindBy(xpath = "//h1[@class=\"pageType\"]")
+    @FindBy(xpath = "//div[@class=\"bPageTitle\"]")
     private WebElement accountPanelTitle;
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement accountTitleLbl;
+    @FindBy(xpath = "//td[@id=\"topButtonRow\"]//input[@name=\"delete\"]")
+    private WebElement deleteBtn;
 
     /**
      * Wait for Account panel title.
@@ -56,5 +58,15 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @Override
     public String getNameAccount() {
         return accountTitleLbl.getText();
+    }
+
+    /**
+     * Delete account.
+     * @param nameAccount string
+     */
+    @Override
+    public void deleteAccount(final String nameAccount) {
+        deleteBtn.click();
+        driver.switchTo().alert().accept();
     }
 }

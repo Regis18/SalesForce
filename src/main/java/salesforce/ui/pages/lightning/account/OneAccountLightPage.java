@@ -42,6 +42,16 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
+    @FindBy(css = "//li[@class=\"uiMenuItem\"]//div[@title=\"Delete\"]")
+    private WebElement deleteElementCmbBtn;
+
+    @FindBy(xpath = "//button[@title=\"Delete\"]")
+    private WebElement deleteBtn;
+
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]" +
+            "//div[@data-aura-class='uiPopupTrigger']//a")
+    private WebElement mainMenuCmb;
+
     /**
      * Wait for account Panel Title.
      */
@@ -82,5 +92,17 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     private void clickDetailsTab() {
         detailsTab.click();
+    }
+
+    /**
+     * Delete campaign.
+     * @param nameAccount string
+     */
+    @Override
+    public void deleteAccount(final String nameAccount) throws InterruptedException {
+        mainMenuCmb.click();
+        Thread.sleep(1000);
+        deleteElementCmbBtn.click();
+        deleteBtn.click();
     }
 }
