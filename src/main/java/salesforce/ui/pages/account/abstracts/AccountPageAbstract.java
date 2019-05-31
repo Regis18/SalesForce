@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.account;
+package salesforce.ui.pages.account.abstracts;
 
 import salesforce.ui.BasePage;
 

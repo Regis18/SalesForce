@@ -26,7 +26,7 @@ public class EntityId {
     private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
     /**
-     * Get id the new object created
+     * Get id the new object created.
      * @return idNewObject string.
      */
     public String getIdEntitie() {
@@ -35,9 +35,13 @@ public class EntityId {
         String idObject = "";
         switch (setup.getLayout()) {
             case "classic":
-                idObject = arrayIdAccount[arrayIdAccount.length-1];
+                idObject = arrayIdAccount[arrayIdAccount.length - 1];
+                break;
             case "light":
-                idObject = arrayIdAccount[arrayIdAccount.length-2];
+                idObject = arrayIdAccount[arrayIdAccount.length - 2];
+                break;
+            default:
+                return null;
         }
         return idObject;
     }

@@ -11,14 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.account;
+package salesforce.ui.pages.account.light;
 
-import core.selenium.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 /**
  * OneAccountLightPage.
@@ -41,6 +39,16 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
+
+    @FindBy(css = "//li[@class=\"uiMenuItem\"]//div[@title=\"Delete\"]")
+    private WebElement deleteElementCmbBtn;
+
+    @FindBy(xpath = "//button[@title=\"Delete\"]")
+    private WebElement deleteBtn;
+
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]"
+            + "//div[@data-aura-class='uiPopupTrigger']//a")
+    private WebElement mainMenuCmb;
 
     /**
      * Wait for account Panel Title.
@@ -82,5 +90,15 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     private void clickDetailsTab() {
         detailsTab.click();
+    }
+
+    /**
+     * Delete account.
+     */
+    @Override
+    public void deleteAccount() {
+        mainMenuCmb.click();
+        deleteElementCmbBtn.click();
+        deleteBtn.click();
     }
 }
