@@ -85,6 +85,7 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
 
+
     /**
      * Verify subject is displayed.
      *
@@ -193,6 +194,7 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     public Task updateCurrentTask(final Task task) {
         clickEditSubjectTask();
+
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         clickSaveUpdateTask();
@@ -200,7 +202,7 @@ public class TaskPageLightning extends TaskPageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
-        task.setSubject(nameTaskSubject);
+        task.setSubject(task.getSubject() + nameTaskSubject);
         return task;
     }
 

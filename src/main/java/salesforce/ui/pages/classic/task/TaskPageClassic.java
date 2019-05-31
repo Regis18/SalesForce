@@ -94,7 +94,7 @@ public class TaskPageClassic extends TaskPageAbstract {
         String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
         setUpdateNewSubjectTask(nameTaskSubject);
         saveTask.click();
-        task.setSubject(nameTaskSubject);
+        task.setSubject(task.getSubject() + nameTaskSubject);
         return task;
     }
 

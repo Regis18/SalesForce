@@ -56,6 +56,10 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(xpath = "//select[@id='tsk12']")
     private WebElement statusDropDown;
 
+    public boolean verifyMessage(String message){
+        return true;
+    }
+
     @Override
     public String createNewTask(Task task) {
         createNewTaskDropDown.click();

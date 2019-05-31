@@ -1,6 +1,7 @@
 package salesforce.utils;
 
 import core.selenium.WebDriverConfig;
+import salesforce.entities.Task;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -18,6 +19,77 @@ public class Setup {
     private String urlClassicPath;
     private String apiPath;
     private String token;
+    private String client_id;
+    private String client_secret;
+    private String tokenUrl;
+    private String queryUrl;
+    private String taskUrl;
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    private Task task;
+
+    public String getTokenUrl() {
+        return tokenUrl;
+    }
+
+    public void setTokenUrl(String tokenUrl) {
+        this.tokenUrl = tokenUrl;
+    }
+
+    public String getQueryUrl() {
+        return queryUrl;
+    }
+
+    public void setQueryUrl(String queryUrl) {
+        this.queryUrl = queryUrl;
+    }
+
+    public String getTaskUrl() {
+        return taskUrl;
+    }
+
+    public void setTaskUrl(String taskUrl) {
+        this.taskUrl = taskUrl;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getClient_id() {
+        return client_id;
+    }
+
+    /**
+     *
+     * @param client_id
+     */
+    public void setClient_id(String client_id) {
+        this.client_id = client_id;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getClient_secret() {
+        return client_secret;
+    }
+
+    /**
+     *
+     * @param client_secret
+     */
+    public void setClient_secret(String client_secret) {
+        this.client_secret = client_secret;
+    }
 
     /**
      * Constructor of page WebDriverManager.
@@ -87,7 +159,7 @@ public class Setup {
      * @return layout
      */
     public String getLayout() {
-        return layout;
+        return WebDriverConfig.getSkin();
     }
 
     /**
@@ -135,5 +207,10 @@ public class Setup {
         apiPath = properties.getProperty("apipath");
         layout = WebDriverConfig.getSkin();
         token = properties.getProperty("token");
+        client_id = properties.getProperty("client_id");
+        client_secret = properties.getProperty("client_secret");
+        tokenUrl = properties.getProperty("tokenUrl");
+        queryUrl = properties.getProperty("queryUrl");
+        taskUrl = properties.getProperty("taskUrl");
     }
 }

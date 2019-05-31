@@ -54,6 +54,7 @@ public abstract class TaskPageAbstract extends BasePage {
      */
     public abstract void logout();
 
+
     /**
      * Wait for load.
      */

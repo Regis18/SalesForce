@@ -53,6 +53,14 @@ public abstract class NewTaskAbstract extends BasePage {
     protected abstract void setComments(String value);
 
     /**
+     *  verify message.
+     * @param message
+     * @return boolean
+     */
+    public abstract boolean verifyMessage(String message);
+
+
+    /**
      * Wait for Page.
      */
     @Override

@@ -16,6 +16,7 @@ package steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.eo.Se;
 import org.junit.Assert;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
@@ -24,8 +25,12 @@ import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.utils.Setup;
 
 import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Task steps class.
@@ -74,9 +79,10 @@ public class TaskSteps {
     @When("^I create a new task with this information$")
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
-        task.setSubject(task.getSubject().replace("<random>", String.valueOf((int) (Math.random() * 100))));
+        task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
         newTaskPage = homePage.displayCreateTask();
         newTaskPage.createNewTask(task);
+        Setup.getInstance().setTask(task);
     }
 
     /**
@@ -101,15 +107,16 @@ public class TaskSteps {
      */
     @When("^I update the subject task$")
     public void updateTask() {
-        task = taskPage.updateCurrentTask(task);
+        task = taskPage.updateCurrentTask(Setup.getInstance().getTask());
+        Setup.getInstance().setTask(task);
     }
 
     /**
      * delete the task step.
      */
-    @When("^I delete the task$")
+    @When("^I delete the created task$")
     public void deletedTask() {
-        taskPage.deleteCurrentTask(task);
+        taskPage.deleteCurrentTask(Setup.getInstance().getTask());
     }
 
     /**
@@ -121,4 +128,8 @@ public class TaskSteps {
         taskPage.logout();
     }
 
+    @Then("^I verify a message that confirms the new Task was created is displayed$")
+    public void verifyMessageConfirmCreated() {
+        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
+    }
 }

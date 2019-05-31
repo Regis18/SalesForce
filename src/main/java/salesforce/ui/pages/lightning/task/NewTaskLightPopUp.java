@@ -67,6 +67,18 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//input[@id='reminder_select_check']")
     private WebElement statusDropDown;
 
+    @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
+    private WebElement messageConfirmation;
+
+    public String getMessageConfirmation() {
+        wait.until(ExpectedConditions.visibilityOf(messageConfirmation));
+        return messageConfirmation.getText();
+    }
+
+    public boolean verifyMessage(String message){
+        return message.equals(getMessageConfirmation());
+    }
+
     /**
      * Save button.
      */
