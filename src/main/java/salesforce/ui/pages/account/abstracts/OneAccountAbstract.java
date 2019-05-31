@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.account;
+package salesforce.ui.pages.account.abstracts;
 
 import salesforce.ui.BasePage;
 
@@ -24,11 +24,18 @@ public abstract class OneAccountAbstract extends BasePage {
 
     /**
      * Implement verifyComponentsAccount.
+     * @return true component
      */
     public abstract boolean verifyComponentsAccount();
 
     /**
      * Implement get name to assert with steps.
+     * @return name Account
      */
     public abstract String getNameAccount();
+
+    /**
+     * Delete Account of Salesforce with specific name.
+     */
+    public abstract void deleteAccount();
 }

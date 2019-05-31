@@ -19,10 +19,10 @@ import cucumber.api.java.en.When;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
-import salesforce.ui.pages.lightning.account.OneAccountLightPage;
+import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
+import salesforce.ui.pages.account.light.OneAccountLightPage;
 import salesforce.utils.EntityId;
 import java.util.Map;
 import static org.testng.Assert.assertEquals;
@@ -81,7 +81,7 @@ public class AccountSteps {
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "Account \"" + context.getAccount().getName() + "\" was created.");
+            assertEquals(message, "Account \"" + account.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
@@ -97,19 +97,34 @@ public class AccountSteps {
 
     /**
      * Verify account to the list.
-     * @param name string.
      */
-    @Then("^I verify the Account is in the Accounts list in Accounts Page$")
-    public void verifyIsInTheListOfAccounts(String name) {
-        assertFalse(accountPage.checkAccountList(context.getAccount().getName()));
+    @Then("^I verify the Account is in the accounts list in Accounts page$")
+    public void verifyIsInTheListOfAccounts() {
+        assertTrue(accountPage.checkAccountList(context.getAccount().getName()));
     }
 
     /**
      * Navigate to Account Page.
      */
-    @When("^I open Accounts Page from Accounts Page$")
+    @When("^I open Accounts page from Accounts page$")
     public void AccountPage() {
         homePage = context.getHomePage();
         accountPage = homePage.clickAccountBtn();
+    }
+
+    /**
+     * Deletes Account.
+     */
+    @When("^I delete a Account in its own Page$")
+    public void deleteAnAccountInSalesforce() {
+        oneAccountPage.deleteAccount();
+    }
+
+    /**
+     * Verifies account is not the list.
+     */
+    @And("^I verify the account is not in the list of accounts$")
+    public void verifyIsNotInTheListOfAccounts() {
+        assertFalse(accountPage.checkAccountList(account.getName()));
     }
 }

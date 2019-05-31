@@ -19,8 +19,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
-import salesforce.ui.pages.classic.account.AccountClassicPage;
 import salesforce.ui.pages.task.classic.NewTaskClassic;
+import salesforce.ui.pages.account.classic.AccountClassicPage;
 
 /**
  * HomeLightPage.

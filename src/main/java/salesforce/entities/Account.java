@@ -69,15 +69,15 @@ public class Account {
 
     /**
      * Get account id.
-     * @param id
+     * @param id String
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
     /**
      * Get account name.
-     * @return name
+     * @return name String
      */
     public String getName() {
         return name;
@@ -85,15 +85,15 @@ public class Account {
 
     /**
      * Set account type.
-     * @param name
+     * @param name String
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     /**
      * Get account phone.
-     * @return phone
+     * @return phone String
      */
     public String getRating() {
         return rating;
@@ -101,15 +101,15 @@ public class Account {
 
     /**
      * Set account rating.
-     * @param rating
+     * @param rating String
      */
-    public void setRating(String rating) {
+    public void setRating(final String rating) {
         this.rating = rating;
     }
 
     /**
      * Get account phone.
-     * @return phone
+     * @return phone String
      */
     public String getPhone() {
         return phone;
@@ -117,15 +117,15 @@ public class Account {
 
     /**
      * Set account phone.
-     * @param phone
+     * @param phone String
      */
-    public void setPhone(String phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
     /**
      * Get account parent.
-     * @return parent
+     * @return parent String
      */
     public String getParent() {
         return parent;
@@ -133,15 +133,15 @@ public class Account {
 
     /**
      * Set account parent.
-     * @param parent
+     * @param parent String
      */
-    public void setParent(String parent) {
+    public void setParent(final String parent) {
         this.parent = parent;
     }
 
     /**
      * Get account fax.
-     * @return fax
+     * @return fax String
      */
     public String getFax() {
         return fax;
@@ -149,15 +149,15 @@ public class Account {
 
     /**
      * Set account fax.
-     * @param fax
+     * @param fax String
      */
-    public void setFax(String fax) {
+    public void setFax(final String fax) {
         this.fax = fax;
     }
 
     /**
      * Get account number.
-     * @return numberAccount
+     * @return numberAccount String
      */
     public String getNumberAccount() {
         return numberAccount;
@@ -165,15 +165,15 @@ public class Account {
 
     /**
      * Set account numberAccount.
-     * @param numberAccount
+     * @param numberAccount String
      */
-    public void setNumberAccount(String numberAccount) {
+    public void setNumberAccount(final String numberAccount) {
         this.numberAccount = numberAccount;
     }
 
     /**
      * Get account webSite.
-     * @return webSite
+     * @return webSite String
      */
     public String getWebSite() {
         return webSite;
@@ -181,15 +181,15 @@ public class Account {
 
     /**
      * Set account webSite.
-     * @param webSite
+     * @param webSite String
      */
-    public void setWebSite(String webSite) {
+    public void setWebSite(final String webSite) {
         this.webSite = webSite;
     }
 
     /**
      * Get account site.
-     * @return site
+     * @return site String
      */
     public String getSite() {
         return site;
@@ -197,15 +197,15 @@ public class Account {
 
     /**
      * Set account site.
-     * @param site
+     * @param site String
      */
-    public void setSite(String site) {
+    public void setSite(final String site) {
         this.site = site;
     }
 
     /**
      * Get account ticker.
-     * @return ticker
+     * @return ticker String
      */
     public String getTicker() {
         return ticker;
@@ -213,15 +213,15 @@ public class Account {
 
     /**
      * Set account ticker.
-     * @param ticker
+     * @param ticker String
      */
-    public void setTicker(String ticker) {
+    public void setTicker(final String ticker) {
         this.ticker = ticker;
     }
 
     /**
      * Get account type.
-     * @return type
+     * @return type String
      */
     public String getType() {
         return type;
@@ -229,15 +229,15 @@ public class Account {
 
     /**
      * Set account type.
-     * @param type
+     * @param type String
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
     /**
      * Get account ownership.
-     * @return ownership
+     * @return ownership String
      */
     public String getOwnership() {
         return ownership;
@@ -245,15 +245,15 @@ public class Account {
 
     /**
      * Set account ownership.
-     * @param ownership
+     * @param ownership String
      */
-    public void setOwnership(String ownership) {
+    public void setOwnership(final String ownership) {
         this.ownership = ownership;
     }
 
     /**
      * Get account industry.
-     * @return industry
+     * @return industry String
      */
     public String getIndustry() {
         return industry;
@@ -261,15 +261,15 @@ public class Account {
 
     /**
      * Set account industry.
-     * @param industry
+     * @param industry String
      */
-    public void setIndustry(String industry) {
+    public void setIndustry(final String industry) {
         this.industry = industry;
     }
 
     /**
      * Get account employee.
-     * @return employee
+     * @return employee String
      */
     public String getEmployee() {
         return employee;
@@ -277,15 +277,15 @@ public class Account {
 
     /**
      * Set account employee.
-     * @param employee
+     * @param employee String
      */
-    public void setEmployee(String employee) {
+    public void setEmployee(final String employee) {
         this.employee = employee;
     }
 
     /**
      * Get account anual revenue.
-     * @return anual revenue
+     * @return anual revenue String
      */
     public String getAnualRevenue() {
         return anualRevenue;
@@ -293,15 +293,15 @@ public class Account {
 
     /**
      * Set account anualRevenue.
-     * @param anualRevenue
+     * @param anualRevenue String
      */
-    public void setAnualRevenue(String anualRevenue) {
+    public void setAnualRevenue(final String anualRevenue) {
         this.anualRevenue = anualRevenue;
     }
 
     /**
      * Get account sic code.
-     * @return sic code
+     * @return sic code String
      */
     public String getSicCode() {
         return sicCode;
@@ -309,15 +309,15 @@ public class Account {
 
     /**
      * Set account sicCode.
-     * @param sicCode
+     * @param sicCode String
      */
-    public void setSicCode(String sicCode) {
+    public void setSicCode(final String sicCode) {
         this.sicCode = sicCode;
     }
 
     /**
      * Get account billing street.
-     * @return billing street
+     * @return billing street String
      */
     public String getBillingStreet() {
         return billingStreet;
@@ -325,15 +325,15 @@ public class Account {
 
     /**
      * Set account billingStreet.
-     * @param billingStreet
+     * @param billingStreet String
      */
-    public void setBillingStreet(String billingStreet) {
+    public void setBillingStreet(final String billingStreet) {
         this.billingStreet = billingStreet;
     }
 
     /**
      * Get account shipping street.
-     * @return shipping street
+     * @return shipping street String
      */
     public String getShippingStreet() {
         return shippingStreet;
@@ -341,15 +341,15 @@ public class Account {
 
     /**
      * Set account shippingStreet.
-     * @param shippingStreet
+     * @param shippingStreet String
      */
-    public void setShippingStreet(String shippingStreet) {
+    public void setShippingStreet(final String shippingStreet) {
         this.shippingStreet = shippingStreet;
     }
 
     /**
      * Get account billing City.
-     * @return billing City
+     * @return billing City String
      */
     public String getBillingCity() {
         return billingCity;
@@ -357,15 +357,15 @@ public class Account {
 
     /**
      * Set account billingCity.
-     * @param billingCity
+     * @param billingCity String
      */
-    public void setBillingCity(String billingCity) {
+    public void setBillingCity(final String billingCity) {
         this.billingCity = billingCity;
     }
 
     /**
      * Get account billing state.
-     * @return billing state
+     * @return billing state String
      */
     public String getBillingState() {
         return billingState;
@@ -373,15 +373,15 @@ public class Account {
 
     /**
      * Set account billingState.
-     * @param billingState
+     * @param billingState String
      */
-    public void setBillingState(String billingState) {
+    public void setBillingState(final String billingState) {
         this.billingState = billingState;
     }
 
     /**
      * Get account shipping city.
-     * @return shipping city
+     * @return shipping city String
      */
     public String getShippingCity() {
         return shippingCity;
@@ -389,15 +389,15 @@ public class Account {
 
     /**
      * Set account shippingCity.
-     * @param shippingCity
+     * @param shippingCity String
      */
-    public void setShippingCity(String shippingCity) {
+    public void setShippingCity(final String shippingCity) {
         this.shippingCity = shippingCity;
     }
 
     /**
      * Get account shipping state.
-     * @return shipping state
+     * @return shipping state String
      */
     public String getShippingState() {
         return shippingState;
@@ -405,15 +405,15 @@ public class Account {
 
     /**
      * Set account shippingState.
-     * @param shippingState
+     * @param shippingState String
      */
-    public void setShippingState(String shippingState) {
+    public void setShippingState(final String shippingState) {
         this.shippingState = shippingState;
     }
 
     /**
      * Get account billing zip.
-     * @return billing zip
+     * @return billing zip String
      */
     public String getBillingZip() {
         return billingZip;
@@ -421,15 +421,15 @@ public class Account {
 
     /**
      * Set account billingZip.
-     * @param billingZip
+     * @param billingZip String
      */
-    public void setBillingZip(String billingZip) {
+    public void setBillingZip(final String billingZip) {
         this.billingZip = billingZip;
     }
 
     /**
      * Get account billing country.
-     * @return billing country
+     * @return billing country String
      */
     public String getBillingCountry() {
         return billingCountry;
@@ -437,15 +437,15 @@ public class Account {
 
     /**
      * Set account billingCountry.
-     * @param billingCountry
+     * @param billingCountry String
      */
-    public void setBillingCountry(String billingCountry) {
+    public void setBillingCountry(final String billingCountry) {
         this.billingCountry = billingCountry;
     }
 
     /**
      * Get account shipping zip.
-     * @return shipping zip
+     * @return shipping zip String
      */
     public String getShippingZip() {
         return shippingZip;
@@ -453,15 +453,15 @@ public class Account {
 
     /**
      * Set account shippingZip.
-     * @param shippingZip
+     * @param shippingZip String
      */
-    public void setShippingZip(String shippingZip) {
+    public void setShippingZip(final String shippingZip) {
         this.shippingZip = shippingZip;
     }
 
     /**
      * Get account shipping country.
-     * @return shipping country
+     * @return shipping country String
      */
     public String getShippingCountry() {
         return shippingCountry;
@@ -469,15 +469,15 @@ public class Account {
 
     /**
      * Set account shippingCountry.
-     * @param shippingCountry
+     * @param shippingCountry String
      */
-    public void setShippingCountry(String shippingCountry) {
+    public void setShippingCountry(final String shippingCountry) {
         this.shippingCountry = shippingCountry;
     }
 
     /**
      * Get account customer priority.
-     * @return customer priority
+     * @return customer priority String
      */
     public String getCustomerPriority() {
         return customerPriority;
@@ -485,15 +485,15 @@ public class Account {
 
     /**
      * Set account customerPriority.
-     * @param customerPriority
+     * @param customerPriority String
      */
-    public void setCustomerPriority(String customerPriority) {
+    public void setCustomerPriority(final String customerPriority) {
         this.customerPriority = customerPriority;
     }
 
     /**
      * Get account SLA.
-     * @return SLA
+     * @return SLA String
      */
     public String getSlaAccount() {
         return slaAccount;
@@ -501,15 +501,15 @@ public class Account {
 
     /**
      * Set account slaAccount.
-     * @param slaAccount
+     * @param slaAccount String
      */
-    public void setSlaAccount(String slaAccount) {
+    public void setSlaAccount(final String slaAccount) {
         this.slaAccount = slaAccount;
     }
 
     /**
      * Get account SLA date.
-     * @return SLA date
+     * @return SLA date String
      */
     public String getSlaDate() {
         return slaDate;
@@ -517,15 +517,15 @@ public class Account {
 
     /**
      * Set account slaDate.
-     * @param slaDate
+     * @param slaDate String
      */
-    public void setSlaDate(String slaDate) {
+    public void setSlaDate(final String slaDate) {
         this.slaDate = slaDate;
     }
 
     /**
      * Get account SLA serial.
-     * @return SLA serial
+     * @return SLA serial String
      */
     public String getSlaSerial() {
         return slaSerial;
@@ -533,15 +533,15 @@ public class Account {
 
     /**
      * Set account slaSerial.
-     * @param slaSerial
+     * @param slaSerial String
      */
-    public void setSlaSerial(String slaSerial) {
+    public void setSlaSerial(final String slaSerial) {
         this.slaSerial = slaSerial;
     }
 
     /**
      * Get account number of locations.
-     * @return number of locations
+     * @return number of locations String
      */
     public String getNumberLocations() {
         return numberLocations;
@@ -549,15 +549,15 @@ public class Account {
 
     /**
      * Set account numberLocations.
-     * @param numberLocations
+     * @param numberLocations String
      */
-    public void setNumberLocations(String numberLocations) {
+    public void setNumberLocations(final String numberLocations) {
         this.numberLocations = numberLocations;
     }
 
     /**
      * Get account upsell oportunity.
-     * @return upsell oportunity
+     * @return upsell oportunity String
      */
     public String getUpsellOportunity() {
         return upsellOportunity;
@@ -565,15 +565,15 @@ public class Account {
 
     /**
      * Set account upsellOportunity.
-     * @param upsellOportunity
+     * @param upsellOportunity String
      */
-    public void setUpsellOportunity(String upsellOportunity) {
+    public void setUpsellOportunity(final String upsellOportunity) {
         this.upsellOportunity = upsellOportunity;
     }
 
     /**
      * Get account active.
-     * @return active
+     * @return active String
      */
     public String getActive() {
         return active;
@@ -581,15 +581,15 @@ public class Account {
 
     /**
      * Set account active.
-     * @param active
+     * @param active String
      */
-    public void setActive(String active) {
+    public void setActive(final String active) {
         this.active = active;
     }
 
     /**
      * Get account description.
-     * @return description
+     * @return description String
      */
     public String getDescription() {
         return description;
@@ -597,19 +597,21 @@ public class Account {
 
     /**
      * Set account type.
-     * @param description
+     * @param description String
      */
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
     /**
      * Set the values of an account.
-     * @param accountInformation *
+     * @param accountInformation Map
      */
-    public void  setAccountInformation(final Map<String, String> accountInformation){
+    public void  setAccountInformation(final Map<String, String> accountInformation) {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(accountInformation);
-        accountInformation.keySet().forEach(key -> {strategyMap.get(key).executeMethod();});
+        accountInformation.keySet().forEach(key -> {
+            strategyMap.get(key).executeMethod();
+        });
     }
 
     /**
@@ -617,7 +619,7 @@ public class Account {
      * @param accountInformation String
      * @return Hashmap
      */
-    private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> accountInformation){
+    private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> accountInformation) {
         HashMap<String, StrategySetter> strategyMap  = new HashMap<>();
         strategyMap.put("Name",        () -> setName(accountInformation.get("Name")));
         strategyMap.put("Parent",        () -> setParent(accountInformation.get("Parent")));
@@ -647,7 +649,7 @@ public class Account {
         strategyMap.put("Customer", () -> setCustomerPriority(accountInformation.get("Customer")));
         strategyMap.put("Sla Date",    () -> setSlaDate(accountInformation.get("Sla Date")));
         strategyMap.put("Locations", () -> setNumberLocations(accountInformation.get("Locations")));
-        strategyMap.put("Active",() -> setActive(accountInformation.get("Active")));
+        strategyMap.put("Active", () -> setActive(accountInformation.get("Active")));
         strategyMap.put("Sla",   () -> setSlaAccount(accountInformation.get("Sla")));
         strategyMap.put("Sla Serial",   () -> setSlaSerial(accountInformation.get("Sla Serial")));
         strategyMap.put("Upsell",  () -> setUpsellOportunity(accountInformation.get("Upsell")));
