@@ -20,7 +20,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
-import salesforce.ui.pages.lightning.account.AccountLightPage;
+import salesforce.ui.pages.account.light.AccountLightPage;
 import salesforce.ui.pages.lightning.task.NewTaskLightPopUp;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 

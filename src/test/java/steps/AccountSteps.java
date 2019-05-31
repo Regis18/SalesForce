@@ -16,14 +16,13 @@ package steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
-import salesforce.ui.pages.lightning.account.OneAccountLightPage;
+import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
+import salesforce.ui.pages.account.light.OneAccountLightPage;
 import salesforce.utils.EntityId;
 import java.util.Map;
 import static org.testng.Assert.assertEquals;
@@ -82,7 +81,7 @@ public class AccountSteps {
     public void verifyAMessageConfirmationOfANewAccountWasCreated() {
         try {
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
-            assertEquals(message, "Account \"" +account.getName() + "\" was created.");
+            assertEquals(message, "Account \"" + account.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
         }
@@ -117,8 +116,8 @@ public class AccountSteps {
      * Deletes Account.
      */
     @When("^I delete a Account in its own Page$")
-    public void deleteAnAccountInSalesforce() throws InterruptedException {
-        oneAccountPage.deleteAccount(account.getName());
+    public void deleteAnAccountInSalesforce() {
+        oneAccountPage.deleteAccount();
     }
 
     /**

@@ -11,14 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.account;
+package salesforce.ui.pages.account.light;
 
-import core.selenium.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 /**
  * OneAccountLightPage.
@@ -95,13 +93,11 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
-     * Delete campaign.
-     * @param nameAccount string
+     * Delete account.
      */
     @Override
-    public void deleteAccount(final String nameAccount) throws InterruptedException {
+    public void deleteAccount() {
         mainMenuCmb.click();
-        Thread.sleep(1000);
         deleteElementCmbBtn.click();
         deleteBtn.click();
     }

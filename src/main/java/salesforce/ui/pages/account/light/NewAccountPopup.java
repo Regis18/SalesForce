@@ -11,15 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.lightning.account;
+package salesforce.ui.pages.account.light;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import salesforce.entities.Account;
-import salesforce.entities.Context;
-import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 
 /**
  * NewAccountPopup.

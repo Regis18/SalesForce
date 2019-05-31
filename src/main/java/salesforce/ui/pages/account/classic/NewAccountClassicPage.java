@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.classic.account;
+package salesforce.ui.pages.account.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 
 /**
  * NewAccountClassicPage.
