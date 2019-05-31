@@ -36,15 +36,15 @@ public class CommonApi {
         String grantType = "password";
         String user = Setup.getInstance().getUsername();
         String password = Setup.getInstance().getPassword();
-        String clientId = Setup.getInstance().getClientId();
-        String clientSecret = Setup.getInstance().getClientSecret();
+        String clientId = Setup.getInstance().getClient_id();
+        String clientSecret = Setup.getInstance().getClient_secret();
 
         token = given().headers("Content-Type", "application/json")
-                .queryParam("grantType", grantType)
-                .queryParam("userName", user)
+                .queryParam("grant_type", grantType)
+                .queryParam("username", user)
                 .queryParam("password", password)
-                .queryParam("clientId", clientId)
-                .queryParam("clientSecret", clientSecret)
+                .queryParam("client_id", clientId)
+                .queryParam("client_secret", clientSecret)
                 .when().post(Setup.getInstance().getTokenUrl()).then()
                 .statusCode(STATUSCODE)
                 .extract().path("access_token");

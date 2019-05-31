@@ -41,7 +41,7 @@ public class TaskApi {
     public static void deleteTask(final Task task) {
         List<String> taskIds = new ArrayList<>();
 
-        //Get the task
+        //Get the task.
         Response response = given()
                 .contentType(ContentType.JSON)
                 .queryParam("q", "select id from task where subject='" + task.getSubject() + "' ")

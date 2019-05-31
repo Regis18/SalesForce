@@ -19,8 +19,8 @@ public class Setup {
     private String urlClassicPath;
     private String apiPath;
     private String token;
-    private String clientId;
-    private String clientSecret;
+    private String client_id;
+    private String client_secret;
     private String tokenUrl;
     private String queryUrl;
     private String taskUrl;
@@ -92,34 +92,34 @@ public class Setup {
 
     /**
      * Gets client id.
-     * @return clientId value.
+     * @return client_id value.
      */
-    public String getClientId() {
-        return clientId;
+    public String getClient_id() {
+        return client_id;
     }
 
     /**
      * Sets client id.
-     * @param clientId value.
+     * @param client_id value.
      */
-    public void setClientId(final String clientId) {
-        this.clientId = clientId;
+    public void setClient_id(final String client_id) {
+        this.client_id = client_id;
     }
 
     /**
      * Gets client secret.
-     * @return clientSecret value.
+     * @return client_secret value.
      */
-    public String getClientSecret() {
-        return clientSecret;
+    public String getClient_secret() {
+        return client_secret;
     }
 
     /**
      * Sets client secret.
-     * @param clientSecret value.
+     * @param client_secret value.
      */
-    public void setClientSecret(final String clientSecret) {
-        this.clientSecret = clientSecret;
+    public void setClient_secret(final String client_secret) {
+        this.client_secret = client_secret;
     }
 
     /**
@@ -238,8 +238,8 @@ public class Setup {
         apiPath = properties.getProperty("apipath");
         layout = WebDriverConfig.getSkin();
         token = properties.getProperty("token");
-        clientId = properties.getProperty("clientId");
-        clientSecret = properties.getProperty("clientSecret");
+        client_id = properties.getProperty("client_id");
+        client_secret = properties.getProperty("client_secret");
         tokenUrl = properties.getProperty("tokenUrl");
         queryUrl = properties.getProperty("queryUrl");
         taskUrl = properties.getProperty("taskUrl");
