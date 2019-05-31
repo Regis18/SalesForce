@@ -27,25 +27,31 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * Common Api class.
+ *
+ * @author Melvi Caballero
+ * @version 0.0.1
+ */
 public class TaskApi {
 
     /**
-     *
+     * Delete task with API test.
      */
-    public static void deleteTask(Task task) {
+    public static void deleteTask(final Task task) {
         List<String> taskIds = new ArrayList<>();
 
         //Get the task
         Response response = given()
                 .contentType(ContentType.JSON)
                 .queryParam("q", "select id from task where subject='" + task.getSubject() + "' ")
-                .auth().oauth2(CommonApi.GetToken())
+                .auth().oauth2(CommonApi.getToken())
                 .when().get(Setup.getInstance().getQueryUrl());
 
         try {
             Object obj = new JSONParser().parse(response.getBody().asString());
             JSONObject jo = (JSONObject) obj;
-            // getting records
+            // getting records.
             JSONArray records = (JSONArray) jo.get("records");
 
             Iterator<JSONObject> iterator = records.iterator();
@@ -57,7 +63,7 @@ public class TaskApi {
 
         }
         given().headers("Content-Type", "application/json")
-                .auth().oauth2(CommonApi.GetToken())
+                .auth().oauth2(CommonApi.getToken())
                 .when()
                 .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
     }
@@ -68,11 +74,11 @@ public class TaskApi {
     public static void deleteAllTasks() {
         List<String> taskIds = new ArrayList<>();
 
-        //Get all the tasks
+        //Gets all the tasks.
         Response response = given()
                 .contentType(ContentType.JSON)
                 .queryParam("q", "select id from task")
-                .auth().oauth2(CommonApi.GetToken())
+                .auth().oauth2(CommonApi.getToken())
                 .when().get(Setup.getInstance().getQueryUrl());
 
         try {
@@ -91,23 +97,19 @@ public class TaskApi {
 
         for (int i = 0; i < taskIds.size(); i++) {
             given().headers("Content-Type", "application/json")
-                    .auth().oauth2(CommonApi.GetToken()).when()
+                    .auth().oauth2(CommonApi.getToken()).when()
                     .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(i));
         }
     }
 
     /**
-     * Create Task.
+     * Create Task with API test.
      */
-    public static void createTask(Task task) {
+    public static void createTask(final Task task) {
         Response response = given()
                 .contentType(ContentType.JSON)
-                .auth().oauth2(CommonApi.GetToken())
-                .body("{ " +
-                        "\"Subject\": \"" + task.getSubject() + "\" " +
-                        "}")
+                .auth().oauth2(CommonApi.getToken())
+                .body("{" + "\"Subject\": \"" + task.getSubject() + "\" " + "}")
                 .when().post(Setup.getInstance().getTaskUrl());
     }
-
 }
-

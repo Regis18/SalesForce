@@ -4,7 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
@@ -124,9 +124,9 @@ public class TransporterPage {
     }
 
     /**
-     *
-     * @param urlCampaign
-     * @return
+     * NavigateToOneCampaign method.
+     * @param urlCampaign value.
+     * @return PageFactory.getOneCampaignPage.
      */
     public OneCampaignAbstract navigateToOneCampaign(String urlCampaign) {
         switch (setup.getLayout()) {

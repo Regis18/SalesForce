@@ -19,76 +19,107 @@ public class Setup {
     private String urlClassicPath;
     private String apiPath;
     private String token;
-    private String client_id;
-    private String client_secret;
+    private String clientId;
+    private String clientSecret;
     private String tokenUrl;
     private String queryUrl;
     private String taskUrl;
+    private Task task;
 
+    /**
+     * Gets task.
+     * @return task value.
+     */
     public Task getTask() {
         return task;
     }
 
-    public void setTask(Task task) {
+    /**
+     * Sets task.
+     * @param task value.
+     */
+    public void setTask(final Task task) {
         this.task = task;
     }
 
-    private Task task;
-
+    /**
+     * Gets token url.
+     * @return tokenUrl value.
+     */
     public String getTokenUrl() {
         return tokenUrl;
     }
 
-    public void setTokenUrl(String tokenUrl) {
+    /**
+     * Sets token url.
+     * @param tokenUrl value.
+     */
+    public void setTokenUrl(final String tokenUrl) {
         this.tokenUrl = tokenUrl;
     }
 
+    /**
+     * Gets query url.
+     * @return query url value.
+     */
     public String getQueryUrl() {
         return queryUrl;
     }
 
-    public void setQueryUrl(String queryUrl) {
+    /**
+     * Sets Query Url.
+     * @param queryUrl value.
+     */
+    public void setQueryUrl(final String queryUrl) {
         this.queryUrl = queryUrl;
     }
 
+    /**
+     * Gets task url.
+     * @return taskUrl value.
+     */
     public String getTaskUrl() {
         return taskUrl;
     }
 
-    public void setTaskUrl(String taskUrl) {
+    /**
+     * Sets task url.
+     * @param taskUrl value.
+     */
+    public void setTaskUrl(final String taskUrl) {
         this.taskUrl = taskUrl;
     }
 
     /**
-     *
-     * @return
+     * Gets client id.
+     * @return clientId value.
      */
-    public String getClient_id() {
-        return client_id;
+    public String getClientId() {
+        return clientId;
     }
 
     /**
-     *
-     * @param client_id
+     * Sets client id.
+     * @param clientId value.
      */
-    public void setClient_id(String client_id) {
-        this.client_id = client_id;
+    public void setClientId(final String clientId) {
+        this.clientId = clientId;
     }
 
     /**
-     *
-     * @return
+     * Gets client secret.
+     * @return clientSecret value.
      */
-    public String getClient_secret() {
-        return client_secret;
+    public String getClientSecret() {
+        return clientSecret;
     }
 
     /**
-     *
-     * @param client_secret
+     * Sets client secret.
+     * @param clientSecret value.
      */
-    public void setClient_secret(String client_secret) {
-        this.client_secret = client_secret;
+    public void setClientSecret(final String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 
     /**
@@ -112,18 +143,18 @@ public class Setup {
     }
 
     /**
-     * get base path.
+     * Gets base path.
      *
-     * @return base path
+     * @return base path urlBasePath value.
      */
     public String getUrlBasePath() {
         return urlBasePath;
     }
 
     /**
-     * get username.
+     * Gets username.
      *
-     * @return user name
+     * @return username value.
      */
     public String getUsername() {
         return username;
@@ -136,35 +167,35 @@ public class Setup {
     // private Logger log = Logs.getInstance().getLog();
 
     /**
-     * get password.
+     * Gets password.
      *
-     * @return password
+     * @return password value.
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * get loginPath.
+     * Gets loginPath.
      *
-     * @return loginpath
+     * @return loginpath value.
      */
     public String getLoginpath() {
         return loginpath;
     }
 
     /**
-     * Get Layout.
+     * Gets Layout.
      *
-     * @return layout
+     * @return layout value.
      */
     public String getLayout() {
         return WebDriverConfig.getSkin();
     }
 
     /**
-     * Get urlClassicPath.
-     * @return urlClassicPath
+     * Gets urlClassicPath.
+     * @return urlClassicPath value.
      */
     public String getUrlClassicPath() {
         return urlClassicPath;
@@ -172,7 +203,7 @@ public class Setup {
 
     /**
      * Gets API path.
-     * @return string
+     * @return apiPath value.
      */
     public String getApiPath() {
         return apiPath;
@@ -180,7 +211,7 @@ public class Setup {
 
     /**
      * Gets Token.
-     * @return string.
+     * @return token value.
      */
     public String getToken() {
         return token;
@@ -207,8 +238,8 @@ public class Setup {
         apiPath = properties.getProperty("apipath");
         layout = WebDriverConfig.getSkin();
         token = properties.getProperty("token");
-        client_id = properties.getProperty("client_id");
-        client_secret = properties.getProperty("client_secret");
+        clientId = properties.getProperty("clientId");
+        clientSecret = properties.getProperty("clientSecret");
         tokenUrl = properties.getProperty("tokenUrl");
         queryUrl = properties.getProperty("queryUrl");
         taskUrl = properties.getProperty("taskUrl");

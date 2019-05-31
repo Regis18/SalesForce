@@ -17,29 +17,36 @@ import salesforce.utils.Setup;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * Common Api class.
+ *
+ * @author Melvi Caballero
+ * @version 0.0.1
+ */
 public class CommonApi {
-
+    public static final int STATUSCODE = 200;
 
     /**
-     * Get token.
+     * Gets token for API test.
+     *
      * @return token
      */
-    public static String GetToken() {
+    public static String getToken() {
         String token;
-        String grant_type = "password";
+        String grantType = "password";
         String user = Setup.getInstance().getUsername();
         String password = Setup.getInstance().getPassword();
-        String client_id = Setup.getInstance().getClient_id();
-        String client_secret = Setup.getInstance().getClient_secret();
+        String clientId = Setup.getInstance().getClientId();
+        String clientSecret = Setup.getInstance().getClientSecret();
 
         token = given().headers("Content-Type", "application/json")
-                .queryParam("grant_type", grant_type)
-                .queryParam("username", user)
+                .queryParam("grantType", grantType)
+                .queryParam("userName", user)
                 .queryParam("password", password)
-                .queryParam("client_id", client_id)
-                .queryParam("client_secret", client_secret)
+                .queryParam("clientId", clientId)
+                .queryParam("clientSecret", clientSecret)
                 .when().post(Setup.getInstance().getTokenUrl()).then()
-                .statusCode(200)
+                .statusCode(STATUSCODE)
                 .extract().path("access_token");
 
         return token;

@@ -16,20 +16,18 @@ package steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.eo.Se;
 import org.junit.Assert;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.utils.Setup;
 
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -53,10 +51,6 @@ public class TaskSteps {
         homePage = PageFactory.getHomePage();
     }
 
-//    public TaskSteps(Context context) {
-//        this.context = context;
-//    }
-
     /**
      * navigate to tasks home page.
      */
@@ -68,7 +62,7 @@ public class TaskSteps {
     /**
      * navigate to homepage.
      */
-    @Given("^I navigate to SalesForce HomePage$")
+    @Given("^I navigate to Salesforce HomePage$")
     public void navigateToSalesForceHomePage() {
         homePage = transporterPage.navigateToSalesForceHomePage();
     }
@@ -76,7 +70,7 @@ public class TaskSteps {
     /**
      * Create task step.
      */
-    @When("^I create a new task with this information$")
+    @When("^I create a new Task with this values$")
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
@@ -88,7 +82,7 @@ public class TaskSteps {
     /**
      * verify task is displayed.
      */
-    @Then("^I verify the task is displayed$")
+    @Then("^I verify the Task is displayed$")
     public void verifyTaskDisplayed() {
         Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
     }
@@ -96,7 +90,7 @@ public class TaskSteps {
     /**
      * verify the task was deleted step.
      */
-    @Then("^I verify the task was deleted$")
+    @Then("^I verify the Task was deleted$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
@@ -105,7 +99,7 @@ public class TaskSteps {
     /**
      * I update the subject task step.
      */
-    @When("^I update the subject task$")
+    @When("^I update the subject Task$")
     public void updateTask() {
         task = taskPage.updateCurrentTask(Setup.getInstance().getTask());
         Setup.getInstance().setTask(task);
@@ -114,7 +108,7 @@ public class TaskSteps {
     /**
      * delete the task step.
      */
-    @When("^I delete the created task$")
+    @When("^I delete the created Task$")
     public void deletedTask() {
         taskPage.deleteCurrentTask(Setup.getInstance().getTask());
     }
@@ -122,7 +116,7 @@ public class TaskSteps {
     /**
      * delete the task step.
      */
-    @Then("^I logout of the SalesForce Application$")
+    @Then("^I logout of the Salesforce Application$")
     public void logoutTask() {
         taskPage = transporterPage.navigateToTasksHomePage();
         taskPage.logout();

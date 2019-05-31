@@ -2,7 +2,7 @@ package salesforce.ui.pages.abstracts;
 
 import salesforce.ui.BasePage;
 import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 
 /**

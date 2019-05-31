@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.classic.task;
+package salesforce.ui.pages.task.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 
 /**
  * New Task classic skin.
@@ -56,12 +56,17 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(xpath = "//select[@id='tsk12']")
     private WebElement statusDropDown;
 
-    public boolean verifyMessage(String message){
+    /**
+     * Verifies of message confirmation after to create a new task.
+     * @param message value
+     * @return true for a classic skin.
+     */
+    public boolean verifyMessage(final String message) {
         return true;
     }
 
     @Override
-    public String createNewTask(Task task) {
+    public String createNewTask(final Task task) {
         createNewTaskDropDown.click();
         taskMenuItem.click();
         subjectTextBox.sendKeys(task.getSubject());

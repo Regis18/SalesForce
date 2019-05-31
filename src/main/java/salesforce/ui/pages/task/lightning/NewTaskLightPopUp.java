@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.lightning.task;
+package salesforce.ui.pages.task.lightning;
 
 import core.utils.StrategySetter;
 import org.openqa.selenium.By;
@@ -19,7 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.NewTaskAbstract;
+import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,12 +70,21 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
     private WebElement messageConfirmation;
 
+    /**
+     * Gets message confirmation after create a task.
+     * @return the text message.
+     */
     public String getMessageConfirmation() {
         wait.until(ExpectedConditions.visibilityOf(messageConfirmation));
         return messageConfirmation.getText();
     }
 
-    public boolean verifyMessage(String message){
+    /**
+     * Verifies a message confirmation is displayed.
+     * @param message value
+     * @return the text message.
+     */
+    public boolean verifyMessage(final String message) {
         return message.equals(getMessageConfirmation());
     }
 
@@ -102,7 +111,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     }
 
     /**
-     * set Due Date.
+     * Set Due Date.
      *
      * @param value Value
      */
@@ -116,20 +125,19 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @param value value
      */
     protected void setPriority(final String value) {
-        // Wait for visibility of combobox and click on it to open drop-down list
-      //  String locator=""
-        WebElement combobox = wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath("//div[span/span[text()='Priority']]" +
-                        "/div/div/div/div/a[@class='select']")));
+        // Wait for visibility of combobox and click on it to open drop-down list.
+        WebElement combobox = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//div[span/span[text()='Priority']]"
+                        + "/div/div/div/div/a[@class='select']")));
         combobox.click();
-        //Select Option
+        //Select Option.
         WebElement itemToSelect = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By.xpath("//a[@title='" + value + "']")));
         itemToSelect.click();
     }
 
     /**
-     * Set status.
+     * Sets status.
      *
      * @param value value
      */
@@ -171,7 +179,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     }
 
     /**
-     * Set text Map strategy.
+     * Sets text Map strategy.
      *
      * @param myTask task
      * @return strategyMap

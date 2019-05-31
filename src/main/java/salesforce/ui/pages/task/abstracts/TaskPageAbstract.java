@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.task;
+package salesforce.ui.pages.task.abstracts;
 
 import salesforce.entities.Task;
 import salesforce.ui.BasePage;
