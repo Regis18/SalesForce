@@ -39,7 +39,6 @@ public class EntityId {
                 break;
             case "light":
                 idObject = arrayIdAccount[arrayIdAccount.length-2];
-                System.out.println(idObject+" ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
                 break;
         }
         return idObject;
