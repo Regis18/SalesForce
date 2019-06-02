@@ -125,12 +125,15 @@ public class TaskPageLightning extends TaskPageAbstract {
                     driver.findElement(By.xpath("//span[contains(text(),\""
                             + task.getSubject() + "\")][1]"));
             subjectTask.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
             WebElement subject =
                     driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span"));
-            if (!subject.getText().equals(task.getSubject())) return false;
+            String uiSubject = subject.getText();
+            if (!uiSubject.equals(task.getSubject())) { return false; }
             WebElement comment =
                     driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]//div//div//div[2]//span//span"));
-            if (!comment.getText().equals(task.getComment())) return false;
+            String uiComment = comment.getText();
+            if (!uiComment.equals(task.getComment())) { return false; }
 
         } catch (Exception e) {
             return false;
@@ -194,6 +197,7 @@ public class TaskPageLightning extends TaskPageAbstract {
      * Click edit subject.
      */
     public void clickEditSubjectTask() {
+        wait.until(ExpectedConditions.elementToBeClickable(editSubjectTask));
         editSubjectTask.click();
     }
 
@@ -237,7 +241,7 @@ public class TaskPageLightning extends TaskPageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
-        task.setSubject(task.getSubject()+ nameTaskSubject);
+        task.setSubject(task.getSubject() + nameTaskSubject);
         return task;
     }
 

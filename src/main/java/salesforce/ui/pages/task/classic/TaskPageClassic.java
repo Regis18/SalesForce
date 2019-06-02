@@ -48,8 +48,9 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[@id='userNavLabel']]")
     private WebElement userIcon;
 
-    @FindBy(xpath="//input[@name='newTask']")
+    @FindBy(xpath = "//input[@name='newTask']")
     private WebElement newTaskButton;
+
     /**
      * Click on task list.
      */
@@ -76,7 +77,7 @@ public class TaskPageClassic extends TaskPageAbstract {
     }
 
     @Override
-    public boolean verifyTaskWasCreated(Task task) {
+    public boolean verifyTaskWasCreated(final Task task) {
 
         try {
             WebElement subjectTask =
@@ -86,11 +87,15 @@ public class TaskPageClassic extends TaskPageAbstract {
             WebElement subject =
                     driver.findElement(By.xpath("//div[@id='tsk5_ileinner']"));
             String uiSubject = subject.getText();
-            if (!uiSubject.equals(task.getSubject())) return false;
+            if (!uiSubject.equals(task.getSubject())) {
+                return false;
+            }
             WebElement comment =
                     driver.findElement(By.xpath("//div[@id='tsk6_ileinner']"));
             String uiComment = comment.getText().trim();
-            if (!uiComment.equals(task.getComment())) return false;
+            if (!uiComment.equals(task.getComment())) {
+                return false;
+            }
 
         } catch (Exception e) {
             return false;

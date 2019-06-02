@@ -62,7 +62,7 @@ public class TaskApi {
         } catch (Exception e) {
 
         }
-        if (taskIds.size()>0) {
+        if (taskIds.size() > 0) {
             given().headers("Content-Type", "application/json")
                     .auth().oauth2(CommonApi.getToken())
                     .when()
@@ -106,6 +106,7 @@ public class TaskApi {
 
     /**
      * Create Task with API test.
+     * @param task object
      */
     public static void createTask(final Task task) {
         Response response = given()

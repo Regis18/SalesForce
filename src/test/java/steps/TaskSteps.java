@@ -56,6 +56,7 @@ public class TaskSteps {
      */
     @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
+        try{Thread.sleep(2000);}catch(Exception e){};
         taskPage = transporterPage.navigateToTasksHomePage();
     }
 
@@ -93,6 +94,7 @@ public class TaskSteps {
     @Then("^I verify the Task was deleted$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
+        try{Thread.sleep(2000);}catch(Exception e){};
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
@@ -110,7 +112,8 @@ public class TaskSteps {
      */
     @When("^I delete the created Task$")
     public void deletedTask() {
-        taskPage.deleteCurrentTask(Setup.getInstance().getTask());
+        task=Setup.getInstance().getTask();
+        taskPage.deleteCurrentTask(task);
     }
 
     /**
