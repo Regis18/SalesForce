@@ -126,4 +126,9 @@ public class TaskSteps {
     public void verifyMessageConfirmCreated() {
         assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
     }
+
+    @Then("^I verify the page of Task that was created$")
+    public void verifyPageTaskWasCreated(){
+        Assert.assertTrue(taskPage.verifyTaskWasCreated(task));
+    }
 }

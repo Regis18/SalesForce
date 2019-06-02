@@ -32,6 +32,14 @@ public abstract class TaskPageAbstract extends BasePage {
     public abstract boolean verifySubjectExist(String subjectTask);
 
     /**
+     * Verify task is created.
+     *
+     * @param task the task.
+     * @return if successful
+     */
+    public abstract boolean verifyTaskWasCreated(final Task task);
+
+    /**
      * Click recent refresh.
      */
     public abstract void clickRecentTasksRefresh();
@@ -59,7 +67,5 @@ public abstract class TaskPageAbstract extends BasePage {
      * Wait for load.
      */
     @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
+    public abstract void waitUntilPageObjectIsLoaded();
 }

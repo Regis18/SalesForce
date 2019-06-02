@@ -62,10 +62,12 @@ public class TaskApi {
         } catch (Exception e) {
 
         }
-        given().headers("Content-Type", "application/json")
-                .auth().oauth2(CommonApi.getToken())
-                .when()
-                .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+        if (taskIds.size()>0) {
+            given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken())
+                    .when()
+                    .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+        }
     }
 
     /**
