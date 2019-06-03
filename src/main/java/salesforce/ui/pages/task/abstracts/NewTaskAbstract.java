@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.task;
+package salesforce.ui.pages.task.abstracts;
 
 import salesforce.entities.Task;
 import salesforce.ui.BasePage;
@@ -51,6 +51,14 @@ public abstract class NewTaskAbstract extends BasePage {
      * @param value the text to set.
      */
     protected abstract void setComments(String value);
+
+    /**
+     *  verify message.
+     * @param message
+     * @return boolean
+     */
+    public abstract boolean verifyMessage(String message);
+
 
     /**
      * Wait for Page.

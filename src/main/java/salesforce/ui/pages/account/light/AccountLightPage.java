@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.lightning.account;
+package salesforce.ui.pages.account.light;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.utils.DriverMethods;
 
 /**
@@ -59,8 +59,7 @@ public class AccountLightPage extends AccountPageAbstract {
      * @return boolean.
      */
     @Override
-    public boolean checkAccountList(String name) {
-        //return DriverMethods.waitForElementDisappear(By.xpath(accountList.replace(ACCOUNT, name)));
+    public boolean checkAccountList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace(ACCOUNT, name)));
     }
 }

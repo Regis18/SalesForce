@@ -30,7 +30,7 @@ public class LoginSteps {
      * Sign in step.
      */
     @Given("^I log in to the SalesForce Application$")
-    public void signIn() {
+    public void logInToTheSalesForceApplication() {
         loginPage = transporterPage.navigateToLoginPage();
         setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
     }
@@ -40,4 +40,5 @@ public class LoginSteps {
         homePage = transporterPage.navigateToHomePage(setupPage);
         context.setHomePage(homePage);
     }
+
 }

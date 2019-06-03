@@ -68,9 +68,8 @@ public class SetupPage extends BasePage {
         while (driver.getTitle().equals("") || driver.getTitle().equals("Lightning Experience")) {
             continue;
         }
-        System.out.println(driver.getTitle());
+
         isLight = driver.getTitle().contains("Home | Salesforce");
-        System.out.println("page Ligh setuo :"+isLight);
         if (isLight) {
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {
@@ -87,7 +86,7 @@ public class SetupPage extends BasePage {
         System.out.println(isLight);
         if (isLight) {
             viewProfileBtn.click();
-            wait.until(ExpectedConditions.visibilityOf(optionsForm));
+            wait.until(ExpectedConditions.visibilityOf(switchClassicLink));
             switchClassicLink.click();
         } else {
             homeTabBtn.click();

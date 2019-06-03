@@ -58,7 +58,7 @@ public class CampaignHook {
     @After("@deleteCampaign")
     public void deleteNewAccount() {
         campaignApi = new CampaignApi();
-        System.out.println("API ID"+context.getCampaign().getId());
+        System.out.println("API ID" + context.getCampaign().getId());
         campaignApi.deleteCampaign(context.getCampaign().getId());
     }
 

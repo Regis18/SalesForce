@@ -13,12 +13,14 @@
 
 package salesforce.ui.pages.campaign.classic;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.utils.DriverMethods;
 
 import java.util.Map;
 
@@ -39,6 +41,16 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     @FindBy(css = "td[id='topButtonRow'] input[value='Delete']")
     private WebElement deleteUpBtn;
+
+    @FindBy(css = "[id='topButtonRow'] input[name='edit']")
+    private WebElement editUpBtn;
+
+    private String valueCampaign = "//*[td[starts-with(text(), 'key')]]//*//div[contains(text(), 'element')]";
+
+    private final String ELEMENT = "element";
+
+    private final String KEY = "key";
+
     /**
      * Wait for Campaign panel title.
      */
@@ -57,7 +69,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
     /**
-     * Get the Name Campaign.
+     * Gets the Name Campaign.
      * @return string
      */
     @Override
@@ -66,7 +78,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
     /**
-     * Delete campaign.
+     * Deletes campaign.
      * @param nameCampaign string
      */
     @Override
@@ -74,17 +86,25 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
         deleteUpBtn.click();
         driver.switchTo().alert().accept();
     }
-//todo DO it
 
+    /**
+     * Opens a form for edit a campaign.
+     * @return EditCampaignClassic
+     */
     @Override
     public EditCampaignAbstract openEditCampaign() {
-        return null;
+        editUpBtn.click();
+        return new EditCampaignClassicPage();
     }
 
-//    //TODO Do it verifydata campaign
-
+    /**
+     * Check if the values of Campaign is correct in the list.
+     * @param key String.
+     * @param value Value.
+     * @return Boolean
+     */
     @Override
     public boolean isCampaignFieldValueDisplayed(String key, String value) {
-        return false;
+        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 }

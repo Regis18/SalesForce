@@ -78,8 +78,8 @@ public class CampaignSteps {
      * Creates new campaign.
      * @param mapOut
      */
-    @When("^I create a new campaign for Campaigns$")
-    public void createANewCampaign(final Map<String, String> mapOut) {
+    @When("^I create a new Campaign for Campaigns$")
+    public void createANewCampaignForCampaigns(final Map<String, String> mapOut) {
         this.mapOut = mapOut;
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
@@ -91,8 +91,8 @@ public class CampaignSteps {
     /**
      * Verifies a message confirmation.
      */
-    @Then("^I verify a confirmation message of a new campaign was created$")
-    public void verifyAMessageConfirmationOfANewCampaignWasCreated() {
+    @Then("^I verify a confirmation message of a new Campaign was created$")
+    public void verifyAConfirmationMessageOfANewCampaignWasCreated() {
         try {
             String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
             assertEquals(message, "Campaign \"" + campaign.getName() + "\" was created.");
@@ -104,7 +104,7 @@ public class CampaignSteps {
     /**
      * Verifies campaign.
      */
-    @Then("^I verify the page of campaign that was created$")
+    @Then("^I verify the page of Campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
         assertTrue(oneCampaignPage.verifyComponentsCampaign());
     }
@@ -201,6 +201,7 @@ public class CampaignSteps {
     public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
         campaignApi = new CampaignApi();
         jsonPath = campaignApi.createCampaign(mapOut);
+        jsonPath = campaignApi.getCampaignById(jsonPath.getString("id"));
         campaign.setJsonValues(jsonPath);
         System.out.println(campaign.getId());
     }
@@ -212,4 +213,6 @@ public class CampaignSteps {
     public void navigateToTheCampaignPage() {
         oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
     }
+
+
 }

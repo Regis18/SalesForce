@@ -11,12 +11,12 @@
  *
  */
 
-package salesforce.ui.pages.classic.account;
+package salesforce.ui.pages.account.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 /**
  * OneAccountClassicPage.
@@ -27,10 +27,15 @@ public class OneAccountClassicPage extends OneAccountAbstract {
 
     @FindBy(xpath = "//td[@class=\" oRight\"]")
     private WebElement accountDetailForm;
-    @FindBy(xpath = "//h1[@class=\"pageType\"]")
+
+    @FindBy(xpath = "//div[@class=\"bPageTitle\"]")
     private WebElement accountPanelTitle;
+
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement accountTitleLbl;
+
+    @FindBy(xpath = "//td[@id=\"topButtonRow\"]//input[@name=\"delete\"]")
+    private WebElement deleteBtn;
 
     /**
      * Wait for Account panel title.
@@ -56,5 +61,14 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @Override
     public String getNameAccount() {
         return accountTitleLbl.getText();
+    }
+
+    /**
+     * Delete account.
+     */
+    @Override
+    public void deleteAccount() {
+        deleteBtn.click();
+        driver.switchTo().alert().accept();
     }
 }

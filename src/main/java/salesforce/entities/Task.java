@@ -26,12 +26,12 @@ import java.util.Map;
  */
 public class Task {
 
-    private String subject;
-    private String comment;
-    private String status;
-    private String email;
-    private String dueDate;
-    private String priority;
+    private String subject = "";
+    private String comment = "";
+    private String status = "";
+    private String email = "";
+    private String dueDate = "";
+    private String priority = "";
 
     /**
      * Get subject to task.

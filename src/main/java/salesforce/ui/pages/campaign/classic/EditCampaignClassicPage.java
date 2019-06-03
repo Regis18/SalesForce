@@ -1,5 +1,5 @@
 /*
- * @(#) EditCampaignLightPopup.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EditCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.campaign.light;
+package salesforce.ui.pages.campaign.classic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,67 +20,58 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 
 /**
- * EditCampaignLightPopup.
- *
- * @author Regis Humana
+ * EditCampaignClassicPage.
+ * @author Regis Humana.
  * @version 0.0.1
  */
-public class EditCampaignLightPopup extends EditCampaignAbstract {
+public class EditCampaignClassicPage extends EditCampaignAbstract {
 
-    @FindBy(css = "[class='modal-container slds-modal__container']")
-    private WebElement editCampaignPopup;
+    @FindBy(id = "bodyCell")
+    private WebElement editBodyForm;
 
-    @FindBy(css = "[class^='uiInput uiInputText'] input")
-    private WebElement nameTxt;
-
-    @FindBy(css = "[class^='slds-button slds-button--neutral uiButton--default']")
+    @FindBy(css = "[id='topButtonRow'] input[name='save']")
     private WebElement saveBtn;
 
-    @FindBy(css = "[class^='uiInput uiInputCheckbox'] input")
+    @FindBy(id = "cpn1")
+    private WebElement nameTxt;
+
+    @FindBy(id = "cpn16")
     private WebElement activateChk;
 
-    @FindBy(xpath = "//child::div[4][contains(@class,'Row')]//a")
+    @FindBy(id = "cpn2")
     private WebElement typeCmb;
 
-    @FindBy(xpath = "//child::div[5][contains(@class,'Row')]//a")
+    @FindBy(id = "cpn3")
     private WebElement statusCmb;
 
-    @FindBy(xpath = "//child::div[6][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn5")
     private WebElement startDateTxt;
 
-    @FindBy(xpath = "//child::div[7][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn6")
     private WebElement endDateTxt;
 
-    @FindBy(xpath = "//child::div[8][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn8")
     private WebElement expectedRevenueTxt;
 
-    @FindBy(xpath = "//child::div[9][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn9")
     private WebElement budgetedCostTxt;
 
-    @FindBy(xpath = "//child::div[10][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn10")
     private WebElement actualCostTxt;
 
-    @FindBy(xpath = "//child::div[11][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn11")
     private WebElement expectedResponseTxt;
 
-    @FindBy(xpath = "//child::div[12][contains(@class,'Row')]//input")
+    @FindBy(id = "cpn13")
     private WebElement numSentTxt;
 
-    @FindBy(css = "[class=' textarea']")
+    @FindBy(id = "cpn4")
     private WebElement descriptionTxt;
 
-    private String statusElements = "div[role=\"menu\"] li[role='presentation'] a[title='element']";
-
-    /**
-     * Waits for the Edit Campaign Popup appears.
-     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(editCampaignPopup));
+        wait.until(ExpectedConditions.visibilityOf(editBodyForm));
     }
-
-    //SETTERS
-
     /**
      * Sets the name into NameTxt.
      *
@@ -117,8 +108,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      */
     @Override
     protected void setTypeCmb(final String type) {
-        typeCmb.click();
-        driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
+        typeCmb.sendKeys(type);
     }
 
     /**
@@ -129,8 +119,7 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
     @Override
     protected void setStatusCmb(final String status) {
         //--None--, Planned, Completed, In Progress, Aborted
-        statusCmb.click();
-        driver.findElement(By.cssSelector(statusElements.replace("element", status))).click();
+        statusCmb.sendKeys(status);
     }
 
     /**
@@ -220,5 +209,4 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
         expectedResponseTxt.clear();
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
-
 }

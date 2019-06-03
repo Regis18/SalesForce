@@ -1,5 +1,5 @@
 /*
- * @(#) AccountApi.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountLightPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -12,7 +12,6 @@
  */
 
 package salesforce.api;
-
 
 import io.restassured.response.Response;
 import salesforce.utils.Setup;
@@ -29,8 +28,8 @@ public class AccountApi {
      * Delete an account by id.
      * @param id String.
      */
-    public void deleteAccount(String id) {
-        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/"+id;
+    public void deleteAccount(final String id) {
+        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/" + id;
         String token = Setup.getInstance().getToken();
         Response response = given().headers("Content-Type", "application/json").
                 auth().oauth2(token).when().request("DELETE", url);

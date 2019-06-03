@@ -271,6 +271,7 @@ public class Campaign {
      * @param json JsonPath.
      */
     public void setJsonValues(JsonPath json) {
+        System.out.println("impreison: " + json.prettyPrint());
         setId(json.getString(ID));
         setName(json.getString(NAME));
         setActivate(json.getBoolean("IsActive"));
@@ -278,11 +279,11 @@ public class Campaign {
         setStatus(json.getString(STATUS));
 //        setStartDate(json.getString("StartDate"));
 //        setEndDate(json.getString("EndDate"));
-        setExpectedRevenue(json.getInt("ExpectedRevenue"));
-        setBudgetedCost(json.getInt("BudgetedCost"));
-        setActualCost(json.getInt("ActualCost"));
-        setExpectedResponse(json.getInt("ExpectedResponse"));
-        setNumSent(json.getInt("NumberSent"));
+        setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
+        setBudgetedCost((int)json.getDouble("BudgetedCost"));
+        setActualCost((int)json.getDouble("ActualCost"));
+        setExpectedResponse((int)json.getDouble("ExpectedResponse"));
+        setNumSent((int)json.getDouble("NumberSent"));
         setDescription(json.getString(DESCRIPTION));
     }
 

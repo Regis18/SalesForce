@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.abstracts.task;
+package salesforce.ui.pages.task.abstracts;
 
 import salesforce.entities.Task;
 import salesforce.ui.BasePage;
@@ -30,6 +30,14 @@ public abstract class TaskPageAbstract extends BasePage {
      * @return boolean
      */
     public abstract boolean verifySubjectExist(String subjectTask);
+
+    /**
+     * Verify task is created.
+     *
+     * @param task the task.
+     * @return if successful
+     */
+    public abstract boolean verifyTaskWasCreated(final Task task);
 
     /**
      * Click recent refresh.
@@ -54,11 +62,10 @@ public abstract class TaskPageAbstract extends BasePage {
      */
     public abstract void logout();
 
+
     /**
      * Wait for load.
      */
     @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
+    public abstract void waitUntilPageObjectIsLoaded();
 }

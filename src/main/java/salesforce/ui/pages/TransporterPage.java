@@ -4,7 +4,7 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
@@ -124,9 +124,9 @@ public class TransporterPage {
     }
 
     /**
-     *
-     * @param urlCampaign
-     * @return
+     * NavigateToOneCampaign method.
+     * @param urlCampaign value.
+     * @return PageFactory.getOneCampaignPage.
      */
     public OneCampaignAbstract navigateToOneCampaign(String urlCampaign) {
         switch (setup.getLayout()) {
@@ -150,10 +150,10 @@ public class TransporterPage {
     public HomePageAbstract navigateToSalesForceHomePage() {
 
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 goToURL(baseClassicURL + "/home/home.jsp");
                 break;
-            case "light":
+            case LIGHT:
                  goToURL(baseLightURL + "/lightning/page/home");
                 break;
             default:

@@ -14,23 +14,23 @@
 package salesforce.ui;
 
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
-import salesforce.ui.pages.abstracts.account.AccountPageAbstract;
-import salesforce.ui.pages.abstracts.account.OneAccountAbstract;
+import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
-import salesforce.ui.pages.classic.account.AccountClassicPage;
-import salesforce.ui.pages.classic.account.OneAccountClassicPage;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.account.classic.AccountClassicPage;
+import salesforce.ui.pages.account.classic.OneAccountClassicPage;
 import salesforce.ui.pages.classic.HomeClassicPage;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.pages.campaign.classic.OneCampaignClassicPage;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
-import salesforce.ui.pages.lightning.account.AccountLightPage;
-import salesforce.ui.pages.lightning.account.OneAccountLightPage;
-import salesforce.ui.pages.classic.task.TaskPageClassic;
+import salesforce.ui.pages.account.light.AccountLightPage;
+import salesforce.ui.pages.account.light.OneAccountLightPage;
+import salesforce.ui.pages.task.classic.TaskPageClassic;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
-import salesforce.ui.pages.lightning.task.TaskPageLightning;
+import salesforce.ui.pages.task.lightning.TaskPageLightning;
 import salesforce.utils.Setup;
 
 /**

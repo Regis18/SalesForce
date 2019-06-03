@@ -11,12 +11,13 @@ import static runner.GenerateReport.generateMasterReport;
  * RunCukesTest class.
  */
 @CucumberOptions(
-        //plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
         glue = {"steps", "hooks"},
         features = {"src/test/resources/feature/Campaign.feature"},
         monochrome = true)
+
 public class RunCukesTest extends AbstractTestNGCucumberTests {
+
     /**
      * After Execution.
      */

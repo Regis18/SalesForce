@@ -35,7 +35,6 @@ public class CampaignApi {
     private final String GET = "GET";
     private final String POST = "POST";
     private final String PUT = "PUT";
-    private final String token = Setup.getInstance().getToken();
     private String url;
 
     /**
@@ -46,7 +45,7 @@ public class CampaignApi {
     public void deleteCampaign(String id) {
         url = API_PATH + "Campaign/" + id;
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .when()
                 .request(DELETE, url);
     }
@@ -57,9 +56,22 @@ public class CampaignApi {
     public void getCampaigns() {
         url = API_PATH + "Campaign";
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .when()
                 .request(GET, url);
+    }
+
+    /**
+     * Get the campaign
+     * @param id string
+     */
+    public JsonPath getCampaignById(final String id) {
+        url = API_PATH + "Campaign/" + id;
+        Response response = given().headers("Content-Type", "application/json")
+                .auth().oauth2(CommonApi.getToken())
+                .when()
+                .request(GET, url);
+        return response.body().jsonPath();
     }
 
     /**
@@ -70,7 +82,7 @@ public class CampaignApi {
     public JsonPath createCampaign(Map<String, String> newCampaign) {
         url = API_PATH + "Campaign";
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .body(newCampaign)
                 .when()
                 .request(POST, url);

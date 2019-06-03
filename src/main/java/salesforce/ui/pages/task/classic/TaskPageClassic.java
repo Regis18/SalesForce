@@ -11,14 +11,14 @@
  *
  */
 
-package salesforce.ui.pages.classic.task;
+package salesforce.ui.pages.task.classic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
-import salesforce.ui.pages.abstracts.task.TaskPageAbstract;
+import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
 /**
  * Task Page classic.
@@ -48,6 +48,9 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[@id='userNavLabel']]")
     private WebElement userIcon;
 
+    @FindBy(xpath = "//input[@name='newTask']")
+    private WebElement newTaskButton;
+
     /**
      * Click on task list.
      */
@@ -67,6 +70,33 @@ public class TaskPageClassic extends TaskPageAbstract {
         try {
             WebElement subjectExist =
                     driver.findElement(By.xpath("//a[contains(text(),\"" + subjectTask + "\")][1]"));
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean verifyTaskWasCreated(final Task task) {
+
+        try {
+            WebElement subjectTask =
+                    driver.findElement(By.xpath("//a[text()=\"" + task.getSubject() + "\"][1]"));
+            subjectTask.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='tsk5_ileinner']")));
+            WebElement subject =
+                    driver.findElement(By.xpath("//div[@id='tsk5_ileinner']"));
+            String uiSubject = subject.getText();
+            if (!uiSubject.equals(task.getSubject())) {
+                return false;
+            }
+            WebElement comment =
+                    driver.findElement(By.xpath("//div[@id='tsk6_ileinner']"));
+            String uiComment = comment.getText().trim();
+            if (!uiComment.equals(task.getComment())) {
+                return false;
+            }
+
         } catch (Exception e) {
             return false;
         }
@@ -111,6 +141,11 @@ public class TaskPageClassic extends TaskPageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
+    }
+
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(newTaskButton));
     }
 
     /**

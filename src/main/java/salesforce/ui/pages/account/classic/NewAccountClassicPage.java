@@ -11,13 +11,13 @@
  *
  */
 
-package salesforce.ui.pages.classic.account;
+package salesforce.ui.pages.account.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.abstracts.account.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 
 /**
  * NewAccountClassicPage.
@@ -122,7 +122,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
     @FindBy(id = "00N4P0000072sEB")
     private WebElement upsellOportunityCmb;
 
-    @FindBy(id = "00N4P0000072sE7")
+    @FindBy(id = "00N4P0000072sE9")
     private WebElement slaDateTxt;
 
     @FindBy(id = "acc20")
@@ -144,21 +144,25 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param name String
      */
     @Override
-    protected void setNameTxt(final String name) { nameTxt.sendKeys(name); }
+    protected void setNameTxt(final String name) {
+        nameTxt.sendKeys(name);
+    }
 
     /**
      * Set name in the phone Text.
      * @param phone String
      */
     @Override
-    public void setPhone(String phone) { phoneTxt.sendKeys(phone); }
+    public void setPhone(final String phone) {
+        phoneTxt.sendKeys(phone);
+    }
 
     /**
      * Set name in the rating List.
      * @param rating String
      */
     @Override
-    public void setRating(String rating) {
+    public void setRating(final String rating) {
         Select accountRole = new Select(ratingCmb);
         accountRole.selectByVisibleText(rating);
     }
@@ -168,49 +172,61 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param parent String
      */
     @Override
-    public void setParent(String parent) { parentTxt.sendKeys(parent); }
+    public void setParent(final String parent) {
+        websiteTxt.sendKeys(parent);
+    }
 
     /**
      * Set name in the fax Text.
      * @param fax String
      */
     @Override
-    public void setFax(String fax) { faxTxt.sendKeys(fax); }
+    public void setFax(final String fax) {
+        faxTxt.sendKeys(fax);
+    }
 
     /**
      * Set name in the numberAccount Text.
      * @param numberAccount String
      */
     @Override
-    public void setNumberAccount(String numberAccount) { numberTxt.sendKeys(numberAccount); }
+    public void setNumberAccount(final String numberAccount) {
+        numberTxt.sendKeys(numberAccount);
+    }
 
     /**
      * Set name in the webSite Text.
      * @param webSite String
      */
     @Override
-    public void setWebSite(String webSite) { websiteTxt.sendKeys(webSite); }
+    public void setWebSite(final String webSite) {
+        websiteTxt.sendKeys(webSite);
+    }
 
     /**
      * Set name in the site Text.
      * @param site String
      */
     @Override
-    public void setSite(String site) { siteTxt.sendKeys(site); }
+    public void setSite(final String site) {
+        siteTxt.sendKeys(site);
+    }
 
     /**
      * Set name in the ticker Text.
      * @param ticker String
      */
     @Override
-    public void setTicker(String ticker) { tickerSimpbolTxt.sendKeys(ticker); }
+    public void setTicker(final String ticker) {
+        tickerSimpbolTxt.sendKeys(ticker);
+    }
 
     /**
      * Set name in the type Text.
      * @param type String
      */
     @Override
-    public void setType(String type) {
+    public void setType(final String type) {
         Select typeAccount = new Select(typeCmb);
         typeAccount.selectByVisibleText(type);
     }
@@ -220,7 +236,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param ownership String
      */
     @Override
-    public void setOwnership(String ownership) {
+    public void setOwnership(final String ownership) {
         Select typeOwnership = new Select(ownershipCmb);
         typeOwnership.selectByVisibleText(ownership);
     }
@@ -230,7 +246,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param industry String
      */
     @Override
-    public void setIndustry(String industry) {
+    public void setIndustry(final String industry) {
         Select typeSector = new Select(industryCmb);
         typeSector.selectByVisibleText(industry);
     }
@@ -240,105 +256,133 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param employee String
      */
     @Override
-    public void setEmployee(String employee) { employeesTxt.sendKeys(employee); }
+    public void setEmployee(final String employee) {
+        websiteTxt.sendKeys(employee);
+    }
 
     /**
      * Set name in the anualRevenue Text.
      * @param anualRevenue String
      */
     @Override
-    public void setAnualRevenue(String anualRevenue) { revenueTxt.sendKeys(anualRevenue); }
+    public void setAnualRevenue(final String anualRevenue) {
+        revenueTxt.sendKeys(anualRevenue);
+    }
 
     /**
      * Set name in the sicCode Text.
      * @param sicCode String
      */
     @Override
-    public void setSicCode(String sicCode) { sicCodeTxt.sendKeys(sicCode); }
+    public void setSicCode(final String sicCode) {
+        sicCodeTxt.sendKeys(sicCode);
+    }
 
     /**
      * Set name in the billingStreet Text.
      * @param billingStreet String
      */
     @Override
-    public void setBillingStreet(String billingStreet) { billingStreetArea.sendKeys(billingStreet); }
+    public void setBillingStreet(final String billingStreet) {
+        billingStreetArea.sendKeys(billingStreet);
+    }
 
     /**
      * Set name in the shippingStreet Text.
      * @param shippingStreet String
      */
     @Override
-    public void setShippingStreet(String shippingStreet) { shippingStreetArea.sendKeys(shippingStreet); }
+    public void setShippingStreet(final String shippingStreet) {
+        shippingStreetArea.sendKeys(shippingStreet);
+    }
 
     /**
      * Set name in the billingCity Text.
      * @param billingCity String
      */
     @Override
-    public void setBillingCity(String billingCity) { billingCityTxt.sendKeys(billingCity); }
+    public void setBillingCity(final String billingCity) {
+        billingCityTxt.sendKeys(billingCity);
+    }
 
     /**
      * Set name in the billingState Text.
      * @param billingState String
      */
     @Override
-    public void setBillingState(String billingState) { billingStateTxt.sendKeys(billingState); }
+    public void setBillingState(final String billingState) {
+        billingStateTxt.sendKeys(billingState);
+    }
 
     /**
      * Set name in the shippingCity Text.
      * @param shippingCity String
      */
     @Override
-    public void setShippingCity(String shippingCity) { shippingCityTxt.sendKeys(shippingCity); }
+    public void setShippingCity(final String shippingCity) {
+        shippingCityTxt.sendKeys(shippingCity);
+    }
 
     /**
      * Set name in the shippingState Text.
      * @param shippingState String
      */
     @Override
-    public void setShippingState(String shippingState) { shippingStateTxt.sendKeys(shippingState); }
+    public void setShippingState(final String shippingState) {
+        shippingStateTxt.sendKeys(shippingState);
+    }
 
     /**
      * Set name in the billingZip Text.
      * @param billingZip String
      */
     @Override
-    public void setBillingZip(String billingZip) { billingZipTxt.sendKeys(billingZip); }
+    public void setBillingZip(final String billingZip) {
+        billingZipTxt.sendKeys(billingZip);
+    }
 
     /**
      * Set name in the billingCountry Text.
      * @param billingCountry String
      */
     @Override
-    public void setBillingCountry(String billingCountry) { billingCountryTxt.sendKeys(billingCountry); }
+    public void setBillingCountry(final String billingCountry) {
+        billingCountryTxt.sendKeys(billingCountry);
+    }
 
     /**
      * Set name in the shippingZip Text.
      * @param shippingZip String
      */
     @Override
-    public void setShippingZip(String shippingZip) { shippingZipTxt.sendKeys(shippingZip); }
+    public void setShippingZip(final String shippingZip) {
+        shippingZipTxt.sendKeys(shippingZip);
+    }
 
     /**
      * Set name in the shippingCountry Text.
      * @param shippingCountry String
      */
     @Override
-    public void setShippingCountry(String shippingCountry) { shippingCountryTxt.sendKeys(shippingCountry); }
+    public void setShippingCountry(final String shippingCountry) {
+        shippingCountryTxt.sendKeys(shippingCountry);
+    }
 
     /**
      * Set name in the customerPriority Element.
      * @param customerPriority String
      */
     @Override
-    public void setCustomerPriority(String customerPriority) { customerPriorityCmb.sendKeys(customerPriority); }
+    public void setCustomerPriority(final String customerPriority) {
+        customerPriorityCmb.sendKeys(customerPriority);
+    }
 
     /**
      * Set name in the slaAccount Element.
      * @param slaAccount String
      */
     @Override
-    public void setSlaAccount(String slaAccount) {
+    public void setSlaAccount(final String slaAccount) {
         Select sla = new Select(slaCmb);
         sla.selectByVisibleText(slaAccount);
     }
@@ -348,28 +392,34 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param slaDate String
      */
     @Override
-    public void setSlaDate(String slaDate) { slaDateTxt.sendKeys(slaDate); }
+    public void setSlaDate(final String slaDate) {
+        slaDateTxt.sendKeys(slaDate);
+    }
 
     /**
      * Set name in the slaSerial Text.
      * @param slaSerial String
      */
     @Override
-    public void setSlaSerial(String slaSerial) { slaSerialTxt.sendKeys(slaSerial); }
+    public void setSlaSerial(final String slaSerial) {
+        slaSerialTxt.sendKeys(slaSerial);
+    }
 
     /**
      * Set name in the numberLocations Text.
      * @param numberLocations String
      */
     @Override
-    public void setNumberLocations(String numberLocations) { numberLocationsTxt.sendKeys(numberLocations); }
+    public void setNumberLocations(final String numberLocations) {
+        numberLocationsTxt.sendKeys(numberLocations);
+    }
 
     /**
      * Set name in the upsellOportunity Element.
      * @param upsellOportunity String
      */
     @Override
-    public void setUpsellOportunity(String upsellOportunity) {
+    public void setUpsellOportunity(final String upsellOportunity) {
         Select upsell = new Select(upsellOportunityCmb);
         upsell.selectByVisibleText(upsellOportunity);
     }
@@ -379,7 +429,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param active String
      */
     @Override
-    public void setActive(String active) {
+    public void setActive(final String active) {
         Select activeAccount = new Select(activeCmb);
         activeAccount.selectByVisibleText(active);
     }
@@ -389,7 +439,9 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      * @param description String
      */
     @Override
-    public void setDescription(String description) { descriptionTxt.sendKeys(description); }
+    public void setDescription(final String description) {
+        descriptionTxt.sendKeys(description);
+    }
 
     /**
      * Click to Save the changes.
