@@ -39,9 +39,6 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(css = ".forceRecordLayout:nth-child(1) .slds-split-view__list-item-action .slds-grow")
     private WebElement task;
 
-//    @FindBy(xpath = "//*[contains(@class,\"slds-button__icon_x-small\")]")
-//    private WebElement displayAsDropDownButton;
-
     /**
      * Dropdownbutton web element.
      */
@@ -97,6 +94,47 @@ public class TaskPageLightning extends TaskPageAbstract {
             WebElement subjectExist =
                     driver.findElement(By.xpath("//span[contains(text(),\""
                             + subjectTask + "\")][1]"));
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean verifyTaskValues(final Task task) {
+        try {
+            WebElement subjectTask =
+                    driver.findElement(By.xpath("//span[contains(text(),\""
+                            + task.getSubject() + "\")][1]"));
+            subjectTask.click();
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Verify task is created.
+     *
+     * @param task the task.
+     * @return if successful
+     */
+    public boolean verifyTaskWasCreated(final Task task) {
+        try {
+            WebElement subjectTask =
+                    driver.findElement(By.xpath("//span[contains(text(),\""
+                            + task.getSubject() + "\")][1]"));
+            subjectTask.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
+            WebElement subject =
+                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span"));
+            String uiSubject = subject.getText();
+            if (!uiSubject.equals(task.getSubject())) { return false; }
+            WebElement comment =
+                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]//div//div//div[2]//span//span"));
+            String uiComment = comment.getText();
+            if (!uiComment.equals(task.getComment())) { return false; }
+
         } catch (Exception e) {
             return false;
         }
@@ -159,6 +197,7 @@ public class TaskPageLightning extends TaskPageAbstract {
      * Click edit subject.
      */
     public void clickEditSubjectTask() {
+        wait.until(ExpectedConditions.elementToBeClickable(editSubjectTask));
         editSubjectTask.click();
     }
 
@@ -225,7 +264,7 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(editSubjectTask));
     }
 }
 

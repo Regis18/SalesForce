@@ -27,7 +27,6 @@ import salesforce.ui.pages.campaign.classic.OneCampaignClassicPage;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.account.light.AccountLightPage;
 import salesforce.ui.pages.account.light.OneAccountLightPage;
-import salesforce.ui.pages.classic.task.TaskPageClassic;
 import salesforce.ui.pages.task.classic.TaskPageClassic;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;

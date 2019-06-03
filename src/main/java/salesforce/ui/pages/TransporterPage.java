@@ -150,10 +150,10 @@ public class TransporterPage {
     public HomePageAbstract navigateToSalesForceHomePage() {
 
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 goToURL(baseClassicURL + "/home/home.jsp");
                 break;
-            case "light":
+            case LIGHT:
                  goToURL(baseLightURL + "/lightning/page/home");
                 break;
             default:
