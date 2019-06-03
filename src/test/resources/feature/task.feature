@@ -10,7 +10,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I create a new Task with this values
       | Subject  | callTask_random |
       | Comment  | test task       |
-      | DueDate  | 5/30/2019       |
+      | DueDate  | tomorrow        |
       | Priority | High            |
       | Status   | In Progress     |
     Then I verify a message that confirms the new Task was created is displayed
