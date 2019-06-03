@@ -93,10 +93,13 @@ public class AccountSteps {
     @When("^I verify a message that confirms the new Account was deleted is displayed$")
     public void verifyAMessageConfirmationOfANewAccountWasDeleted() {
         try {
+            Thread.sleep(1000);
             String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
             assertEquals(message, "Account \"" + account.getName() + "\" was deleted.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

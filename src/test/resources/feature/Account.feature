@@ -1,4 +1,4 @@
-@smoke
+@accounts
 Feature: Create, read, update and delete a Account
   Background:
     Given I log in to the Salesforce Application
@@ -7,26 +7,18 @@ Feature: Create, read, update and delete a Account
   Scenario: Delete a new Account in Salesforce
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
-      | Name | Sales 1 |
+      | Name | testing |
     Then I verify a message that confirms the new Account was created is displayed
     When I delete a Account in its own Page
     When I verify a message that confirms the new Account was deleted is displayed
     Then I verify the account is not in the list of accounts
 
-#  Scenario: Create a new account in Salesforce
- #   When I open the Account Page
-#    And I create a new Account from Accounts Page with the following values
- #     | Name | Sales Force 0 |
-#    Then I verify a message that confirms the new Account was created is displayed
-  #  And I verify the page of account that was created
- #   When I open Accounts page from Accounts page
- #   Then I verify the Account is in the accounts list in Accounts page
-
+  @deleteAccount
   Scenario: Create a new account in Salesforce
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
 
-      | Name             | New  5 |
+      | Name             | New test      |
       | Parent           | my account    |
       | Number           | 12345667      |
       | Site             | new site      |

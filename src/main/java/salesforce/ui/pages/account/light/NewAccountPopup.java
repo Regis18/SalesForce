@@ -196,7 +196,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setRating(final String rating) {
         ratingAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ rating + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + rating + "\"]")).click();
     }
 
     /**
@@ -263,7 +263,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setType(final String type) {
         typeAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ type + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + type + "\"]")).click();
     }
 
     /**
@@ -273,7 +273,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setOwnership(final String ownership) {
         ownershipAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ ownership + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + ownership + "\"]")).click();
     }
 
     /**
@@ -283,7 +283,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setIndustry(final String industry) {
         industryAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ industry + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + industry + "\"]")).click();
     }
 
     /**
@@ -410,7 +410,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setCustomerPriority(final String customerPriority) {
         customerAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ customerPriority + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + customerPriority + "\"]")).click();
     }
 
     /**
@@ -420,7 +420,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setSlaAccount(final String slaAccount) {
         slaStateAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ slaAccount + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + slaAccount + "\"]")).click();
     }
 
     /**
@@ -457,7 +457,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setUpsellOportunity(final String upsellOportunity) {
         upsellStateAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ upsellOportunity + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + upsellOportunity + "\"]")).click();
     }
 
     /**
@@ -467,7 +467,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setActive(final String active) {
         activeStateAccountCmb.click();
-        driver.findElement(By.xpath("//a[@title=\""+ active + "\"]")).click();
+        driver.findElement(By.xpath("//a[@title=\"" + active + "\"]")).click();
     }
 
     /**

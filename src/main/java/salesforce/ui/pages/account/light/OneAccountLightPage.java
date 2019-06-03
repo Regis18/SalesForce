@@ -41,7 +41,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[6]//a")
     private WebElement deleteElementCmbBtn;
 
     @FindBy(xpath = "//button[@title=\"Delete\"]")
