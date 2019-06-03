@@ -106,6 +106,7 @@ public class TaskApi {
 
     /**
      * Create Task with API test.
+     *
      * @param task object
      */
     public static void createTask(final Task task) {
@@ -115,4 +116,52 @@ public class TaskApi {
                 .body("{" + "\"Subject\": \"" + task.getSubject() + "\" " + "}")
                 .when().post(Setup.getInstance().getTaskUrl());
     }
-}
+
+    /**
+     * Verify task with API test.
+     */
+    public static Task getTask(final Task task) {
+        List<String> taskIds = new ArrayList<>();
+        Task result = new Task();
+
+        //Get the task.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from task where subject='" + task.getSubject() + "' ")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            // getting records.
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+        if (taskIds.size() > 0) {
+           Response getResponse =  given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken())
+                    .when()
+                    .request("GET", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+
+            try {
+                Object obj = new JSONParser().parse(getResponse.getBody().asString());
+                JSONObject jo = (JSONObject) obj;
+                result.setSubject((String) jo.get("Subject"));
+            } catch (Exception e) {
+
+            }
+
+        }
+        return result;
+    }
+    }
+
+

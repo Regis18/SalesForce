@@ -190,7 +190,7 @@ public class Setup {
      * @return layout value.
      */
     public String getLayout() {
-        return WebDriverConfig.getSkin();
+        return WebDriverConfig.getLayout();
     }
 
     /**
@@ -236,7 +236,7 @@ public class Setup {
         password = properties.getProperty("password");
         loginpath = properties.getProperty("loginpath");
         apiPath = properties.getProperty("apipath");
-        layout = WebDriverConfig.getSkin();
+        layout = WebDriverConfig.getLayout();
         token = properties.getProperty("token");
         client_id = properties.getProperty("client_id");
         client_secret = properties.getProperty("client_secret");

@@ -17,6 +17,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import salesforce.api.TaskApi;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
 import salesforce.ui.PageFactory;
@@ -44,6 +45,7 @@ public class TaskSteps {
     private String nameTaskSubject;
     private Context context;
     private Task task;
+    private TaskApi taskApi;
 
     public TaskSteps(Task task) {
 
@@ -134,4 +136,13 @@ public class TaskSteps {
     public void verifyPageTaskWasCreated(){
         Assert.assertTrue(taskPage.verifyTaskWasCreated(task));
     }
+
+    @Then("^I verify new Task using Api$")
+    public void verifyTaskApi(){
+        Task newTask;
+        newTask = TaskApi.getTask(task);
+        Assert.assertEquals(newTask.getSubject(), task.getSubject());
+    }
+
 }
+

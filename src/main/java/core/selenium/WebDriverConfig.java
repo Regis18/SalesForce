@@ -11,6 +11,7 @@ import java.util.Properties;
 
 /**
  * Class to manage the config of web driver.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -20,7 +21,8 @@ public class WebDriverConfig {
     private static final String SKIN = "layout";
     private static WebDriverConfig instance;
     private String browser;
-    private static String skin;
+    private static String layout;
+    private String view;
     private int implicitWaitTime;
     private int explicitWaitTime;
     private int waitSleepTime;
@@ -50,8 +52,14 @@ public class WebDriverConfig {
         } catch (IOException event) {
             event.printStackTrace();
         }
-        browser = prop.getProperty(BROWSER);
-        skin = prop.getProperty(SKIN);
+        browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
+        view = System.getProperty("view");
+        System.out.println("*************");
+        System.out.println(view);
+       // browser = !System.getProperty("browser").equals(null) ? System.getProperty("browser") : prop.getProperty("browser");
+       //layout = System.getProperty("layout");
+       // browser = prop.getProperty(BROWSER);
+
         String urlJson = "./waitTime.json";
         JsonParser parser = new JsonParser();
         FileReader reader;
@@ -104,7 +112,7 @@ public class WebDriverConfig {
         return waitSleepTime;
     }
 
-    public static String getSkin() {
-        return skin;
+    public static String getLayout() {
+        return layout;
     }
 }
