@@ -71,18 +71,8 @@ Feature: Create, delete, update campaigns of Salesforce
   @deleteCampaign
   Scenario: Search a new Campaign in Salesforce
     Given I have a Campaign with the following values
-      | Name             | New Campaign |
-      | IsActive         | true         |
-      | Type             | Webinar      |
-      | Status           | Completed    |
-###    | Star Date        | TODAY  |
-###    | End Date         | 2 days from now   |
-      | ExpectedRevenue  | 100          |
-      | BudgetedCost     | 100          |
-      | ActualCost       | 100          |
-      | ExpectedResponse | 10           |
-      | NumberSent       | 10           |
-      | Description      | Good Morning |
+    | Name             | Created Campaign |
+    | IsActive         | true             |
     And I open the Campaigns Page
     When I search the campaign name "Created Campaign" in the Search field of Campaign form
     Then I verify "Created Campaign" is founded in the list of campaigns
