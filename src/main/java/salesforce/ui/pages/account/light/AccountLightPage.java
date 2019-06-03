@@ -34,7 +34,7 @@ public class AccountLightPage extends AccountPageAbstract {
     private WebElement newAccountBtn;
 
     private String accountList = "//a[@data-refid=\"recordId\" and contains(text(),\"Account\")]";
-    private final String ACCOUNT = "account";
+    private final String ACCOUNT = "Account";
 
     /**
      * Wait for the title appears.
