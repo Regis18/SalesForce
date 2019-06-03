@@ -58,7 +58,11 @@ public class TaskSteps {
      */
     @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
-        try{Thread.sleep(2000);}catch(Exception e){};
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+        ;
         taskPage = transporterPage.navigateToTasksHomePage();
     }
 
@@ -85,7 +89,7 @@ public class TaskSteps {
     /**
      * verify task is displayed.
      */
-    @Then("^I verify the Task is displayed$")
+    @Then("^I verify the Task subject is displayed in Tasks Homepage$")
     public void verifyTaskDisplayed() {
         Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
     }
@@ -96,7 +100,11 @@ public class TaskSteps {
     @Then("^I verify the Task was deleted$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
-        try{Thread.sleep(2000);}catch(Exception e){};
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+        ;
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
@@ -114,7 +122,7 @@ public class TaskSteps {
      */
     @When("^I delete the created Task$")
     public void deletedTask() {
-        task=Setup.getInstance().getTask();
+        task = Setup.getInstance().getTask();
         taskPage.deleteCurrentTask(task);
     }
 
@@ -132,13 +140,28 @@ public class TaskSteps {
         assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
     }
 
+    @When("^I open the Task details page from Tasks Homepage$")
+    public void openTaskDetails() {
+
+    }
+
     @Then("^I verify the page of Task that was created$")
-    public void verifyPageTaskWasCreated(){
+    public void verifyPageTaskWasCreated() {
         Assert.assertTrue(taskPage.verifyTaskWasCreated(task));
     }
 
-    @Then("^I verify new Task using Api$")
-    public void verifyTaskApi(){
+    @Then("^I verify the Task values are displayed in Task details page$")
+    public void verifyTaskValues() {
+
+    }
+
+    @When("^I perform a get request for the Task by API$")
+    public void getRequestTaskApi() {
+            
+    }
+
+    @Then("^I verify the task response contains the Task values$")
+    public void verifyTaskApi() {
         Task newTask;
         newTask = TaskApi.getTask(task);
         Assert.assertEquals(newTask.getSubject(), task.getSubject());
