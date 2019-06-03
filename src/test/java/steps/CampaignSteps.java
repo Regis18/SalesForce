@@ -202,6 +202,7 @@ public class CampaignSteps {
         campaignApi = new CampaignApi();
         jsonPath = campaignApi.createCampaign(mapOut);
         campaign.setJsonValues(jsonPath);
+        System.out.println(campaign.getId());
     }
 
     /**

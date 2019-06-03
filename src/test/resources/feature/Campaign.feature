@@ -35,20 +35,18 @@ Feature: Create, delete, update campaigns of Salesforce
 
   @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
-    //Given I have a Campaign with the following values
-    Given I open the Campaigns Page
-    And I create a new campaign for Campaigns
+    Given I have a Campaign with the following values
     | Name             | New Campaign |
-    | Active           | True         |
+    | IsActive           | true         |
     | Type             | Webinar      |
     | Status           | Completed    |
-#    | Star Date        | TODAY  |
-#    | End Date         | 2 days from now   |
-    | Expected Revenue | 100          |
-    | Budgeted Cost    | 100          |
-    | Actual Cost      | 100          |
-    | Expected Response| 10           |
-    | Num Sent         | 10           |
+###    | Star Date        | TODAY  |
+###    | End Date         | 2 days from now   |
+    | ExpectedRevenue | 100          |
+    | BudgetedCost    | 100          |
+    | ActualCost      | 100          |
+    | ExpectedResponse| 10           |
+    | NumberSent         | 10           |
     | Description      | Good Morning |
     When I navigate to the Campaign Page
     And I open the Edit Campaign Popup
