@@ -22,6 +22,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
+import java.util.List;
+
 /**
  * TaskLightPage class in this class whe navigate for this page the
  * task created are displayed.
@@ -207,7 +209,13 @@ public class TaskPageLightning extends TaskPageAbstract {
      * @param newSubjectTask new subject
      */
     public void setUpdateNewSubjectTask(final String newSubjectTask) {
-        updateNewSubjectTask.sendKeys(newSubjectTask);
+        if (WebDriverConfig.getInstance().getBrowser().toLowerCase().equals("chrome")) {
+            updateNewSubjectTask.sendKeys(newSubjectTask);
+        } else {
+            wait.until(ExpectedConditions.elementToBeClickable(updateNewSubjectTask));
+            List<WebElement> updateSubject = driver.findElements(By.xpath("//input[contains(@class,'slds-input slds-combobox__input')]"));
+            updateSubject.get(1).sendKeys(newSubjectTask);
+        }
     }
 
     /**
