@@ -173,7 +173,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      */
     @Override
     public void setParent(final String parent) {
-        websiteTxt.sendKeys(parent);
+        //websiteTxt.sendKeys(parent);
     }
 
     /**
@@ -257,7 +257,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      */
     @Override
     public void setEmployee(final String employee) {
-        websiteTxt.sendKeys(employee);
+        employeesTxt.sendKeys(employee);
     }
 
     /**

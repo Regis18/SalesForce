@@ -14,8 +14,6 @@
 package salesforce.api;
 
 import io.restassured.response.Response;
-import salesforce.utils.Setup;
-
 import static io.restassured.RestAssured.given;
 
 /**
@@ -24,14 +22,22 @@ import static io.restassured.RestAssured.given;
  * @version 0.0.1
  */
 public class AccountApi {
+    private final String DELETE = "DELETE";
+    private final String GET = "GET";
+    private final String POST = "POST";
+    private final String PUT = "PUT";
+
     /**
      * Delete an account by id.
      * @param id String.
      */
     public void deleteAccount(final String id) {
         String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/" + id;
-        String token = Setup.getInstance().getToken();
-        Response response = given().headers("Content-Type", "application/json").
-                auth().oauth2(token).when().request("DELETE", url);
+        System.out.println("urrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrl; "+url);
+        String token = "00D4P000000gLN4!AQQAQD2jqBkxC89A.6Xf6kV8m9sC2lZeZ86jXypDnpsdHi5f3GwIPttxGK6ZNFtfK8GHAwOPIIAclLp2e8UcQ0bgCbPsWhVr";
+        Response response = given().headers("Content-Type", "application/json")
+                .auth().oauth2(token)
+                .when()
+                .request(DELETE, url);
     }
 }

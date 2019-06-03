@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.account.light;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +41,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(css = "//li[@class=\"uiMenuItem\"]//div[@title=\"Delete\"]")
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
     private WebElement deleteElementCmbBtn;
 
     @FindBy(xpath = "//button[@title=\"Delete\"]")
@@ -82,6 +83,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return message string.
      */
     public String getMessageConfirmation() {
+        wait.until(ExpectedConditions.visibilityOf(messageConfirmation));
         return messageConfirmation.getText();
     }
 
