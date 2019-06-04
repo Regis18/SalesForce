@@ -16,6 +16,7 @@ package steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import salesforce.api.AccountApi;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
@@ -25,8 +26,8 @@ import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 import salesforce.ui.pages.account.light.OneAccountLightPage;
 import salesforce.utils.EntityId;
 import java.util.Map;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+
+import static org.testng.Assert.*;
 import static org.testng.AssertJUnit.assertFalse;
 
 /**
@@ -42,6 +43,7 @@ public class AccountSteps {
     private Context context;
     private Account account;
     private EntityId entitiesId;
+    private Account newAccount;
 
     /**
      * Account steps.
@@ -106,9 +108,24 @@ public class AccountSteps {
     /**
      * Verify account.
      */
-    @And("^I verify the page of account that was created$")
+    @And("^I verify the page of Account that was created$")
     public void verifyThePageOfAccountThatWasCreated() {
-        assertTrue(oneAccountPage.verifyComponentsAccount());
+        String titleAccount = oneAccountPage.getNameAccount();
+        assertEquals(titleAccount, account.getName());
+    }
+
+    @When("^I open the Account details page from Account Page$")
+    public void displayPageOfAccountDetails() {
+        assertTrue(oneAccountPage.isDisplayedDetailsPage());
+    }
+    @Then("^I verify the Account values are displayed in Account details page$")
+    public void verifyDataOfAccountInDetails() {
+        System.out.println("ggggggggggggghhiaaa");
+    }
+
+    @When("^I perform a get request for the Account by API$")
+    public void requestrApi() {
+        newAccount = AccountApi.getAccount(account.getId());
     }
 
     /**

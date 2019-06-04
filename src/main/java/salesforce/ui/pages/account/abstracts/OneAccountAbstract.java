@@ -23,6 +23,12 @@ import salesforce.ui.BasePage;
 public abstract class OneAccountAbstract extends BasePage {
 
     /**
+     * Implement isDisplayedDetailsPage.
+     * @return true component
+     */
+    public abstract boolean isDisplayedDetailsPage();
+
+    /**
      * Implement verifyComponentsAccount.
      * @return true component
      */

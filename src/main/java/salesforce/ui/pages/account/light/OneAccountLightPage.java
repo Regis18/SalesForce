@@ -51,6 +51,24 @@ public class OneAccountLightPage extends OneAccountAbstract {
             + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
+
+    ///////*********************Locators light**********************//////
+    //@FindBy(css = "span[data-aura-rendered-by^='91:']")
+    @FindBy(css = "[data-aura-rendered-by^=\"99\"] [class=\"uiOutputText\"]")
+    private WebElement nameAccountLbl;
+
+    @FindBy(css = "a[id^='142']")
+    private WebElement parentAccountLbl;
+
+
+
+    @FindBy(css = "[data-aura-rendered-by^=\"118\"] [class=\"uiOutputPhone\"]")
+    private WebElement phoneAccountLbl;
+
+
+
+    ///////************************************************************//////
+
     /**
      * Wait for account Panel Title.
      */
@@ -65,6 +83,15 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     @Override
     public boolean verifyComponentsAccount() {
+        return detailsForm.isDisplayed();
+    }
+
+    /**
+     * Implement isDisplayedDetailsPage.
+     * @return true component
+     */
+    @Override
+    public boolean isDisplayedDetailsPage() {
         clickDetailsTab();
         return detailsForm.isDisplayed();
     }

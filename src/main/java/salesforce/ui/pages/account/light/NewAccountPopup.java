@@ -156,7 +156,6 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(xpath = "//a[@title=\"Yes\"]")
     private WebElement activeYesElement;
 
-
     @FindBy(css = "textarea[id^='950']")
     private WebElement descriptionStateAccountArea;
 
