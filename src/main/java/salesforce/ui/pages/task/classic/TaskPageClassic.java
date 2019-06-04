@@ -126,7 +126,7 @@ public class TaskPageClassic extends TaskPageAbstract {
     }
 
     @Override
-    public void verifyTaskValues(Task task) {
+    public void verifyTaskValues(final Task task) {
         WebElement subjectTask =
                 driver.findElement(By.xpath("//a[text()=\"" + task.getSubject() + "\"][1]"));
         subjectTask.click();
