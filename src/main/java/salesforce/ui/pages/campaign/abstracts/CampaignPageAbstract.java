@@ -23,15 +23,21 @@ import salesforce.ui.BasePage;
 public abstract class CampaignPageAbstract extends BasePage {
 
     /**
-     * Click in NewCampaign button.
+     * Clicks in NewCampaign button.
      * @return clickNewCampaignBtn.
      */
     public abstract NewCampaignAbstract clickNewCampaignBtn();
 
     /**
-     * Implement: check the campaign list.
+     * Checks the campaign list.
      * @param name string.
      * @return boolean.
      */
     public abstract boolean checkCampaignList(String name);
+
+    /**
+     * Searches the campaign in the list.
+     * @param name string.
+     */
+    public abstract void searchCampaignInList(String name);
 }

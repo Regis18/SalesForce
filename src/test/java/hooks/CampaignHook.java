@@ -27,6 +27,8 @@ import salesforce.api.CampaignApi;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
 
+import java.util.List;
+
 /**
  * CampaignHook.
  * @author Regis Humana
@@ -58,8 +60,10 @@ public class CampaignHook {
     @After("@deleteCampaign")
     public void deleteNewAccount() {
         campaignApi = new CampaignApi();
-        System.out.println("API ID" + context.getCampaign().getId());
-        campaignApi.deleteCampaign(context.getCampaign().getId());
+        List<String> list = context.getIds();
+        for (String id: list) {
+            campaignApi.deleteCampaign(id);
+        }
     }
 
     /**

@@ -13,6 +13,7 @@
 package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,6 +32,9 @@ public class CampaignLightPage extends CampaignPageAbstract {
 
     @FindBy(xpath = "//a[@title=\"New\"]")
     private WebElement newCampaignBtn;
+
+    @FindBy(css = "[name='Campaign-search-input']")
+    private WebElement searchCampaignTxt;
 
     private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
 
@@ -61,5 +65,15 @@ public class CampaignLightPage extends CampaignPageAbstract {
     @Override
     public boolean checkCampaignList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(campaignList.replace(CAMPAIGN, name)));
+    }
+
+    /**
+     * Searches the campaign in the list.
+     * @param name string.
+     */
+    @Override
+    public void searchCampaignInList(String name) {
+        searchCampaignTxt.sendKeys(name);
+        searchCampaignTxt.sendKeys(Keys.ENTER);
     }
 }

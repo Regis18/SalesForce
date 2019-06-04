@@ -1,58 +1,58 @@
-@smoke
+@task
 Feature: Create, read, update and delete a Account
   Background:
-    Given I log in to the SalesForce Application
+    Given I log in to the Salesforce Application
     And I navigate to HomePage
 
+  Scenario: Delete a new Account in Salesforce
+    When I open the Account Page
+    And I create a new Account from Accounts Page with the following values
+      | Name | testing |
+    Then I verify a message that confirms the new Account was created is displayed
+    When I delete a Account in its own Page
+    When I verify a message that confirms the new Account was deleted is displayed
+    Then I verify the account is not in the list of accounts
+
   @deleteAccount
-  Scenario: Create a new account in SalesForce
+  Scenario: Create a new account in Salesforce
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
 
-      | Name             | New Account 3 |
-      | Parent           | New Parent   |
-      | Number           | 12345667     |
-      | Site             | new site     |
-      | Type             | Prospect     |
-      | Industry         | Technology   |
-      | Revenue          | 2500         |
-      | Rating           | Warm         |
-      | Phone            | 71717379     |
-      | Fax              | 123456789    |
-      | Website          | new web Site |
-      | Ticker           | ticker       |
-      | Ownership        | Private      |
-      | Employee         | employee     |
-      | Sic Code         | 100-2540     |
-      | Billing Street   | bill street  |
-      | Billing City     | bill street  |
-      | Billing State    | bill street  |
-      | Billing Zip      | bill street  |
-      | Billing Country  | bill street  |
-      | Shipping Street  | shipp street |
-      | Shipping City    | shipp street |
-      | Shipping State   | shipp street |
-      | Shipping Zip     | shipp street |
-      | Shipping Country | bill street  |
-      | Customer         | High         |
-      | Sla Date         | 7/20/2020    |
-      | Locations        | 10           |
-      | Active           | Yes          |
-      | Sla              | Platinum     |
-      | Sla Serial       | 1425-458f    |
-      | Upsell           | Maybe        |
-      | Description      | Description  |
+      | Name             | New test      |
+      | Parent           | my account    |
+      | Number           | 12345667      |
+      | Site             | new site      |
+      | Type             | Prospect      |
+      | Industry         | Technology    |
+      | Revenue          | 2500          |
+      | Rating           | Warm          |
+      | Phone            | 71717379      |
+      | Fax              | 123456789     |
+      | Website          | new web Site  |
+      | Ticker           | ticker        |
+      | Ownership        | Private       |
+      | Employee         | 12            |
+      | Sic Code         | 100-2540      |
+      | Billing Street   | bill street   |
+      | Billing City     | bill street   |
+      | Billing State    | bill street   |
+      | Billing Zip      | bill street   |
+      | Billing Country  | bill street   |
+      | Shipping Street  | shipp street  |
+      | Shipping City    | shipp street  |
+      | Shipping State   | shipp street  |
+      | Shipping Zip     | shipp street  |
+      | Shipping Country | bill street   |
+      | Customer         | High          |
+      | Sla Date         | 7/20/2020     |
+      | Locations        | 10            |
+      | Active           | Yes           |
+      | Sla              | Platinum      |
+      | Sla Serial       | 1425-458f     |
+      | Upsell           | Maybe         |
+      | Description      | Description   |
 
     Then I verify a message that confirms the new Account was created is displayed
     And I verify the page of account that was created
     When I open Accounts page from Accounts page
     Then I verify the Account is in the accounts list in Accounts page
-
-
-  Scenario: Delete a new Account in Salesforce
-  When I open the Account Page
-    And I create a new Account from Accounts Page with the following values
-      | Name | Sales Account |
-  Then I verify a message that confirms the new Account was created is displayed
-  When I delete a Account in its own Page
- # Then I verify the account is not in the list of accounts

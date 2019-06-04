@@ -88,6 +88,22 @@ public class AccountSteps {
     }
 
     /**
+     * Verify a message confirmation.
+     */
+    @When("^I verify a message that confirms the new Account was deleted is displayed$")
+    public void verifyAMessageConfirmationOfANewAccountWasDeleted() {
+        try {
+            Thread.sleep(1000);
+            String message = ((OneAccountLightPage)oneAccountPage).getMessageConfirmation();
+            assertEquals(message, "Account \"" + account.getName() + "\" was deleted.");
+        } catch (ClassCastException e) {
+            System.out.println("In Classic Skin there is no message confirmation");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Verify account.
      */
     @And("^I verify the page of account that was created$")
@@ -100,7 +116,7 @@ public class AccountSteps {
      */
     @Then("^I verify the Account is in the accounts list in Accounts page$")
     public void verifyIsInTheListOfAccounts() {
-        assertTrue(accountPage.checkAccountList(context.getAccount().getName()));
+        assertTrue(accountPage.checkAccountList(account.getName()));
     }
 
     /**

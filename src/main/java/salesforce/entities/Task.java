@@ -13,6 +13,7 @@
 
 package salesforce.entities;
 
+import core.utils.Common;
 import core.utils.StrategySetter;
 
 import java.util.HashMap;
@@ -166,7 +167,7 @@ public class Task {
         strategyMap.put("Comment", () -> setComment(taskMap.get("Comment")));
         strategyMap.put("Status", () -> setStatus(taskMap.get("Status")));
         strategyMap.put("Email", () -> setEmail(taskMap.get("Email")));
-        strategyMap.put("DueDate", () -> setDueDate(taskMap.get("DueDate")));
+        strategyMap.put("DueDate", () -> setDueDate(Common.translateDate(taskMap.get("DueDate"))));
         strategyMap.put("Priority", () -> setPriority(taskMap.get("Priority")));
         return strategyMap;
     }

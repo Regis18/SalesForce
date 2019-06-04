@@ -114,7 +114,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     }
 
     /**
-     * Set Status Combo Box,
+     * Set Status Combo Box.
      * @param status string.
      */
     @Override

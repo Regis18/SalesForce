@@ -269,22 +269,45 @@ public class Campaign {
     /**
      * Sets the json values into Campaign.
      * @param json JsonPath.
+     * @param key string.
      */
-    public void setJsonValues(JsonPath json) {
-        System.out.println("impreison: " + json.prettyPrint());
-        setId(json.getString(ID));
-        setName(json.getString(NAME));
-        setActivate(json.getBoolean("IsActive"));
-        setType(json.getString(TYPE));
-        setStatus(json.getString(STATUS));
+    public void setJsonValues(String key, JsonPath json) {
+        if (key == "Id") {
+            setId(json.getString(key));
+        }
+        if (key == "Name") {
+            setName(json.getString(key));
+        }
+        if (key == "IsActive") {
+            setActivate(json.getBoolean(key));
+        }
+        if (key == TYPE) {
+            setType(json.getString(TYPE));
+        }
+        if (key == STATUS) {
+            setStatus(json.getString(STATUS));
+        }
+        if (key == "ExpectedRevenue") {
+            setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
+        }
+        if (key == "BudgetedCost") {
+            setBudgetedCost((int)json.getDouble("BudgetedCost"));
+        }
+        if (key == "ActualCost") {
+            setActualCost((int)json.getDouble("ActualCost"));
+        }
+        if (key == "ExpectedResponse") {
+            setExpectedResponse((int)json.getDouble("ExpectedResponse"));
+        }
+        if (key == "NumberSent") {
+            setNumSent((int)json.getDouble("NumberSent"));
+        }
+        if (key == DESCRIPTION) {
+            setDescription(json.getString(DESCRIPTION));
+        }
 //        setStartDate(json.getString("StartDate"));
 //        setEndDate(json.getString("EndDate"));
-        setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
-        setBudgetedCost((int)json.getDouble("BudgetedCost"));
-        setActualCost((int)json.getDouble("ActualCost"));
-        setExpectedResponse((int)json.getDouble("ExpectedResponse"));
-        setNumSent((int)json.getDouble("NumberSent"));
-        setDescription(json.getString(DESCRIPTION));
+
     }
 
     /**
