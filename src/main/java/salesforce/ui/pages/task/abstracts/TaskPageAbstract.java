@@ -74,4 +74,18 @@ public abstract class TaskPageAbstract extends BasePage {
      */
     @Override
     public abstract void waitUntilPageObjectIsLoaded();
+
+    /**
+     * The subject task is displayed.
+     * @param task name.
+     * @return boolean value.
+     */
+    public abstract boolean isTaskSubjectDisplayed(final Task task);
+
+    /**
+     * Open task by subject.
+     * @param task name.
+     */
+    public abstract void openTaskByTaskSubject(final Task task);
+
 }

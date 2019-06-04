@@ -29,6 +29,7 @@ import salesforce.utils.Setup;
 
 import java.util.Map;
 
+import static org.testng.Assert.*;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -100,7 +101,9 @@ public class TaskSteps {
      */
     @Then("^I verify the Task subject is displayed in Tasks Homepage$")
     public void verifyTaskDisplayed() {
-        Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
+        assertTrue(taskPage.isTaskSubjectDisplayed(task.getSubject()),
+                "The Task subject " + task.getSubject() + " was not displayed");
+       // Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
     }
 
     /**
@@ -109,11 +112,11 @@ public class TaskSteps {
     @Then("^I verify the Task was removed form Task section$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-        }
-        ;
+//        try {
+//            Thread.sleep(2000);
+//        } catch (Exception e) {
+//        }
+//        ;
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
@@ -150,8 +153,9 @@ public class TaskSteps {
     }
 
     @When("^I open the Task details page from Tasks Homepage$")
-    public void openTaskDetails() {
-        taskPage.verifyTaskValues(task);
+    public void openTaskDetails(Task task) {
+//        taskPage.verifyTaskValues(task);
+        taskPage.openTaskByTaskSubject(task.getSubject());
     }
 
     @Then("^I verify the Task values are displayed in Task details page$")

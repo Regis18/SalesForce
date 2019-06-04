@@ -21,6 +21,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
+import salesforce.utils.DriverMethods;
 
 import java.util.List;
 
@@ -84,6 +85,8 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
 
+    private static final String TASK_SUBJECT_XPATH = "//span[contains(text(),'%s')][1]";
+
     /**
      * Verify subject is displayed.
      *
@@ -122,17 +125,17 @@ public class TaskPageLightning extends TaskPageAbstract {
     public boolean verifyTaskWasCreated(final Task task) {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains("
-                   + ".//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
+                    + ".//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
             WebElement subject =
                     driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]"
-                           + "//div//div//div[2]//span//span"));
+                            + "//div//div//div[2]//span//span"));
             String uiSubject = subject.getText();
             if (!uiSubject.equals(task.getSubject())) {
                 return false;
             }
             WebElement comment =
                     driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]"
-                          + "//div//div//div[2]//span//span"));
+                            + "//div//div//div[2]//span//span"));
             String uiComment = comment.getText();
             if (!uiComment.equals(task.getComment())) {
                 return false;
@@ -215,7 +218,7 @@ public class TaskPageLightning extends TaskPageAbstract {
         } else {
             wait.until(ExpectedConditions.elementToBeClickable(updateNewSubjectTask));
             List<WebElement> updateSubject = driver.findElements(By.xpath("//input[contains(@class,"
-                   + "'slds-input slds-combobox__input')]"));
+                    + "'slds-input slds-combobox__input')]"));
             updateSubject.get(1).sendKeys(newSubjectTask);
         }
     }
@@ -275,6 +278,16 @@ public class TaskPageLightning extends TaskPageAbstract {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(editSubjectTask));
+    }
+
+    @Override
+    public boolean isTaskSubjectDisplayed(final Task task) {
+        return DriverMethods.isElementPresent(By.xpath(String.format(TASK_SUBJECT_XPATH, task.getSubject())));
+    }
+
+    @Override
+    public void openTaskByTaskSubject(final Task task) {
+        driver.findElement(By.xpath(String.format(TASK_SUBJECT_XPATH, task.getSubject()))).click();
     }
 }
 

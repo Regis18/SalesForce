@@ -19,6 +19,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
+import salesforce.utils.DriverMethods;
 
 /**
  * Task Page classic.
@@ -42,14 +43,18 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(css = "input#tsk5")
     private WebElement subjectTextBox;
 
-    @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
+//    @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
+    @FindBy(css = "form[id='editPage'] div[class*='pbHeader'] input")
     private WebElement saveTask;
 
     @FindBy(xpath = "//div[span[@id='userNavLabel']]")
     private WebElement userIcon;
 
-    @FindBy(xpath = "//input[@name='newTask']")
+//    @FindBy(xpath = "//input[@name='newTask']")
+    @FindBy(name = "newTask")
     private WebElement newTaskButton;
+
+    private static final String TASK_SUBJECT_XPATH = "//div[@class='taskBlock']//span[text()='%s']";
 
     /**
      * Click on task list.
@@ -151,6 +156,16 @@ public class TaskPageClassic extends TaskPageAbstract {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(newTaskButton));
+    }
+
+    @Override
+    public boolean isTaskSubjectDisplayed(final Task task) {
+        return DriverMethods.isElementPresent(By.xpath(String.format(TASK_SUBJECT_XPATH, task.getSubject())));
+    }
+
+    @Override
+    public void openTaskByTaskSubject(final Task task) {
+        driver.findElement(By.xpath(String.format(TASK_SUBJECT_XPATH, task.getSubject()))).click();
     }
 
     /**
