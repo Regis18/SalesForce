@@ -21,8 +21,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
+import salesforce.utils.DriverMethods;
 
 import java.util.List;
+
+//import static salesforce.utils.DriverMethods.isElementPresent;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
@@ -84,6 +87,9 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
 
+    private static final String SUBJECT = "//div[contains(.//div//div//span, '%s')]";
+    private static final String COMMENT = "//div[contains(.//div//div//span, '%s')]//div//div//div[2]//span//span";
+
     /**
      * Verify subject is displayed.
      *
@@ -120,28 +126,34 @@ public class TaskPageLightning extends TaskPageAbstract {
      * @return if successful
      */
     public boolean verifyTaskWasCreated(final Task task) {
+
+
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains("
-                   + ".//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
-            WebElement subject =
-                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]"
-                           + "//div//div//div[2]//span//span"));
-            String uiSubject = subject.getText();
+             DriverMethods.isElementPresent(By.xpath(String.format(SUBJECT, task.getSubject())));
             if (!uiSubject.equals(task.getSubject())) {
-                return false;
-            }
-            WebElement comment =
-                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]"
-                          + "//div//div//div[2]//span//span"));
-            String uiComment = comment.getText();
-            if (!uiComment.equals(task.getComment())) {
-                return false;
-            }
+//                return false;
+//            }
+            return DriverMethods.isElementPresent(By.xpath(String.format(COMMENT, task.getComment())));
+
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
+//            WebElement subject =
+//                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]"
+//                           + "//div//div//div[2]//span//span"));
+//            String uiSubject = subject.getText();
+//            if (!uiSubject.equals(task.getSubject())) {
+//                return false;
+//            }
+//            WebElement comment =
+//                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]//div//div//div[2]//span//span"));
+//            String uiComment = comment.getText();
+//            if (!uiComment.equals(task.getComment())) {
+//                return false;
+//            }
 
         } catch (Exception e) {
             return false;
         }
-        return true;
+       // return true;
     }
 
     /**
