@@ -80,9 +80,6 @@ public class TaskPageClassic extends TaskPageAbstract {
     public boolean verifyTaskWasCreated(final Task task) {
 
         try {
-            WebElement subjectTask =
-                    driver.findElement(By.xpath("//a[text()=\"" + task.getSubject() + "\"][1]"));
-            subjectTask.click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='tsk5_ileinner']")));
             WebElement subject =
                     driver.findElement(By.xpath("//div[@id='tsk5_ileinner']"));
@@ -128,6 +125,14 @@ public class TaskPageClassic extends TaskPageAbstract {
         return task;
     }
 
+    @Override
+    public void verifyTaskValues(final Task task) {
+        WebElement subjectTask =
+                driver.findElement(By.xpath("//a[text()=\"" + task.getSubject() + "\"][1]"));
+        subjectTask.click();
+
+    }
+
     /**
      * Logout.
      */
@@ -156,4 +161,5 @@ public class TaskPageClassic extends TaskPageAbstract {
     public void setUpdateNewSubjectTask(final String task) {
         subjectTextBox.sendKeys(task);
     }
+
 }

@@ -17,6 +17,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import salesforce.api.TaskApi;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
 import salesforce.ui.PageFactory;
@@ -44,6 +45,8 @@ public class TaskSteps {
     private String nameTaskSubject;
     private Context context;
     private Task task;
+    private TaskApi taskApi;
+    private Task newTask;
 
     public TaskSteps(Task task) {
 
@@ -56,7 +59,11 @@ public class TaskSteps {
      */
     @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
-        try{Thread.sleep(2000);}catch(Exception e){};
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+        ;
         taskPage = transporterPage.navigateToTasksHomePage();
     }
 
@@ -80,10 +87,18 @@ public class TaskSteps {
         Setup.getInstance().setTask(task);
     }
 
+    @Given("^I have a Task with this values$")
+    public void getTaskWithValues(Map<String, String> taskMap) {
+        task.processInformation(taskMap);
+        task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
+        TaskApi.createTask(task);
+        Setup.getInstance().setTask(task);
+    }
+
     /**
      * verify task is displayed.
      */
-    @Then("^I verify the Task is displayed$")
+    @Then("^I verify the Task subject is displayed in Tasks Homepage$")
     public void verifyTaskDisplayed() {
         Assert.assertTrue(taskPage.verifySubjectExist(task.getSubject()));
     }
@@ -91,10 +106,14 @@ public class TaskSteps {
     /**
      * verify the task was deleted step.
      */
-    @Then("^I verify the Task was deleted$")
+    @Then("^I verify the Task was removed form Task section$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
-        try{Thread.sleep(2000);}catch(Exception e){};
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+        ;
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
@@ -110,9 +129,9 @@ public class TaskSteps {
     /**
      * delete the task step.
      */
-    @When("^I delete the created Task$")
+    @When("^I delete the Task$")
     public void deletedTask() {
-        task=Setup.getInstance().getTask();
+        task = Setup.getInstance().getTask();
         taskPage.deleteCurrentTask(task);
     }
 
@@ -130,8 +149,25 @@ public class TaskSteps {
         assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
     }
 
-    @Then("^I verify the page of Task that was created$")
-    public void verifyPageTaskWasCreated(){
+    @When("^I open the Task details page from Tasks Homepage$")
+    public void openTaskDetails() {
+        taskPage.verifyTaskValues(task);
+    }
+
+    @Then("^I verify the Task values are displayed in Task details page$")
+    public void verifyPageTaskWasCreated() {
         Assert.assertTrue(taskPage.verifyTaskWasCreated(task));
     }
+
+    @When("^I perform a get request for the Task by API$")
+    public void getRequestTaskApi() {
+        newTask = TaskApi.getTask(task);
+    }
+
+    @Then("^I verify the task response contains the Task values$")
+    public void verifyTaskApi() {
+        Assert.assertEquals(newTask.getSubject(), task.getSubject());
+    }
+
+
 }
