@@ -58,6 +58,13 @@ public abstract class TaskPageAbstract extends BasePage {
     public abstract Task updateCurrentTask(Task task);
 
     /**
+     *
+     * @param task
+     * @return
+     */
+    public abstract void verifyTaskValues(Task task);
+
+    /**
      * Logout.
      */
     public abstract void logout();

@@ -84,7 +84,6 @@ public class TaskPageLightning extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
 
-
     /**
      * Verify subject is displayed.
      *
@@ -102,17 +101,15 @@ public class TaskPageLightning extends TaskPageAbstract {
         return true;
     }
 
-    public boolean verifyTaskValues(final Task task) {
-        try {
+    /**
+     *
+     * @param task
+     */
+    public void verifyTaskValues(final Task task) {
             WebElement subjectTask =
                     driver.findElement(By.xpath("//span[contains(text(),\""
                             + task.getSubject() + "\")][1]"));
             subjectTask.click();
-
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -123,10 +120,10 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     public boolean verifyTaskWasCreated(final Task task) {
         try {
-            WebElement subjectTask =
-                    driver.findElement(By.xpath("//span[contains(text(),\""
-                            + task.getSubject() + "\")][1]"));
-            subjectTask.click();
+//            WebElement subjectTask =
+//                    driver.findElement(By.xpath("//span[contains(text(),\""
+//                            + task.getSubject() + "\")][1]"));
+//            subjectTask.click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
             WebElement subject =
                     driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span"));

@@ -51,7 +51,7 @@ tasks.withType(Test) {
 
     // Define the custom properties to run the regression
     systemProperty "browser", browser
-    //systemProperty "layout", layout
+    systemProperty "style", style
 }
 
 
@@ -59,11 +59,10 @@ tasks.withType(Test) {
 task executeFeatures(type: Test) {
     options {
         useDefaultListeners = false
-        jvmArgs = ['-DcucumberOptions' +
-                           '--glue org.fjala.gugumber.steps' +
-                           '--plugin pretty' +
-                           '--plugin json:target/cucumber.json' +
-                           'classpath:' + featuresFolders + '' + cucumberOptions]
+        jvmArgs = ['-Dcucumber options= ' +
+                           '--glue steps ' +
+                           '--plugin pretty ' +
+                           '--plugin json:target/cucumber.json ' +
+                           'classpath:' + featuresFolders + ' ' + cucumberOptions]
     }
 }
-
