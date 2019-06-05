@@ -51,6 +51,11 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(xpath = "//input[@name='newTask']")
     private WebElement newTaskButton;
 
+    private static final String SUBJECT = "//div[@id='tsk5_ileinner']";
+    private static final String COMMENT = "//div[@id='tsk6_ileinner']";
+    private static final String PRIORITY = "//div[@id='tsk13_ileinner']";
+    private static final String STATUS = "//div[@id='tsk12_ileinner']";
+
     /**
      * Click on task list.
      */
@@ -80,17 +85,29 @@ public class TaskPageClassic extends TaskPageAbstract {
     public boolean verifyTaskWasCreated(final Task task) {
 
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='tsk5_ileinner']")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
             WebElement subject =
-                    driver.findElement(By.xpath("//div[@id='tsk5_ileinner']"));
+                    driver.findElement(By.xpath(SUBJECT));
             String uiSubject = subject.getText();
             if (!uiSubject.equals(task.getSubject())) {
                 return false;
             }
             WebElement comment =
-                    driver.findElement(By.xpath("//div[@id='tsk6_ileinner']"));
+                    driver.findElement(By.xpath(COMMENT));
             String uiComment = comment.getText().trim();
             if (!uiComment.equals(task.getComment())) {
+                return false;
+            }
+            WebElement priority =
+                    driver.findElement(By.xpath(PRIORITY));
+            String uiPriority = priority.getText().trim();
+            if (!uiPriority.equals(task.getPriority())) {
+                return false;
+            }
+            WebElement status =
+                    driver.findElement(By.xpath(STATUS));
+            String uiStatus = status.getText().trim();
+            if (!uiStatus.equals(task.getStatus())) {
                 return false;
             }
 

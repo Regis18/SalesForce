@@ -33,10 +33,17 @@ import static io.restassured.RestAssured.given;
  * @author Melvi Caballero
  * @version 0.0.1
  */
-public class TaskApi {
+public final class TaskApi {
+    /**
+     * Constructor.
+     */
+    private TaskApi() {
+    }
 
     /**
      * Delete task with API test.
+     *
+     * @param task task
      */
     public static void deleteTask(final Task task) {
         List<String> taskIds = new ArrayList<>();
@@ -113,12 +120,18 @@ public class TaskApi {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .auth().oauth2(CommonApi.getToken())
-                .body("{" + "\"Subject\": \"" + task.getSubject() + "\" ," + "\"Description\": \"" + task.getComment() + "\" }")
+                .body("{" + "\"Subject\": \"" + task.getSubject()
+                        + "\" ," + "\"Description\": \"" + task.getComment() + "\", "
+                        + "\"Status\": \"" + task.getStatus() + "\" ,"
+                        + "\"Priority\": \"" + task.getPriority() + "\" }")
                 .when().post(Setup.getInstance().getTaskUrl());
     }
 
     /**
      * Verify task with API test.
+     *
+     * @param task task to look for.
+     * @return task task
      */
     public static Task getTask(final Task task) {
         List<String> taskIds = new ArrayList<>();
@@ -155,6 +168,9 @@ public class TaskApi {
                 Object obj = new JSONParser().parse(getResponse.getBody().asString());
                 JSONObject jo = (JSONObject) obj;
                 result.setSubject((String) jo.get("Subject"));
+                result.setComment((String) jo.get("Description"));
+                result.setStatus((String) jo.get("Status"));
+                result.setPriority((String) jo.get("Priority"));
             } catch (Exception e) {
 
             }
