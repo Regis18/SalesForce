@@ -21,6 +21,7 @@ import java.util.Map;
  * OneAccountAbstract.
  * @author Luis Guardia.
  * @version 0.0.1
+ *
  */
 public abstract class OneAccountAbstract extends BasePage {
 
@@ -50,5 +51,5 @@ public abstract class OneAccountAbstract extends BasePage {
     /**
      * Delete Account of Salesforce with specific name.
      */
-    public abstract Map<String, String> createHasMapAccount();
+    public abstract Map<String, String> createHasMapAccount(Map<String, String> accountInformation);
 }

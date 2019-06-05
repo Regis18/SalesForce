@@ -27,7 +27,7 @@ import static io.restassured.RestAssured.given;
  */
 public class AccountApi {
 
-    String urlBase = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
+    private String urlBase = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
 
     /**
      * Delete an account by id.

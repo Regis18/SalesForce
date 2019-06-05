@@ -21,9 +21,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 
-import java.util.LinkedList;
-import java.util.Set;
-
 /**
  * NewAccountPopup.
  * @author Luis Guardia.
@@ -208,12 +205,9 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setParent(final String parent) {
         parentAccountTxt.click();
-        String parentWindowHandle = driver.getWindowHandle();
-        Set<String> windows = driver.getWindowHandles();
-        driver.switchTo().window(new LinkedList<>(windows).getLast());
-        driver.switchTo().frame("resultsFrame");
-        driver.findElement(By.xpath("//div[@title='" + parent + "']"));
-        driver.switchTo().window(parentWindowHandle);
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[@title='" + parent + "']")));
+        itemToSelect.click();
     }
 
     /**

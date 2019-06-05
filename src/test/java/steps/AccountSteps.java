@@ -45,6 +45,7 @@ public class AccountSteps {
     private Account account;
     private EntityId entitiesId;
     private Account newAccount;
+    private Map<String, String> dataInformation;
 
     /**
      * Account steps.
@@ -72,6 +73,7 @@ public class AccountSteps {
     @And("^I create a new Account from Accounts Page with the following values$")
     public void createNewAccount(Map<String, String> accountInformation) {
         account.setAccountInformation(accountInformation);
+        dataInformation = accountInformation;
         newAccountPage = accountPage.clickNewAccountBtn();
         oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
         context.getAccount().setId(entitiesId.getIdEntitie());
@@ -115,16 +117,20 @@ public class AccountSteps {
         assertEquals(titleAccount, account.getName());
     }
 
+    /**
+     * Open the tab Details.
+     */
     @When("^I open the Account details page from Account Page$")
     public void displayPageOfAccountDetails() {
         assertTrue(oneAccountPage.isDisplayedDetailsPage());
     }
+
+    /**
+     * Verify the values of a Account.
+     */
     @Then("^I verify the Account values are displayed in Account details page$")
     public void verifyDataOfAccountInDetails() {
-        assertEquals(account.createHasMapAccount(), oneAccountPage.createHasMapAccount());
-        //oneAccountPage
-        System.out.println("ggggggggggggghhiaaa");
-
+        assertEquals(account.createMapAccount(dataInformation), oneAccountPage.createHasMapAccount(dataInformation));
     }
 
     @When("^I perform a get request for the Account by API$")
