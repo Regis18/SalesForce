@@ -1,4 +1,4 @@
-@task
+@smoke
 Feature: Create, read, update and delete a Account
   Background:
     Given I log in to the Salesforce Application

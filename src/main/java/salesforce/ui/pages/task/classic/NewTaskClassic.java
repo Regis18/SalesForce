@@ -39,7 +39,7 @@ public class NewTaskClassic extends NewTaskAbstract {
     // Task edit
     @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
     private WebElement saveTask;
-    
+
     // Task information
     @FindBy(css = "input#tsk5")
     private WebElement subjectTextBox;
@@ -61,6 +61,7 @@ public class NewTaskClassic extends NewTaskAbstract {
     private WebElement statusDropDown;
     // Recurrence
     // Reminder
+
     /**
      * Verifies of message confirmation after to create a new task.
      * @param message value
