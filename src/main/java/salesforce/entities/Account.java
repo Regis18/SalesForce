@@ -731,6 +731,7 @@ public class Account {
                 valueAttribute = getSicCode();
                 break;
             case "Billing Street":
+
                 valueAttribute = getBillingStreet();
                 break;
             case "Billing City":

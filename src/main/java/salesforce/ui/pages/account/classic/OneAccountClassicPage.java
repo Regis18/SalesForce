@@ -187,6 +187,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     private String getValueAccount(String key) {
         String setKey = key;
         String valueAttribute = "";
+        String value = "";
         switch (setKey) {
             case "Name":
                 valueAttribute = accountName.getText();
@@ -207,7 +208,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                 valueAttribute = industryAccount.getText();
                 break;
             case "Revenue":
-                String value = revenueAccount.getText();
+                value = revenueAccount.getText();
                 valueAttribute = value.replace("¤", "");
                 break;
             case "Rating":
@@ -235,7 +236,10 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                 valueAttribute = sicCodeAccount.getText();
                 break;
             case "Billing Street":
-                valueAttribute = billingAddresAccount.getText();
+                value = billingAddresAccount.getText();
+                String a = value.replaceAll("\n", " ");
+                System.out.println(a);
+                //valueAttribute = billingAddresAccount.getText();
                 break;
             case "Billing City":
                 valueAttribute = billingAddresAccount.getText();
