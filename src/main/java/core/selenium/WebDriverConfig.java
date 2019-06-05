@@ -53,10 +53,7 @@ public class WebDriverConfig {
         }
         browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
         style = System.getProperty(SKIN)!= null ? System.getProperty(SKIN) : prop.getProperty(SKIN);
-        System.out.println("*************");
         System.out.println(view);
-        //browser = prop.getProperty(BROWSER);
-        //skin = prop.getProperty(SKIN);
         String urlJson = "./waitTime.json";
         JsonParser parser = new JsonParser();
         FileReader reader;

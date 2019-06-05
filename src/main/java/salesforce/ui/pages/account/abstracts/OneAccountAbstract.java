@@ -15,6 +15,8 @@ package salesforce.ui.pages.account.abstracts;
 
 import salesforce.ui.BasePage;
 
+import java.util.Map;
+
 /**
  * OneAccountAbstract.
  * @author Luis Guardia.
@@ -44,4 +46,9 @@ public abstract class OneAccountAbstract extends BasePage {
      * Delete Account of Salesforce with specific name.
      */
     public abstract void deleteAccount();
+
+    /**
+     * Delete Account of Salesforce with specific name.
+     */
+    public abstract Map<String, String> createHasMapAccount();
 }

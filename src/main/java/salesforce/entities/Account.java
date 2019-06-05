@@ -58,6 +58,7 @@ public class Account {
     private String slaSerial;
     private String upsellOportunity;
     private String description;
+    private String value;
 
     /**
      * Get account id.
@@ -624,7 +625,7 @@ public class Account {
         strategyMap.put("Name",        () -> setName(accountInformation.get("Name")));
         strategyMap.put("Parent",        () -> setParent(accountInformation.get("Parent")));
         strategyMap.put("Number",      () -> setNumberAccount(accountInformation.get("Number")));
-        strategyMap.put("Site",        () -> setSite(accountInformation.get("Ticker")));
+        strategyMap.put("Site",        () -> setSite(accountInformation.get("Site")));
         strategyMap.put("Type",        () -> setType(accountInformation.get("Type")));
         strategyMap.put("Industry",        () -> setIndustry(accountInformation.get("Industry")));
         strategyMap.put("Revenue",     () -> setAnualRevenue(accountInformation.get("Revenue")));
@@ -656,5 +657,19 @@ public class Account {
         strategyMap.put("Description",  () -> setDescription(accountInformation.get("Description")));
 
         return strategyMap;
+    }
+
+    public Map<String, String> createHasMapAccount() {
+        Map<String,String> mapAccount= new HashMap<String, String>();
+        //   browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
+        mapAccount.put("Name", getName());
+        mapAccount.put("Number",getNumberAccount());
+        mapAccount.put("Site", getSite());
+        mapAccount.put("Type", getType());
+        mapAccount.put("Industry", getIndustry());
+        mapAccount.put("Phone", getPhone());
+
+
+        return mapAccount;
     }
 }

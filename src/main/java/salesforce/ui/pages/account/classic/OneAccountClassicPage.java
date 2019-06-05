@@ -18,6 +18,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * OneAccountClassicPage.
  * @author Luis Guardia.
@@ -25,6 +28,8 @@ import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
  */
 public class OneAccountClassicPage extends OneAccountAbstract {
 
+    private String value;
+    private String val = "null";
     @FindBy(xpath = "//td[@class=\" oRight\"]")
     private WebElement accountDetailForm;
 
@@ -112,6 +117,25 @@ public class OneAccountClassicPage extends OneAccountAbstract {
 
     @FindBy(id = "00N4P0000072sEB_ileinner")
     private WebElement upsellAccount;
+
+    @Override
+    public Map<String, String> createHasMapAccount() {
+        Map<String,String> mapClassic= new HashMap<String, String>();
+        mapClassic.put("Name", accountName.getText());
+        System.out.println("NAmeeeeeeeeeeeeeee : "+accountName.getText());
+        mapClassic.put("Number", numberAccount.getText());
+        System.out.println("Numberrrrrrrrr : "+siteAccount.getText());
+        mapClassic.put("Site", siteAccount.getText());
+        System.out.println("siteeeeeeeeeeeeeee : "+siteAccount.getText());
+        mapClassic.put("Type", value = typeAccount.getText()!= "" ? typeAccount.getText() : val);
+        System.out.println("siteeeeeeeeeeeeeee : "+value);
+        mapClassic.put("Industry", value = industryAccount.getText()!= "" ? industryAccount.getText() : val);
+        System.out.println("siteeeeeeeeeeeeeee : "+value);
+        mapClassic.put("Phone", value = phoneAccount.getText()!= "" ? phoneAccount.getText() : val);
+        System.out.println("siteeeeeeeeeeeeeee : "+value);
+
+        return mapClassic;
+    }
 
     /**
      * Wait for Account panel title.

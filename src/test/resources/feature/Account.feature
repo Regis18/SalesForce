@@ -8,7 +8,10 @@ Feature: Create, read, update and delete a Account
   Scenario: Create a new account in Salesforce
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
-      | Name | New test |
+      | Name             | New test      |
+      | Number           | 12345667      |
+      | Site             | new site      |
+
     Then I verify a message that confirms the new Account was created is displayed
     #solo verifico el titulo
     Then I verify the page of Account that was created

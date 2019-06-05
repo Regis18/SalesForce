@@ -16,6 +16,7 @@ package steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import salesforce.api.AccountApi;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
@@ -120,12 +121,23 @@ public class AccountSteps {
     }
     @Then("^I verify the Account values are displayed in Account details page$")
     public void verifyDataOfAccountInDetails() {
+        assertEquals(account.createHasMapAccount(), oneAccountPage.createHasMapAccount());
+        //oneAccountPage
         System.out.println("ggggggggggggghhiaaa");
+
     }
 
     @When("^I perform a get request for the Account by API$")
     public void requestrApi() {
         newAccount = AccountApi.getAccount(account.getId());
+    }
+
+    /**
+     * Verify account to the list.
+     */
+    @Then("^I verify the Account response contains the Account value$")
+    public void verifyAccountOfApi() {
+        Assert.assertEquals(newAccount.getName(), account.getName());
     }
 
     /**
