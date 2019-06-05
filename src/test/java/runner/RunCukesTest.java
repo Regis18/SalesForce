@@ -13,7 +13,7 @@ import static runner.GenerateReport.generateMasterReport;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
         glue = {"steps", "hooks"},
-        features = {"src/test/resources/feature/Account.feature"},
+        features = {"src/test/resources/feature"},
         monochrome = true)
 
 public class RunCukesTest extends AbstractTestNGCucumberTests {

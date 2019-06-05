@@ -1,4 +1,4 @@
-@task
+@smoke
 Feature: Create, read, update and delete a Account
   Background:
     Given I log in to the Salesforce Application
@@ -73,7 +73,7 @@ Feature: Create, read, update and delete a Account
     Then I verify a message that confirms the new Account was created is displayed
     When I delete a Account in its own Page
     When I verify a message that confirms the new Account was deleted is displayed
-    #When I open the Account Page
+    When I open the Account Page
     Then I verify the account is not in the list of accounts
 
 

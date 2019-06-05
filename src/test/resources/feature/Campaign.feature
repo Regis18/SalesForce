@@ -1,7 +1,7 @@
 @smoke
 Feature: Create, delete, update campaigns of Salesforce
   Background:
-    Given I log in to the SalesForce Application
+    Given I log in to the Salesforce Application
     And I navigate to HomePage
 
   @deleteCampaign
