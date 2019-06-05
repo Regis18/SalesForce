@@ -43,7 +43,6 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @FindBy(xpath = "//td[@id=\"topButtonRow\"]//input[@name=\"delete\"]")
     private WebElement deleteBtn;
 
-    //////////ELEMENTOS DE DETAILS PAGE
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement accountName;
 
@@ -172,11 +171,9 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
-        System.out.println("Classic>>>>>>>>");
         while (it.hasNext()) {
             String key = (String) it.next();
             String getValue = getValueAccount(key);
-            System.out.println("kkkkkkkkey: " + key + "value: " + getValue);
             mapAccount.put(key, getValue);
         }
         return mapAccount;
