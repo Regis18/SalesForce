@@ -21,6 +21,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
 
+  @deleteTask
   Scenario: Delete Task when it has any Task.
     Given I have a Task with this values
       | Subject  | callTask_random |
