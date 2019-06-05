@@ -19,6 +19,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * OneAccountLightPage.
  * @author Luis Guardia.
@@ -51,6 +54,39 @@ public class OneAccountLightPage extends OneAccountAbstract {
             + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
+
+    ///////*********************Locators light**********************//////
+    //@FindBy(css = "span[data-aura-rendered-by^='91:']")
+    @FindBy(css = "[data-aura-rendered-by^=\"99\"] [class=\"uiOutputText\"]")
+    private WebElement nameAccountLbl;
+
+    @FindBy(css = "a[id^='142']")
+    private WebElement parentAccountLbl;
+
+
+//[data-aura-rendered-by^="205"] [class="uiOutputText"]
+
+    //[data-aura-rendered-by^="248"] [class="uiOutputText"]
+
+
+    @FindBy(css = "[data-aura-rendered-by^=\"118\"] [class=\"uiOutputPhone\"]")
+    private WebElement phoneAccountLbl;
+
+
+
+    ///////************************************************************//////
+
+    public Map<String, String> createHasMapAccount() {
+        Map<String,String> mapLight= new HashMap<String, String>();
+        mapLight.put("Name", nameAccountLbl.getText());
+        mapLight.put("Name", nameAccountLbl.getText());
+        mapLight.put("Name", nameAccountLbl.getText());
+        mapLight.put("Name", nameAccountLbl.getText());
+        mapLight.put("Name", phoneAccountLbl.getText());
+        mapLight.put("Name", nameAccountLbl.getText());
+        return mapLight;
+    }
+
     /**
      * Wait for account Panel Title.
      */
@@ -65,6 +101,15 @@ public class OneAccountLightPage extends OneAccountAbstract {
      */
     @Override
     public boolean verifyComponentsAccount() {
+        return detailsForm.isDisplayed();
+    }
+
+    /**
+     * Implement isDisplayedDetailsPage.
+     * @return true component
+     */
+    @Override
+    public boolean isDisplayedDetailsPage() {
         clickDetailsTab();
         return detailsForm.isDisplayed();
     }
