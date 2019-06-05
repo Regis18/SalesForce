@@ -28,6 +28,8 @@ Feature: Create, delete, update tasks of Salesforce
     Given I have a Task with this values
       | Subject  | callTask_random |
       | Comment  | test task       |
+      | Priority | High            |
+      | Status   | In Progress     |
     #Step for API
     When I navigate to Tasks Homepage
     And I delete the Task
@@ -39,6 +41,8 @@ Feature: Create, delete, update tasks of Salesforce
     Given I have a Task with this values
       | Subject  | callTask_random |
       | Comment  | test task       |
+      | Priority | High            |
+      | Status   | In Progress     |
     #Step por API
     Given I navigate to Tasks Homepage
     When I update the subject Task

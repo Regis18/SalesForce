@@ -85,7 +85,7 @@ public class TaskPageClassic extends TaskPageAbstract {
     public boolean verifyTaskWasCreated(final Task task) {
 
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='tsk5_ileinner']")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
             WebElement subject =
                     driver.findElement(By.xpath(SUBJECT));
             String uiSubject = subject.getText();

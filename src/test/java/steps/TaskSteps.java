@@ -166,7 +166,17 @@ public class TaskSteps {
 
     @Then("^I verify the task response contains the Task values$")
     public void verifyTaskApi() {
-        Assert.assertEquals(newTask.getSubject(), task.getSubject());
+        Boolean correct = true;
+        if (!newTask.getSubject().equals(task.getSubject())) {
+            correct = false;
+        } else if (!newTask.getComment().equals(task.getComment())) {
+            correct = false;
+        } else if (!newTask.getPriority().equals(task.getPriority())) {
+            correct = false;
+        } else if (!newTask.getStatus().equals(task.getStatus())) {
+            correct = false;
+        }
+        Assert.assertTrue(correct);
     }
 
 
