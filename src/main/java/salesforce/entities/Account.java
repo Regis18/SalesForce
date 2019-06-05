@@ -16,6 +16,7 @@ package salesforce.entities;
 import core.utils.StrategySetter;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -617,7 +618,7 @@ public class Account {
 
     /**
      * Compose the values of Account.
-     * @param accountInformation String
+     * @param accountInformation Map
      * @return Hashmap
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> accountInformation) {
@@ -659,17 +660,133 @@ public class Account {
         return strategyMap;
     }
 
-    public Map<String, String> createHasMapAccount() {
-        Map<String,String> mapAccount= new HashMap<String, String>();
-        //   browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
-        mapAccount.put("Name", getName());
-        mapAccount.put("Number",getNumberAccount());
-        mapAccount.put("Site", getSite());
-        mapAccount.put("Type", getType());
-        mapAccount.put("Industry", getIndustry());
-        mapAccount.put("Phone", getPhone());
-
-
+    /**
+     * Get account description.
+     * @param accountInformation Map
+     * @return mapAccount Map
+     */
+    public Map<String, String> createMapAccount(Map<String, String> accountInformation) {
+        Map<String, String> mapAccount = new HashMap<String, String>();
+        Iterator it = accountInformation.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            String getValue = getValueAccount(key);
+            mapAccount.put(key, getValue);
+        }
         return mapAccount;
+    }
+
+    /**
+     * Gets the value of an attribute.
+     * @return attribute String.
+     * @param key String
+     */
+    private String getValueAccount(String key) {
+        String setKey = key;
+        String valueAttribute = "";
+        switch (setKey) {
+            case "Name":
+                valueAttribute = getName();
+                break;
+            case "Parent":
+                valueAttribute = getParent();
+                break;
+            case "Number":
+                valueAttribute = getNumberAccount();
+                break;
+            case "Site":
+                valueAttribute = getSite();
+                break;
+            case "Type":
+                valueAttribute = getType();
+                break;
+            case "Industry":
+                valueAttribute = getIndustry();
+                break;
+            case "Revenue":
+                valueAttribute = getAnualRevenue();
+                break;
+            case "Rating":
+                valueAttribute = getRating();
+                break;
+            case "Phone":
+                valueAttribute = getPhone();
+                break;
+            case "Fax":
+                valueAttribute = getFax();
+                break;
+            case "Website":
+                valueAttribute = "http://" + getWebSite();
+                break;
+            case "Ticker":
+                valueAttribute = getTicker();
+                break;
+            case "Ownership":
+                valueAttribute = getOwnership();
+                break;
+            case "Employee":
+                valueAttribute = getEmployee();
+                break;
+            case "Sic Code":
+                valueAttribute = getSicCode();
+                break;
+            case "Billing Street":
+                valueAttribute = getBillingStreet();
+                break;
+            case "Billing City":
+                valueAttribute = getBillingCity();
+                break;
+            case "Billing State":
+                valueAttribute = getBillingState();
+                break;
+            case "Billing Zip":
+                valueAttribute = getBillingZip();
+                break;
+            case "Billing Country":
+                valueAttribute = getBillingCountry();
+                break;
+            case "Shipping Street":
+                valueAttribute = getShippingStreet();
+                break;
+            case "Shipping City":
+                valueAttribute = getShippingCity();
+                break;
+            case "Shipping State":
+                valueAttribute = getShippingState();
+                break;
+            case "Shipping Zip":
+                valueAttribute = getShippingZip();
+                break;
+            case "Shipping Country":
+                valueAttribute = getShippingCountry();
+                break;
+            case "Customer":
+                valueAttribute = getCustomerPriority();
+                break;
+            case "Sla Date":
+                valueAttribute = getSlaDate();
+                break;
+            case "Locations":
+                valueAttribute = getNumberLocations();
+                break;
+            case "Active":
+                valueAttribute = getActive();
+                break;
+            case "Sla":
+                valueAttribute = getSlaAccount();
+                break;
+            case "Sla Serial":
+                valueAttribute = getSlaSerial();
+                break;
+            case "Upsell":
+                valueAttribute = getUpsellOportunity();
+                break;
+            case "Description":
+                valueAttribute = getDescription();
+                break;
+            default:
+                return null;
+        }
+        return valueAttribute;
     }
 }

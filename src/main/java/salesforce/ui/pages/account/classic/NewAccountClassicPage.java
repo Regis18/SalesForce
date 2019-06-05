@@ -13,11 +13,15 @@
 
 package salesforce.ui.pages.account.classic;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
+
+import java.util.LinkedList;
+import java.util.Set;
 
 /**
  * NewAccountClassicPage.
@@ -32,7 +36,7 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
     @FindBy(id = "acc2")
     private WebElement nameTxt;
 
-    @FindBy(id = "acc3")
+    @FindBy(id = "acc3_lkwgt")
     private WebElement parentTxt;
 
     @FindBy(id = "acc5")
@@ -173,7 +177,13 @@ public class NewAccountClassicPage extends NewAccountPageAbstract {
      */
     @Override
     public void setParent(final String parent) {
-        //websiteTxt.sendKeys(parent);
+        parentTxt.click();
+        String parentWindowHandle = driver.getWindowHandle();
+        Set<String> windows = driver.getWindowHandles();
+        driver.switchTo().window(new LinkedList<>(windows).getLast());
+        driver.switchTo().frame("resultsFrame");
+        driver.findElement(By.cssSelector("table.list tr:nth-child(2) th:nth-child(1) a")).click();
+        driver.switchTo().window(parentWindowHandle);
     }
 
     /**

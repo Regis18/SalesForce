@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -118,25 +119,6 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @FindBy(id = "00N4P0000072sEB_ileinner")
     private WebElement upsellAccount;
 
-    @Override
-    public Map<String, String> createHasMapAccount() {
-        Map<String,String> mapClassic= new HashMap<String, String>();
-        mapClassic.put("Name", accountName.getText());
-        System.out.println("NAmeeeeeeeeeeeeeee : "+accountName.getText());
-        mapClassic.put("Number", numberAccount.getText());
-        System.out.println("Numberrrrrrrrr : "+siteAccount.getText());
-        mapClassic.put("Site", siteAccount.getText());
-        System.out.println("siteeeeeeeeeeeeeee : "+siteAccount.getText());
-        mapClassic.put("Type", value = typeAccount.getText()!= "" ? typeAccount.getText() : val);
-        System.out.println("siteeeeeeeeeeeeeee : "+value);
-        mapClassic.put("Industry", value = industryAccount.getText()!= "" ? industryAccount.getText() : val);
-        System.out.println("siteeeeeeeeeeeeeee : "+value);
-        mapClassic.put("Phone", value = phoneAccount.getText()!= "" ? phoneAccount.getText() : val);
-        System.out.println("siteeeeeeeeeeeeeee : "+value);
-
-        return mapClassic;
-    }
-
     /**
      * Wait for Account panel title.
      */
@@ -179,5 +161,139 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public void deleteAccount() {
         deleteBtn.click();
         driver.switchTo().alert().accept();
+    }
+
+    /**
+     * Get account description.
+     * @param accountInformation Map
+     * @return mapAccount Map
+     */
+    @Override
+    public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
+        Map<String, String> mapAccount = new HashMap<String, String>();
+        Iterator it = accountInformation.keySet().iterator();
+        System.out.println("Classic>>>>>>>>");
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            String getValue = getValueAccount(key);
+            System.out.println("kkkkkkkkey: " + key + "value: " + getValue);
+            mapAccount.put(key, getValue);
+        }
+        return mapAccount;
+    }
+
+    /**
+     * Gets the value of an attribute.
+     * @return attribute String
+     * @param key String
+     */
+    private String getValueAccount(String key) {
+        String setKey = key;
+        String valueAttribute = "";
+        switch (setKey) {
+            case "Name":
+                valueAttribute = accountName.getText();
+                break;
+            case "Parent":
+                valueAttribute = parentAccount.getText();
+                break;
+            case "Number":
+                valueAttribute = numberAccount.getText();
+                break;
+            case "Site":
+                valueAttribute = siteAccount.getText();
+                break;
+            case "Type":
+                valueAttribute = typeAccount.getText();
+                break;
+            case "Industry":
+                valueAttribute = industryAccount.getText();
+                break;
+            case "Revenue":
+                String value = revenueAccount.getText();
+                valueAttribute = value.replace("¤", "");
+                break;
+            case "Rating":
+                valueAttribute = ratingAccount.getText();
+                break;
+            case "Phone":
+                valueAttribute = phoneAccount.getText();
+                break;
+            case "Fax":
+                valueAttribute = faxAccount.getText();
+                break;
+            case "Website":
+                valueAttribute = webSiteAccount.getText();
+                break;
+            case "Ticker":
+                valueAttribute = tickerAccount.getText();
+                break;
+            case "Ownership":
+                valueAttribute = ownershipAccount.getText();
+                break;
+            case "Employee":
+                valueAttribute = employeeAccount.getText();
+                break;
+            case "Sic Code":
+                valueAttribute = sicCodeAccount.getText();
+                break;
+            case "Billing Street":
+                valueAttribute = billingAddresAccount.getText();
+                break;
+            case "Billing City":
+                valueAttribute = billingAddresAccount.getText();
+                break;
+            case "Billing State":
+                valueAttribute = billingAddresAccount.getText();
+                break;
+            case "Billing Zip":
+                valueAttribute = billingAddresAccount.getText();
+                break;
+            case "Billing Country":
+                valueAttribute = billingAddresAccount.getText();
+                break;
+            case "Shipping Street":
+                valueAttribute = shippinAddresAccount.getText();
+                break;
+            case "Shipping City":
+                valueAttribute = shippinAddresAccount.getText();
+                break;
+            case "Shipping State":
+                valueAttribute = shippinAddresAccount.getText();
+                break;
+            case "Shipping Zip":
+                valueAttribute = shippinAddresAccount.getText();
+                break;
+            case "Shipping Country":
+                valueAttribute = shippinAddresAccount.getText();
+                break;
+            case "Customer":
+                valueAttribute = priorityAccount.getText();
+                break;
+            case "Sla Date":
+                valueAttribute = slaDateAccount.getText();
+                break;
+            case "Locations":
+                valueAttribute = numberLocationsAccount.getText();
+                break;
+            case "Active":
+                valueAttribute = activeAccount.getText();
+                break;
+            case "Sla":
+                valueAttribute = slaAccount.getText();
+                break;
+            case "Sla Serial":
+                valueAttribute = slaSerialAccount.getText();
+                break;
+            case "Upsell":
+                valueAttribute = upsellAccount.getText();
+                break;
+            case "Description":
+                valueAttribute = descriptionAccount.getText();
+                break;
+            default:
+                return null;
+        }
+        return valueAttribute;
     }
 }
