@@ -23,8 +23,14 @@ import static io.restassured.RestAssured.given;
  * @author Melvi Caballero
  * @version 0.0.1
  */
-public class CommonApi {
+public final class CommonApi {
     public static final int STATUSCODE = 200;
+
+    /**
+     * Constructor.
+     */
+    private CommonApi() {
+    }
 
     /**
      * Gets token for API test.
