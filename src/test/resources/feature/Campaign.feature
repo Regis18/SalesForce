@@ -80,14 +80,14 @@ Feature: Create, delete, update campaigns of Salesforce
     And I verify the Campaign name was "updated" in the list of campaigns in Campaigns Page
     And I verify through API if the account that was "created"
 
-#  @deleteCampaign
-#  Scenario: Search a new Campaign in Salesforce
-#    Given I have a Campaign with the following values
-#    | Name             | Created Campaign |
-#    | IsActive         | true             |
-#    And I have a Campaign with the following values
-#    | Name             | Another Campaign |
-#    | IsActive         | false            |
-#    When I open the Campaigns Page
-#    And I search the campaign name "Created Campaign" in the Search field of Campaign form
-#    Then I verify the Campaign name was "searched" in the list of campaigns in Campaigns Page
+  @deleteCampaign
+  Scenario: Search a new Campaign in Salesforce
+    Given I have a Campaign with the following values
+    | Name             | Created Campaign |
+    | IsActive         | true             |
+    And I have a Campaign with the following values
+    | Name             | Another Campaign |
+    | IsActive         | false            |
+    When I open the Campaigns Page
+    And I search the campaign name "Created Campaign" in the Search field of Campaign form
+    Then I verify the Campaign name was "searched" in the list of campaigns in Campaigns Page
