@@ -35,6 +35,12 @@ public class AccountClassicPage extends AccountPageAbstract {
     private WebElement accountForm;
 
     /**
+     * AccountForm.
+     */
+    @FindBy(xpath = "//tr[@onmouseout=\"if (window.hiOff){hiOff(this);}\"]//a[contains(text(),\"account\")]")
+    private WebElement elementList;
+
+    /**
      * Button: New Account.
      */
     @FindBy(xpath = "//input[@name=\"new\"]")

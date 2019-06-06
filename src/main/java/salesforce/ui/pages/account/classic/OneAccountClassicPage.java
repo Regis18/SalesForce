@@ -30,10 +30,6 @@ import java.util.Map;
  */
 public class OneAccountClassicPage extends OneAccountAbstract {
 
-
-
-
-
     private String value;
     private String val = "null";
     @FindBy(xpath = "//td[@class=\" oRight\"]")
@@ -176,9 +172,8 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
-        boolean isBillingAdrress=true;
-        boolean isShippingAdrress=true;
-        System.out.println(" Classic ***************************** ");
+        boolean isBillingAdrress = true;
+        boolean isShippingAdrress = true;
         while (it.hasNext()) {
             String getValue;
             String key = (String) it.next();
@@ -186,9 +181,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                 String value = getAccountFieldsValues(key);
                 getValue = value.replace( "¤", "");
                 mapAccount.put(key, getValue);
-                System.out.println(key + "  " + getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
-                System.out.println("boolean: " + isBillingAdrress);
                 if (isBillingAdrress) {
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
@@ -196,10 +189,8 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                     getValue = getValue.replaceAll(",", "");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
-                    System.out.println(key + "  " + getValue);
                 }
             }  else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
-                System.out.println("boolean: " + isShippingAdrress);
                 if (isShippingAdrress) {
                     key = "Shipping Street";
                     String value = getAccountFieldsValues(key);
@@ -207,18 +198,14 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                     getValue = getValue.replaceAll("\n", " ");
                     isShippingAdrress = false;
                     mapAccount.put(key, getValue);
-                    System.out.println(key + "  " + getValue);
                 }
             } else {
                 getValue = getAccountFieldsValues(key);
                 mapAccount.put(key, getValue);
-                System.out.println(key + "  " + getValue);
             }
-
         }
         return mapAccount;
     }
-
 
     /**
      * Get the values of an account.
@@ -252,7 +239,6 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         fieldWebElementsMap.put("Sla Serial", slaSerial);
         fieldWebElementsMap.put("Upsell", upsell);
         fieldWebElementsMap.put("Description", description);
-
         return fieldWebElementsMap.get(key).getText();
     }
 }

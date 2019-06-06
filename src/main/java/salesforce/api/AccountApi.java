@@ -13,6 +13,7 @@
 
 package salesforce.api;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -58,5 +59,22 @@ public class AccountApi {
         return resultAccount;
     }
 
-
+    /**
+     * Create Account with API test.
+     * @param account object
+     */
+    public void createAccount(final Account account) {
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .auth().oauth2(CommonApi.getToken())
+                .body("{" + "\"Name\": \"" + account.getName())
+                .when().post(urlBase);
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            account.setName((String)jo.get("Id"));
+            System.out.println("id");
+        } catch (Exception e) {
+        }
+    }
 }

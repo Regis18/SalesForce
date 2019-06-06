@@ -14,6 +14,7 @@
 package steps;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
@@ -55,6 +56,15 @@ public class AccountSteps {
         this.context = context;
         this.account = context.getAccount();
         this.entitiesId = new EntityId();
+    }
+
+    /**
+     * Navigate to Account Page.
+     */
+    @Given("^I have an Account with the following values$")
+    public void createAccountByAPi(Map<String, String> accountInformation) {
+        account.setAccountInformation(accountInformation);
+
     }
 
     /**

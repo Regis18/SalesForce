@@ -14,7 +14,6 @@
 package salesforce.entities;
 
 import core.utils.StrategySetter;
-import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -657,7 +656,6 @@ public class Account {
         strategyMap.put("Sla Serial",   () -> setSlaSerial(accountInformation.get("Sla Serial")));
         strategyMap.put("Upsell",  () -> setUpsellOportunity(accountInformation.get("Upsell")));
         strategyMap.put("Description",  () -> setDescription(accountInformation.get("Description")));
-
         return strategyMap;
     }
 
@@ -666,7 +664,7 @@ public class Account {
      * @param accountInformation Map
      * @return mapAccount Map
      */
-    public Map<String, String> createMapAccount(Map<String, String> accountInformation) {
+    public Map<String, String> createMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
         boolean isBillingStreet = true;
@@ -680,7 +678,6 @@ public class Account {
                     getValue = getValueAccount(key);
                     mapAccount.put(key, getValue);
                     isBillingStreet = false;
-                    System.out.println("shipppppppppppppppp: "+getValue);
                 }
             } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
                 if (isShippingStreet) {
@@ -688,12 +685,10 @@ public class Account {
                     getValue = getValueAccount(key);
                     mapAccount.put(key, getValue);
                     isShippingStreet = false;
-                    System.out.println("billllllllllllllllllll: "+getValue);
                 }
             } else {
                 getValue = getValueAccount(key);
                 mapAccount.put(key, getValue);
-                System.out.println("otrossssss: "+getValue);
             }
         }
         return mapAccount;
