@@ -9,7 +9,7 @@ Feature: Create, delete, update campaigns of Salesforce
 #    Given I open the Campaigns Page
 #    When I create a new Campaign for Campaigns
 #    | Name              | New Campaign |
-#    | IsActive          | True         |
+#    | IsActive          | true         |
 #    | Type              | Webinar      |
 #    | Status            | Completed    |
 #    | StartDate         | today        |
@@ -34,7 +34,7 @@ Feature: Create, delete, update campaigns of Salesforce
 #    When I delete a campaign "Delete Campaign" in its own Page
 #    Then I verify "Delete Campaign" is not in the list of campaigns
 #
-  @deleteCampaign
+#  @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
     Given I have a Campaign with the following values
     | name             | New Campaign |

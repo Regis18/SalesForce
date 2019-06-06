@@ -226,19 +226,33 @@ public class CampaignSteps {
         oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
     }
 
+    /**
+     * Search the campaign in the list of the Campaigns.
+     * @param nameCampaign
+     */
     @And("^I search the campaign name \"([^\"]*)\" in the Search field of Campaign form$")
     public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
         campaignPage.searchCampaignInList(nameCampaign);
     }
 
+    /**
+     * Verify the values of the campaign with API result.
+     * @param arg0
+     */
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
     public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
         System.out.println("ID del Campaign" + campaign.getId());
         System.out.println(campaignApi.getCampaignById(campaign.getId()).prettyPrint());
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
-
+        System.out.println("Resultado: " + mapOut.get("IsActive"));
+        System.out.println("Resultado: " + mapOut.get("IsActive"));
         mapOut.forEach((key, value) -> {
-            assertTrue(jsonCampaign.get(key).equals(value),
+            System.out.println("Resultado: " + jsonCampaign.getString(key));
+            System.out.println("Resultado: " + mapOut.get(key));
+            if (key.equals("StartDate") || key.equals("EndDate")) {
+                value = Common.translateDate(value);
+            }
+            assertTrue(jsonCampaign.getString(key).equals(value),
                     "The field " + key + "was not equal. Expected value "
                             + value);
         });
