@@ -84,7 +84,7 @@ public class CampaignSteps {
      * @param mapOut
      */
     @When("^I create a new Campaign for Campaigns$")
-    public void createANewCampaignForCampaigns(final Map<String, String> mapOut) {
+    public void createANewCampaignForCampaigns(Map<String, String> mapOut) {
         this.mapOut = mapOut;
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
@@ -259,5 +259,4 @@ public class CampaignSteps {
                             + values + " but it found: " + jsonCampaign.getString(key));
         });
     }
-
 }

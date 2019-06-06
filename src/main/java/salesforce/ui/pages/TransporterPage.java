@@ -103,6 +103,27 @@ public class TransporterPage {
     }
 
     /**
+     * Navigate to Home Page.
+     * @param  setupPage SetupPage.
+     * @return New instance of HomePage.
+     */
+    public HomePageAbstract navigateToHomePage() {
+        log.info("Navigate in Log in page");
+        HomePageAbstract homePage = null;
+        switch (setup.getLayout()) {
+            case CLASSIC:
+                goToURL(baseClassicURL +"/home/home.jsp");
+                break;
+            case LIGHT:
+                goToURL(baseLightURL + "/lightning/page/home");
+                break;
+            default:
+                break;
+        }
+        return homePage;
+    }
+
+    /**
      * Navigate to Tasks home page.
      *
      * @return New instance of HomePage.
