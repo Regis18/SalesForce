@@ -33,6 +33,40 @@ public class Task {
     private String email = "";
     private String dueDate = "";
     private String priority = "";
+    private String contact = "";
+    private String account = "";
+
+    /**
+     * Gets contacts to task.
+     * @return contact related to task.
+     */
+    public String getContact() {
+        return contact;
+    }
+
+    /**
+     * Sets contacts to task.
+     * @param contact related to task.
+     */
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    /**
+     * Gets Account to task.
+     * @return account related to task.
+     */
+    public String getAccount() {
+        return account;
+    }
+
+    /**
+     * Sets account to task.
+     * @param account related to task.
+     */
+    public void setAccount(String account) {
+        this.account = account;
+    }
 
     /**
      * Get subject to task.
@@ -169,6 +203,8 @@ public class Task {
         strategyMap.put("Email", () -> setEmail(taskMap.get("Email")));
         strategyMap.put("DueDate", () -> setDueDate(Common.translateDate(taskMap.get("DueDate"))));
         strategyMap.put("Priority", () -> setPriority(taskMap.get("Priority")));
+        strategyMap.put("Account", () -> setAccount(taskMap.get("Account")));
+        strategyMap.put("Contact", () -> setContact(taskMap.get("Contact")));
         return strategyMap;
     }
 
@@ -185,6 +221,8 @@ public class Task {
         strategyMap.put("Email", () -> getEmail());
         strategyMap.put("DueDate", () -> getDueDate());
         strategyMap.put("Priority", () -> getPriority());
+        strategyMap.put("account", () -> getAccount());
+        strategyMap.put("contactTo", () -> getContact());
         return strategyMap;
     }
 }
