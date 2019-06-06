@@ -17,12 +17,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.DriverMethods;
-
-import java.util.Map;
 
 /**
  * OneCampaignLightPage.
@@ -45,8 +42,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
-    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]" +
-                    "//div[@data-aura-class='uiPopupTrigger']//a")
+    @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]"
+                    + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
     @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
@@ -61,9 +58,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     private String valueCampaign = "//div[div[span[contains(text(),'key')]]]//*//span[contains(text(),'element')]";
 
-    private final String ELEMENT = "element";
+    private final String element = "element";
 
-    private final String KEY = "key";
+    private final String key = "key";
 
     /**
      * Wait for Campaign Panel Title.
@@ -136,6 +133,6 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return Boolean
      */
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
-        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
+        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(element, value).replace(this.key, key)));
     }
 }

@@ -38,7 +38,7 @@ public class CampaignLightPage extends CampaignPageAbstract {
 
     private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
 
-    private final String CAMPAIGN = "Campaign";
+    private final String campaign = "Campaign";
 
     /**
      * Wait for the title appears.
@@ -64,7 +64,7 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        return DriverMethods.isElementPresent(By.xpath(campaignList.replace(CAMPAIGN, name)));
+        return DriverMethods.isElementPresent(By.xpath(campaignList.replace(campaign, name)));
     }
 
     /**
@@ -72,7 +72,7 @@ public class CampaignLightPage extends CampaignPageAbstract {
      * @param name string.
      */
     @Override
-    public void searchCampaignInList(String name) {
+    public void searchCampaignInList(final String name) {
         searchCampaignTxt.sendKeys(name);
         searchCampaignTxt.sendKeys(Keys.ENTER);
     }

@@ -45,10 +45,10 @@ public final class Common {
         int countTime = 0;
         String time = dateKey;
         if (dateKey.contains("days")) {
-            countTime = Integer.parseInt(dateKey.replace(" days",""));
+            countTime = Integer.parseInt(dateKey.replace(" days", ""));
             time = "days";
         } else if (dateKey.contains("weeks")) {
-            countTime = Integer.parseInt(dateKey.replace(" weeks",""));
+            countTime = Integer.parseInt(dateKey.replace(" weeks", ""));
             time = "weeks";
         }
         switch (time) {
@@ -56,13 +56,13 @@ public final class Common {
                 today = DateUtils.addDays(today, 1);
                 break;
             case "days":
-                today = DateUtils.addDays(today,countTime);
+                today = DateUtils.addDays(today, countTime);
                 break;
             case "one week":
                 today = DateUtils.addDays(today, WEEK);
                 break;
             case "weeks":
-                today = DateUtils.addDays(today,WEEK * countTime);
+                today = DateUtils.addDays(today, WEEK * countTime);
                 break;
             default:
                 break;
@@ -73,6 +73,7 @@ public final class Common {
     /**
      * Translate date class for add days to current day.
      * Return in Month/Day/Year.
+     *
      * @param dateKey a word for example tomorrow.
      * @return date in format.
      */
@@ -85,6 +86,7 @@ public final class Common {
     /**
      * Translate date class for add days to current day.
      * Return in Year-Month-Day.
+     *
      * @param dateKey a word for example tomorrow.
      * @return date in format.
      */

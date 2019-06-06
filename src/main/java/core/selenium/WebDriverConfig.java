@@ -52,8 +52,7 @@ public class WebDriverConfig {
             event.printStackTrace();
         }
         browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
-        style = System.getProperty(SKIN)!= null ? System.getProperty(SKIN) : prop.getProperty(SKIN);
-        System.out.println(view);
+        style = System.getProperty(SKIN) != null ? System.getProperty(SKIN) : prop.getProperty(SKIN);
         String urlJson = "./waitTime.json";
         JsonParser parser = new JsonParser();
         FileReader reader;
@@ -110,9 +109,6 @@ public class WebDriverConfig {
      * Gets layout.
      * @return layout.
      */
-    public static String getView() {
-        return view;
-    }
     public static String getSkin() {
       return style;
    }
