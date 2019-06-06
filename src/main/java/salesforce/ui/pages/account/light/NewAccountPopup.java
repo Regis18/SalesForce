@@ -13,6 +13,9 @@
 
 package salesforce.ui.pages.account.light;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +27,8 @@ import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
  * @version 0.0.1
  */
 public class NewAccountPopup extends NewAccountPageAbstract {
+
+    private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
     @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
     private WebElement newAccountPopup;
@@ -151,7 +156,6 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(xpath = "//a[@title=\"Yes\"]")
     private WebElement activeYesElement;
 
-
     @FindBy(css = "textarea[id^='950']")
     private WebElement descriptionStateAccountArea;
 
@@ -191,7 +195,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setRating(final String rating) {
         ratingAccountCmb.click();
-        ratingWarElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + rating + "\"]")).click();
     }
 
     /**
@@ -200,7 +204,10 @@ public class NewAccountPopup extends NewAccountPageAbstract {
      */
     @Override
     public void setParent(final String parent) {
-        faxAccountTxt.sendKeys(parent);
+        parentAccountTxt.click();
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[@title='" + parent + "']")));
+        itemToSelect.click();
     }
 
     /**
@@ -255,7 +262,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setType(final String type) {
         typeAccountCmb.click();
-        typeProspectElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + type + "\"]")).click();
     }
 
     /**
@@ -265,7 +272,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setOwnership(final String ownership) {
         ownershipAccountCmb.click();
-        ownerPrivateElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + ownership + "\"]")).click();
     }
 
     /**
@@ -275,7 +282,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setIndustry(final String industry) {
         industryAccountCmb.click();
-        industryTechnologyElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + industry + "\"]")).click();
     }
 
     /**
@@ -402,7 +409,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setCustomerPriority(final String customerPriority) {
         customerAccountCmb.click();
-        customerHighElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + customerPriority + "\"]")).click();
     }
 
     /**
@@ -412,7 +419,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setSlaAccount(final String slaAccount) {
         slaStateAccountCmb.click();
-        slaPlatinumElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + slaAccount + "\"]")).click();
     }
 
     /**
@@ -449,7 +456,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setUpsellOportunity(final String upsellOportunity) {
         upsellStateAccountCmb.click();
-        upsellMaybeElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + upsellOportunity + "\"]")).click();
     }
 
     /**
@@ -459,7 +466,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @Override
     public void setActive(final String active) {
         activeStateAccountCmb.click();
-        activeYesElement.click();
+        driver.findElement(By.xpath("//a[@title=\"" + active + "\"]")).click();
     }
 
     /**

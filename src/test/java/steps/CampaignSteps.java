@@ -13,6 +13,7 @@
 
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -30,6 +31,8 @@ import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
 import salesforce.utils.EntityId;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertFalse;
@@ -54,6 +57,7 @@ public class CampaignSteps {
     private JsonPath jsonPath;
     private Map<String, String> mapOut;
     private EntityId entityId;
+    private List<String> ids = new ArrayList<>();
 
     /**
      * Campaign steps.
@@ -85,7 +89,8 @@ public class CampaignSteps {
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
         campaign.setId(entityId.getIdEntitie());
-        System.out.println(campaign.getId());
+        ids.add(campaign.getId());
+        context.setIds(ids);
     }
 
     /**
@@ -202,8 +207,12 @@ public class CampaignSteps {
         campaignApi = new CampaignApi();
         jsonPath = campaignApi.createCampaign(mapOut);
         jsonPath = campaignApi.getCampaignById(jsonPath.getString("id"));
-        campaign.setJsonValues(jsonPath);
-        System.out.println(campaign.getId());
+        mapOut.forEach((key, value) -> {
+            campaign.setJsonValues(key, jsonPath);
+        });
+        campaign.setId(jsonPath.getString("Id"));
+        ids.add(campaign.getId());
+        context.setIds(ids);
     }
 
     /**
@@ -214,5 +223,8 @@ public class CampaignSteps {
         oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
     }
 
-
+    @And("^I search the campaign name \"([^\"]*)\" in the Search field of Campaign form$")
+    public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
+        campaignPage.searchCampaignInList(nameCampaign);
+    }
 }

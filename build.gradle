@@ -50,8 +50,8 @@ tasks.withType(Test) {
     ignoreFailures = false
 
     // Define the custom properties to run the regression
-    systemProperty "browser", findProperty("browser")
-//    systemProperty "layout", layout
+    systemProperty "browser", browser
+    systemProperty "style", style
 }
 
 
@@ -60,11 +60,10 @@ task executeFeatures(type: Test) {
     
     options {
         useDefaultListeners = false
-        jvmArgs = ['-DcucumberOptions' +
-                           '--glue steps' +
-                           '--plugin pretty' +
-                           '--plugin json:target/cucumber.json' +
-                           'classpath:' + featuresFolders + '' + cucumberOptions]
+        jvmArgs = ['-Dcucumber options= ' +
+                           '--glue steps ' +
+                           '--plugin pretty ' +
+                           '--plugin json:target/cucumber.json ' +
+                           'classpath:' + featuresFolders + ' ' + cucumberOptions]
     }
 }
-

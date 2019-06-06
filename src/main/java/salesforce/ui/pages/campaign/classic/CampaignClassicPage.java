@@ -65,4 +65,12 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     public boolean checkCampaignList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(campaignList.replace("campaign", name)));
     }
+    /**
+     * Searches the campaign in the list.
+     * @param name string.
+     */
+    @Override
+    public void searchCampaignInList(String name) {
+        //TODO
+    }
 }

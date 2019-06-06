@@ -1,37 +1,37 @@
 @smoke
 Feature: Create, delete, update campaigns of Salesforce
   Background:
-    Given I log in to the SalesForce Application
+    Given I log in to the Salesforce Application
     And I navigate to HomePage
 
-#  @deleteCampaign
-#  Scenario: Create a new Campaign in Salesforce
-#    Given I open the Campaigns Page
-#    When I create a new Campaign for Campaigns
-#    | Name              | New Campaign |
-#    | Active            | True         |
-#    | Type              | Webinar      |
-#    | Status            | Completed    |
-##    | Star Date         | 01/01/2019   |
-##    | End Date          | 02/02/2019   |
-#    | Expected Revenue  | 100          |
-#    | Budgeted Cost     | 100          |
-#    | Actual Cost       | 100          |
-#    | Expected Response | 10           |
-#    | Num Sent          | 10           |
-#    | Description       | Good Morning |
-#    Then I verify a confirmation message of a new Campaign was created
-#    And I verify the page of Campaign that was created
-#    When I open the Campaigns Page
-#    Then I verify the Campaign name was "created" in the list of campaigns in Campaigns Page
-#
-#  @deleteCampaign
-#  Scenario: Delete a new Campaign in Salesforce
-#    Given I open the Campaigns Page
-#    When I create a new campaign for Campaigns
-#    |Name             |Delete Campaign |
-#    When I delete a campaign "Delete Campaign" in its own Page
-#    Then I verify "Delete Campaign" is not in the list of campaigns
+  @deleteCampaign
+  Scenario: Create a new Campaign in Salesforce
+    Given I open the Campaigns Page
+    When I create a new Campaign for Campaigns
+    | Name              | New Campaign |
+    | Active            | True         |
+    | Type              | Webinar      |
+    | Status            | Completed    |
+    | Star Date         | today        |
+    | End Date          | 2 weeks      |
+    | Expected Revenue  | 100          |
+    | Budgeted Cost     | 100          |
+    | Actual Cost       | 100          |
+    | Expected Response | 10           |
+    | Num Sent          | 10           |
+    | Description       | Good Morning |
+    Then I verify a confirmation message of a new Campaign was created
+    And I verify the page of Campaign that was created
+    When I open the Campaigns Page
+    Then I verify the Campaign name was "created" in the list of campaigns in Campaigns Page
+
+  @deleteCampaign
+  Scenario: Delete a new Campaign in Salesforce
+    Given I open the Campaigns Page
+    When I create a new campaign for Campaigns
+    |Name             |Delete Campaign |
+    When I delete a campaign "Delete Campaign" in its own Page
+    Then I verify "Delete Campaign" is not in the list of campaigns
 
   @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
@@ -40,8 +40,8 @@ Feature: Create, delete, update campaigns of Salesforce
     | IsActive         | true         |
     | Type             | Webinar      |
     | Status           | Completed    |
-###    | Star Date        | TODAY  |
-###    | End Date         | 2 days from now   |
+    | Star Date        | tomorrow     |
+    | End Date         | 2 days       |
     | ExpectedRevenue  | 100          |
     | BudgetedCost     | 100          |
     | ActualCost       | 100          |
@@ -55,8 +55,8 @@ Feature: Create, delete, update campaigns of Salesforce
     | Active           | False           |
     | Type             | Email           |
     | Status           | In Progress     |
-#    | Star Date        | 1 WEEK AGO      |
-#    | End Date         | Tomorrow        |
+    | Star Date        | One week        |
+    | End Date         | Tomorrow        |
     | Expected Revenue | 300             |
     | Budgeted Cost    | 200             |
     | Actual Cost      | 200             |
@@ -73,6 +73,9 @@ Feature: Create, delete, update campaigns of Salesforce
     Given I have a Campaign with the following values
     | Name             | Created Campaign |
     | IsActive         | true             |
-    And I open the Campaigns Page
-    When I search the campaign name "Created Campaign" in the Search field of Campaign form
-    Then I verify "Created Campaign" is founded in the list of campaigns
+    And I have a Campaign with the following values
+    | Name             | Another Campaign |
+    | IsActive         | false            |
+    When I open the Campaigns Page
+    And I search the campaign name "Created Campaign" in the Search field of Campaign form
+    Then I verify the Campaign name was "searched" in the list of campaigns in Campaigns Page

@@ -33,10 +33,17 @@ import static io.restassured.RestAssured.given;
  * @author Melvi Caballero
  * @version 0.0.1
  */
-public class TaskApi {
+public final class TaskApi {
+    /**
+     * Constructor.
+     */
+    private TaskApi() {
+    }
 
     /**
      * Delete task with API test.
+     *
+     * @param task task
      */
     public static void deleteTask(final Task task) {
         List<String> taskIds = new ArrayList<>();
@@ -106,13 +113,68 @@ public class TaskApi {
 
     /**
      * Create Task with API test.
+     *
      * @param task object
      */
     public static void createTask(final Task task) {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .auth().oauth2(CommonApi.getToken())
-                .body("{" + "\"Subject\": \"" + task.getSubject() + "\" " + "}")
+                .body("{" + "\"Subject\": \"" + task.getSubject()
+                        + "\" ," + "\"Description\": \"" + task.getComment() + "\", "
+                        + "\"Status\": \"" + task.getStatus() + "\" ,"
+                        + "\"Priority\": \"" + task.getPriority() + "\" }")
                 .when().post(Setup.getInstance().getTaskUrl());
+    }
+
+    /**
+     * Verify task with API test.
+     *
+     * @param task task to look for.
+     * @return task task
+     */
+    public static Task getTask(final Task task) {
+        List<String> taskIds = new ArrayList<>();
+        Task result = new Task();
+
+        //Get the task.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from task where subject='" + task.getSubject() + "' ")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            // getting records.
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+        if (taskIds.size() > 0) {
+            Response getResponse = given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken())
+                    .when()
+                    .request("GET", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+
+            try {
+                Object obj = new JSONParser().parse(getResponse.getBody().asString());
+                JSONObject jo = (JSONObject) obj;
+                result.setSubject((String) jo.get("Subject"));
+                result.setComment((String) jo.get("Description"));
+                result.setStatus((String) jo.get("Status"));
+                result.setPriority((String) jo.get("Priority"));
+            } catch (Exception e) {
+
+            }
+        }
+        return result;
     }
 }
