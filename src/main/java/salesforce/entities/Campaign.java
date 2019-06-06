@@ -334,8 +334,8 @@ public class Campaign {
         strategyMap.put(ACTIVE, () -> setActivate(campaigns.get(ACTIVE).equals("True")));
         strategyMap.put(TYPE, () -> setType(campaigns.get(TYPE)));
         strategyMap.put(STATUS, () -> setStatus(campaigns.get(STATUS)));
-        strategyMap.put(START_DATE, () -> setStartDate(Common.translateDate(campaigns.get(START_DATE))));
-        strategyMap.put(END_DATE, () -> setEndDate(Common.translateDate(campaigns.get(END_DATE))));
+        strategyMap.put(START_DATE, () -> setStartDate(Common.translateDate(campaigns.get(START_DATE).toLowerCase())));
+        strategyMap.put(END_DATE, () -> setEndDate(Common.translateDate(campaigns.get(END_DATE).toLowerCase())));
         strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
         strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
         strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));

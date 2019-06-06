@@ -55,7 +55,7 @@ Feature: Create, delete, update campaigns of Salesforce
     | Active           | False           |
     | Type             | Email           |
     | Status           | In Progress     |
-    | Star Date        | one week        |
+    | Star Date        | One week        |
     | End Date         | Tomorrow        |
     | Expected Revenue | 300             |
     | Budgeted Cost    | 200             |
