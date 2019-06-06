@@ -13,7 +13,7 @@ Feature: Create, delete, update tasks of Salesforce
       | DueDate  | tomorrow        |
       | Priority | High            |
       | Status   | In Progress     |
-    Then I verify a message that confirms the new Task was created is displayed
+    Then I verify a message that confirms the new Task was "created" is displayed
     When I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
     When I open the Task details page from Tasks Homepage
@@ -30,6 +30,7 @@ Feature: Create, delete, update tasks of Salesforce
       | Status   | In Progress     |
     When I navigate to Tasks Homepage
     And I delete the Task
+    Then I verify a message that confirms the new Task was "deleted" is displayed
     Then I verify the Task was removed form Task section
 
   @deleteTask
@@ -41,6 +42,7 @@ Feature: Create, delete, update tasks of Salesforce
       | Status   | In Progress     |
     Given I navigate to Tasks Homepage
     When I update the subject Task
+    Then I verify a message that confirms the new Task was "updated" is displayed
     Then I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
     When I open the Task details page from Tasks Homepage
@@ -58,7 +60,7 @@ Feature: Create, delete, update tasks of Salesforce
       | Status   | In Progress     |
       | Contact  | contactSimple_random |
       | Account  | accountSimple_random |
-    Then I verify a message that confirms the new Task was created is displayed
+    Then I verify a message that confirms the new Task was "created" is displayed
     When I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
     When I open the Task details page from Tasks Homepage

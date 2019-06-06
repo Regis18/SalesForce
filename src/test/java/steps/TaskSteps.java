@@ -153,9 +153,14 @@ public class TaskSteps {
         taskPage.logout();
     }
 
-    @Then("^I verify a message that confirms the new Task was created is displayed$")
-    public void verifyMessageConfirmCreated() {
-        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
+    @Then("^I verify a message that confirms the new Task was \"([^\"]*)\" is displayed$")
+    public void verifyMessageConfirmCreated(String taskCreated) {
+        if (taskCreated.equals("created")) {
+        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created.")); }
+        if (taskCreated.equals("updated")) {
+        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated.")); }
+        if (taskCreated.equals("deleted")) {
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was deleted.")); }
     }
 
     @When("^I open the Task details page from Tasks Homepage$")
