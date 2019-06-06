@@ -250,12 +250,13 @@ public class CampaignSteps {
             System.out.println("Resultado: " + jsonCampaign.getString(key));
             System.out.println("Resultado: " + mapOut.get(key));
             String values = value;
+            System.out.println(key);
             if (key.equals("StartDate") || key.equals("EndDate")) {
-                values = Common.translateDate(value);
+                values = Common.translateDateAPI(value.toLowerCase());
             }
-            assertTrue(jsonCampaign.getString(key).equals(values),
+            assertTrue(jsonCampaign.getString(key).contains(values),
                     "The field " + key + "was not equal. Expected value "
-                            + values);
+                            + values + " but it found: " + jsonCampaign.getString(key));
         });
     }
 

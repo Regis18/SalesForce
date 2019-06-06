@@ -5,7 +5,18 @@ Feature: Create, delete, update campaigns of Salesforce
     And I navigate to HomePage
 
 #  @deleteCampaign
-#  Scenario: Create a new Campaign in Salesforce
+#  Scenario: Create a new Campaign in Salesforce with all necessary fields of Campaign
+#    Given I open the Campaigns Page
+#    When I create a new Campaign for Campaigns
+#      | Name              | New Campaign |
+#    Then I verify a confirmation message of a new Campaign was created
+#    And I verify the page of Campaign that was created
+#    When I open the Campaigns Page
+#    Then I verify the Campaign name was "created" in the list of campaigns in Campaigns Page
+#    And I verify through API if the account that was "created"
+#
+#  @deleteCampaign
+#  Scenario: Create a new Campaign in Salesforce with all fields of Campaign
 #    Given I open the Campaigns Page
 #    When I create a new Campaign for Campaigns
 #    | Name              | New Campaign |
@@ -25,7 +36,7 @@ Feature: Create, delete, update campaigns of Salesforce
 #    When I open the Campaigns Page
 #    Then I verify the Campaign name was "created" in the list of campaigns in Campaigns Page
 #    And I verify through API if the account that was "created"
-#
+
 ##  @deleteCampaign
 #  Scenario: Delete a new Campaign in Salesforce
 #    Given I open the Campaigns Page
@@ -33,8 +44,8 @@ Feature: Create, delete, update campaigns of Salesforce
 #    |Name             |Delete Campaign |
 #    When I delete a campaign "Delete Campaign" in its own Page
 #    Then I verify "Delete Campaign" is not in the list of campaigns
-#
-#  @deleteCampaign
+
+  @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
     Given I have a Campaign with the following values
     | name             | New Campaign |

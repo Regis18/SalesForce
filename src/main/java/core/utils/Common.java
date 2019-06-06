@@ -35,12 +35,12 @@ public final class Common {
     }
 
     /**
-     * Translate date class for add days to current day.
+     * Translates date class for add days to current day. It is its base form.
      *
      * @param dateKey a word for example tomorrow.
      * @return date in format.
      */
-    public static String translateDate(final String dateKey) {
+    private static Date translateDateBase(final String dateKey) {
         Date today = new Date();
         int countTime = 0;
         String time = dateKey;
@@ -67,7 +67,30 @@ public final class Common {
             default:
                 break;
         }
+        return today;
+    }
+
+    /**
+     * Translate date class for add days to current day.
+     * Return in Month/Day/Year.
+     * @param dateKey a word for example tomorrow.
+     * @return date in format.
+     */
+    public static String translateDate(final String dateKey) {
+        Date today = translateDateBase(dateKey);
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(today);
+    }
+
+    /**
+     * Translate date class for add days to current day.
+     * Return in Year-Month-Day.
+     * @param dateKey a word for example tomorrow.
+     * @return date in format.
+     */
+    public static String translateDateAPI(final String dateKey) {
+        Date today = translateDateBase(dateKey);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(today);
     }
 }
