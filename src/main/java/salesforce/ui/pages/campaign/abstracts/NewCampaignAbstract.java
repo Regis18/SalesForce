@@ -30,16 +30,16 @@ public abstract class NewCampaignAbstract extends BasePage {
 
     private final String DESCRIPTION = "Description";
     private final String NAME = "Name";
-    private final String ACTIVE = "Active";
+    private final String ACTIVE = "IsActive";
     private final String TYPE = "Type";
     private final String STATUS = "Status";
-    private final String START_DATE = "Star Date";
-    private final String END_DATE = "End Date";
-    private final String EXPECTED_REVENUE = "Expected Revenue";
-    private final String BUDGETED_COST = "Budgeted Cost";
-    private final String ACTUAL_COST = "Actual Cost";
-    private final String EXPECTED_RESPONSE = "Expected Response";
-    private final String NUM_SENT = "Num Sent";
+    private final String START_DATE = "StarDate";
+    private final String END_DATE = "EndDate";
+    private final String EXPECTED_REVENUE = "ExpectedRevenue";
+    private final String BUDGETED_COST = "BudgetedCost";
+    private final String ACTUAL_COST = "ActualCost";
+    private final String EXPECTED_RESPONSE = "ExpectedResponse";
+    private final String NUM_SENT = "NumberSent";
     /**
      * Create a new campaign, it create for classic and lightning pages.
      *

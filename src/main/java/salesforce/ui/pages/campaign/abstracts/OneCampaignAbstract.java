@@ -13,10 +13,7 @@
 
 package salesforce.ui.pages.campaign.abstracts;
 
-import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
-
-import java.util.Map;
 
 /**
  * OneCampaignAbstract class.

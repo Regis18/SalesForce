@@ -227,4 +227,14 @@ public class CampaignSteps {
     public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
         campaignPage.searchCampaignInList(nameCampaign);
     }
+
+    @And("^I verify through API if the account that was \"([^\"]*)\"$")
+    public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
+        JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
+        mapOut.forEach((key, value) -> {
+            assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
+                    "The field " + key + "was not displayed. Expected value "
+                            + value);
+        });
+    }
 }

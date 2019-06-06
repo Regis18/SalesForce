@@ -61,8 +61,12 @@ public class CampaignHook {
     public void deleteNewAccount() {
         campaignApi = new CampaignApi();
         List<String> list = context.getIds();
-        for (String id: list) {
-            campaignApi.deleteCampaign(id);
+        try {
+            for (String id : list) {
+                campaignApi.deleteCampaign(id);
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
         }
     }
 

@@ -30,16 +30,16 @@ public class Campaign {
     private String description;
     private final String DESCRIPTION = "Description";
     private final String NAME = "Name";
-    private final String ACTIVE = "Active";
+    private final String ACTIVE = "IsActive";
     private final String TYPE = "Type";
     private final String STATUS = "Status";
-    private final String START_DATE = "Star Date";
-    private final String END_DATE = "End Date";
-    private final String EXPECTED_REVENUE = "Expected Revenue";
-    private final String BUDGETED_COST = "Budgeted Cost";
-    private final String ACTUAL_COST = "Actual Cost";
-    private final String EXPECTED_RESPONSE = "Expected Response";
-    private final String NUM_SENT = "Num Sent";
+    private final String START_DATE = "StarDate";
+    private final String END_DATE = "EndDate";
+    private final String EXPECTED_REVENUE = "ExpectedRevenue";
+    private final String BUDGETED_COST = "BudgetedCost";
+    private final String ACTUAL_COST = "ActualCost";
+    private final String EXPECTED_RESPONSE = "ExpectedResponse";
+    private final String NUM_SENT = "NumberSent";
 
     /**
      * Gets Id of Campaign.
@@ -277,7 +277,7 @@ public class Campaign {
         if (key.equals("Name")) {
             setName(json.getString(key));
         }
-        if (key.equals("IsActive")) {
+        if (key.equals(ACTIVE)) {
             setActivate(json.getBoolean(key));
         }
         if (key.equals(TYPE)) {
@@ -286,28 +286,28 @@ public class Campaign {
         if (key.equals(STATUS)) {
             setStatus(json.getString(STATUS));
         }
-        if (key.equals("ExpectedRevenue")) {
+        if (key.equals(EXPECTED_REVENUE)) {
             setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
         }
-        if (key.equals("BudgetedCost")) {
+        if (key.equals(BUDGETED_COST)) {
             setBudgetedCost((int)json.getDouble("BudgetedCost"));
         }
-        if (key.equals("ActualCost")) {
+        if (key.equals(ACTUAL_COST)) {
             setActualCost((int)json.getDouble("ActualCost"));
         }
-        if (key.equals("ExpectedResponse")) {
+        if (key.equals(EXPECTED_RESPONSE)) {
             setExpectedResponse((int)json.getDouble("ExpectedResponse"));
         }
-        if (key.equals("NumberSent")) {
+        if (key.equals(NUM_SENT)) {
             setNumSent((int)json.getDouble("NumberSent"));
         }
         if (key.equals(DESCRIPTION)) {
             setDescription(json.getString(DESCRIPTION));
         }
-        if (key.equals("StartDate")) {
+        if (key.equals(START_DATE)) {
             setStartDate(json.getString("StartDate"));
         }
-        if (key.equals("EndDate")) {
+        if (key.equals(END_DATE)) {
             setEndDate(json.getString("EndDate"));
         }
     }
