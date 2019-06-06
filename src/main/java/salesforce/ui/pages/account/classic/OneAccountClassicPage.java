@@ -20,6 +20,7 @@ import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +29,10 @@ import java.util.Map;
  * @version 0.0.1
  */
 public class OneAccountClassicPage extends OneAccountAbstract {
+
+
+
+
 
     private String value;
     private String val = "null";
@@ -44,79 +49,79 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     private WebElement deleteBtn;
 
     @FindBy(xpath = "//h2[@class=\"topName\"]")
-    private WebElement accountName;
+    private WebElement name;
 
     @FindBy(id = "acc3_ileinner")
-    private WebElement parentAccount;
+    private WebElement parent;
 
     @FindBy(id = "acc5_ileinner")
-    private WebElement numberAccount;
+    private WebElement number;
 
     @FindBy(id = "acc23_ileinner")
-    private WebElement siteAccount;
+    private WebElement site;
 
     @FindBy(id = "acc6_ileinner")
-    private WebElement typeAccount;
+    private WebElement type;
 
     @FindBy(id = "acc7_ileinner")
-    private WebElement industryAccount;
+    private WebElement industry;
 
     @FindBy(id = "acc8_ileinner")
-    private WebElement revenueAccount;
+    private WebElement revenue;
 
     @FindBy(id = "acc17_ileinner")
-    private WebElement billingAddresAccount;
+    private WebElement billingAddres;
 
     @FindBy(id = "00N4P0000072sE6_ileinner")
-    private WebElement priorityAccount;
+    private WebElement priority;
 
     @FindBy(id = "00N4P0000072sE9_ileinner")
-    private WebElement slaDateAccount;
+    private WebElement slaDate;
 
     @FindBy(id = "00N4P0000072sE7_ileinner")
-    private WebElement numberLocationsAccount;
+    private WebElement numberLocations;
 
     @FindBy(id = "00N4P0000072sE5_ileinner")
-    private WebElement activeAccount;
+    private WebElement active;
 
     @FindBy(id = "acc20_ileinner")
-    private WebElement descriptionAccount;
+    private WebElement description;
 
     @FindBy(id = "acc9_ileinner")
-    private WebElement ratingAccount;
+    private WebElement rating;
 
     @FindBy(id = "acc10_ileinner")
-    private WebElement phoneAccount;
+    private WebElement phone;
 
     @FindBy(id = "acc11_ileinner")
-    private WebElement faxAccount;
+    private WebElement fax;
 
     @FindBy(id = "acc12_ileinner")
-    private WebElement webSiteAccount;
+    private WebElement webSite;
 
     @FindBy(id = "acc13_ileinner")
-    private WebElement tickerAccount;
+    private WebElement ticker;
 
     @FindBy(id = "acc14_ileinner")
-    private WebElement ownershipAccount;
+    private WebElement ownership;
 
     @FindBy(id = "acc15_ileinner")
-    private WebElement employeeAccount;
+    private WebElement employee;
 
     @FindBy(id = "acc16_ileinner")
-    private WebElement sicCodeAccount;
+    private WebElement sicCode;
 
     @FindBy(id = "acc18_ileinner")
-    private WebElement shippinAddresAccount;
+    private WebElement shippinAddres;
 
     @FindBy(id = "00N4P0000072sE8_ileinner")
-    private WebElement slaAccount;
+    private WebElement sla;
 
     @FindBy(id = "00N4P0000072sEA_ileinner")
-    private WebElement slaSerialAccount;
+    private WebElement slaSerial;
 
     @FindBy(id = "00N4P0000072sEB_ileinner")
-    private WebElement upsellAccount;
+    private WebElement upsell;
 
     /**
      * Wait for Account panel title.
@@ -163,7 +168,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     }
 
     /**
-     * Get account description.
+     * Get the values of an account.
      * @param accountInformation Map
      * @return mapAccount Map
      */
@@ -171,12 +176,86 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
+        boolean isBillingAdrress=true;
+        boolean isShippingAdrress=true;
         while (it.hasNext()) {
+            String getValue;
             String key = (String) it.next();
-            String getValue = getValueAccount(key);
-            mapAccount.put(key, getValue);
+            if (key == "Revenue") {
+                String value = getAccountFieldsValues(key);
+                //getValue = value.replace("¤", "");
+                getValue = value.replace( "¤", "");
+                System.out.println(key + "valueeeeeeeeee: " + getValue);
+                mapAccount.put(key, getValue);
+            } else
+                if (key == "Billing Street" || key == "Billing City" || key == "Billing State" || key == "Billing Zip" || key == "Billing Country") {
+                System.out.println("boolean: " + isBillingAdrress);
+                if (isBillingAdrress) {
+                    key = "Billing Street";
+                    String value = getAccountFieldsValues(key);
+                    //getValue = value.replace( ",", "");
+                    getValue = value.replaceAll("\n", " ");
+                    System.out.println(key + "valueeeeeeeeee: " + getValue);
+                    isBillingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            }  else
+                if (key == "Shipping Street" || key == "Shipping City" || key == "Shipping State" || key == "Shipping Zip" || key == "Shipping Country") {
+                System.out.println("boolean: " + isShippingAdrress);
+                if (isShippingAdrress) {
+                    key = "Shipping Street";
+                    String value = getAccountFieldsValues(key);
+                    getValue = value.replace( ",", "");
+                    getValue = getValue.replaceAll("\n", " ");
+                    System.out.println(key + "valueeeeeeeeee: " + getValue);
+                    isShippingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            } else {
+                getValue = getAccountFieldsValues(key);
+                System.out.println(key + "valueeeeeeeeee: " + getValue);
+                mapAccount.put(key, getValue);
+            }
+
         }
         return mapAccount;
+    }
+
+
+    /**
+     * Get the values of an account.
+     * @param key Map
+     * @return mapAccount Map
+     */
+    public String getAccountFieldsValues(String key) {
+        HashMap<String, WebElement> fieldWebElementsMap = new HashMap<>();
+        fieldWebElementsMap.put("Name", name);
+        fieldWebElementsMap.put("Parent", parent);
+        fieldWebElementsMap.put("Number", number);
+        fieldWebElementsMap.put("Site", site);
+        fieldWebElementsMap.put("Type", type);
+        fieldWebElementsMap.put("Industry", industry);
+        fieldWebElementsMap.put("Revenue", revenue);
+        fieldWebElementsMap.put("Rating", rating);
+        fieldWebElementsMap.put("Phone", phone);
+        fieldWebElementsMap.put("Fax", fax);
+        fieldWebElementsMap.put("Website", webSite);
+        fieldWebElementsMap.put("Ticker", ticker);
+        fieldWebElementsMap.put("Ownership", ownership);
+        fieldWebElementsMap.put("Employee", employee);
+        fieldWebElementsMap.put("Sic Code", sicCode);
+        fieldWebElementsMap.put("Billing Street", billingAddres);
+        fieldWebElementsMap.put("Shipping Street", shippinAddres);
+        fieldWebElementsMap.put("Customer", priority);
+        fieldWebElementsMap.put("Sla Date", slaDate);
+        fieldWebElementsMap.put("Locations", numberLocations);
+        fieldWebElementsMap.put("Active", active);
+        fieldWebElementsMap.put("Sla", sla);
+        fieldWebElementsMap.put("Sla Serial", slaSerial);
+        fieldWebElementsMap.put("Upsell", upsell);
+        fieldWebElementsMap.put("Description", description);
+
+        return fieldWebElementsMap.get(key).getText();
     }
 
     /**
@@ -190,107 +269,107 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         String value = "";
         switch (setKey) {
             case "Name":
-                valueAttribute = accountName.getText();
+                valueAttribute = name.getText();
                 break;
             case "Parent":
-                valueAttribute = parentAccount.getText();
+                valueAttribute = parent.getText();
                 break;
             case "Number":
-                valueAttribute = numberAccount.getText();
+                valueAttribute = number.getText();
                 break;
             case "Site":
-                valueAttribute = siteAccount.getText();
+                valueAttribute = site.getText();
                 break;
             case "Type":
-                valueAttribute = typeAccount.getText();
+                valueAttribute = type.getText();
                 break;
             case "Industry":
-                valueAttribute = industryAccount.getText();
+                valueAttribute = industry.getText();
                 break;
             case "Revenue":
-                value = revenueAccount.getText();
+                value = revenue.getText();
                 valueAttribute = value.replace("¤", "");
                 break;
             case "Rating":
-                valueAttribute = ratingAccount.getText();
+                valueAttribute = rating.getText();
                 break;
             case "Phone":
-                valueAttribute = phoneAccount.getText();
+                valueAttribute = phone.getText();
                 break;
             case "Fax":
-                valueAttribute = faxAccount.getText();
+                valueAttribute = fax.getText();
                 break;
             case "Website":
-                valueAttribute = webSiteAccount.getText();
+                valueAttribute = webSite.getText();
                 break;
             case "Ticker":
-                valueAttribute = tickerAccount.getText();
+                valueAttribute = ticker.getText();
                 break;
             case "Ownership":
-                valueAttribute = ownershipAccount.getText();
+                valueAttribute = ownership.getText();
                 break;
             case "Employee":
-                valueAttribute = employeeAccount.getText();
+                valueAttribute = employee.getText();
                 break;
             case "Sic Code":
-                valueAttribute = sicCodeAccount.getText();
+                valueAttribute = sicCode.getText();
                 break;
             case "Billing Street":
-                value = billingAddresAccount.getText();
+                value = billingAddres.getText();
                 String a = value.replaceAll("\n", " ");
                 System.out.println(a);
                 //valueAttribute = billingAddresAccount.getText();
                 break;
             case "Billing City":
-                valueAttribute = billingAddresAccount.getText();
+                valueAttribute = billingAddres.getText();
                 break;
             case "Billing State":
-                valueAttribute = billingAddresAccount.getText();
+                valueAttribute = billingAddres.getText();
                 break;
             case "Billing Zip":
-                valueAttribute = billingAddresAccount.getText();
+                valueAttribute = billingAddres.getText();
                 break;
             case "Billing Country":
-                valueAttribute = billingAddresAccount.getText();
+                valueAttribute = billingAddres.getText();
                 break;
             case "Shipping Street":
-                valueAttribute = shippinAddresAccount.getText();
+                valueAttribute = shippinAddres.getText();
                 break;
             case "Shipping City":
-                valueAttribute = shippinAddresAccount.getText();
+                valueAttribute = shippinAddres.getText();
                 break;
             case "Shipping State":
-                valueAttribute = shippinAddresAccount.getText();
+                valueAttribute = shippinAddres.getText();
                 break;
             case "Shipping Zip":
-                valueAttribute = shippinAddresAccount.getText();
+                valueAttribute = shippinAddres.getText();
                 break;
             case "Shipping Country":
-                valueAttribute = shippinAddresAccount.getText();
+                valueAttribute = shippinAddres.getText();
                 break;
             case "Customer":
-                valueAttribute = priorityAccount.getText();
+                valueAttribute = priority.getText();
                 break;
             case "Sla Date":
-                valueAttribute = slaDateAccount.getText();
+                valueAttribute = slaDate.getText();
                 break;
             case "Locations":
-                valueAttribute = numberLocationsAccount.getText();
+                valueAttribute = numberLocations.getText();
                 break;
             case "Active":
-                valueAttribute = activeAccount.getText();
+                valueAttribute = active.getText();
                 break;
             case "Sla":
-                valueAttribute = slaAccount.getText();
+                valueAttribute = sla.getText();
                 break;
             case "Sla Serial":
-                valueAttribute = slaSerialAccount.getText();
+                valueAttribute = slaSerial.getText();
                 break;
             case "Upsell":
-                valueAttribute = upsellAccount.getText();
+                valueAttribute = upsell.getText();
                 break;
             case "Description":
-                valueAttribute = descriptionAccount.getText();
+                valueAttribute = description.getText();
                 break;
             default:
                 return null;

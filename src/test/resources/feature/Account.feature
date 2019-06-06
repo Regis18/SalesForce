@@ -37,16 +37,16 @@ Feature: Create, read, update and delete a Account
       | Ownership        | Private       |
       | Employee         | 12            |
       | Sic Code         | 100-2540      |
-      | Billing Street   |  |
+      | Billing Street   | 111 |
       | Billing City     | 222   |
       | Billing State    | 333   |
       | Billing Zip      | 444   |
       | Billing Country  | 555   |
-#      | Shipping Street  | shipp street  |
-#      | Shipping City    | shipp street  |
-#      | Shipping State   | shipp street  |
-#      | Shipping Zip     | shipp street  |
-#      | Shipping Country | bill street   |
+      | Shipping Street  | shipp street  |
+      | Shipping City    | shipp street  |
+      | Shipping State   | shipp street  |
+      | Shipping Zip     | shipp street  |
+      | Shipping Country | bill street   |
       | Customer         | High          |
       | Sla Date         | 7/20/2020     |
       | Locations        | 10            |
