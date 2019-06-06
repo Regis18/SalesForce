@@ -36,20 +36,20 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     /**
      * Subject TextBox.
      */
-    @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),\"Subject\")]]/div/div/"
+    @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),'Subject')]]/div/div/"
             + "lightning-base-combobox/div/div/input")
     private WebElement subjectTextBox;
 
     /**
      * Save button.
      */
-    @FindBy(xpath = "//button[@title=\"Save\"]")
+    @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveButton;
 
     /**
      * Notification close button.
      */
-    @FindBy(xpath = "//button[@title=\"Close\"]")
+    @FindBy(xpath = "//button[@title='Close']")
     private WebElement notificationCloseButton;
 
     /**
@@ -67,11 +67,27 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//input[@id='reminder_select_check']")
     private WebElement statusDropDown;
 
-    @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
+    @FindBy(xpath = "//span[contains(@class, 'forceActionsText')]")
     private WebElement messageConfirmation;
+
+    @FindBy(xpath = "//select[@id='tsk2_mlktp']")
+    private WebElement nameDropDown;
+
+    @FindBy(xpath = "//input[@id='207:873;a']")
+    private WebElement name;
+
+    @FindBy(xpath = "//select[@id='tsk3_mlktp']")
+    private WebElement relatedToDropDown;
+
+    @FindBy(xpath = "//input[@id='tsk3']")
+    private WebElement relatedTo;
+
+    private static final String CONTACT = "//input[@placeholder='Search Contacts...']";
+    private static final String ACCOUNT = "//input[@placeholder='Search Accounts...']";
 
     /**
      * Gets message confirmation after create a task.
+     *
      * @return the text message.
      */
     public String getMessageConfirmation() {
@@ -81,6 +97,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Verifies a message confirmation is displayed.
+     *
      * @param message value
      * @return the text message.
      */
@@ -153,6 +170,34 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     }
 
     /**
+     * Sets contact for verifies task.
+     * @param value result.
+     */
+    protected void setContact(final String value) {
+        if (!value.equals("") || !value.equals("Search Contacts")) {
+            WebElement contactInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CONTACT)));
+            contactInput.click();
+            WebElement contactCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                    "//div[contains(text(),\"" + value + "\")]")));
+            contactCreated.click();
+        }
+    }
+
+    /**
+     * Sets account for verifies task.
+     * @param value result.
+     */
+    protected void setAccount(final String value) {
+        if (!value.equals("") || !value.equals("Search Contacts")) {
+            WebElement accountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ACCOUNT)));
+            accountInput.click();
+            WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                    "//div[contains(text(),\"" + value + "\")]")));
+            accountCreated.click();
+        }
+    }
+
+    /**
      * Create Task.
      *
      * @param task object.
@@ -167,7 +212,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         fields.add("DueDate");
         fields.add("Priority");
         fields.add("Status");
-
+        fields.add("Contact");
+        fields.add("Account");
         HashMap<String, StrategySetter> strategyMap = composeTextBoxStrategyMap(task);
 
         fields.forEach(field -> {
@@ -191,6 +237,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         strategyMap.put("DueDate", () -> setDueDate(myTask.getDueDate()));
         strategyMap.put("Priority", () -> setPriority(myTask.getPriority()));
         strategyMap.put("Status", () -> setStatus(myTask.getStatus()));
+        strategyMap.put("Contact", () -> setContact(myTask.getContact()));
+        strategyMap.put("Account", () -> setAccount(myTask.getAccount()));
         return strategyMap;
     }
 }
