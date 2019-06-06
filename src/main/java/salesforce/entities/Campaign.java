@@ -53,7 +53,7 @@ public class Campaign {
      * Sets Id of Campaign.
      * @param id string.
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 

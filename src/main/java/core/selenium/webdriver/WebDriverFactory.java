@@ -33,7 +33,6 @@ public final class WebDriverFactory {
         Map<String, IDriver> strategyBrowser = new HashMap<>();
         strategyBrowser.put(FIREFOX, new Firefox());
         strategyBrowser.put(CHROME, new Chrome());
-        strategyBrowser.put(EXPLORER, new InternetExplorer());
         return strategyBrowser.get(webDriverConfig.getBrowser().toLowerCase()).initDriver();
     }
 

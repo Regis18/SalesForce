@@ -20,7 +20,6 @@ import salesforce.ui.BasePage;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.classic.HomeClassicPage;
 import salesforce.ui.pages.lightning.HomeLightPage;
-import salesforce.utils.Setup;
 
 /**
  * SetupPage.

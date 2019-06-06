@@ -29,8 +29,8 @@ public class LoginSteps {
     /**
      * Sign in step.
      */
-    @Given("^I log in to the SalesForce Application$")
-    public void logInToTheSalesForceApplication() {
+    @Given("^I log in to the Salesforce Application$")
+    public void logInToTheSalesforceApplication() {
         loginPage = transporterPage.navigateToLoginPage();
         setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
     }

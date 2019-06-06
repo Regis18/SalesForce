@@ -57,6 +57,7 @@ tasks.withType(Test) {
 
 
 task executeFeatures(type: Test) {
+    
     options {
         useDefaultListeners = false
         jvmArgs = ['-Dcucumber options= ' +

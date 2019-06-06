@@ -135,7 +135,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @param value Value.
      * @return Boolean
      */
-    public boolean isCampaignFieldValueDisplayed(String key, String value) {
+    public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
         return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 }

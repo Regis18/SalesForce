@@ -9,16 +9,16 @@ Feature: Create, delete, update campaigns of Salesforce
     Given I open the Campaigns Page
     When I create a new Campaign for Campaigns
     | Name              | New Campaign |
-    | Active            | True         |
+    | IsActive            | True         |
     | Type              | Webinar      |
     | Status            | Completed    |
-    | StarDate          | today        |
-    | EndDate           | 2 weeks      |
-    | Expected Revenue  | 100          |
-    | Budgeted Cost     | 100          |
-    | Actual Cost       | 100          |
-    | Expected Response | 10           |
-    | Num Sent          | 10           |
+    | StarDate         | today        |
+    | EndDate          | 2 weeks      |
+    | ExpectedRevenue  | 100          |
+    | BudgetedCost     | 100          |
+    | ActualCost       | 100          |
+    | ExpectedResponse | 10           |
+    | NumberSent          | 10           |
     | Description       | Good Morning |
     Then I verify a confirmation message of a new Campaign was created
     And I verify the page of Campaign that was created
