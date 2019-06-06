@@ -82,7 +82,16 @@ public class TaskSteps {
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
+        task.setContact(task.getContact().replace("random", String.valueOf((int) (Math.random() * 100))));
+        task.setAccount(task.getAccount().replace("random", String.valueOf((int) (Math.random() * 100))));
+
         newTaskPage = homePage.displayCreateTask();
+        if (!task.getContact().equals("")){
+            TaskApi.createContact(task.getContact());
+        }
+        if (!task.getAccount().equals("")){
+            TaskApi.createAccount(task.getAccount());
+        }
         newTaskPage.createNewTask(task);
         Setup.getInstance().setTask(task);
     }

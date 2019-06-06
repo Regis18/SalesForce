@@ -177,4 +177,32 @@ public final class TaskApi {
         }
         return result;
     }
+
+    /**
+     * Create Account with API.
+     *
+     * @param name
+     */
+    public static void createAccount(final String name) {
+        String accountEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .auth().oauth2(CommonApi.getToken())
+                .body("{ \"Name\": \"" + name + "\"  }")
+                .when().post(accountEndPoint);
+    }
+
+    /**
+     * Create Contact with API.
+     *
+     * @param name
+     */
+    public static void createContact(final String name) {
+        String contactEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Contact/";
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .auth().oauth2(CommonApi.getToken())
+                .body("{ \"LastName\": \"" + name + "\" }")
+                .when().post(contactEndPoint);
+    }
 }

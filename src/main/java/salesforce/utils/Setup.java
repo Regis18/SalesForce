@@ -25,6 +25,24 @@ public class Setup {
     private String queryUrl;
     private String taskUrl;
     private Task task;
+    private String taskAccount;
+    private String taskContact;
+
+    public String getTaskAccount() {
+        return taskAccount;
+    }
+
+    public void setTaskAccount(String taskAccount) {
+        this.taskAccount = taskAccount;
+    }
+
+    public String getTaskContact() {
+        return taskContact;
+    }
+
+    public void setTaskContact(String taskContact) {
+        this.taskContact = taskContact;
+    }
 
     /**
      * Gets task.

@@ -51,18 +51,33 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(xpath = "//input[@id='tsk4']")
     private WebElement dueDateTextBox;
 
-    @FindBy(xpath = "//input[@id='reminder_select_check']")
-    private WebElement reminderCheckBox;
-
     @FindBy(xpath = "//select[@id='tsk13']")
     private WebElement priorityDropDown;
 
     @FindBy(xpath = "//select[@id='tsk12']")
     private WebElement statusDropDown;
-    // Recurrence
-    // Reminder
 
-    /**
+    @FindBy(xpath = "//select[@id='tsk2_mlktp']")
+    private WebElement nameDropDown;
+
+    @FindBy(xpath = "//input[@id='tsk2']")
+    private WebElement name;
+
+    @FindBy(xpath = "//select[@id='tsk3_mlktp']")
+    private WebElement relatedToDropDown;
+
+    @FindBy(xpath = "//input[@id='tsk3']")
+    private WebElement relatedTo;
+
+    // Recurrence
+    @FindBy(xpath="//input[@id='IsRecurrence'")
+    private WebElement getRecurrence;
+
+    // Reminder
+    @FindBy(xpath = "//input[@id='reminder_select_check']")
+    private WebElement reminderCheckBox;
+
+     /**
      * Verifies of message confirmation after to create a new task.
      * @param message value
      * @return true for a classic skin.
@@ -80,6 +95,10 @@ public class NewTaskClassic extends NewTaskAbstract {
         commentTextArea.sendKeys(task.getComment());
         priorityDropDown.sendKeys(task.getPriority());
         statusDropDown.sendKeys(task.getStatus());
+        nameDropDown.sendKeys("Contact");
+        name.sendKeys(task.getContact());
+        relatedToDropDown.sendKeys("Account");
+        relatedTo.sendKeys(task.getAccount());
         reminderCheckBox.click();
         saveTask.click();
         return task.getSubject();

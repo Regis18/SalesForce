@@ -44,8 +44,14 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(css = "input#tsk5")
     private WebElement subjectTextBox;
     // Description information
+
     // Recurrence
+    @FindBy(xpath="//input[@id='IsRecurrence'")
+    private WebElement getRecurrence;
+
     // Reminder
+    @FindBy(xpath="//input[@id='reminder_select_check'")
+    private WebElement getReminder;
     // Attachments
 
     // Edit task
@@ -123,6 +129,18 @@ public class TaskPageClassic extends TaskPageAbstract {
                     driver.findElement(By.xpath(STATUS));
             String uiStatus = status.getText().trim();
             if (!uiStatus.equals(task.getStatus())) {
+                return false;
+            }
+
+            WebElement contact = driver.findElement(By.xpath("//div[@id=\"tsk2_ileinner\"]//a"));
+            String uiContact = contact.getText();
+            if (!uiContact.equals(task.getContact())) {
+                return false;
+            }
+
+            WebElement account = driver.findElement(By.xpath("//div[@id=\"tsk3_ileinner\"]//a"));
+            String uiAccount = account.getText();
+            if (!uiAccount.equals(task.getAccount())) {
                 return false;
             }
 
