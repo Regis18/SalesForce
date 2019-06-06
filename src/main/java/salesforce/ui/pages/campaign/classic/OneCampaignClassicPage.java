@@ -17,12 +17,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.DriverMethods;
-
-import java.util.Map;
 
 /**
  * OneCampaignClassicPage.
@@ -101,10 +98,10 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      * Check if the values of Campaign is correct in the list.
      * @param key String.
      * @param value Value.
-     * @return Boolean
+     * @return Boolean.
      */
     @Override
-    public boolean isCampaignFieldValueDisplayed(String key, String value) {
+    public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
         return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 }

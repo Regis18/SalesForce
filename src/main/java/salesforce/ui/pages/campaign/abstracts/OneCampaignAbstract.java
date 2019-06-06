@@ -13,10 +13,7 @@
 
 package salesforce.ui.pages.campaign.abstracts;
 
-import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
-
-import java.util.Map;
 
 /**
  * OneCampaignAbstract class.
@@ -26,11 +23,13 @@ import java.util.Map;
 public abstract class OneCampaignAbstract extends BasePage {
     /**
      * VerifyComponentsCampaign.
+     * @return boolean.
      */
     public abstract boolean verifyComponentsCampaign();
 
     /**
      * Get name to assert with steps.
+     * @return String
      */
     public abstract String getNameCampaign();
 
@@ -42,6 +41,7 @@ public abstract class OneCampaignAbstract extends BasePage {
 
     /**
      * Open Edit Campaign.
+     * @return EditCampaignAbstract
      */
     public abstract EditCampaignAbstract openEditCampaign();
 

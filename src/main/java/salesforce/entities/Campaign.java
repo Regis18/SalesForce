@@ -54,7 +54,7 @@ public class Campaign {
      * Sets Id of Campaign.
      * @param id string.
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -270,7 +270,7 @@ public class Campaign {
      * Sets the json values into Campaign.
      * @param json JsonPath.
      */
-    public void setJsonValues(JsonPath json) {
+    public void setJsonValues(final JsonPath json) {
         System.out.println("impreison: " + json.prettyPrint());
         setId(json.getString(ID));
         setName(json.getString(NAME));
@@ -279,11 +279,11 @@ public class Campaign {
         setStatus(json.getString(STATUS));
 //        setStartDate(json.getString("StartDate"));
 //        setEndDate(json.getString("EndDate"));
-        setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
-        setBudgetedCost((int)json.getDouble("BudgetedCost"));
-        setActualCost((int)json.getDouble("ActualCost"));
-        setExpectedResponse((int)json.getDouble("ExpectedResponse"));
-        setNumSent((int)json.getDouble("NumberSent"));
+        setExpectedRevenue((int) json.getDouble("ExpectedRevenue"));
+        setBudgetedCost((int) json.getDouble("BudgetedCost"));
+        setActualCost((int) json.getDouble("ActualCost"));
+        setExpectedResponse((int) json.getDouble("ExpectedResponse"));
+        setNumSent((int) json.getDouble("NumberSent"));
         setDescription(json.getString(DESCRIPTION));
     }
 
