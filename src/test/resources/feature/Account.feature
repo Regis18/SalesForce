@@ -32,7 +32,7 @@ Feature: Create, read, update and delete a Account
       | Rating           | Warm          |
       | Phone            | 71717379      |
       | Fax              | 123456789     |
-      | Website          | google.com.bo |
+      | Website          | http://google.com.bo |
       | Ticker           | ticker        |
       | Ownership        | Private       |
       | Employee         | 12            |
@@ -66,14 +66,14 @@ Feature: Create, read, update and delete a Account
     Then I verify the Account is in the accounts list in Accounts page
 
 
-#  Scenario: Delete a new Account in Salesforce
-#    When I open the Account Page
-#    And I create a new Account from Accounts Page with the following values
-#      | Name | testing |
-#    Then I verify a message that confirms the new Account was created is displayed
-#    When I delete a Account in its own Page
-#    When I verify a message that confirms the new Account was deleted is displayed
-#    When I open the Account Page
-#    Then I verify the account is not in the list of accounts
+  Scenario: Delete a new Account in Salesforce
+    When I open the Account Page
+    And I create a new Account from Accounts Page with the following values
+      | Name | testing |
+    Then I verify a message that confirms the new Account was created is displayed
+    When I delete a Account in its own Page
+    When I verify a message that confirms the new Account was deleted is displayed
+    When I open the Account Page
+    Then I verify the account is not in the list of accounts
 
 

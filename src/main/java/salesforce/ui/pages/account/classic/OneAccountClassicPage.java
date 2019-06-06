@@ -178,43 +178,41 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         Iterator it = accountInformation.keySet().iterator();
         boolean isBillingAdrress=true;
         boolean isShippingAdrress=true;
+        System.out.println(" Classic ***************************** ");
         while (it.hasNext()) {
             String getValue;
             String key = (String) it.next();
-            if (key == "Revenue") {
+            if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
-                //getValue = value.replace("¤", "");
                 getValue = value.replace( "¤", "");
-                System.out.println(key + "valueeeeeeeeee: " + getValue);
                 mapAccount.put(key, getValue);
-            } else
-                if (key == "Billing Street" || key == "Billing City" || key == "Billing State" || key == "Billing Zip" || key == "Billing Country") {
+                System.out.println(key + "  " + getValue);
+            } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 System.out.println("boolean: " + isBillingAdrress);
                 if (isBillingAdrress) {
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
-                    //getValue = value.replace( ",", "");
                     getValue = value.replaceAll("\n", " ");
-                    System.out.println(key + "valueeeeeeeeee: " + getValue);
+                    getValue = getValue.replaceAll(",", "");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
+                    System.out.println(key + "  " + getValue);
                 }
-            }  else
-                if (key == "Shipping Street" || key == "Shipping City" || key == "Shipping State" || key == "Shipping Zip" || key == "Shipping Country") {
+            }  else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
                 System.out.println("boolean: " + isShippingAdrress);
                 if (isShippingAdrress) {
                     key = "Shipping Street";
                     String value = getAccountFieldsValues(key);
                     getValue = value.replace( ",", "");
                     getValue = getValue.replaceAll("\n", " ");
-                    System.out.println(key + "valueeeeeeeeee: " + getValue);
                     isShippingAdrress = false;
                     mapAccount.put(key, getValue);
+                    System.out.println(key + "  " + getValue);
                 }
             } else {
                 getValue = getAccountFieldsValues(key);
-                System.out.println(key + "valueeeeeeeeee: " + getValue);
                 mapAccount.put(key, getValue);
+                System.out.println(key + "  " + getValue);
             }
 
         }
@@ -256,124 +254,5 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         fieldWebElementsMap.put("Description", description);
 
         return fieldWebElementsMap.get(key).getText();
-    }
-
-    /**
-     * Gets the value of an attribute.
-     * @return attribute String
-     * @param key String
-     */
-    private String getValueAccount(String key) {
-        String setKey = key;
-        String valueAttribute = "";
-        String value = "";
-        switch (setKey) {
-            case "Name":
-                valueAttribute = name.getText();
-                break;
-            case "Parent":
-                valueAttribute = parent.getText();
-                break;
-            case "Number":
-                valueAttribute = number.getText();
-                break;
-            case "Site":
-                valueAttribute = site.getText();
-                break;
-            case "Type":
-                valueAttribute = type.getText();
-                break;
-            case "Industry":
-                valueAttribute = industry.getText();
-                break;
-            case "Revenue":
-                value = revenue.getText();
-                valueAttribute = value.replace("¤", "");
-                break;
-            case "Rating":
-                valueAttribute = rating.getText();
-                break;
-            case "Phone":
-                valueAttribute = phone.getText();
-                break;
-            case "Fax":
-                valueAttribute = fax.getText();
-                break;
-            case "Website":
-                valueAttribute = webSite.getText();
-                break;
-            case "Ticker":
-                valueAttribute = ticker.getText();
-                break;
-            case "Ownership":
-                valueAttribute = ownership.getText();
-                break;
-            case "Employee":
-                valueAttribute = employee.getText();
-                break;
-            case "Sic Code":
-                valueAttribute = sicCode.getText();
-                break;
-            case "Billing Street":
-                value = billingAddres.getText();
-                String a = value.replaceAll("\n", " ");
-                System.out.println(a);
-                //valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Billing City":
-                valueAttribute = billingAddres.getText();
-                break;
-            case "Billing State":
-                valueAttribute = billingAddres.getText();
-                break;
-            case "Billing Zip":
-                valueAttribute = billingAddres.getText();
-                break;
-            case "Billing Country":
-                valueAttribute = billingAddres.getText();
-                break;
-            case "Shipping Street":
-                valueAttribute = shippinAddres.getText();
-                break;
-            case "Shipping City":
-                valueAttribute = shippinAddres.getText();
-                break;
-            case "Shipping State":
-                valueAttribute = shippinAddres.getText();
-                break;
-            case "Shipping Zip":
-                valueAttribute = shippinAddres.getText();
-                break;
-            case "Shipping Country":
-                valueAttribute = shippinAddres.getText();
-                break;
-            case "Customer":
-                valueAttribute = priority.getText();
-                break;
-            case "Sla Date":
-                valueAttribute = slaDate.getText();
-                break;
-            case "Locations":
-                valueAttribute = numberLocations.getText();
-                break;
-            case "Active":
-                valueAttribute = active.getText();
-                break;
-            case "Sla":
-                valueAttribute = sla.getText();
-                break;
-            case "Sla Serial":
-                valueAttribute = slaSerial.getText();
-                break;
-            case "Upsell":
-                valueAttribute = upsell.getText();
-                break;
-            case "Description":
-                valueAttribute = description.getText();
-                break;
-            default:
-                return null;
-        }
-        return valueAttribute;
     }
 }

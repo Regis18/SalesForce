@@ -14,6 +14,7 @@
 package salesforce.entities;
 
 import core.utils.StrategySetter;
+import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -668,126 +669,113 @@ public class Account {
     public Map<String, String> createMapAccount(Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
+        boolean isBillingStreet = true;
+        boolean isShippingStreet = true;
         while (it.hasNext()) {
             String key = (String) it.next();
-            String getValue = getValueAccount(key);
-            mapAccount.put(key, getValue);
+            String getValue;
+            if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
+                if (isBillingStreet) {
+                    key = "Billing Street";
+                    getValue = getValueAccount(key);
+                    mapAccount.put(key, getValue);
+                    isBillingStreet = false;
+                    System.out.println("shipppppppppppppppp: "+getValue);
+                }
+            } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
+                if (isShippingStreet) {
+                    key = "Shipping Street";
+                    getValue = getValueAccount(key);
+                    mapAccount.put(key, getValue);
+                    isShippingStreet = false;
+                    System.out.println("billllllllllllllllllll: "+getValue);
+                }
+            } else {
+                getValue = getValueAccount(key);
+                mapAccount.put(key, getValue);
+                System.out.println("otrossssss: "+getValue);
+            }
         }
         return mapAccount;
     }
 
     /**
-     * Gets the value of an attribute.
-     * @return attribute String.
-     * @param key String
+     * Get the values of an account.
+     * @param key Map
+     * @return getValueAccount Map
      */
-    private String getValueAccount(String key) {
-        String setKey = key;
-        String valueAttribute = "";
-        switch (setKey) {
-            case "Name":
-                valueAttribute = getName();
-                break;
-            case "Parent":
-                valueAttribute = getParent();
-                break;
-            case "Number":
-                valueAttribute = getNumberAccount();
-                break;
-            case "Site":
-                valueAttribute = getSite();
-                break;
-            case "Type":
-                valueAttribute = getType();
-                break;
-            case "Industry":
-                valueAttribute = getIndustry();
-                break;
-            case "Revenue":
-                valueAttribute = getAnualRevenue();
-                break;
-            case "Rating":
-                valueAttribute = getRating();
-                break;
-            case "Phone":
-                valueAttribute = getPhone();
-                break;
-            case "Fax":
-                valueAttribute = getFax();
-                break;
-            case "Website":
-                valueAttribute = "http://" + getWebSite();
-                break;
-            case "Ticker":
-                valueAttribute = getTicker();
-                break;
-            case "Ownership":
-                valueAttribute = getOwnership();
-                break;
-            case "Employee":
-                valueAttribute = getEmployee();
-                break;
-            case "Sic Code":
-                valueAttribute = getSicCode();
-                break;
-            case "Billing Street":
+    public String getValueAccount(String key) {
+        HashMap<String, String> getAccountFiledValues = new HashMap<>();
+        getAccountFiledValues.put("Name", getName());
+        getAccountFiledValues.put("Parent", getParent());
+        getAccountFiledValues.put("Number", getNumberAccount());
+        getAccountFiledValues.put("Site", getSite());
+        getAccountFiledValues.put("Type", getType());
+        getAccountFiledValues.put("Industry", getIndustry());
+        getAccountFiledValues.put("Revenue", getAnualRevenue());
+        getAccountFiledValues.put("Rating", getRating());
+        getAccountFiledValues.put("Phone", getPhone());
+        getAccountFiledValues.put("Fax", getFax());
+        getAccountFiledValues.put("Website", getWebSite());
+        getAccountFiledValues.put("Ticker", getTicker());
+        getAccountFiledValues.put("Ownership", getOwnership());
+        getAccountFiledValues.put("Employee", getEmployee());
+        getAccountFiledValues.put("Sic Code", getSicCode());
+        getAccountFiledValues.put("Billing Street", getBillingAddress());
+        getAccountFiledValues.put("Shipping Street", getShippingAdrress());
+        getAccountFiledValues.put("Customer", getCustomerPriority());
+        getAccountFiledValues.put("Sla Date", getSlaDate());
+        getAccountFiledValues.put("Locations", getNumberLocations());
+        getAccountFiledValues.put("Active", getActive());
+        getAccountFiledValues.put("Sla", getSlaAccount());
+        getAccountFiledValues.put("Sla Serial", getSlaSerial());
+        getAccountFiledValues.put("Upsell", getUpsellOportunity());
+        getAccountFiledValues.put("Description", getDescription());
 
-                valueAttribute = getBillingStreet();
-                break;
-            case "Billing City":
-                valueAttribute = getBillingCity();
-                break;
-            case "Billing State":
-                valueAttribute = getBillingState();
-                break;
-            case "Billing Zip":
-                valueAttribute = getBillingZip();
-                break;
-            case "Billing Country":
-                valueAttribute = getBillingCountry();
-                break;
-            case "Shipping Street":
-                valueAttribute = getShippingStreet();
-                break;
-            case "Shipping City":
-                valueAttribute = getShippingCity();
-                break;
-            case "Shipping State":
-                valueAttribute = getShippingState();
-                break;
-            case "Shipping Zip":
-                valueAttribute = getShippingZip();
-                break;
-            case "Shipping Country":
-                valueAttribute = getShippingCountry();
-                break;
-            case "Customer":
-                valueAttribute = getCustomerPriority();
-                break;
-            case "Sla Date":
-                valueAttribute = getSlaDate();
-                break;
-            case "Locations":
-                valueAttribute = getNumberLocations();
-                break;
-            case "Active":
-                valueAttribute = getActive();
-                break;
-            case "Sla":
-                valueAttribute = getSlaAccount();
-                break;
-            case "Sla Serial":
-                valueAttribute = getSlaSerial();
-                break;
-            case "Upsell":
-                valueAttribute = getUpsellOportunity();
-                break;
-            case "Description":
-                valueAttribute = getDescription();
-                break;
-            default:
-                return null;
+        return getAccountFiledValues.get(key);
+    }
+
+    /**
+     * Get the values of Billing Address.
+     * @return billingAdrress String
+     */
+    private String getBillingAddress() {
+        String billingAdrress = "";
+        if (getBillingStreet() != null) {
+            billingAdrress += getBillingStreet() + " ";
         }
-        return valueAttribute;
+        if (getBillingCity() != null) {
+            billingAdrress += getBillingCity() + " ";
+        }
+        if (getBillingState() != null) {
+            billingAdrress += getBillingState() + " ";
+        }
+        if (getBillingZip() != null) {
+            billingAdrress += getBillingZip() + " ";
+        }
+        if (getBillingCountry() != null) {
+            billingAdrress += getBillingCountry();
+        }
+        return billingAdrress;
+    }
+
+    private String getShippingAdrress() {
+        String shippingAdrress = "";
+        if (getShippingStreet() != null) {
+            shippingAdrress += getShippingStreet() + " ";
+        }
+        if (getShippingCity() != null) {
+            shippingAdrress += getShippingCity() + " ";
+        }
+        if (getShippingState() != null) {
+            shippingAdrress += getShippingState() + " ";
+        }
+        if (getShippingZip() != null) {
+            shippingAdrress += getShippingZip() + " ";
+        }
+        if (getShippingCountry() != null) {
+            shippingAdrress += getShippingCountry();
+        }
+        return shippingAdrress;
     }
 }
