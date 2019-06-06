@@ -695,7 +695,7 @@ public class Account {
     }
 
     /**
-     * Get the values of an account.
+     * Get the values of an Account.
      * @param key Map
      * @return getValueAccount Map
      */
