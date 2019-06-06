@@ -34,4 +34,9 @@ public abstract class AccountPageAbstract extends BasePage {
      * @return boolean.
      */
     public abstract boolean checkAccountList(String name);
+
+    /**
+     * Select Account of Salesforce.
+     */
+    public abstract void selectAccount(String name);
 }

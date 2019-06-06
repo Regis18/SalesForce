@@ -18,6 +18,8 @@ import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import salesforce.entities.Account;
+import salesforce.entities.Context;
+import salesforce.utils.EntityId;
 
 import static io.restassured.RestAssured.given;
 
@@ -61,19 +63,29 @@ public class AccountApi {
 
     /**
      * Create Account with API test.
-     * @param account object
      */
-    public void createAccount(final Account account) {
+ /*   Map<String,String> newProject = new HashMap<>();
+            newProject.put("name", project.getNameProject());
+    Response response = given().headers("X-TrackerToken","fa8b8b2d9fd0a6b5beea1c8e232daa67",
+            "Content-Type", "application/json").
+            auth().basic("user","pass").
+            body(newProject).
+            when().
+            request("POST", url);
+
+        project.setId(response.body().jsonPath().getInt("id"));*/
+    public void createAccount(Account account) {
+
         Response response = given()
-                .contentType(ContentType.JSON)
+                .headers("Content-Type", "application/json")
                 .auth().oauth2(CommonApi.getToken())
-                .body("{" + "\"Name\": \"" + account.getName())
-                .when().post(urlBase);
+                .body("{" + "\"Name\": \"" + account.getName() + "\" }")
+                .when().request("POST", urlBase);
         try {
+
             Object obj = new JSONParser().parse(response.getBody().asString());
             JSONObject jo = (JSONObject) obj;
-            account.setName((String)jo.get("Id"));
-            System.out.println("id");
+            account.setId((String)jo.get("id"));
         } catch (Exception e) {
         }
     }

@@ -16,6 +16,7 @@ package salesforce.ui.pages.account.classic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Account;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 import java.util.HashMap;
@@ -46,6 +47,9 @@ public class OneAccountClassicPage extends OneAccountAbstract {
 
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement name;
+
+    @FindBy(id = "acc2_ileinner")
+    private WebElement nameAc;
 
     @FindBy(id = "acc3_ileinner")
     private WebElement parent;
@@ -163,6 +167,11 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         driver.switchTo().alert().accept();
     }
 
+    public void deleteAccount(Account account) {
+        deleteBtn.click();
+        driver.switchTo().alert().accept();
+    }
+
     /**
      * Get the values of an account.
      * @param accountInformation Map
@@ -177,6 +186,12 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         while (it.hasNext()) {
             String getValue;
             String key = (String) it.next();
+
+            if (key.equals("Name")) {
+                String value = nameAc.getText();
+                System.out.println("eeeeeeeeeeeeeeeeeeeeee: "+value);
+            }
+
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
                 getValue = value.replace( "¤", "");

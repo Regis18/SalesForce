@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.account.abstracts;
 
+import salesforce.entities.Account;
 import salesforce.ui.BasePage;
 
 import java.util.Map;
@@ -44,7 +45,7 @@ public abstract class OneAccountAbstract extends BasePage {
     public abstract String getNameAccount();
 
     /**
-     * Delete Account of Salesforce with specific name.
+     * Delete Account of Salesforce.
      */
     public abstract void deleteAccount();
 

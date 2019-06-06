@@ -30,6 +30,8 @@ import java.util.Map;
  */
 public class OneAccountLightPage extends OneAccountAbstract {
 
+    private String customerAccount = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]";
+
     @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
     private WebElement accountPanelTitle;
 
@@ -106,7 +108,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(css = "[data-aura-rendered-by^=\"466\"] [class=\"forceOutputAddress\"]")
     private WebElement shippingStreetAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"18889\"] [data-aura-rendered-by^=\"18880:0\"]")
+    @FindBy(css = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]")
     private WebElement customerAccountLbl;
 
     @FindBy(css = "[data-aura-rendered-by^=\"534\"] [class=\"uiOutputDate\"]")
@@ -215,14 +217,17 @@ public class OneAccountLightPage extends OneAccountAbstract {
                 String value = getAccountFieldsValues(key);
                 getValue = value.replace("¤", "");
                 mapAccount.put(key, getValue);
+                System.out.println(key + " key: " + getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 if (isBillingAdrress) {
+                    System.out.println("");
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
                     getValue = value.replaceAll("\n", " ");
                     getValue = getValue.replaceAll(",", " ");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
+                    System.out.println(key + " key: " + getValue);
                 }
             } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
                 if (isShippingAdrress) {
@@ -232,10 +237,12 @@ public class OneAccountLightPage extends OneAccountAbstract {
                     getValue = getValue.replaceAll("\n", " ");
                     isShippingAdrress = false;
                     mapAccount.put(key, getValue);
+                    System.out.println(key + " key: " + getValue);
                 }
             } else {
                 getValue = getAccountFieldsValues(key);
                 mapAccount.put(key, getValue);
+                System.out.println(key + " key: " + getValue);
             }
         }
         return mapAccount;

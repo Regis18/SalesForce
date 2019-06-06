@@ -47,6 +47,7 @@ public class AccountSteps {
     private EntityId entitiesId;
     private Account newAccount;
     private Map<String, String> dataInformation;
+    AccountApi accountApi;
 
     /**
      * Account steps.
@@ -56,6 +57,7 @@ public class AccountSteps {
         this.context = context;
         this.account = context.getAccount();
         this.entitiesId = new EntityId();
+        this.accountApi = new AccountApi();
     }
 
     /**
@@ -63,8 +65,8 @@ public class AccountSteps {
      */
     @Given("^I have an Account with the following values$")
     public void createAccountByAPi(Map<String, String> accountInformation) {
-        account.setAccountInformation(accountInformation);
-
+        account.setAccountInformation( accountInformation);
+        accountApi.createAccount(account);
     }
 
     /**
@@ -187,5 +189,10 @@ public class AccountSteps {
     @And("^I verify the account is not in the list of accounts$")
     public void verifyIsNotInTheListOfAccounts() {
         assertFalse(accountPage.checkAccountList(account.getName()));
+    }
+
+    @When("^I search the Account in the list of Accounts$")
+    public void searchAnAccountInAccountPage() {
+        accountPage.selectAccount(account.getId());
     }
 }

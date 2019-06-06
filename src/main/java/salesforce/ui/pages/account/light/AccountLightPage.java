@@ -62,4 +62,9 @@ public class AccountLightPage extends AccountPageAbstract {
     public boolean checkAccountList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace(ACCOUNT, name)));
     }
+
+    @Override
+    public void selectAccount(final String account) {
+        driver.findElement(By.xpath("//th[@class=' dataCell  ']//a[@href='/0014P000026sAvT']")).click();
+    }
 }
