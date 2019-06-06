@@ -42,6 +42,9 @@ public class TaskPageLightning extends TaskPageAbstract {
     private static final String PRIORITY = "//div[contains(.//div//div//span, 'Priority')]"
             + "//div//div//div[2]//span//span";
     private static final String STATUS = "//div[contains(.//div//div//span, 'Status')]//div//div[2]//span//span";
+    private static final String ACCOUNT = "//a[@id='5921:0']";
+    private static final String CONTACT = "//a[@id='5857:0']";
+
     /**
      * Task web element.
      */
@@ -141,6 +144,16 @@ public class TaskPageLightning extends TaskPageAbstract {
             WebElement status = driver.findElement(By.xpath(STATUS));
             String uiStatus = status.getText();
             if (!uiStatus.equals(task.getStatus())) {
+                return false;
+            }
+            WebElement contact = driver.findElement(By.xpath(CONTACT));
+            String uiContact = contact.getText();
+            if (!uiContact.equals(task.getContact())) {
+                return false;
+            }
+            WebElement account = driver.findElement(By.xpath(ACCOUNT));
+            String uiAccount = account.getText();
+            if (!uiAccount.equals(task.getAccount())) {
                 return false;
             }
         } catch (Exception e) {

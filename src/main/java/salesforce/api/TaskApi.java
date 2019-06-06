@@ -171,6 +171,8 @@ public final class TaskApi {
                 result.setComment((String) jo.get("Description"));
                 result.setStatus((String) jo.get("Status"));
                 result.setPriority((String) jo.get("Priority"));
+                //result.setContact((String) jo.get("Contact"));
+                //result.setContact((String) jo.get("Account"));
             } catch (Exception e) {
 
             }
@@ -193,6 +195,44 @@ public final class TaskApi {
     }
 
     /**
+     * Delete account with API test.
+     *
+     * @param task task
+     */
+    public static void deleteAccount(final Task task) {
+        List<String> taskIds = new ArrayList<>();
+
+        //Get the task.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from account where name='" + task.getContact() + "' ")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            // getting records.
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+        if (taskIds.size() > 0) {
+            given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken())
+                    .when()
+                    .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+        }
+    }
+
+
+    /**
      * Create Contact with API.
      *
      * @param name
@@ -205,4 +245,42 @@ public final class TaskApi {
                 .body("{ \"LastName\": \"" + name + "\" }")
                 .when().post(contactEndPoint);
     }
+
+    /**
+     * Delete contact with API test.
+     *
+     * @param task task
+     */
+    public static void deleteContact(final Task task) {
+        List<String> taskIds = new ArrayList<>();
+
+        //Get the task.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from contact where lastname='" + task.getAccount() + "' ")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            // getting records.
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+        if (taskIds.size() > 0) {
+            given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken())
+                    .when()
+                    .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+        }
+    }
+
 }

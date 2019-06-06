@@ -69,6 +69,8 @@ public class TaskPageClassic extends TaskPageAbstract {
     private static final String SUBJECT = "//div[@id='tsk5_ileinner']";
     private static final String PRIORITY = "//div[@id='tsk13_ileinner']";
     private static final String STATUS = "//div[@id='tsk12_ileinner']";
+    private static final String CONTACT = "//div[@id='tsk2_ileinner']//a";
+    private static final String ACCOUNT = "//div[@id='tsk3_ileinner']//a";
 
     // Description information
     private static final String COMMENT = "//div[@id='tsk6_ileinner']";
@@ -132,13 +134,13 @@ public class TaskPageClassic extends TaskPageAbstract {
                 return false;
             }
 
-            WebElement contact = driver.findElement(By.xpath("//div[@id=\"tsk2_ileinner\"]//a"));
+            WebElement contact = driver.findElement(By.xpath(CONTACT));
             String uiContact = contact.getText();
             if (!uiContact.equals(task.getContact())) {
                 return false;
             }
 
-            WebElement account = driver.findElement(By.xpath("//div[@id=\"tsk3_ileinner\"]//a"));
+            WebElement account = driver.findElement(By.xpath(ACCOUNT));
             String uiAccount = account.getText();
             if (!uiAccount.equals(task.getAccount())) {
                 return false;
