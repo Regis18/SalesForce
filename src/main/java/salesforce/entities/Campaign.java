@@ -1,9 +1,9 @@
 package salesforce.entities;
 
+import core.utils.Common;
 import core.utils.StrategySetter;
 import io.restassured.path.json.JsonPath;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,8 +19,8 @@ public class Campaign {
     private boolean activate;
     private String type;
     private String status;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int expectedRevenue;
     private int budgetedCost;
     private int actualCost;
@@ -28,7 +28,6 @@ public class Campaign {
     private int numSent;
     private String parentCampaign;
     private String description;
-    private final String ID = "Id";
     private final String DESCRIPTION = "Description";
     private final String NAME = "Name";
     private final String ACTIVE = "Active";
@@ -126,7 +125,7 @@ public class Campaign {
      * Gets start date.
      * @return startDate
      */
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
@@ -134,7 +133,7 @@ public class Campaign {
      * Sets start Date.
      * @param startDate *
      */
-    public void setStartDate(final Date startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
@@ -142,7 +141,7 @@ public class Campaign {
      * Gets end date.
      * @return endDate
      */
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
@@ -150,7 +149,7 @@ public class Campaign {
      * Sets end Date.
      * @param endDate *
      */
-    public void setEndDate(final Date endDate) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
@@ -272,42 +271,45 @@ public class Campaign {
      * @param key string.
      */
     public void setJsonValues(String key, JsonPath json) {
-        if (key == "Id") {
+        if (key.equals("Id")) {
             setId(json.getString(key));
         }
-        if (key == "Name") {
+        if (key.equals("Name")) {
             setName(json.getString(key));
         }
-        if (key == "IsActive") {
+        if (key.equals("IsActive")) {
             setActivate(json.getBoolean(key));
         }
-        if (key == TYPE) {
+        if (key.equals(TYPE)) {
             setType(json.getString(TYPE));
         }
-        if (key == STATUS) {
+        if (key.equals(STATUS)) {
             setStatus(json.getString(STATUS));
         }
-        if (key == "ExpectedRevenue") {
+        if (key.equals("ExpectedRevenue")) {
             setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
         }
-        if (key == "BudgetedCost") {
+        if (key.equals("BudgetedCost")) {
             setBudgetedCost((int)json.getDouble("BudgetedCost"));
         }
-        if (key == "ActualCost") {
+        if (key.equals("ActualCost")) {
             setActualCost((int)json.getDouble("ActualCost"));
         }
-        if (key == "ExpectedResponse") {
+        if (key.equals("ExpectedResponse")) {
             setExpectedResponse((int)json.getDouble("ExpectedResponse"));
         }
-        if (key == "NumberSent") {
+        if (key.equals("NumberSent")) {
             setNumSent((int)json.getDouble("NumberSent"));
         }
-        if (key == DESCRIPTION) {
+        if (key.equals(DESCRIPTION)) {
             setDescription(json.getString(DESCRIPTION));
         }
-//        setStartDate(json.getString("StartDate"));
-//        setEndDate(json.getString("EndDate"));
-
+        if (key.equals("StartDate")) {
+            setStartDate(json.getString("StartDate"));
+        }
+        if (key.equals("EndDate")) {
+            setEndDate(json.getString("EndDate"));
+        }
     }
 
     /**
@@ -332,8 +334,8 @@ public class Campaign {
         strategyMap.put(ACTIVE, () -> setActivate(campaigns.get(ACTIVE).equals("True")));
         strategyMap.put(TYPE, () -> setType(campaigns.get(TYPE)));
         strategyMap.put(STATUS, () -> setStatus(campaigns.get(STATUS)));
-//        strategyMap.put(START_DATE, () -> setStartDate(campaigns.get(START_DATE)));
-//        strategyMap.put(END_DATE, () -> setEndDate(campaigns.get(END_DATE)));
+        strategyMap.put(START_DATE, () -> setStartDate(Common.translateDate(campaigns.get(START_DATE))));
+        strategyMap.put(END_DATE, () -> setEndDate(Common.translateDate(campaigns.get(END_DATE))));
         strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
         strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
         strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));

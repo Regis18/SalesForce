@@ -14,6 +14,10 @@
 package salesforce.api;
 
 import io.restassured.response.Response;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import salesforce.entities.Account;
+
 import static io.restassured.RestAssured.given;
 
 /**
@@ -23,14 +27,34 @@ import static io.restassured.RestAssured.given;
  */
 public class AccountApi {
 
+    private String urlBase = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
+
     /**
      * Delete an account by id.
      * @param id String.
      */
     public void deleteAccount(final String id) {
-        String url = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/" + id;
-        String token = "00D4P000000gLN4!AQQAQORO6d4NFvtCriV5FnXXiU14WNtXrB47P2lZO2t93m6eo8a5427K4xUoM.SGw1CBmJ6G_PlapH4yBIDdM6limEtOpxNS";
+        String url = urlBase + id;
         Response response = given().headers("Content-Type", "application/json").
                 auth().oauth2(CommonApi.getToken()).when().request("DELETE", url);
+    }
+
+    /**
+     * Delete an account by id.
+     * @param id String.
+     */
+    public static Account getAccount(final String id) {
+        Account resultAccount = new Account();
+        String urlBase = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
+        String url = urlBase + id;
+        Response response = given().headers("Content-Type", "application/json").
+                auth().oauth2(CommonApi.getToken()).when().request("GET", url);
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            resultAccount.setName((String)jo.get("Name"));
+        } catch (Exception e) {
+        }
+        return resultAccount;
     }
 }

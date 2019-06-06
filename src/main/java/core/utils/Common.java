@@ -24,20 +24,48 @@ import java.util.Date;
  * @author Melvi Caballero
  * @version 0.0.1
  */
-public class Common {
+public final class Common {
+
+    public static final int WEEK = 7;
+
+    /**
+     * Constructor.
+     */
+    private Common() {
+    }
+
     /**
      * Translate date class for add days to current day.
+     *
      * @param dateKey a word for example tomorrow.
      * @return date in format.
      */
-    public static String translateDate(String dateKey) {
+    public static String translateDate(final String dateKey) {
         Date today = new Date();
-        switch (dateKey) {
+        int countTime = 0;
+        String time = dateKey;
+        if (dateKey.contains("days")) {
+            countTime = Integer.parseInt(dateKey.replace(" days",""));
+            time = "days";
+        } else if (dateKey.contains("weeks")) {
+            countTime = Integer.parseInt(dateKey.replace(" weeks",""));
+            time = "weeks";
+        }
+        switch (time) {
             case "tomorrow":
                 today = DateUtils.addDays(today, 1);
                 break;
+            case "days":
+                today = DateUtils.addDays(today,countTime);
+                break;
+            case "one week":
+                today = DateUtils.addDays(today, WEEK);
+                break;
+            case "weeks":
+                today = DateUtils.addDays(today,WEEK * countTime);
+                break;
             default:
-                today = DateUtils.addDays(today, 7);
+                break;
         }
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         return format.format(today);

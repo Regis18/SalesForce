@@ -24,6 +24,8 @@ import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
 import java.util.List;
 
+//import static salesforce.utils.DriverMethods.isElementPresent;
+
 /**
  * TaskLightPage class in this class whe navigate for this page the
  * task created are displayed.
@@ -34,19 +36,22 @@ import java.util.List;
 public class TaskPageLightning extends TaskPageAbstract {
     public static final int MILLIS = 2500;
     public static final int INT = 100;
-
+    private static final String SUBJECT = "//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span";
+    private static final String COMMENT = "//div[contains(.//div//div//span, 'Comments')]"
+            + "//div//div//div[2]//span//span";
+    private static final String PRIORITY = "//div[contains(.//div//div//span, 'Priority')]"
+            + "//div//div//div[2]//span//span";
+    private static final String STATUS = "//div[contains(.//div//div//span, 'Status')]//div//div[2]//span//span";
     /**
      * Task web element.
      */
     @FindBy(css = ".forceRecordLayout:nth-child(1) .slds-split-view__list-item-action .slds-grow")
     private WebElement task;
-
     /**
      * Dropdownbutton web element.
      */
     @FindBy(xpath = "//a[contains(@class,\"sldsButtonHeightFix\")]")
     private WebElement getDisplayAsDropDownButton;
-
     /**
      * Delete task web element.
      */
@@ -57,7 +62,6 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[span[contains(.,'Delete')]]")
     private WebElement deleteConfirmationtask;
-
     /**
      * Recent task refresh web element.
      */
@@ -68,22 +72,18 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     @FindBy(xpath = "//button[@title=\"Edit Subject\"]")
     private WebElement editSubjectTask;
-
     /**
      * Update new subject task web element.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[contains(@class,'slds-form-element forceTextEnumLookup')]")
     private WebElement updateNewSubjectTask;
-
     /**
      * Save update web element.
      */
     @FindBy(xpath = "//button[contains(@class,'slds-button slds-button--neutral uiButton--brand')]")
     private WebElement saveUpdateTask;
-
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
-
 
     /**
      * Verify subject is displayed.
@@ -102,17 +102,16 @@ public class TaskPageLightning extends TaskPageAbstract {
         return true;
     }
 
-    public boolean verifyTaskValues(final Task task) {
-        try {
-            WebElement subjectTask =
-                    driver.findElement(By.xpath("//span[contains(text(),\""
-                            + task.getSubject() + "\")][1]"));
-            subjectTask.click();
-
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+    /**
+     * Verifies task values.
+     *
+     * @param task object.
+     */
+    public void verifyTaskValues(final Task task) {
+        WebElement subjectTask =
+                driver.findElement(By.xpath("//span[contains(text(),\""
+                        + task.getSubject() + "\")][1]"));
+        subjectTask.click();
     }
 
     /**
@@ -123,20 +122,27 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     public boolean verifyTaskWasCreated(final Task task) {
         try {
-            WebElement subjectTask =
-                    driver.findElement(By.xpath("//span[contains(text(),\""
-                            + task.getSubject() + "\")][1]"));
-            subjectTask.click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span")));
-            WebElement subject =
-                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Subject')]//div//div//div[2]//span//span"));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
+            WebElement subject = driver.findElement(By.xpath(SUBJECT));
             String uiSubject = subject.getText();
-            if (!uiSubject.equals(task.getSubject())) { return false; }
-            WebElement comment =
-                    driver.findElement(By.xpath("//div[contains(.//div//div//span, 'Comments')]//div//div//div[2]//span//span"));
+            if (!uiSubject.equals(task.getSubject())) {
+                return false;
+            }
+            WebElement comment = driver.findElement(By.xpath(COMMENT));
             String uiComment = comment.getText();
-            if (!uiComment.equals(task.getComment())) { return false; }
-
+            if (!uiComment.equals(task.getComment())) {
+                return false;
+            }
+            WebElement priority = driver.findElement(By.xpath(PRIORITY));
+            String uiPriority = priority.getText();
+            if (!uiPriority.equals(task.getPriority())) {
+                return false;
+            }
+            WebElement status = driver.findElement(By.xpath(STATUS));
+            String uiStatus = status.getText();
+            if (!uiStatus.equals(task.getStatus())) {
+                return false;
+            }
         } catch (Exception e) {
             return false;
         }
@@ -213,7 +219,8 @@ public class TaskPageLightning extends TaskPageAbstract {
             updateNewSubjectTask.sendKeys(newSubjectTask);
         } else {
             wait.until(ExpectedConditions.elementToBeClickable(updateNewSubjectTask));
-            List<WebElement> updateSubject = driver.findElements(By.xpath("//input[contains(@class,'slds-input slds-combobox__input')]"));
+            List<WebElement> updateSubject = driver.findElements(By.xpath("//input[contains(@class,"
+                    + "'slds-input slds-combobox__input')]"));
             updateSubject.get(1).sendKeys(newSubjectTask);
         }
     }

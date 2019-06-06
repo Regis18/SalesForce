@@ -28,6 +28,7 @@ public abstract class NewTaskAbstract extends BasePage {
 
     /**
      * Create Task.
+     *
      * @param task of type Task.
      * @return string
      */
@@ -53,12 +54,12 @@ public abstract class NewTaskAbstract extends BasePage {
     protected abstract void setComments(String value);
 
     /**
-     *  verify message.
-     * @param message
+     * Confirmation message.
+     *
+     * @param message ui confirmation message.
      * @return boolean
      */
     public abstract boolean verifyMessage(String message);
-
 
     /**
      * Wait for Page.

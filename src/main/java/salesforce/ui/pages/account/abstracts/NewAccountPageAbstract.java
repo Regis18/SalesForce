@@ -267,7 +267,7 @@ public abstract class NewAccountPageAbstract extends BasePage {
         strategyMap.put("Name",        () -> setNameTxt(accountInformation.get("Name")));
         strategyMap.put("Parent",        () -> setParent(accountInformation.get("Parent")));
         strategyMap.put("Number",      () -> setNumberAccount(accountInformation.get("Number")));
-        strategyMap.put("Site",        () -> setSite(accountInformation.get("Ticker")));
+        strategyMap.put("Site",        () -> setSite(accountInformation.get("Site")));
         strategyMap.put("Type",        () -> setType(accountInformation.get("Type")));
         strategyMap.put("Industry",        () -> setIndustry(accountInformation.get("Industry")));
         strategyMap.put("Revenue",     () -> setAnualRevenue(accountInformation.get("Revenue")));
