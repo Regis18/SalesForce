@@ -17,13 +17,12 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import java.sql.Driver;
 
 /**
  * InternetExplorer.
  * @author Luis Guardia.
  */
-public class InternetExplorer implements IDriver {
+public class InternetExplorer {
     /**
      * Init the driver of Internet Explorer.
      * @return WebDriver.
