@@ -70,8 +70,21 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
     @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
     private WebElement messageConfirmation;
 
+    @FindBy(xpath = "//select[@id='tsk2_mlktp']")
+    private WebElement nameDropDown;
+
+    @FindBy(xpath = "//input[@id='207:873;a']")
+    private WebElement name;
+
+    @FindBy(xpath = "//select[@id='tsk3_mlktp']")
+    private WebElement relatedToDropDown;
+
+    @FindBy(xpath = "//input[@id='tsk3']")
+    private WebElement relatedTo;
+
     /**
      * Gets message confirmation after create a task.
+     *
      * @return the text message.
      */
     public String getMessageConfirmation() {
@@ -81,6 +94,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Verifies a message confirmation is displayed.
+     *
      * @param message value
      * @return the text message.
      */
@@ -152,6 +166,24 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         itemToSelect.click();
     }
 
+    protected void setContact(final String value) {
+        if (!value.equals("")) {
+            WebElement contactInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder=\"Search Contacts...\"]")));
+            contactInput.sendKeys(value);
+            WebElement contactCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),\"" + value + "\")]")));
+            contactCreated.click();
+        }
+    }
+
+    protected void setAccount(final String value) {
+        if (!value.equals("")) {
+            WebElement accountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder=\"Search Accounts...\"]")));
+            accountInput.sendKeys(value);
+            WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),\"" + value + "\")]")));
+            accountCreated.click();
+        }
+    }
+
     /**
      * Create Task.
      *
@@ -167,7 +199,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         fields.add("DueDate");
         fields.add("Priority");
         fields.add("Status");
-
+        fields.add("Account");
+        fields.add("Contact");
         HashMap<String, StrategySetter> strategyMap = composeTextBoxStrategyMap(task);
 
         fields.forEach(field -> {
@@ -191,6 +224,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         strategyMap.put("DueDate", () -> setDueDate(myTask.getDueDate()));
         strategyMap.put("Priority", () -> setPriority(myTask.getPriority()));
         strategyMap.put("Status", () -> setStatus(myTask.getStatus()));
+        strategyMap.put("Account", () -> setAccount(myTask.getAccount()));
+        strategyMap.put("Contact", () -> setContact(myTask.getContact()));
         return strategyMap;
     }
 }
