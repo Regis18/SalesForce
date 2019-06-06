@@ -45,36 +45,36 @@ public class NewTaskClassic extends NewTaskAbstract {
     private WebElement subjectTextBox;
 
     // Description information
-    @FindBy(xpath = "//textarea[@id='tsk6']")
+    @FindBy(xpath = "//textarea[@id = 'tsk6']")
     private WebElement commentTextArea;
 
-    @FindBy(xpath = "//input[@id='tsk4']")
+    @FindBy(xpath = "//input[@id = 'tsk4']")
     private WebElement dueDateTextBox;
 
-    @FindBy(xpath = "//select[@id='tsk13']")
+    @FindBy(xpath = "//select[@id = 'tsk13']")
     private WebElement priorityDropDown;
 
-    @FindBy(xpath = "//select[@id='tsk12']")
+    @FindBy(xpath = "//select[@id = 'tsk12']")
     private WebElement statusDropDown;
 
-    @FindBy(xpath = "//select[@id='tsk2_mlktp']")
+    @FindBy(xpath = "//select[@id = 'tsk2_mlktp']")
     private WebElement nameDropDown;
 
-    @FindBy(xpath = "//input[@id='tsk2']")
+    @FindBy(xpath = "//input[@id = 'tsk2']")
     private WebElement name;
 
-    @FindBy(xpath = "//select[@id='tsk3_mlktp']")
+    @FindBy(xpath = "//select[@id = 'tsk3_mlktp']")
     private WebElement relatedToDropDown;
 
-    @FindBy(xpath = "//input[@id='tsk3']")
+    @FindBy(xpath = "//input[@id = 'tsk3']")
     private WebElement relatedTo;
 
     // Recurrence
-    @FindBy(xpath="//input[@id='IsRecurrence'")
+    @FindBy(xpath = "//input[@id = 'IsRecurrence'")
     private WebElement getRecurrence;
 
     // Reminder
-    @FindBy(xpath = "//input[@id='reminder_select_check']")
+    @FindBy(xpath = "//input[@id = 'reminder_select_check']")
     private WebElement reminderCheckBox;
 
      /**

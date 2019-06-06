@@ -169,20 +169,30 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
         itemToSelect.click();
     }
 
+    /**
+     * Sets contact for verifies task.
+     * @param value result.
+     */
     protected void setContact(final String value) {
         if (!value.equals("") || !value.equals("Search Contacts")) {
             WebElement contactInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CONTACT)));
             contactInput.click();
-            WebElement contactCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),\"" + value + "\")]")));
+            WebElement contactCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                    "//div[contains(text(),\"" + value + "\")]")));
             contactCreated.click();
         }
     }
 
+    /**
+     * Sets account for verifies task.
+     * @param value result.
+     */
     protected void setAccount(final String value) {
         if (!value.equals("") || !value.equals("Search Contacts")) {
             WebElement accountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ACCOUNT)));
             accountInput.click();
-            WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),\"" + value + "\")]")));
+            WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                    "//div[contains(text(),\"" + value + "\")]")));
             accountCreated.click();
         }
     }

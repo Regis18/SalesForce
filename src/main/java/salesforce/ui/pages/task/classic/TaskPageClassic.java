@@ -46,11 +46,11 @@ public class TaskPageClassic extends TaskPageAbstract {
     // Description information
 
     // Recurrence
-    @FindBy(xpath="//input[@id='IsRecurrence'")
+    @FindBy(xpath = "//input[@id='IsRecurrence'")
     private WebElement getRecurrence;
 
     // Reminder
-    @FindBy(xpath="//input[@id='reminder_select_check'")
+    @FindBy(xpath = "//input[@id='reminder_select_check'")
     private WebElement getReminder;
     // Attachments
 

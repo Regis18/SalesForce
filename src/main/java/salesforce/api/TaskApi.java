@@ -183,7 +183,7 @@ public final class TaskApi {
     /**
      * Create Account with API.
      *
-     * @param name
+     * @param name to account.
      */
     public static void createAccount(final String name) {
         String accountEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
@@ -235,7 +235,7 @@ public final class TaskApi {
     /**
      * Create Contact with API.
      *
-     * @param name
+     * @param name is last name for contact.
      */
     public static void createContact(final String name) {
         String contactEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Contact/";

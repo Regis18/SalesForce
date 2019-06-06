@@ -36,18 +36,34 @@ public class Task {
     private String contact = "";
     private String account = "";
 
+    /**
+     * Gets contacts to task.
+     * @return contact related to task.
+     */
     public String getContact() {
         return contact;
     }
 
+    /**
+     * Sets contacts to task.
+     * @param contact related to task.
+     */
     public void setContact(String contact) {
         this.contact = contact;
     }
 
+    /**
+     * Gets Account to task.
+     * @return account related to task.
+     */
     public String getAccount() {
         return account;
     }
 
+    /**
+     * Sets account to task.
+     * @param account related to task.
+     */
     public void setAccount(String account) {
         this.account = account;
     }
