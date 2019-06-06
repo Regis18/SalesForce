@@ -13,6 +13,7 @@
 
 package salesforce.api;
 
+import core.utils.Common;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import salesforce.utils.Setup;
@@ -79,7 +80,7 @@ public class CampaignApi {
      * @param newCampaign Map.
      * @return JsonPath.
      */
-    public JsonPath createCampaign(Map<String, String> newCampaign) {
+    public JsonPath createCampaign(final Map<String, String> newCampaign) {
         url = API_PATH + "Campaign";
         Response response = given().headers("Content-Type", "application/json")
                 .auth().oauth2(CommonApi.getToken())

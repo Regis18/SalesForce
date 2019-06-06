@@ -13,6 +13,7 @@
 
 package steps;
 
+import core.utils.Common;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -53,7 +54,7 @@ public class CampaignSteps {
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Campaign campaign;
-    private CampaignApi campaignApi;
+    private CampaignApi campaignApi = new CampaignApi();;
     private JsonPath jsonPath;
     private Map<String, String> mapOut;
     private EntityId entityId;
@@ -176,7 +177,7 @@ public class CampaignSteps {
     /**
      * Verifies if a confirmation message is displayed in Light.
      */
-    @Then("^I verify a confirmation message of the campaign was saved$")
+    @Then("^I verify a confirmation message of the Campaign was saved$")
     public void verifyAConfirmationMessageOfTheCampaignWasSaved() {
         try {
             String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
@@ -193,7 +194,7 @@ public class CampaignSteps {
     public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
         mapOut.forEach((key, value) -> {
             assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
-                    "The field " + key + "was not displayed. Expected value "
+                    "The field " + key + " was not displayed. Expected value "
                             + value);
         });
     }
@@ -204,7 +205,9 @@ public class CampaignSteps {
      */
     @Given("^I have a Campaign with the following values$")
     public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
-        campaignApi = new CampaignApi();
+//        Map<String, String> mapOutResult = mapOut;
+//        mapOutResult.replace("StartDate", Common.translateDate(mapOut.get("StartDate")));
+//        mapOutResult.replace("EndDate", Common.translateDate(mapOut.get("EndDate")));
         jsonPath = campaignApi.createCampaign(mapOut);
         jsonPath = campaignApi.getCampaignById(jsonPath.getString("id"));
         mapOut.forEach((key, value) -> {
@@ -230,11 +233,15 @@ public class CampaignSteps {
 
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
     public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
+        System.out.println("ID del Campaign" + campaign.getId());
+        System.out.println(campaignApi.getCampaignById(campaign.getId()).prettyPrint());
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
+
         mapOut.forEach((key, value) -> {
-            assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
-                    "The field " + key + "was not displayed. Expected value "
+            assertTrue(jsonCampaign.get(key).equals(value),
+                    "The field " + key + "was not equal. Expected value "
                             + value);
         });
     }
+
 }

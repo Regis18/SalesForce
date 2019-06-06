@@ -42,7 +42,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     @FindBy(css = "[id='topButtonRow'] input[name='edit']")
     private WebElement editUpBtn;
 
-    private String valueCampaign = "//*[td[starts-with(text(), 'key')]]//*//div[contains(text(), 'element')]";
+    private String valueCampaign = "//*[td[contains(text(), 'key')]]//*//div[contains(text(), 'element')]";
 
     private final String ELEMENT = "element";
 

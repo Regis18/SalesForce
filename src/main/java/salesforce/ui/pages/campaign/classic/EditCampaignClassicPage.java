@@ -97,6 +97,8 @@ public class EditCampaignClassicPage extends EditCampaignAbstract {
     protected void setActiveChk(final boolean isActivate) {
         if (isActivate) {
             activateChk.click();
+        } else if (activateChk.isSelected() && isActivate == false) {
+            activateChk.click();
         }
     }
 

@@ -28,18 +28,18 @@ public class Campaign {
     private int numSent;
     private String parentCampaign;
     private String description;
-    private final String DESCRIPTION = "Description";
-    private final String NAME = "Name";
-    private final String ACTIVE = "IsActive";
-    private final String TYPE = "Type";
-    private final String STATUS = "Status";
-    private final String START_DATE = "StarDate";
-    private final String END_DATE = "EndDate";
-    private final String EXPECTED_REVENUE = "ExpectedRevenue";
-    private final String BUDGETED_COST = "BudgetedCost";
-    private final String ACTUAL_COST = "ActualCost";
-    private final String EXPECTED_RESPONSE = "ExpectedResponse";
-    private final String NUM_SENT = "NumberSent";
+    private final String descriptionTag = "Description";
+    private final String nameTag = "Name";
+    private final String activeTag = "IsActive";
+    private final String typeTag = "Type";
+    private final String statusTag = "Status";
+    private final String startDateTag = "StartDate";
+    private final String endDateTag = "EndDate";
+    private final String expectedRevenueTag = "ExpectedRevenue";
+    private final String budgetedCostTag = "BudgetedCost";
+    private final String actualCostTag = "ActualCost";
+    private final String expectedResponseTag = "ExpectedResponse";
+    private final String numberSentTag = "NumberSent";
 
     /**
      * Gets Id of Campaign.
@@ -277,37 +277,37 @@ public class Campaign {
         if (key.equals("Name")) {
             setName(json.getString(key));
         }
-        if (key.equals(ACTIVE)) {
+        if (key.equals(activeTag)) {
             setActivate(json.getBoolean(key));
         }
-        if (key.equals(TYPE)) {
-            setType(json.getString(TYPE));
+        if (key.equals(typeTag)) {
+            setType(json.getString(typeTag));
         }
-        if (key.equals(STATUS)) {
-            setStatus(json.getString(STATUS));
+        if (key.equals(statusTag)) {
+            setStatus(json.getString(statusTag));
         }
-        if (key.equals(EXPECTED_REVENUE)) {
+        if (key.equals(expectedRevenueTag)) {
             setExpectedRevenue((int)json.getDouble("ExpectedRevenue"));
         }
-        if (key.equals(BUDGETED_COST)) {
+        if (key.equals(budgetedCostTag)) {
             setBudgetedCost((int)json.getDouble("BudgetedCost"));
         }
-        if (key.equals(ACTUAL_COST)) {
+        if (key.equals(actualCostTag)) {
             setActualCost((int)json.getDouble("ActualCost"));
         }
-        if (key.equals(EXPECTED_RESPONSE)) {
+        if (key.equals(expectedResponseTag)) {
             setExpectedResponse((int)json.getDouble("ExpectedResponse"));
         }
-        if (key.equals(NUM_SENT)) {
+        if (key.equals(numberSentTag)) {
             setNumSent((int)json.getDouble("NumberSent"));
         }
-        if (key.equals(DESCRIPTION)) {
-            setDescription(json.getString(DESCRIPTION));
+        if (key.equals(descriptionTag)) {
+            setDescription(json.getString(descriptionTag));
         }
-        if (key.equals(START_DATE)) {
+        if (key.equals(startDateTag)) {
             setStartDate(json.getString("StartDate"));
         }
-        if (key.equals(END_DATE)) {
+        if (key.equals(endDateTag)) {
             setEndDate(json.getString("EndDate"));
         }
     }
@@ -330,19 +330,19 @@ public class Campaign {
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put(NAME, () -> setName(campaigns.get(NAME)));
-        strategyMap.put(ACTIVE, () -> setActivate(campaigns.get(ACTIVE).equals("True")));
-        strategyMap.put(TYPE, () -> setType(campaigns.get(TYPE)));
-        strategyMap.put(STATUS, () -> setStatus(campaigns.get(STATUS)));
-        strategyMap.put(START_DATE, () -> setStartDate(Common.translateDate(campaigns.get(START_DATE).toLowerCase())));
-        strategyMap.put(END_DATE, () -> setEndDate(Common.translateDate(campaigns.get(END_DATE).toLowerCase())));
-        strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
-        strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
-        strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));
-        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(Integer
-                                                                    .parseInt(campaigns.get(EXPECTED_RESPONSE))));
-        strategyMap.put(NUM_SENT, () -> setNumSent(Integer.parseInt(campaigns.get(NUM_SENT))));
-        strategyMap.put(DESCRIPTION, () -> setDescription(campaigns.get(DESCRIPTION)));
+        strategyMap.put(nameTag, () -> setName(campaigns.get(nameTag)));
+        strategyMap.put(activeTag, () -> setActivate(campaigns.get(activeTag).equals("true")));
+        strategyMap.put(typeTag, () -> setType(campaigns.get(typeTag)));
+        strategyMap.put(statusTag, () -> setStatus(campaigns.get(statusTag)));
+        strategyMap.put(startDateTag, () -> setStartDate(Common.translateDate(campaigns.get(startDateTag).toLowerCase())));
+        strategyMap.put(endDateTag, () -> setEndDate(Common.translateDate(campaigns.get(endDateTag).toLowerCase())));
+        strategyMap.put(expectedRevenueTag, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(expectedRevenueTag))));
+        strategyMap.put(budgetedCostTag, () -> setBudgetedCost(Integer.parseInt(campaigns.get(budgetedCostTag))));
+        strategyMap.put(actualCostTag, () -> setActualCost(Integer.parseInt(campaigns.get(actualCostTag))));
+        strategyMap.put(expectedResponseTag, () -> setExpectedResponse(Integer
+                                                                    .parseInt(campaigns.get(expectedResponseTag))));
+        strategyMap.put(numberSentTag, () -> setNumSent(Integer.parseInt(campaigns.get(numberSentTag))));
+        strategyMap.put(descriptionTag, () -> setDescription(campaigns.get(descriptionTag)));
         return strategyMap;
     }
 }
