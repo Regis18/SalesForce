@@ -249,12 +249,13 @@ public class CampaignSteps {
         mapOut.forEach((key, value) -> {
             System.out.println("Resultado: " + jsonCampaign.getString(key));
             System.out.println("Resultado: " + mapOut.get(key));
+            String values = value;
             if (key.equals("StartDate") || key.equals("EndDate")) {
-                value = Common.translateDate(value);
+                values = Common.translateDate(value);
             }
-            assertTrue(jsonCampaign.getString(key).equals(value),
+            assertTrue(jsonCampaign.getString(key).equals(values),
                     "The field " + key + "was not equal. Expected value "
-                            + value);
+                            + values);
         });
     }
 
