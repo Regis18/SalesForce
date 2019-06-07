@@ -66,15 +66,15 @@ public class DriverMethods {
      */
     public static boolean searchForExistentElement(final By locator) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
-        int cont = 50;
+        int cont = 100;
         boolean result = false;
         while (cont > 0 && result == false) {
             try {
                 webDriver.manage()
                         .timeouts()
                         .implicitlyWait(TIMEWAIT, TimeUnit.MILLISECONDS);
-                String value = webDriver.findElement(locator).getText();
-                System.out.println(value);
+                webDriver.findElement(locator);
+
                 result = true;
                 cont --;
             } catch (NoSuchElementException e) {

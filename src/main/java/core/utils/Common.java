@@ -79,7 +79,7 @@ public final class Common {
      */
     public static String translateDate(final String dateKey) {
         Date today = translateDateBase(dateKey);
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
         return format.format(today);
     }
 

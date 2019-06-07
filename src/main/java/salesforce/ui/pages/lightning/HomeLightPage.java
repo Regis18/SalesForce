@@ -81,17 +81,12 @@ public class HomeLightPage extends HomePageAbstract {
             Thread.sleep(MILLIS);
         } catch (Exception e) {
         }
-//        if (WebDriverConfig.getInstance().getBrowser().toLowerCase() == "chrome") {
-//            Actions actions = new Actions(driver);
-//            actions.sendKeys(Keys.ARROW_DOWN);
-//            actions.sendKeys(Keys.ENTER);
-//            actions.perform();
-//        } else {
-            WebElement itemToSelect = wait.until(ExpectedConditions.
-                    visibilityOfElementLocated(By.xpath("//a[span/span[contains(text(),'New Task')]]")));
-            JavascriptExecutor executor = (JavascriptExecutor) driver;
-            executor.executeScript("arguments[0].click();", itemToSelect);
-        //}
+
+        WebElement itemToSelect = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//a[span/span[contains(text(),'New Task')]]")));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", itemToSelect);
+
         return new NewTaskLightPopUp();
     }
 

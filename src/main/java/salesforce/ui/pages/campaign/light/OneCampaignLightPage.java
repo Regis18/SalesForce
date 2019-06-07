@@ -60,9 +60,6 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
     private WebElement campaignTabBar;
 
-    @FindBy(xpath = "*//span[@class='uiOutputText']")
-    private WebElement nameCampaign;
-
     @FindBy(css = "[class='uiImage uiOutputCheckbox']")
     private WebElement isActive;
 
@@ -71,6 +68,10 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     private WebElement deletePopupBtn;
 
     private String valueCampaign = "//div[div[span[contains(text(),'key')]]]//*//span[contains(text(),'element')]";
+
+    private String valueActiveCampaign = "//div[div[span[contains(text(),'key')]]]//*//span[*[@alt='element']]";
+
+    private String nameCampaign = "//span//span[contains(text(), 'element')]";
 
     private final String element = "element";
 
@@ -91,12 +92,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @Override
     public boolean verifyComponentsCampaign(Campaign campaign) {
         clickDetailsTab();
-        if (DriverMethods.searchForExistentElement(By.xpath("*//span[@class='uiOutputText']"))) {
-            System.out.println("VERIFY COMPONENTES: "+nameCampaign.getText());
-            System.out.println("VERIFY COMPONENTES: "+campaign.getName());
-            return nameCampaign.getText().equals(campaign.getName());
-        }
-        return false;
+        return DriverMethods.searchForExistentElement(By.xpath(nameCampaign.replace(
+                "element", campaign.getName())));
     }
 
     /**
@@ -155,7 +152,19 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return Boolean
      */
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
-        return DriverMethods.searchForExistentElement(By.xpath(valueCampaign.replace(this.element, value).replace(this.key, key)));
+        if (key.equals("Name")) {
+            clickDetailsTab();
+        }
+        if (key.equals("Active")) {
+            String values = value.equals("true") ? "True" : "False";
+            return DriverMethods.searchForExistentElement(By.xpath(valueActiveCampaign
+                    .replace(this.element, values)
+                    .replace(this.key, key)));
+        } else {
+            return DriverMethods.searchForExistentElement(By.xpath(valueCampaign
+                    .replace(this.element, value)
+                    .replace(this.key, key)));
+        }
     }
 
     /**
