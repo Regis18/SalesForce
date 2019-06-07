@@ -71,5 +71,15 @@ public class TaskHook {
         Setup.getInstance().setTaskContact(lastName);
     }
 
+    @After("@deleteAllAccounts")
+    public void deleteAllAccounts() {
+        TaskApi.deleteAllAccounts();
+    }
+
+    @After("@deleteAllContacts")
+    public void deleteAllContacts() {
+        TaskApi.deleteAllContacts();
+    }
+
 }
 

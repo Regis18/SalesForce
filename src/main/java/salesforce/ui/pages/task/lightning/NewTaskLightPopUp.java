@@ -102,6 +102,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @return the text message.
      */
     public boolean verifyMessage(final String message) {
+        String uim =getMessageConfirmation();
         return message.equals(getMessageConfirmation());
     }
 

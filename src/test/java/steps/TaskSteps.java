@@ -86,7 +86,7 @@ public class TaskSteps {
         }
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
        //task.setContact(Setup.getInstance().getTaskContact());
-       // task.setAccount(Setup.getInstance().getTaskAccount());
+       //task.setAccount(Setup.getInstance().getTaskAccount());
 
         newTaskPage = homePage.displayCreateTask();
 //        if (!task.getContact().equals("")) {
@@ -165,10 +165,10 @@ public class TaskSteps {
             assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
         }
         if (taskCreated.equals("updated")) {
-            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated."));
+            assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was updated."));
         }
         if (taskCreated.equals("deleted")) {
-            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was deleted."));
+            assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was deleted."));
         }
     }
 

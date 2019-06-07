@@ -21,7 +21,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
 
-  @deleteTask @deleteAllTask @createAccountForTask @createContactForTask
+  @deleteTask @deleteAllTask @createAccountForTask @createContactForTask @deleteAllAccounts @deleteAllContacts
   Scenario: Create a new Task with XY
     When I create a new Task with this values
       | Subject  | callTask_random |
