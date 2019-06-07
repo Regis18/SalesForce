@@ -107,56 +107,6 @@ public class TaskPageClassic extends TaskPageAbstract {
         return true;
     }
 
-//    @Override
-//    public boolean verifyTaskWasCreated(final Task task) {
-//
-//        try {
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
-//
-//            WebElement subject =
-//                    driver.findElement(By.xpath(SUBJECT));
-//            String uiSubject = subject.getText();
-//            if (!uiSubject.equals(task.getSubject())) {
-//                return false;
-//            }
-//
-//            WebElement comment =
-//                    driver.findElement(By.xpath(COMMENT));
-//            String uiComment = comment.getText().trim();
-//            if (!uiComment.equals(task.getComment())) {
-//                return false;
-//            }
-//            WebElement priority =
-//                    driver.findElement(By.xpath(PRIORITY));
-//            String uiPriority = priority.getText().trim();
-//            if (!uiPriority.equals(task.getPriority())) {
-//                return false;
-//            }
-//            WebElement status =
-//                    driver.findElement(By.xpath(STATUS));
-//            String uiStatus = status.getText().trim();
-//            if (!uiStatus.equals(task.getStatus())) {
-//                return false;
-//            }
-//
-//            WebElement contact = driver.findElement(By.xpath(CONTACT));
-//            String uiContact = contact.getText();
-//            if (!uiContact.equals(task.getContact())) {
-//                return false;
-//            }
-//
-//            WebElement account = driver.findElement(By.xpath(ACCOUNT));
-//            String uiAccount = account.getText();
-//            if (!uiAccount.equals(task.getAccount())) {
-//                return false;
-//            }
-//
-//        } catch (Exception e) {
-//            return false;
-//        }
-//        return true;
-//    }
-
     @Override
     public boolean verifyTaskWasCreated(final Task task) {
         HashMap<String, String> datos = fillLocatorMap();

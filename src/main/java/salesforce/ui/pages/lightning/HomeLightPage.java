@@ -116,7 +116,7 @@ public class HomeLightPage extends HomePageAbstract {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-      //  wait.until(ExpectedConditions.visibilityOf(homeForm));
+        wait.until(ExpectedConditions.visibilityOf(homeForm));
     }
 
     /**
