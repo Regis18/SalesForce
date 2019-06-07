@@ -85,8 +85,8 @@ public class TaskSteps {
             newTaskPage = PageFactory.getNewTaskPage();
         }
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
-        task.setContact(Setup.getInstance().getTaskContact());
-        task.setAccount(Setup.getInstance().getTaskAccount());
+       //task.setContact(Setup.getInstance().getTaskContact());
+       // task.setAccount(Setup.getInstance().getTaskAccount());
 
         newTaskPage = homePage.displayCreateTask();
 //        if (!task.getContact().equals("")) {
