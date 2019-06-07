@@ -37,6 +37,9 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     @FindBy(xpath = "//input[@name='new']")
     private WebElement newCampaignBtn;
 
+    @FindBy(id = "phSearchInput")
+    private WebElement searchTxt;
+
     private String campaignList = "//tr[@onmouseout='if (window.hiOff){hiOff(this);}']//a[contains(text(),'campaign')]";
     /**
      * Wait for Campaign Form.
@@ -64,5 +67,13 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     @Override
     public boolean checkCampaignList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(campaignList.replace("campaign", name)));
+    }
+    /**
+     * Searches the campaign in the list.
+     * @param name string.
+     */
+    @Override
+    public void searchCampaignInList(String name) {
+        searchTxt.click();
     }
 }

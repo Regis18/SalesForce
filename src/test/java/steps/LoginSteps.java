@@ -30,14 +30,23 @@ public class LoginSteps {
      * Sign in step.
      */
     @Given("^I log in to the Salesforce Application$")
-    public void signIn() {
-        loginPage = transporterPage.navigateToLoginPage();
-        setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
+    public void logInToTheSalesforceApplication() {
+        if (driver.getTitle().equals("")) {
+            loginPage = transporterPage.navigateToLoginPage();
+            setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
+        }
     }
 
     @Given("^I navigate to HomePage$")
     public void navigateToHomePage() {
-        homePage = transporterPage.navigateToHomePage(setupPage);
+        System.out.println("estamos en el homepage" + setupPage);
+
+        if (setupPage != null) {
+            homePage = transporterPage.navigateToHomePage(setupPage);
+        } else {
+            homePage = transporterPage.navigateToHomePage();
+        }
         context.setHomePage(homePage);
     }
+
 }

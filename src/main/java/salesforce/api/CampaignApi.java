@@ -30,12 +30,10 @@ import static io.restassured.RestAssured.given;
  */
 public class CampaignApi {
 
-    private final String API_PATH = Setup.getInstance().getApiPath();
-    private final String DELETE = "DELETE";
-    private final String GET = "GET";
-    private final String POST = "POST";
-    private final String PUT = "PUT";
-    private final String token = Setup.getInstance().getToken();
+    private final String apiPath = Setup.getInstance().getApiPath();
+    private final String delete = "delete";
+    private final String get = "get";
+    private final String post = "post";
     private String url;
 
     /**
@@ -43,23 +41,37 @@ public class CampaignApi {
      *
      * @param id String.
      */
-    public void deleteCampaign(String id) {
-        url = API_PATH + "Campaign/" + id;
+    public void deleteCampaign(final String id) {
+        url = apiPath + "Campaign/" + id;
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .when()
-                .request(DELETE, url);
+                .request(delete, url);
     }
 
     /**
      * Gets all campaigns.
      */
     public void getCampaigns() {
-        url = API_PATH + "Campaign";
+        url = apiPath + "Campaign";
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .when()
-                .request(GET, url);
+                .request(get, url);
+    }
+
+    /**
+     * Get the campaign.
+     * @param id string
+     * @return JsonPath.
+     */
+    public JsonPath getCampaignById(final String id) {
+        url = apiPath + "Campaign/" + id;
+        Response response = given().headers("Content-Type", "application/json")
+                .auth().oauth2(CommonApi.getToken())
+                .when()
+                .request(get, url);
+        return response.body().jsonPath();
     }
 
     /**
@@ -67,13 +79,13 @@ public class CampaignApi {
      * @param newCampaign Map.
      * @return JsonPath.
      */
-    public JsonPath createCampaign(Map<String, String> newCampaign) {
-        url = API_PATH + "Campaign";
+    public JsonPath createCampaign(final Map<String, String> newCampaign) {
+        url = apiPath + "Campaign";
         Response response = given().headers("Content-Type", "application/json")
-                .auth().oauth2(token)
+                .auth().oauth2(CommonApi.getToken())
                 .body(newCampaign)
                 .when()
-                .request(POST, url);
+                .request(post, url);
         return response.body().jsonPath();
     }
 }

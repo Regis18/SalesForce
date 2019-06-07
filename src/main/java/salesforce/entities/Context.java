@@ -2,6 +2,8 @@ package salesforce.entities;
 
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 
+import java.util.List;
+
 /**
  * Context.
  * @author Regis Humana.
@@ -10,7 +12,7 @@ public class Context {
     private Campaign campaign;
     private Account account;
     private HomePageAbstract homePage;
-
+    private List<String> ids;
     /**
      * This is the context for creation of the constructor.
      */
@@ -49,5 +51,21 @@ public class Context {
      */
     public Account getAccount() {
         return account;
+    }
+
+    /**
+     * Get ids.
+     * @return string list.
+     */
+    public List<String> getIds() {
+        return ids;
+    }
+
+    /**
+     * Set id.
+     * @param ids string list
+     */
+    public void setIds(List<String> ids) {
+        this.ids = ids;
     }
 }

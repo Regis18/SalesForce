@@ -28,18 +28,18 @@ import java.util.Map;
  */
 public abstract class NewCampaignAbstract extends BasePage {
 
-    private final String DESCRIPTION = "Description";
-    private final String NAME = "Name";
-    private final String ACTIVE = "Active";
-    private final String TYPE = "Type";
-    private final String STATUS = "Status";
-    private final String START_DATE = "Star Date";
-    private final String END_DATE = "End Date";
-    private final String EXPECTED_REVENUE = "Expected Revenue";
-    private final String BUDGETED_COST = "Budgeted Cost";
-    private final String ACTUAL_COST = "Actual Cost";
-    private final String EXPECTED_RESPONSE = "Expected Response";
-    private final String NUM_SENT = "Num Sent";
+    private final String descriptionTag = "Description";
+    private final String nameTag = "Name";
+    private final String activeTag = "IsActive";
+    private final String typeTag = "Type";
+    private final String statusTag = "Status";
+    private final String startDateTag = "StartDate";
+    private final String endDateTag = "EndDate";
+    private final String expectedRevenueTag = "ExpectedRevenue";
+    private final String budgetedCostTag = "BudgetedCost";
+    private final String actualCostTag = "ActualCost";
+    private final String expectedResponseTag = "ExpectedResponse";
+    private final String numberSentTag = "NumberSent";
     /**
      * Create a new campaign, it create for classic and lightning pages.
      *
@@ -152,18 +152,18 @@ public abstract class NewCampaignAbstract extends BasePage {
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Campaign data) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put(NAME, () -> setNameTxt(data.getName()));
-        strategyMap.put(ACTIVE, () -> setActiveChk(data.isActivate()));
-        strategyMap.put(TYPE, () -> setTypeCmb(data.getType()));
-        strategyMap.put(STATUS, () -> setStatusCmb(data.getStatus()));
-//        strategyMap.put(START_DATE, () -> setStartDate(data.getStartDate()));
-//        strategyMap.put(END_DATE, () -> setEndDate(data.getEndDate()));
-        strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenueTxt(data.getExpectedRevenue()));
-        strategyMap.put(BUDGETED_COST, () -> setBudgetedCostTxt(data.getBudgetedCost()));
-        strategyMap.put(ACTUAL_COST, () -> setActualCostTxt(data.getActualCost()));
-        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(data.getExpectedResponse()));
-        strategyMap.put(NUM_SENT, () -> setNumSent(data.getNumSent()));
-        strategyMap.put(DESCRIPTION, () -> setDescriptionTxt(data.getDescription()));
+        strategyMap.put(nameTag, () -> setNameTxt(data.getName()));
+        strategyMap.put(activeTag, () -> setActiveChk(data.isActivate()));
+        strategyMap.put(typeTag, () -> setTypeCmb(data.getType()));
+        strategyMap.put(statusTag, () -> setStatusCmb(data.getStatus()));
+        strategyMap.put(startDateTag, () -> setStartDate(data.getStartDate()));
+        strategyMap.put(endDateTag, () -> setEndDate(data.getEndDate()));
+        strategyMap.put(expectedRevenueTag, () -> setExpectedRevenueTxt(data.getExpectedRevenue()));
+        strategyMap.put(budgetedCostTag, () -> setBudgetedCostTxt(data.getBudgetedCost()));
+        strategyMap.put(actualCostTag, () -> setActualCostTxt(data.getActualCost()));
+        strategyMap.put(expectedResponseTag, () -> setExpectedResponse(data.getExpectedResponse()));
+        strategyMap.put(numberSentTag, () -> setNumSent(data.getNumSent()));
+        strategyMap.put(descriptionTag, () -> setDescriptionTxt(data.getDescription()));
         return strategyMap;
     }
 }

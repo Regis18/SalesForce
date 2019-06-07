@@ -1,5 +1,5 @@
 /*
- * @(#) NewCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EditCampaignClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -16,42 +16,38 @@ package salesforce.ui.pages.campaign.classic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import salesforce.entities.Campaign;
-import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
-
-import java.util.Map;
+import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 
 /**
- * NewCampaignClassicPage.
+ * EditCampaignClassicPage.
  * @author Regis Humana.
  * @version 0.0.1
  */
-public class NewCampaignClassicPage extends NewCampaignAbstract {
+public class EditCampaignClassicPage extends EditCampaignAbstract {
 
     @FindBy(id = "bodyCell")
-    private WebElement newCampaignForm;
+    private WebElement editBodyForm;
+
+    @FindBy(css = "[id='topButtonRow'] input[name='save']")
+    private WebElement saveBtn;
 
     @FindBy(id = "cpn1")
     private WebElement nameTxt;
 
-    @FindBy (xpath = "//td[@id=\"bottomButtonRow\"]//input[@name=\"save\"]")
-    private WebElement saveBottomBtn;
-
     @FindBy(id = "cpn16")
     private WebElement activateChk;
-
-    @FindBy(id = "cpn5")
-    private WebElement startDateTxt;
-
-    @FindBy(id = "cpn6")
-    private WebElement endDateTxt;
 
     @FindBy(id = "cpn2")
     private WebElement typeCmb;
 
     @FindBy(id = "cpn3")
     private WebElement statusCmb;
+
+    @FindBy(id = "cpn5")
+    private WebElement startDateTxt;
+
+    @FindBy(id = "cpn6")
+    private WebElement endDateTxt;
 
     @FindBy(id = "cpn8")
     private WebElement expectedRevenueTxt;
@@ -71,137 +67,147 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     @FindBy(id = "cpn4")
     private WebElement descriptionTxt;
 
-    /**
-     * Wait for newCampaignForm.
-     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newCampaignForm));
+        wait.until(ExpectedConditions.visibilityOf(editBodyForm));
     }
-
     /**
-     * Click into Save bottom.
+     * Sets the name into NameTxt.
+     *
+     * @param name **this is the name**
      */
-    @Override
-    protected void clickSaveBtn() {
-        saveBottomBtn.click();
-    }
-
-    /**
-     * Set name in the name TextBox.
-     * @param name String
-     */
-    @Override
     protected void setNameTxt(final String name) {
+        nameTxt.clear();
         nameTxt.sendKeys(name);
     }
 
+    /**
+     * Clicks to Save the changes.
+     */
+    public void clickSaveBtn() {
+        saveBtn.click();
+    }
+
+    /**
+     * Sets Activate checkbox.
+     *
+     * @param isActivate boolean
+     */
     @Override
     protected void setActiveChk(final boolean isActivate) {
         if (isActivate) {
+            activateChk.click();
+        } else if (activateChk.isSelected() && isActivate == false) {
             activateChk.click();
         }
     }
 
     /**
-     * Set Type of Lightning.
+     * Set type combo box.
+     *
      * @param type string.
      */
     @Override
     protected void setTypeCmb(final String type) {
-        Select accountRole = new Select(typeCmb);
-        accountRole.selectByVisibleText(type);
+        typeCmb.sendKeys(type);
     }
 
     /**
-     * Set Status Combo Box.
+     * Set status combo box.
+     *
      * @param status string.
      */
     @Override
     protected void setStatusCmb(final String status) {
-        Select accountRole = new Select(statusCmb);
-        accountRole.selectByVisibleText(status);
+        //--None--, Planned, Completed, In Progress, Aborted
+        statusCmb.sendKeys(status);
     }
 
     /**
-     * Set start date.
+     * Sets start date text box.
+     *
      * @param startDate string.
      */
     @Override
     protected void setStartDate(final String startDate) {
+        startDateTxt.clear();
         startDateTxt.sendKeys(startDate);
     }
 
     /**
-     * Set End Date.
+     * Sets end date text box.
+     *
      * @param endDate string.
      */
     @Override
     protected void setEndDate(final String endDate) {
+        endDateTxt.clear();
         endDateTxt.sendKeys(endDate);
     }
 
     /**
-     * Set expected revenue text box.
+     * Sets expected revenue text box.
+     *
      * @param expected integer.
      */
     @Override
     protected void setExpectedRevenueTxt(final Integer expected) {
+        expectedRevenueTxt.clear();
         expectedRevenueTxt.sendKeys(expected.toString());
     }
 
     /**
-     * Set budgeted cost text box.
+     * Sets budgeted cost text box.
+     *
      * @param budgeted integer.
      */
     @Override
     protected void setBudgetedCostTxt(final Integer budgeted) {
+        budgetedCostTxt.clear();
         budgetedCostTxt.sendKeys(budgeted.toString());
     }
 
     /**
-     * Set actual cost text box.
+     * Sets actual cost text box.
+     *
      * @param actualCost integer.
      */
     @Override
     protected void setActualCostTxt(final Integer actualCost) {
+        actualCostTxt.clear();
         actualCostTxt.sendKeys(actualCost.toString());
     }
 
     /**
-     * Set num sent text box.
+     * Sets num sent text box.
+     *
      * @param numSent integer.
      */
     @Override
     protected void setNumSent(final Integer numSent) {
+        numSentTxt.clear();
         numSentTxt.sendKeys(numSent.toString());
     }
 
     /**
-     * Set description text box.
+     * Sets description text box.
+     *
      * @param description string.
      */
     @Override
     protected void setDescriptionTxt(final String description) {
+        descriptionTxt.clear();
         descriptionTxt.sendKeys(description);
     }
 
     /**
-     * Set campaign data into Campaign form.
-     * @param data Campaign
-     * @param map Map
-     */
-    @Override
-    public void setCampaignData(final Campaign data, final Map<String, String> map) {
-        super.setCampaignData(data, map);
-    }
-
-    /**
      * Set to Expected Response text.
+     *
      * @param expectedResponse string
      */
     @Override
     protected void setExpectedResponse(final Integer expectedResponse) {
+        expectedResponseTxt.clear();
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }

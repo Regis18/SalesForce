@@ -14,6 +14,7 @@ import java.util.Map;
 public final class WebDriverFactory {
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
+    private static final String EXPLORER = "explorer";
     private static WebDriver webDriver;
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
 
@@ -32,6 +33,7 @@ public final class WebDriverFactory {
         Map<String, IDriver> strategyBrowser = new HashMap<>();
         strategyBrowser.put(FIREFOX, new Firefox());
         strategyBrowser.put(CHROME, new Chrome());
+        strategyBrowser.put(EXPLORER, new InternetExplorer());
         return strategyBrowser.get(webDriverConfig.getBrowser().toLowerCase()).initDriver();
     }
 

@@ -10,7 +10,6 @@
  * with Jala Foundation.
  *
  */
-
 package salesforce.api;
 
 import io.restassured.response.Response;

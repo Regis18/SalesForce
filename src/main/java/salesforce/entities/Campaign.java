@@ -1,14 +1,15 @@
 package salesforce.entities;
 
+import core.utils.Common;
 import core.utils.StrategySetter;
 import io.restassured.path.json.JsonPath;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Campaign.
+ *
  * @author Regis Humana.
  * @version 0.0.1
  */
@@ -19,8 +20,8 @@ public class Campaign {
     private boolean activate;
     private String type;
     private String status;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int expectedRevenue;
     private int budgetedCost;
     private int actualCost;
@@ -28,22 +29,22 @@ public class Campaign {
     private int numSent;
     private String parentCampaign;
     private String description;
-    private final String ID = "Id";
-    private final String DESCRIPTION = "Description";
-    private final String NAME = "Name";
-    private final String ACTIVE = "Active";
-    private final String TYPE = "Type";
-    private final String STATUS = "Status";
-    private final String START_DATE = "Star Date";
-    private final String END_DATE = "End Date";
-    private final String EXPECTED_REVENUE = "Expected Revenue";
-    private final String BUDGETED_COST = "Budgeted Cost";
-    private final String ACTUAL_COST = "Actual Cost";
-    private final String EXPECTED_RESPONSE = "Expected Response";
-    private final String NUM_SENT = "Num Sent";
+    private final String descriptionTag = "Description";
+    private final String nameTag = "Name";
+    private final String activeTag = "IsActive";
+    private final String typeTag = "Type";
+    private final String statusTag = "Status";
+    private final String startDateTag = "StartDate";
+    private final String endDateTag = "EndDate";
+    private final String expectedRevenueTag = "ExpectedRevenue";
+    private final String budgetedCostTag = "BudgetedCost";
+    private final String actualCostTag = "ActualCost";
+    private final String expectedResponseTag = "ExpectedResponse";
+    private final String numberSentTag = "NumberSent";
 
     /**
      * Gets Id of Campaign.
+     *
      * @return id.
      */
     public String getId() {
@@ -52,14 +53,16 @@ public class Campaign {
 
     /**
      * Sets Id of Campaign.
+     *
      * @param id string.
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
     /**
      * Gets Campaign name.
+     *
      * @param name String
      */
     public void setName(final String name) {
@@ -68,6 +71,7 @@ public class Campaign {
 
     /**
      * Gets Campaign name.
+     *
      * @return name
      */
     public String getName() {
@@ -76,6 +80,7 @@ public class Campaign {
 
     /**
      * Gets Campaign boolean activate.
+     *
      * @return activate
      */
     public boolean isActivate() {
@@ -84,6 +89,7 @@ public class Campaign {
 
     /**
      * Sets boolean activate.
+     *
      * @param activate *
      */
     public void setActivate(final boolean activate) {
@@ -92,6 +98,7 @@ public class Campaign {
 
     /**
      * Gets Campaign type.
+     *
      * @return type.
      */
     public String getType() {
@@ -100,6 +107,7 @@ public class Campaign {
 
     /**
      * Sets Campaign type.
+     *
      * @param type *
      */
     public void setType(final String type) {
@@ -108,6 +116,7 @@ public class Campaign {
 
     /**
      * Gets Campaign status.
+     *
      * @return status
      */
     public String getStatus() {
@@ -116,6 +125,7 @@ public class Campaign {
 
     /**
      * Sets Campaign status.
+     *
      * @param status *
      */
     public void setStatus(final String status) {
@@ -124,38 +134,43 @@ public class Campaign {
 
     /**
      * Gets start date.
+     *
      * @return startDate
      */
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
     /**
      * Sets start Date.
+     *
      * @param startDate *
      */
-    public void setStartDate(final Date startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
     /**
      * Gets end date.
+     *
      * @return endDate
      */
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
     /**
      * Sets end Date.
+     *
      * @param endDate *
      */
-    public void setEndDate(final Date endDate) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
     /**
      * Gets expected revenue.
+     *
      * @return expectedRevenue
      */
     public int getExpectedRevenue() {
@@ -164,6 +179,7 @@ public class Campaign {
 
     /**
      * Sets expected revenue.
+     *
      * @param expectedRevenue *
      */
     public void setExpectedRevenue(final int expectedRevenue) {
@@ -172,6 +188,7 @@ public class Campaign {
 
     /**
      * Gets budgeted cost.
+     *
      * @return budgetedCost
      */
     public int getBudgetedCost() {
@@ -180,6 +197,7 @@ public class Campaign {
 
     /**
      * Sets budget Cost.
+     *
      * @param budgetedCost **
      */
     public void setBudgetedCost(final int budgetedCost) {
@@ -188,6 +206,7 @@ public class Campaign {
 
     /**
      * Gets actual cost.
+     *
      * @return actualCost
      */
     public int getActualCost() {
@@ -196,6 +215,7 @@ public class Campaign {
 
     /**
      * Sets actual cost.
+     *
      * @param actualCost **
      */
     public void setActualCost(final int actualCost) {
@@ -204,6 +224,7 @@ public class Campaign {
 
     /**
      * Gets expected response.
+     *
      * @return expectedResponse
      */
     public int getExpectedResponse() {
@@ -212,6 +233,7 @@ public class Campaign {
 
     /**
      * Sets expected response.
+     *
      * @param expectedResponse **
      */
     public void setExpectedResponse(final int expectedResponse) {
@@ -220,7 +242,8 @@ public class Campaign {
 
     /**
      * Gets Num Sent.
-     * @return  numSent
+     *
+     * @return numSent
      */
     public int getNumSent() {
         return numSent;
@@ -228,6 +251,7 @@ public class Campaign {
 
     /**
      * Sets num sent.
+     *
      * @param numSent int
      */
     public void setNumSent(final int numSent) {
@@ -236,6 +260,7 @@ public class Campaign {
 
     /**
      * Gets parent campaign.
+     *
      * @return parentCampaign
      */
     public String getParentCampaign() {
@@ -244,6 +269,7 @@ public class Campaign {
 
     /**
      * Sets parent campaign.
+     *
      * @param parentCampaign String
      */
     public void setParentCampaign(final String parentCampaign) {
@@ -252,6 +278,7 @@ public class Campaign {
 
     /**
      * Gets description.
+     *
      * @return string.
      */
     public String getDescription() {
@@ -260,6 +287,7 @@ public class Campaign {
 
     /**
      * Sets description.
+     *
      * @param description string.
      */
     public void setDescription(final String description) {
@@ -268,26 +296,55 @@ public class Campaign {
 
     /**
      * Sets the json values into Campaign.
+     *
      * @param json JsonPath.
+     * @param key  string.
      */
-    public void setJsonValues(JsonPath json) {
-        setId(json.getString(ID));
-        setName(json.getString(NAME));
-        setActivate(json.getBoolean("IsActive"));
-        setType(json.getString(TYPE));
-        setStatus(json.getString(STATUS));
-//        setStartDate(json.getString("StartDate"));
-//        setEndDate(json.getString("EndDate"));
-        setExpectedRevenue(json.getInt("ExpectedRevenue"));
-        setBudgetedCost(json.getInt("BudgetedCost"));
-        setActualCost(json.getInt("ActualCost"));
-        setExpectedResponse(json.getInt("ExpectedResponse"));
-        setNumSent(json.getInt("NumberSent"));
-        setDescription(json.getString(DESCRIPTION));
+    public void setJsonValues(final String key, final JsonPath json) {
+        if (key.equals("Id")) {
+            setId(json.getString(key));
+        }
+        if (key.equals("Name")) {
+            setName(json.getString(key));
+        }
+        if (key.equals(activeTag)) {
+            setActivate(json.getBoolean(key));
+        }
+        if (key.equals(typeTag)) {
+            setType(json.getString(typeTag));
+        }
+        if (key.equals(statusTag)) {
+            setStatus(json.getString(statusTag));
+        }
+        if (key.equals(expectedRevenueTag)) {
+            setExpectedRevenue((int) json.getDouble("ExpectedRevenue"));
+        }
+        if (key.equals(budgetedCostTag)) {
+            setBudgetedCost((int) json.getDouble("BudgetedCost"));
+        }
+        if (key.equals(actualCostTag)) {
+            setActualCost((int) json.getDouble("ActualCost"));
+        }
+        if (key.equals(expectedResponseTag)) {
+            setExpectedResponse((int) json.getDouble("ExpectedResponse"));
+        }
+        if (key.equals(numberSentTag)) {
+            setNumSent((int) json.getDouble("NumberSent"));
+        }
+        if (key.equals(descriptionTag)) {
+            setDescription(json.getString(descriptionTag));
+        }
+        if (key.equals(startDateTag)) {
+            setStartDate(json.getString("StartDate"));
+        }
+        if (key.equals(endDateTag)) {
+            setEndDate(json.getString("EndDate"));
+        }
     }
 
     /**
      * Processes information of the map and sent to composeStrategyMap.
+     *
      * @param campaigns Map.
      */
     public void processInformation(final Map<String, String> campaigns) {
@@ -299,24 +356,28 @@ public class Campaign {
 
     /**
      * Composes the values of Campaign.
+     *
      * @param campaigns String
      * @return Hashmap
      */
     private HashMap<String, StrategySetter> composeStrategyMap(final Map<String, String> campaigns) {
         HashMap<String, StrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put(NAME, () -> setName(campaigns.get(NAME)));
-        strategyMap.put(ACTIVE, () -> setActivate(campaigns.get(ACTIVE).equals("True")));
-        strategyMap.put(TYPE, () -> setType(campaigns.get(TYPE)));
-        strategyMap.put(STATUS, () -> setStatus(campaigns.get(STATUS)));
-//        strategyMap.put(START_DATE, () -> setStartDate(campaigns.get(START_DATE)));
-//        strategyMap.put(END_DATE, () -> setEndDate(campaigns.get(END_DATE)));
-        strategyMap.put(EXPECTED_REVENUE, () -> setExpectedRevenue(Integer.parseInt(campaigns.get(EXPECTED_REVENUE))));
-        strategyMap.put(BUDGETED_COST, () -> setBudgetedCost(Integer.parseInt(campaigns.get(BUDGETED_COST))));
-        strategyMap.put(ACTUAL_COST, () -> setActualCost(Integer.parseInt(campaigns.get(ACTUAL_COST))));
-        strategyMap.put(EXPECTED_RESPONSE, () -> setExpectedResponse(Integer
-                                                                    .parseInt(campaigns.get(EXPECTED_RESPONSE))));
-        strategyMap.put(NUM_SENT, () -> setNumSent(Integer.parseInt(campaigns.get(NUM_SENT))));
-        strategyMap.put(DESCRIPTION, () -> setDescription(campaigns.get(DESCRIPTION)));
+        strategyMap.put(nameTag, () -> setName(campaigns.get(nameTag)));
+        strategyMap.put(activeTag, () -> setActivate(campaigns.get(activeTag).equals("true")));
+        strategyMap.put(typeTag, () -> setType(campaigns.get(typeTag)));
+        strategyMap.put(statusTag, () -> setStatus(campaigns.get(statusTag)));
+        strategyMap.put(startDateTag, () -> setStartDate(Common.translateDate
+                                            (campaigns.get(startDateTag).toLowerCase())));
+        strategyMap.put(endDateTag, () -> setEndDate(Common.translateDate
+                                            (campaigns.get(endDateTag).toLowerCase())));
+        strategyMap.put(expectedRevenueTag, () -> setExpectedRevenue(Integer.parseInt
+                                            (campaigns.get(expectedRevenueTag))));
+        strategyMap.put(budgetedCostTag, () -> setBudgetedCost(Integer.parseInt(campaigns.get(budgetedCostTag))));
+        strategyMap.put(actualCostTag, () -> setActualCost(Integer.parseInt(campaigns.get(actualCostTag))));
+        strategyMap.put(expectedResponseTag, () -> setExpectedResponse(Integer
+                                            .parseInt(campaigns.get(expectedResponseTag))));
+        strategyMap.put(numberSentTag, () -> setNumSent(Integer.parseInt(campaigns.get(numberSentTag))));
+        strategyMap.put(descriptionTag, () -> setDescription(campaigns.get(descriptionTag)));
         return strategyMap;
     }
 }

@@ -13,6 +13,7 @@
 package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,15 +27,21 @@ import salesforce.utils.DriverMethods;
  */
 public class CampaignLightPage extends CampaignPageAbstract {
 
-    @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
+    @FindBy(css = "[class='uiOutputText forceBreadCrumbItem']")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title=\"New\"]")
+    @FindBy(xpath = "//a[@title='New']")
     private WebElement newCampaignBtn;
 
-    private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
+    @FindBy(css = "[name='Campaign-search-input']")
+    private WebElement searchCampaignTxt;
 
-    private final String CAMPAIGN = "Campaign";
+    @FindBy(xpath = "//span[contains(@class, 'forceActionsText')]")
+    private WebElement messageConfirmation;
+
+    private String campaignList = "//a[@data-refid='recordId' and contains(text(),'Campaign')]";
+
+    private final String campaign = "Campaign";
 
     /**
      * Wait for the title appears.
@@ -60,6 +67,24 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        return DriverMethods.isElementPresent(By.xpath(campaignList.replace(CAMPAIGN, name)));
+        return DriverMethods.isElementPresent(By.xpath(campaignList.replace(campaign, name)));
+    }
+
+    /**
+     * Searches the campaign in the list.
+     * @param name string.
+     */
+    @Override
+    public void searchCampaignInList(final String name) {
+        searchCampaignTxt.sendKeys(name);
+        searchCampaignTxt.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * Get the message confirmation.
+     * @return message string.
+     */
+    public String getMessageConfirmation() {
+        return messageConfirmation.getText();
     }
 }
