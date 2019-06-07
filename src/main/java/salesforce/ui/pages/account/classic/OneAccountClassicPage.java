@@ -194,12 +194,9 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         while (it.hasNext()) {
             String getValue;
             String key = (String) it.next();
-
             if (key.equals("Name")) {
                 String value = nameAc.getText();
-                System.out.println("eeeeeeeeeeeeeeeeeeeeee: "+value);
             }
-
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
                 getValue = value.replace( "¤", "");

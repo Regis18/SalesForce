@@ -62,20 +62,9 @@ public class AccountApi {
     }
 
     /**
-     * Create Account with API test.
+     * Create Account with API.
      */
- /*   Map<String,String> newProject = new HashMap<>();
-            newProject.put("name", project.getNameProject());
-    Response response = given().headers("X-TrackerToken","fa8b8b2d9fd0a6b5beea1c8e232daa67",
-            "Content-Type", "application/json").
-            auth().basic("user","pass").
-            body(newProject).
-            when().
-            request("POST", url);
-
-        project.setId(response.body().jsonPath().getInt("id"));*/
     public void createAccount(Account account) {
-
         Response response = given()
                 .headers("Content-Type", "application/json")
                 .auth().oauth2(CommonApi.getToken())
