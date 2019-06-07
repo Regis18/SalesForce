@@ -36,8 +36,9 @@ public abstract class OneCampaignAbstract extends BasePage {
     /**
      * Delete Campaign of Salesforce with specific name.
      * @param nameCampaign string
+     * @return CampaignPageAbstract.
      */
-    public abstract void deleteCampaign(String nameCampaign);
+    public abstract CampaignPageAbstract deleteCampaign(String nameCampaign);
 
     /**
      * Open Edit Campaign.
@@ -52,4 +53,10 @@ public abstract class OneCampaignAbstract extends BasePage {
      * @return Boolean
      */
     public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
+
+    /**
+     * Click the button Campaign and redirected to CampaignPage.
+     * @return CampaignPageAbstract.
+     */
+    public abstract CampaignPageAbstract openCampaignPage();
 }

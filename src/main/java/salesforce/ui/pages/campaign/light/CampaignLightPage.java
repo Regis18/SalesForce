@@ -27,16 +27,19 @@ import salesforce.utils.DriverMethods;
  */
 public class CampaignLightPage extends CampaignPageAbstract {
 
-    @FindBy(xpath = "//span[@class=\"uiOutputText forceBreadCrumbItem\"]")
+    @FindBy(css = "[class='uiOutputText forceBreadCrumbItem']")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title=\"New\"]")
+    @FindBy(xpath = "//a[@title='New']")
     private WebElement newCampaignBtn;
 
     @FindBy(css = "[name='Campaign-search-input']")
     private WebElement searchCampaignTxt;
 
-    private String campaignList = "//a[@data-refid=\"recordId\" and contains(text(),\"Campaign\")]";
+    @FindBy(xpath = "//span[contains(@class, 'forceActionsText')]")
+    private WebElement messageConfirmation;
+
+    private String campaignList = "//a[@data-refid='recordId' and contains(text(),'Campaign')]";
 
     private final String campaign = "Campaign";
 
@@ -75,5 +78,13 @@ public class CampaignLightPage extends CampaignPageAbstract {
     public void searchCampaignInList(final String name) {
         searchCampaignTxt.sendKeys(name);
         searchCampaignTxt.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * Get the message confirmation.
+     * @return message string.
+     */
+    public String getMessageConfirmation() {
+        return messageConfirmation.getText();
     }
 }

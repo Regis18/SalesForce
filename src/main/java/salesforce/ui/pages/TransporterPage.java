@@ -4,6 +4,8 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import salesforce.ui.pages.classic.HomeClassicPage;
+import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.PageFactory;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
@@ -104,18 +106,19 @@ public class TransporterPage {
 
     /**
      * Navigate to Home Page.
-     * @param  setupPage SetupPage.
      * @return New instance of HomePage.
      */
     public HomePageAbstract navigateToHomePage() {
-        log.info("Navigate in Log in page");
+        log.info("Navigate in Home in page");
         HomePageAbstract homePage = null;
         switch (setup.getLayout()) {
             case CLASSIC:
                 goToURL(baseClassicURL +"/home/home.jsp");
+                homePage = new HomeClassicPage();
                 break;
             case LIGHT:
                 goToURL(baseLightURL + "/lightning/page/home");
+                homePage = new HomeLightPage();
                 break;
             default:
                 break;

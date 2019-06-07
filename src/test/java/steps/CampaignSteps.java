@@ -14,7 +14,6 @@
 package steps;
 
 import core.utils.Common;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,12 +22,13 @@ import io.restassured.path.json.JsonPath;
 import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
+import salesforce.ui.pages.TransporterPage;
+import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
-import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
+import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
 import salesforce.utils.EntityId;
 
@@ -80,27 +80,15 @@ public class CampaignSteps {
     }
 
     /**
-     * Creates new campaign.
-     * @param mapOut
-     */
-    @When("^I create a new Campaign for Campaigns$")
-    public void createANewCampaignForCampaigns(Map<String, String> mapOut) {
-        this.mapOut = mapOut;
-        campaign.processInformation(mapOut);
-        newCampaignPage = campaignPage.clickNewCampaignBtn();
-        oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
-        campaign.setId(entityId.getIdEntitie());
-        ids.add(campaign.getId());
-        context.setIds(ids);
-    }
-
-    /**
      * Verifies a message confirmation.
      */
     @Then("^I verify a confirmation message of a new Campaign was created$")
     public void verifyAConfirmationMessageOfANewCampaignWasCreated() {
         try {
             String message = ((OneCampaignLightPage)oneCampaignPage).getMessageConfirmation();
+            if (message.equals("")) {
+                message = ((CampaignLightPage)campaignPage).getMessageConfirmation();
+            }
             assertEquals(message, "Campaign \"" + campaign.getName() + "\" was created.");
         } catch (ClassCastException e) {
             System.out.println("In Classic Skin there is no message confirmation");
@@ -131,7 +119,7 @@ public class CampaignSteps {
      */
     @When("^I delete a campaign \"([^\"]*)\" in its own Page$")
     public void deleteACampaignInSalesforce(String name) {
-        oneCampaignPage.deleteCampaign(name);
+        campaignPage = oneCampaignPage.deleteCampaign(name);
     }
 
     /**
@@ -149,11 +137,13 @@ public class CampaignSteps {
 
     /**
      * Verifies campaign is not the list.
-     * @param name
+     * @param name string.
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
     public void verifyIsNotInTheListOfCampaigns(String name) {
-        assertFalse(campaignPage.checkCampaignList(campaign.getName()));
+        boolean result = campaignPage.checkCampaignList(campaign.getName());
+        System.out.println("DELETE: " + result);
+        assertFalse(result);
     }
 
     /**
@@ -201,13 +191,10 @@ public class CampaignSteps {
 
     /**
      * Create a Campaign with API Testing.
-     * @param mapOut
+     * @param mapOut mapOut.
      */
     @Given("^I have a Campaign with the following values$")
     public void haveACampaignWithTheFollowingValues(final Map<String, String> mapOut) {
-//        Map<String, String> mapOutResult = mapOut;
-//        mapOutResult.replace("StartDate", Common.translateDate(mapOut.get("StartDate")));
-//        mapOutResult.replace("EndDate", Common.translateDate(mapOut.get("EndDate")));
         jsonPath = campaignApi.createCampaign(mapOut);
         jsonPath = campaignApi.getCampaignById(jsonPath.getString("id"));
         mapOut.forEach((key, value) -> {
@@ -228,7 +215,7 @@ public class CampaignSteps {
 
     /**
      * Search the campaign in the list of the Campaigns.
-     * @param nameCampaign
+     * @param nameCampaign string.
      */
     @And("^I search the campaign name \"([^\"]*)\" in the Search field of Campaign form$")
     public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
@@ -237,20 +224,13 @@ public class CampaignSteps {
 
     /**
      * Verify the values of the campaign with API result.
-     * @param arg0
+     * @param arg0 string.
      */
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
     public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
-        System.out.println("ID del Campaign" + campaign.getId());
-        System.out.println(campaignApi.getCampaignById(campaign.getId()).prettyPrint());
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
-        System.out.println("Resultado: " + mapOut.get("IsActive"));
-        System.out.println("Resultado: " + mapOut.get("IsActive"));
         mapOut.forEach((key, value) -> {
-            System.out.println("Resultado: " + jsonCampaign.getString(key));
-            System.out.println("Resultado: " + mapOut.get(key));
             String values = value;
-            System.out.println(key);
             if (key.equals("StartDate") || key.equals("EndDate")) {
                 values = Common.translateDateAPI(value.toLowerCase());
             }
@@ -258,5 +238,28 @@ public class CampaignSteps {
                     "The field " + key + "was not equal. Expected value "
                             + values + " but it found: " + jsonCampaign.getString(key));
         });
+    }
+
+    /**
+     * Creates new campaign.
+     * @param mapOut mapOut.
+     */
+    @When("^I create a new Campaign for Campaigns$")
+    public void createANewCampaignForCampaigns(final Map<String, String> mapOut) {
+        this.mapOut = mapOut;
+        campaign.processInformation(mapOut);
+        newCampaignPage = campaignPage.clickNewCampaignBtn();
+        oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
+        campaign.setId(entityId.getIdEntitie());
+        ids.add(campaign.getId());
+        context.setIds(ids);
+    }
+
+    /**
+     * Open Campaign page from Individual Campaign Page.
+     */
+    @When("^I open the Campaigns Page from Individual Campaign Page$")
+    public void openTheCampaignsPageFromIndividualCampaignPage() {
+        campaignPage = oneCampaignPage.openCampaignPage();
     }
 }

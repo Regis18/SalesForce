@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.DriverMethods;
@@ -30,8 +31,11 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,\"s1FixedTop forceHighlightsStencilDesktop\")]")
     private WebElement campaignPanelTitle;
 
-    @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
+    @FindBy(xpath = "//span[contains(@class, 'forceActionsText')]")
     private WebElement messageConfirmation;
+
+    @FindBy(xpath = "//button[@title='Close']")
+    private WebElement closeMessageConfirmation;
 
     @FindBy(xpath = "//div[contains(@class,\"OutputName\")]//span[contains(@class,\"OutputText\")]")
     private WebElement campaignTitleLbl;
@@ -51,6 +55,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[2]//a")
     private WebElement editMainMenuCmb;
+
+    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
+    private WebElement campaignTabBar;
 
     //**can be removed
     @FindBy(css = "button[title='Delete']")
@@ -94,6 +101,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return message string.
      */
     public String getMessageConfirmation() {
+        wait.until(ExpectedConditions.visibilityOf(messageConfirmation));
         return messageConfirmation.getText();
     }
 
@@ -107,12 +115,14 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     /**
      * Delete campaign.
      * @param nameCampaign string
+     * @return CampaignLightPage.
      */
     @Override
-    public void deleteCampaign(final String nameCampaign) {
+    public CampaignPageAbstract deleteCampaign(final String nameCampaign) {
         mainMenuCmb.click();
         deleteMainMenuCmb.click();
         deletePopupBtn.click();
+        return new CampaignLightPage();
     }
 
     /**
@@ -134,5 +144,16 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      */
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
         return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(element, value).replace(this.key, key)));
+    }
+
+    /**
+     * Click the button Campaign and redirected to CampaignPage.
+     * @return CampaignPageAbstract.
+     */
+    @Override
+    public CampaignPageAbstract openCampaignPage() {
+        closeMessageConfirmation.click();
+        campaignTabBar.click();
+        return new CampaignLightPage();
     }
 }

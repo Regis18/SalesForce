@@ -14,6 +14,7 @@
 package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -214,7 +215,8 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setExpectedResponse(final Integer expectedResponse) {
-        expectedResponseTxt.clear();
+        expectedResponseTxt.sendKeys(Keys.CONTROL + "a");
+        expectedResponseTxt.sendKeys(Keys.DELETE);
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }

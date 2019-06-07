@@ -14,6 +14,7 @@
 package salesforce.ui.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.BasePage;
@@ -41,7 +42,7 @@ public class SetupPage extends BasePage {
     @FindBy(css = "[class^='profile-link-label switch-to-aloha']")
     private WebElement switchClassicLink;
 
-    @FindBy(css = "[class^=\"bare slds-icon-waffle_container slds-context-bar__button\"]")
+    @FindBy(css = "[class^='bare slds-icon-waffle_container slds-context-bar__button']")
     private WebElement appLauncherBtn;
 
     @FindBy(css = "a[class^='app-launcher-link slds-text-link--reset'][title='Home']")
@@ -101,6 +102,8 @@ public class SetupPage extends BasePage {
     public HomePageAbstract navigateHomeLight() {
         if (isLight) {
             appLauncherBtn.click();
+//            homeLink.click();
+            wait.until(ExpectedConditions.elementToBeClickable(homeLink));
             homeLink.click();
         } else {
             switchLightLink.click();
