@@ -283,4 +283,74 @@ public final class TaskApi {
         }
     }
 
+    /**
+     * Delete all accounts.
+     */
+    public static void deleteAllAccounts() {
+        List<String> taskIds = new ArrayList<>();
+        String accountEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
+
+        //Gets all the tasks.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from account")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        for (int i = 0; i < taskIds.size(); i++) {
+            given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken()).when()
+                    .request("DELETE", accountEndPoint + taskIds.get(i));
+        }
+    }
+
+    /**
+     * Delete all accounts.
+     */
+    public static void deleteAllContacts() {
+        List<String> taskIds = new ArrayList<>();
+        String contactEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Contact/";
+
+        //Gets all the tasks.
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .queryParam("q", "select id from contact")
+                .auth().oauth2(CommonApi.getToken())
+                .when().get(Setup.getInstance().getQueryUrl());
+
+        try {
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            JSONArray records = (JSONArray) jo.get("records");
+
+            Iterator<JSONObject> iterator = records.iterator();
+            while (iterator.hasNext()) {
+                taskIds.add((String) (iterator.next().get("Id")));
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        for (int i = 0; i < taskIds.size(); i++) {
+            given().headers("Content-Type", "application/json")
+                    .auth().oauth2(CommonApi.getToken()).when()
+                    .request("DELETE", contactEndPoint + taskIds.get(i));
+        }
+    }
+
 }

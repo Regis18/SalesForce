@@ -67,7 +67,8 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        return DriverMethods.isElementPresent(By.xpath(campaignList.replace(campaign, name)));
+        System.out.println("CHECKCAMPAIGN LIST: " + campaignList.replace(campaign, name));
+        return DriverMethods.searchForExistentElement(By.xpath(campaignList.replace(campaign, name)));
     }
 
     /**

@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.campaign.classic;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -202,6 +203,8 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
      */
     @Override
     protected void setExpectedResponse(final Integer expectedResponse) {
+        expectedResponseTxt.sendKeys(Keys.CONTROL + "a");
+        expectedResponseTxt.sendKeys(Keys.DELETE);
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 }

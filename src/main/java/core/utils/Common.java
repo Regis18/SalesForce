@@ -35,7 +35,7 @@ public final class Common {
     }
 
     /**
-     * Translates date class for add days to current day. It is its base form.
+     * Translate date class for add days to current day.
      *
      * @param dateKey a word for example tomorrow.
      * @return date in format.
@@ -79,7 +79,7 @@ public final class Common {
      */
     public static String translateDate(final String dateKey) {
         Date today = translateDateBase(dateKey);
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
         return format.format(today);
     }
 

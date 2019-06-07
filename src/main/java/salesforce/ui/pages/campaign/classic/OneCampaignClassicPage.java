@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
@@ -49,6 +50,8 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     private String valueCampaign = "//*[td[contains(text(), 'key')]]//*//div[contains(text(), 'element')]";
 
+    private String valueActiveCampaign = "//*[td[contains(text(), 'key')]]//*//div//img[@title='element']";
+
     private final String ELEMENT = "element";
 
     private final String KEY = "key";
@@ -66,7 +69,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      * @return boolean
      */
     @Override
-    public boolean verifyComponentsCampaign() {
+    public boolean verifyComponentsCampaign(Campaign campaign) {
         return campaignDetailForm.isDisplayed();
     }
 
@@ -109,7 +112,16 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
-        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
+        if (key.equals("Active")) {
+            String values = value.equals("true") ? "Checked" : "Not Checked";
+            return DriverMethods.searchForExistentElement(By.xpath(valueActiveCampaign
+                    .replace(this.ELEMENT, values)
+                    .replace(this.KEY, key)));
+        } else {
+            return DriverMethods.searchForExistentElement(By.xpath(valueCampaign
+                    .replace(this.ELEMENT, value)
+                    .replace(this.KEY, key)));
+        }
     }
 
     /**

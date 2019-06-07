@@ -100,7 +100,7 @@ public class CampaignSteps {
      */
     @Then("^I verify the page of Campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
-        assertTrue(oneCampaignPage.verifyComponentsCampaign());
+        assertTrue(oneCampaignPage.verifyComponentsCampaign(campaign));
     }
 
     /**
@@ -183,6 +183,25 @@ public class CampaignSteps {
     @Then("^I verify the updated values of Campaign in its own Page$")
     public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
         mapOut.forEach((key, value) -> {
+            if (key.equals("IsActive")) {
+                key = "Active";
+            } else if (key.equals("StartDate")) {
+                key = "Start Date";
+                value = Common.translateDate(value.toLowerCase());
+            } else if (key.equals("EndDate")) {
+                key = "End Date";
+                value = Common.translateDate(value.toLowerCase());
+            } else if (key.equals("ExpectedRevenue")) {
+                key = "Expected Revenue";
+            } else if (key.equals("BudgetedCost")) {
+                key = "Budgeted Cost";
+            } else if (key.equals("ActualCost")) {
+                key = "Actual Cost";
+            } else if (key.equals("ExpectedResponse")) {
+                key = "Expected Response";
+            } else if (key.equals("NumberSent")) {
+                key = "Num Sent";
+            }
             assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
                     "The field " + key + " was not displayed. Expected value "
                             + value);

@@ -22,14 +22,17 @@ import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
 import salesforce.ui.pages.account.classic.AccountClassicPage;
 import salesforce.ui.pages.account.classic.OneAccountClassicPage;
 import salesforce.ui.pages.classic.HomeClassicPage;
+import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.pages.campaign.classic.OneCampaignClassicPage;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.account.light.AccountLightPage;
 import salesforce.ui.pages.account.light.OneAccountLightPage;
+import salesforce.ui.pages.task.classic.NewTaskClassic;
 import salesforce.ui.pages.task.classic.TaskPageClassic;
 import salesforce.ui.pages.lightning.HomeLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.ui.pages.task.lightning.NewTaskLightPopUp;
 import salesforce.ui.pages.task.lightning.TaskPageLightning;
 import salesforce.utils.Setup;
 
@@ -86,6 +89,10 @@ public class PageFactory {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static TaskPageAbstract getTaskHomePage() {
         switch (setup.getLayout()) {
             case "classic":
@@ -97,6 +104,20 @@ public class PageFactory {
         }
     }
 
+    /**
+     *
+     * @return
+     */
+    public static NewTaskAbstract getNewTaskPage() {
+        switch (setup.getLayout()) {
+            case "classic":
+                return new NewTaskClassic();
+            case "light":
+                return new NewTaskLightPopUp();
+            default:
+                return null;
+        }
+    }
     /**
      * Get the Page Object that is correct.
      * @return AccountPageAbstract.
