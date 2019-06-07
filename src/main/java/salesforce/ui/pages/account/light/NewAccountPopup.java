@@ -60,67 +60,67 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(css = "input[id^='268:']")
     private WebElement siteAccountTxt;
 
-    @FindBy(css = "input[id^='284']")
+    @FindBy(css = "input[id^='284:']")
     private WebElement tickerSimbolAccountTxt;
 
-    @FindBy(css = "input[id^='446']")
+    @FindBy(css = "input[id^='446:']")
     private WebElement employeeAccountTxt;
 
-    @FindBy(css = "input[id^='468']")
+    @FindBy(css = "input[id^='468:']")
     private WebElement annualRevenueAccountTxt;
 
-    @FindBy(css = "input[id^='486']")
+    @FindBy(css = "input[id^='486:']")
     private WebElement sicCodeAccountTxt;
 
-    @FindBy(css = "div[id^='311']")
+    @FindBy(css = "div[id^='311:']")
     private WebElement typeAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Prospect\"]")
     private WebElement typeProspectElement;
 
-    @FindBy(css = "div[id^='357']")
+    @FindBy(css = "div[id^='357:']")
     private WebElement ownershipAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Private\"]")
     private WebElement ownerPrivateElement;
 
-    @FindBy(css = "div[id^='407']")
+    @FindBy(css = "div[id^='407:']")
     private WebElement industryAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Technology\"]")
     private WebElement industryTechnologyElement;
 
-    @FindBy(css = "textarea[id^='547']")
+    @FindBy(css = "textarea[id^='547:']")
     private WebElement billingStreetAccountArea;
 
-    @FindBy(css = "textarea[id^='615']")
+    @FindBy(css = "textarea[id^='615:']")
     private WebElement shippingStreetAccountArea;
 
-    @FindBy(css = "input[id^='557']")
+    @FindBy(css = "input[id^='557:']")
     private WebElement billingCityAccountTxt;
 
-    @FindBy(css = "input[id^='526']")
+    @FindBy(css = "input[id^='526:']")
     private WebElement billingStateAccountTxt;
 
-    @FindBy(css = "input[id^='625']")
+    @FindBy(css = "input[id^='625:']")
     private WebElement shippingCityAccountTxt;
 
-    @FindBy(css = "input[id^='594']")
+    @FindBy(css = "input[id^='594:']")
     private WebElement shipppingStateAccountTxt;
 
-    @FindBy(css = "input[id^='568']")
+    @FindBy(css = "input[id^='568:']")
     private WebElement billingZipAccountTxt;
 
-    @FindBy(css = "input[id^='518']")
+    @FindBy(css = "input[id^='518:']")
     private WebElement billingCountryAccountTxt;
 
-    @FindBy(css = "input[id^='636']")
+    @FindBy(css = "input[id^='636:']")
     private WebElement shipppingZipAccountTxt;
 
-    @FindBy(css = "input[id^='586']")
+    @FindBy(css = "input[id^='586:']")
     private WebElement shipppingCountryAccountTxt;
 
-    @FindBy(css = "div[id^='675']")
+    @FindBy(css = "div[id^='675:']")
     private WebElement customerAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"High\"]")
@@ -129,34 +129,34 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(xpath = "//a[@title=\"Hight\"]")
     private WebElement optionHightCustomer;
 
-    @FindBy(css = "div[id^='721']")
+    @FindBy(css = "div[id^='721:']")
     private WebElement slaStateAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Platinum\"]")
     private WebElement slaPlatinumElement;
 
-    @FindBy(css = "input[id^='764']")
+    @FindBy(css = "input[id^='764:']")
     private WebElement slaDateAccountTxt;
 
-    @FindBy(css = "input[id^='787']")
+    @FindBy(css = "input[id^='787:']")
     private WebElement slaSerialStateAccountTxt;
 
-    @FindBy(css = "input[id^='807']")
+    @FindBy(css = "input[id^='807:']")
     private WebElement locationAccountCmb;
 
-    @FindBy(css = "div[id^='832']")
+    @FindBy(css = "div[id^='832:']")
     private WebElement upsellStateAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Maybe\"]")
     private WebElement upsellMaybeElement;
 
-    @FindBy(css = "div[id^='882']")
+    @FindBy(css = "div[id^='882:']")
     private WebElement activeStateAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Yes\"]")
     private WebElement activeYesElement;
 
-    @FindBy(css = "textarea[id^='950']")
+    @FindBy(css = "textarea[id^='950:']")
     private WebElement descriptionStateAccountArea;
 
     @FindBy(xpath = "//button[@class=\"slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton\"]")

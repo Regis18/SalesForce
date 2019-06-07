@@ -111,28 +111,28 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Shipping Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement shippingStreetAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='Customer Priority']]/following-sibling::div//a[@class='select']")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Customer Priority']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement customerAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='SLA Expiration Date']]/following-sibling::div//input[@class=' input']")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='SLA Expiration Date']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaDateAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Number of Locations']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='Number of Locations']]/following-sibling::input[@class=' input']")
     private WebElement locationsAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Active']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='Active']]/following-sibling::div//a[@class='select']")
     private WebElement activeAccountLbl;
 
     @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='SLA']]/following-sibling::div//a[@class='select']")
     private WebElement slaAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='SLA Serial Number']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='SLA Serial Number']]/following-sibling::input[@class=' input']")
     private WebElement slaSerialAccountLbl;
 
     @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='Upsell Opportunity']]/following-sibling::div//a[@class='select']")
     private WebElement upsellAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Description']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='Description']]/following-sibling::textarea[@class=' textarea']")
     private WebElement descriptionAccountLbl;
 
     /**
