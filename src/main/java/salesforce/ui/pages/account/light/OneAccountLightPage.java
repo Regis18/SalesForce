@@ -30,6 +30,8 @@ import java.util.Map;
  */
 public class OneAccountLightPage extends OneAccountAbstract {
 
+    private String customerAccount = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]";
+
     @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
     private WebElement accountPanelTitle;
 
@@ -106,7 +108,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(css = "[data-aura-rendered-by^=\"466\"] [class=\"forceOutputAddress\"]")
     private WebElement shippingStreetAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"495\"] [data-aura-rendered-by^=\"486\"]")
+    @FindBy(css = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]")
     private WebElement customerAccountLbl;
 
     @FindBy(css = "[data-aura-rendered-by^=\"534\"] [class=\"uiOutputDate\"]")
@@ -140,6 +142,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     /**
      * Verify the components of the account.
+     *
      * @return
      */
     @Override
@@ -149,6 +152,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     /**
      * Implement isDisplayedDetailsPage.
+     *
      * @return true component
      */
     @Override
@@ -159,6 +163,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     /**
      * Get the name of the account title.
+     *
      * @return name string.
      */
     @Override
@@ -168,6 +173,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     /**
      * Get the message confirmation.
+     *
      * @return message string.
      */
     public String getMessageConfirmation() {
@@ -193,7 +199,18 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
-     * Get account description.
+     * Click in to New Account button and initialize NewAccountClassicPage.
+     * @return NewAccountClassicPage.
+     */
+    @Override
+    public NewAccountPopup editAccount() {
+        //editBtn.click();
+        return new NewAccountPopup();
+    }
+
+    /**
+     * Get the values of an account.
+     *
      * @param accountInformation Map
      * @return mapAccount Map
      */
@@ -201,126 +218,75 @@ public class OneAccountLightPage extends OneAccountAbstract {
     public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
+        boolean isBillingAdrress = true;
+        boolean isShippingAdrress = true;
         while (it.hasNext()) {
+            String getValue;
             String key = (String) it.next();
-            String getValue = getValueAccount(key);
-            mapAccount.put(key, getValue);
+            if (key.equals("Revenue")) {
+                String value = getAccountFieldsValues(key);
+                getValue = value.replace("¤", "");
+                mapAccount.put(key, getValue);
+                System.out.println(key + " key: " + getValue);
+            } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
+                if (isBillingAdrress) {
+                    key = "Billing Street";
+                    String value = getAccountFieldsValues(key);
+                    getValue = value.replaceAll("\n", " ");
+                    getValue = getValue.replaceAll(",", " ");
+                    isBillingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
+                if (isShippingAdrress) {
+                    key = "Shipping Street";
+                    String value = getAccountFieldsValues(key);
+                    getValue = value.replace(",", "");
+                    getValue = getValue.replaceAll("\n", " ");
+                    isShippingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            } else {
+                getValue = getAccountFieldsValues(key);
+                mapAccount.put(key, getValue);
+            }
         }
         return mapAccount;
     }
 
     /**
-     * Gets the value of an attribute.
-     * @return attribute String
-     * @param key String
+     * Get the values of an account.
+     * @param key Map
+     * @return mapAccount Map
      */
-    private String getValueAccount(String key) {
-        String setKey = key;
-        String valueAttribute = "";
-        switch (setKey) {
-            case "Name":
-                valueAttribute = nameAccountLbl.getText();
-                break;
-            case "Parent":
-                valueAttribute = parentAccountLbl.getText();
-                break;
-            case "Number":
-                valueAttribute = numberAccountlbl.getText();
-                break;
-            case "Site":
-                valueAttribute = siteAccountLbl.getText();
-                break;
-            case "Type":
-                valueAttribute = typeAccountLbl.getText();
-                break;
-            case "Industry":
-                valueAttribute = industryAccountLbl.getText();
-                break;
-            case "Revenue":
-                String value = revenueAccountLbl.getText();
-                valueAttribute = value.replace("¤", "");
-                break;
-            case "Rating":
-                valueAttribute = ratingAccountLbl.getText();
-                break;
-            case "Phone":
-                valueAttribute = phoneAccountLbl.getText();
-                break;
-            case "Fax":
-                valueAttribute = faxAccountLbl.getText();
-                break;
-            case "Website":
-                valueAttribute = websiteAccountLbl.getText();
-                break;
-            case "Ticker":
-                valueAttribute = tickerAccountLbl.getText();
-                break;
-            case "Ownership":
-                valueAttribute = ownershipAccountLbl.getText();
-                break;
-            case "Employee":
-                valueAttribute = employeeAccountLbl.getText();
-                break;
-            case "Sic Code":
-                valueAttribute = sicCodeAccountLbl.getText();
-                break;
-            case "Billing Street":
-                valueAttribute = billingStreetAccountLbl.getText();
-                break;
-            case "Billing City":
-                valueAttribute = billingStreetAccountLbl.getText();
-                break;
-            case "Billing State":
-                valueAttribute = billingStreetAccountLbl.getText();
-                break;
-            case "Billing Zip":
-                valueAttribute = billingStreetAccountLbl.getText();
-                break;
-            case "Billing Country":
-                valueAttribute = billingStreetAccountLbl.getText();
-                break;
-            case "Shipping Street":
-                valueAttribute = shippingStreetAccountLbl.getText();
-                break;
-            case "Shipping City":
-                valueAttribute = shippingStreetAccountLbl.getText();
-                break;
-            case "Shipping State":
-                valueAttribute = shippingStreetAccountLbl.getText();
-                break;
-            case "Shipping Zip":
-                valueAttribute = shippingStreetAccountLbl.getText();
-                break;
-            case "Shipping Country":
-                valueAttribute = shippingStreetAccountLbl.getText();
-                break;
-            case "Customer":
-                valueAttribute = customerAccountLbl.getText();
-                break;
-            case "Sla Date":
-                valueAttribute = slaDateAccountLbl.getText();
-                break;
-            case "Locations":
-                valueAttribute = locationsAccountLbl.getText();
-                break;
-            case "Active":
-                valueAttribute = activeAccountLbl.getText();
-                break;
-            case "Sla":
-                valueAttribute = slaAccountLbl.getText();
-                break;
-            case "Sla Serial":
-                valueAttribute = slaSerialAccountLbl.getText();
-                break;
-            case "Upsell":
-                valueAttribute = upsellAccountLbl.getText();
-                break;
-            case "Description":
-                valueAttribute = descriptionAccountLbl.getText();
-                break;
-            default:
-                return null;
-        }
-        return valueAttribute;
+    public String getAccountFieldsValues(String key) {
+        HashMap<String, WebElement> fieldWebElementsMap = new HashMap<>();
+        fieldWebElementsMap.put("Name", nameAccountLbl);
+        fieldWebElementsMap.put("Parent", parentAccountLbl);
+        fieldWebElementsMap.put("Number", numberAccountlbl);
+        fieldWebElementsMap.put("Site", siteAccountLbl);
+        fieldWebElementsMap.put("Type", typeAccountLbl);
+        fieldWebElementsMap.put("Industry", industryAccountLbl);
+        fieldWebElementsMap.put("Revenue", revenueAccountLbl);
+        fieldWebElementsMap.put("Rating", ratingAccountLbl);
+        fieldWebElementsMap.put("Phone", phoneAccountLbl);
+        fieldWebElementsMap.put("Fax", faxAccountLbl);
+        fieldWebElementsMap.put("Website", websiteAccountLbl);
+        fieldWebElementsMap.put("Ticker", tickerAccountLbl);
+        fieldWebElementsMap.put("Ownership", ownershipAccountLbl);
+        fieldWebElementsMap.put("Employee", employeeAccountLbl);
+        fieldWebElementsMap.put("Sic Code", sicCodeAccountLbl);
+        fieldWebElementsMap.put("Billing Street", billingStreetAccountLbl);
+        fieldWebElementsMap.put("Shipping Street", shippingStreetAccountLbl);
+        fieldWebElementsMap.put("Customer", customerAccountLbl);
+        fieldWebElementsMap.put("Sla Date", slaDateAccountLbl);
+        fieldWebElementsMap.put("Locations", locationsAccountLbl);
+        fieldWebElementsMap.put("Active", activeAccountLbl);
+        fieldWebElementsMap.put("Sla", slaAccountLbl);
+        fieldWebElementsMap.put("Sla Serial", slaSerialAccountLbl);
+        fieldWebElementsMap.put("Upsell", upsellAccountLbl);
+        fieldWebElementsMap.put("Description", descriptionAccountLbl);
+
+        return fieldWebElementsMap.get(key).getText();
     }
 }

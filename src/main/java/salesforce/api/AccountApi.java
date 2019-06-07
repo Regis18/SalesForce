@@ -56,4 +56,22 @@ public class AccountApi {
         }
         return resultAccount;
     }
+
+    /**
+     * Create Account with API.
+     */
+    public void createAccount(Account account) {
+        Response response = given()
+                .headers("Content-Type", "application/json")
+                .auth().oauth2(CommonApi.getToken())
+                .body("{" + "\"Name\": \"" + account.getName() + "\" }")
+                .when().request("POST", urlBase);
+        try {
+
+            Object obj = new JSONParser().parse(response.getBody().asString());
+            JSONObject jo = (JSONObject) obj;
+            account.setId((String)jo.get("id"));
+        } catch (Exception e) {
+        }
+    }
 }
