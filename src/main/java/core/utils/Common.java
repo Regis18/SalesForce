@@ -40,16 +40,59 @@ public final class Common {
      * @param dateKey a word for example tomorrow.
      * @return date in format.
      */
-    public static String translateDate(final String dateKey) {
+    private static Date translateDateBase(final String dateKey) {
         Date today = new Date();
-        switch (dateKey) {
+        int countTime = 0;
+        String time = dateKey;
+        if (dateKey.contains("days")) {
+            countTime = Integer.parseInt(dateKey.replace(" days", ""));
+            time = "days";
+        } else if (dateKey.contains("weeks")) {
+            countTime = Integer.parseInt(dateKey.replace(" weeks", ""));
+            time = "weeks";
+        }
+        switch (time) {
             case "tomorrow":
                 today = DateUtils.addDays(today, 1);
                 break;
-            default:
+            case "days":
+                today = DateUtils.addDays(today, countTime);
+                break;
+            case "one week":
                 today = DateUtils.addDays(today, WEEK);
+                break;
+            case "weeks":
+                today = DateUtils.addDays(today, WEEK * countTime);
+                break;
+            default:
+                break;
         }
-        SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
+        return today;
+    }
+
+    /**
+     * Translate date class for add days to current day.
+     * Return in Month/Day/Year.
+     *
+     * @param dateKey a word for example tomorrow.
+     * @return date in format.
+     */
+    public static String translateDate(final String dateKey) {
+        Date today = translateDateBase(dateKey);
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        return format.format(today);
+    }
+
+    /**
+     * Translate date class for add days to current day.
+     * Return in Year-Month-Day.
+     *
+     * @param dateKey a word for example tomorrow.
+     * @return date in format.
+     */
+    public static String translateDateAPI(final String dateKey) {
+        Date today = translateDateBase(dateKey);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(today);
     }
 }

@@ -37,19 +37,19 @@ public class HomeLightPage extends HomePageAbstract {
     @FindBy(id = "brandBand_1")
     private WebElement homeForm;
 
-    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id=\"Campaign\"]")
+    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
     private WebElement campaignBtn;
 
-    @FindBy(xpath = "//a[span[contains(text(),\"Tasks Menu\")]]")
+    @FindBy(xpath = "//a[span[contains(text(),'Tasks Menu')]]")
     private WebElement taskDropdownButton;
 
-    @FindBy(xpath = ("//a[span[span[contains(text(),\"New Task\")]]]"))
+    @FindBy(xpath = ("//a[span[span[contains(text(),'New Task')]]]"))
     private WebElement newTaskItem;
 
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Account']")
     private WebElement accountBtn;
 
-    @FindBy(xpath = "//a[span[contains(text(),\"Tasks\")]]")
+    @FindBy(xpath = "//a[span[contains(text(),'Tasks')]]")
     private WebElement taskMenuButton;
 
     /**

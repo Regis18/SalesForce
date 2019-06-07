@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 public class DriverMethods {
     private static WebDriver webDriver;
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
-    private static int cont = 50;
     private static final int TIMEWAIT = 500;
 
     /**
@@ -38,7 +37,7 @@ public class DriverMethods {
      */
     public static boolean isElementPresent(final By locator) {
         webDriver = WebDriverManager.getInstance().getWebDriver();
-
+        int cont = 100;
         boolean result = true;
         while (cont > 0) {
             try {
@@ -48,7 +47,7 @@ public class DriverMethods {
                 webDriver.findElement(locator);
                 cont--;
             } catch (NoSuchElementException e) {
-                cont = -1;
+                cont = 0;
                 result = false;
             } finally {
                 webDriver.manage()

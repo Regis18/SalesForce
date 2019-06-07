@@ -14,6 +14,7 @@
 package salesforce.ui.pages.campaign.light;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -210,124 +211,6 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
         descriptionTxt.sendKeys(description);
     }
 
-    //Getters
-
-    /**
-     * Gets Name of Campaign.
-     *
-     * @return string
-     */
-    protected String getNameTxt() {
-        System.out.println("HEYYY NAME:" + nameTxt.getText());
-        return nameTxt.getText();
-    }
-
-    /**
-     * Gets Active of Campaign.
-     *
-     * @return boolean
-     */
-    protected boolean getActivateChk() {
-        System.out.println(activateChk.isSelected());
-        return activateChk.isSelected();
-    }
-
-    /**
-     * Gets Type text.
-     *
-     * @return string
-     */
-    protected String getTypeCmb() {
-//        Select type = new Select(typeCmb);
-//        return type.getFirstSelectedOption().getText();
-        return typeCmb.getText();
-    }
-
-    /**
-     * Gets Status text.
-     *
-     * @return string.
-     */
-    protected String getStatusCmb() {
-        System.out.println(statusCmb.getText());
-        return statusCmb.getText();
-    }
-
-    /**
-     * Gets Start Date text.
-     *
-     * @return string
-     */
-    protected String getStartDateTxt() {
-        System.out.println(startDateTxt.getText());
-        return startDateTxt.getText();
-    }
-
-    /**
-     * Gets End Date Text.
-     *
-     * @return string.
-     */
-    protected String getEndDateTxt() {
-        return endDateTxt.getText();
-    }
-
-    /**
-     * Gets Expected Revenue text.
-     *
-     * @return string.
-     */
-    protected String getExpectedRevenueTxt() {
-        return expectedRevenueTxt.getText();
-    }
-
-    /**
-     * Gets budgeted cost text.
-     *
-     * @return string.
-     */
-    protected String getBudgetedCostTxt() {
-        return budgetedCostTxt.getText();
-    }
-
-    /**
-     * Gets Actual Cost text.
-     *
-     * @return string.
-     */
-    protected String getActualCostTxt() {
-        return actualCostTxt.getText();
-    }
-
-    /**
-     * Gets Expected response text.
-     *
-     * @return string
-     */
-    protected String getExpectedResponseTxt() {
-        return expectedResponseTxt.getText();
-    }
-
-    /**
-     * Gets Num sent text.
-     *
-     * @return string.
-     */
-    protected String getNumSentTxt() {
-        System.out.println("Ver NUMSENT " + numSentTxt.getText());
-        return numSentTxt.getText();
-    }
-
-    /**
-     * Gets Description text.
-     *
-     * @return string.
-     */
-    protected String getDescriptionTxt() {
-        return descriptionTxt.getText();
-    }
-    // End Getters
-
     /**
      * Set to Expected Response text.
      *
@@ -335,7 +218,8 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      */
     @Override
     protected void setExpectedResponse(final Integer expectedResponse) {
-        expectedResponseTxt.clear();
+        expectedResponseTxt.sendKeys(Keys.CONTROL + "a");
+        expectedResponseTxt.sendKeys(Keys.DELETE);
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
 

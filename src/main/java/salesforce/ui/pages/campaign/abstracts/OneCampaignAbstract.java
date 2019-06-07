@@ -13,10 +13,7 @@
 
 package salesforce.ui.pages.campaign.abstracts;
 
-import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
-
-import java.util.Map;
 
 /**
  * OneCampaignAbstract class.
@@ -26,22 +23,26 @@ import java.util.Map;
 public abstract class OneCampaignAbstract extends BasePage {
     /**
      * VerifyComponentsCampaign.
+     * @return boolean.
      */
     public abstract boolean verifyComponentsCampaign();
 
     /**
      * Get name to assert with steps.
+     * @return String
      */
     public abstract String getNameCampaign();
 
     /**
      * Delete Campaign of Salesforce with specific name.
      * @param nameCampaign string
+     * @return CampaignPageAbstract.
      */
-    public abstract void deleteCampaign(String nameCampaign);
+    public abstract CampaignPageAbstract deleteCampaign(String nameCampaign);
 
     /**
      * Open Edit Campaign.
+     * @return EditCampaignAbstract
      */
     public abstract EditCampaignAbstract openEditCampaign();
 
@@ -52,4 +53,10 @@ public abstract class OneCampaignAbstract extends BasePage {
      * @return Boolean
      */
     public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
+
+    /**
+     * Click the button Campaign and redirected to CampaignPage.
+     * @return CampaignPageAbstract.
+     */
+    public abstract CampaignPageAbstract openCampaignPage();
 }

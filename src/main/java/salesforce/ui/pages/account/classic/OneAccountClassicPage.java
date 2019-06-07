@@ -16,10 +16,12 @@ package salesforce.ui.pages.account.classic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Account;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,83 +42,89 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement accountTitleLbl;
 
-    @FindBy(xpath = "//td[@id=\"topButtonRow\"]//input[@name=\"delete\"]")
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='delete']")
     private WebElement deleteBtn;
 
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
+    private WebElement editBtn;
+
     @FindBy(xpath = "//h2[@class=\"topName\"]")
-    private WebElement accountName;
+    private WebElement name;
+
+    @FindBy(id = "acc2_ileinner")
+    private WebElement nameAc;
 
     @FindBy(id = "acc3_ileinner")
-    private WebElement parentAccount;
+    private WebElement parent;
 
     @FindBy(id = "acc5_ileinner")
-    private WebElement numberAccount;
+    private WebElement number;
 
     @FindBy(id = "acc23_ileinner")
-    private WebElement siteAccount;
+    private WebElement site;
 
     @FindBy(id = "acc6_ileinner")
-    private WebElement typeAccount;
+    private WebElement type;
 
     @FindBy(id = "acc7_ileinner")
-    private WebElement industryAccount;
+    private WebElement industry;
 
     @FindBy(id = "acc8_ileinner")
-    private WebElement revenueAccount;
+    private WebElement revenue;
 
     @FindBy(id = "acc17_ileinner")
-    private WebElement billingAddresAccount;
+    private WebElement billingAddres;
 
     @FindBy(id = "00N4P0000072sE6_ileinner")
-    private WebElement priorityAccount;
+    private WebElement priority;
 
     @FindBy(id = "00N4P0000072sE9_ileinner")
-    private WebElement slaDateAccount;
+    private WebElement slaDate;
 
     @FindBy(id = "00N4P0000072sE7_ileinner")
-    private WebElement numberLocationsAccount;
+    private WebElement numberLocations;
 
     @FindBy(id = "00N4P0000072sE5_ileinner")
-    private WebElement activeAccount;
+    private WebElement active;
 
     @FindBy(id = "acc20_ileinner")
-    private WebElement descriptionAccount;
+    private WebElement description;
 
     @FindBy(id = "acc9_ileinner")
-    private WebElement ratingAccount;
+    private WebElement rating;
 
     @FindBy(id = "acc10_ileinner")
-    private WebElement phoneAccount;
+    private WebElement phone;
 
     @FindBy(id = "acc11_ileinner")
-    private WebElement faxAccount;
+    private WebElement fax;
 
     @FindBy(id = "acc12_ileinner")
-    private WebElement webSiteAccount;
+    private WebElement webSite;
 
     @FindBy(id = "acc13_ileinner")
-    private WebElement tickerAccount;
+    private WebElement ticker;
 
     @FindBy(id = "acc14_ileinner")
-    private WebElement ownershipAccount;
+    private WebElement ownership;
 
     @FindBy(id = "acc15_ileinner")
-    private WebElement employeeAccount;
+    private WebElement employee;
 
     @FindBy(id = "acc16_ileinner")
-    private WebElement sicCodeAccount;
+    private WebElement sicCode;
 
     @FindBy(id = "acc18_ileinner")
-    private WebElement shippinAddresAccount;
+    private WebElement shippinAddres;
 
     @FindBy(id = "00N4P0000072sE8_ileinner")
-    private WebElement slaAccount;
+    private WebElement sla;
 
     @FindBy(id = "00N4P0000072sEA_ileinner")
-    private WebElement slaSerialAccount;
+    private WebElement slaSerial;
 
     @FindBy(id = "00N4P0000072sEB_ileinner")
-    private WebElement upsellAccount;
+    private WebElement upsell;
 
     /**
      * Wait for Account panel title.
@@ -163,7 +171,17 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     }
 
     /**
-     * Get account description.
+     * Click in to New Account button and initialize NewAccountClassicPage.
+     * @return NewAccountClassicPage.
+     */
+    @Override
+    public NewAccountClassicPage editAccount() {
+        editBtn.click();
+        return new NewAccountClassicPage();
+    }
+
+    /**
+     * Get the values of an account.
      * @param accountInformation Map
      * @return mapAccount Map
      */
@@ -171,126 +189,76 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     public Map<String, String> createHasMapAccount(final Map<String, String> accountInformation) {
         Map<String, String> mapAccount = new HashMap<String, String>();
         Iterator it = accountInformation.keySet().iterator();
+        boolean isBillingAdrress = true;
+        boolean isShippingAdrress = true;
         while (it.hasNext()) {
+            String getValue;
             String key = (String) it.next();
-            String getValue = getValueAccount(key);
-            mapAccount.put(key, getValue);
+            if (key.equals("Name")) {
+                String value = nameAc.getText();
+            }
+            if (key.equals("Revenue")) {
+                String value = getAccountFieldsValues(key);
+                getValue = value.replace( "¤", "");
+                mapAccount.put(key, getValue);
+            } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
+                if (isBillingAdrress) {
+                    key = "Billing Street";
+                    String value = getAccountFieldsValues(key);
+                    getValue = value.replaceAll("\n", " ");
+                    getValue = getValue.replaceAll(",", "");
+                    isBillingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            }  else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
+                if (isShippingAdrress) {
+                    key = "Shipping Street";
+                    String value = getAccountFieldsValues(key);
+                    getValue = value.replace( ",", "");
+                    getValue = getValue.replaceAll("\n", " ");
+                    isShippingAdrress = false;
+                    mapAccount.put(key, getValue);
+                }
+            } else {
+                getValue = getAccountFieldsValues(key);
+                mapAccount.put(key, getValue);
+            }
         }
         return mapAccount;
     }
 
     /**
-     * Gets the value of an attribute.
-     * @return attribute String
-     * @param key String
+     * Get the values of an account.
+     * @param key Map
+     * @return mapAccount Map
      */
-    private String getValueAccount(String key) {
-        String setKey = key;
-        String valueAttribute = "";
-        switch (setKey) {
-            case "Name":
-                valueAttribute = accountName.getText();
-                break;
-            case "Parent":
-                valueAttribute = parentAccount.getText();
-                break;
-            case "Number":
-                valueAttribute = numberAccount.getText();
-                break;
-            case "Site":
-                valueAttribute = siteAccount.getText();
-                break;
-            case "Type":
-                valueAttribute = typeAccount.getText();
-                break;
-            case "Industry":
-                valueAttribute = industryAccount.getText();
-                break;
-            case "Revenue":
-                String value = revenueAccount.getText();
-                valueAttribute = value.replace("¤", "");
-                break;
-            case "Rating":
-                valueAttribute = ratingAccount.getText();
-                break;
-            case "Phone":
-                valueAttribute = phoneAccount.getText();
-                break;
-            case "Fax":
-                valueAttribute = faxAccount.getText();
-                break;
-            case "Website":
-                valueAttribute = webSiteAccount.getText();
-                break;
-            case "Ticker":
-                valueAttribute = tickerAccount.getText();
-                break;
-            case "Ownership":
-                valueAttribute = ownershipAccount.getText();
-                break;
-            case "Employee":
-                valueAttribute = employeeAccount.getText();
-                break;
-            case "Sic Code":
-                valueAttribute = sicCodeAccount.getText();
-                break;
-            case "Billing Street":
-                valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Billing City":
-                valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Billing State":
-                valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Billing Zip":
-                valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Billing Country":
-                valueAttribute = billingAddresAccount.getText();
-                break;
-            case "Shipping Street":
-                valueAttribute = shippinAddresAccount.getText();
-                break;
-            case "Shipping City":
-                valueAttribute = shippinAddresAccount.getText();
-                break;
-            case "Shipping State":
-                valueAttribute = shippinAddresAccount.getText();
-                break;
-            case "Shipping Zip":
-                valueAttribute = shippinAddresAccount.getText();
-                break;
-            case "Shipping Country":
-                valueAttribute = shippinAddresAccount.getText();
-                break;
-            case "Customer":
-                valueAttribute = priorityAccount.getText();
-                break;
-            case "Sla Date":
-                valueAttribute = slaDateAccount.getText();
-                break;
-            case "Locations":
-                valueAttribute = numberLocationsAccount.getText();
-                break;
-            case "Active":
-                valueAttribute = activeAccount.getText();
-                break;
-            case "Sla":
-                valueAttribute = slaAccount.getText();
-                break;
-            case "Sla Serial":
-                valueAttribute = slaSerialAccount.getText();
-                break;
-            case "Upsell":
-                valueAttribute = upsellAccount.getText();
-                break;
-            case "Description":
-                valueAttribute = descriptionAccount.getText();
-                break;
-            default:
-                return null;
-        }
-        return valueAttribute;
+    public String getAccountFieldsValues(String key) {
+        HashMap<String, WebElement> fieldWebElementsMap = new HashMap<>();
+        fieldWebElementsMap.put("Name", name);
+        fieldWebElementsMap.put("Parent", parent);
+        fieldWebElementsMap.put("Number", number);
+        fieldWebElementsMap.put("Site", site);
+        fieldWebElementsMap.put("Type", type);
+        fieldWebElementsMap.put("Industry", industry);
+        fieldWebElementsMap.put("Revenue", revenue);
+        fieldWebElementsMap.put("Rating", rating);
+        fieldWebElementsMap.put("Phone", phone);
+        fieldWebElementsMap.put("Fax", fax);
+        fieldWebElementsMap.put("Website", webSite);
+        fieldWebElementsMap.put("Ticker", ticker);
+        fieldWebElementsMap.put("Ownership", ownership);
+        fieldWebElementsMap.put("Employee", employee);
+        fieldWebElementsMap.put("Sic Code", sicCode);
+        fieldWebElementsMap.put("Billing Street", billingAddres);
+        fieldWebElementsMap.put("Shipping Street", shippinAddres);
+        fieldWebElementsMap.put("Customer", priority);
+        fieldWebElementsMap.put("Sla Date", slaDate);
+        fieldWebElementsMap.put("Locations", numberLocations);
+        fieldWebElementsMap.put("Active", active);
+        fieldWebElementsMap.put("Sla", sla);
+        fieldWebElementsMap.put("Sla Serial", slaSerial);
+        fieldWebElementsMap.put("Upsell", upsell);
+        fieldWebElementsMap.put("Description", description);
+        return fieldWebElementsMap.get(key).getText();
     }
 }

@@ -13,14 +13,15 @@
 
 package salesforce.ui.pages.campaign.classic;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Campaign;
+import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
-
-import java.util.Map;
+import salesforce.ui.pages.campaign.light.CampaignLightPage;
+import salesforce.utils.DriverMethods;
 
 /**
  * OneCampaignClassicPage.
@@ -39,6 +40,19 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     @FindBy(css = "td[id='topButtonRow'] input[value='Delete']")
     private WebElement deleteUpBtn;
+
+    @FindBy(css = "[id='topButtonRow'] input[name='edit']")
+    private WebElement editUpBtn;
+
+    @FindBy(id = "Campaign_Tab")
+    private WebElement campaignTabBar;
+
+    private String valueCampaign = "//*[td[contains(text(), 'key')]]//*//div[contains(text(), 'element')]";
+
+    private final String ELEMENT = "element";
+
+    private final String KEY = "key";
+
     /**
      * Wait for Campaign panel title.
      */
@@ -57,7 +71,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
     /**
-     * Get the Name Campaign.
+     * Gets the Name Campaign.
      * @return string
      */
     @Override
@@ -66,25 +80,45 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
     }
 
     /**
-     * Delete campaign.
+     * Deletes campaign.
      * @param nameCampaign string
+     * @return CampaignClassicPage.
      */
     @Override
-    public void deleteCampaign(final String nameCampaign) {
+    public CampaignPageAbstract deleteCampaign(final String nameCampaign) {
         deleteUpBtn.click();
         driver.switchTo().alert().accept();
+        return new CampaignClassicPage();
     }
-//todo DO it
 
+    /**
+     * Opens a form for edit a campaign.
+     * @return EditCampaignClassic
+     */
     @Override
     public EditCampaignAbstract openEditCampaign() {
-        return null;
+        editUpBtn.click();
+        return new EditCampaignClassicPage();
     }
 
-//    //TODO Do it verifydata campaign
-
+    /**
+     * Check if the values of Campaign is correct in the list.
+     * @param key String.
+     * @param value Value.
+     * @return Boolean.
+     */
     @Override
-    public boolean isCampaignFieldValueDisplayed(String key, String value) {
-        return false;
+    public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
+        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
+    }
+
+    /**
+     * Click the button Campaign and redirected to CampaignPage.
+     * @return CampaignPageAbstract.
+     */
+    @Override
+    public CampaignPageAbstract openCampaignPage() {
+        campaignTabBar.click();
+        return new CampaignClassicPage();
     }
 }

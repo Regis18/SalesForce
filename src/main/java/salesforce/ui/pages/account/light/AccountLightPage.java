@@ -62,4 +62,15 @@ public class AccountLightPage extends AccountPageAbstract {
     public boolean checkAccountList(final String name) {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace(ACCOUNT, name)));
     }
+
+    /**
+     * Search an Account by Id.
+     * @param accountId string.
+     * @return OneAccountLightPage.
+     */
+    @Override
+    public OneAccountLightPage selectAccount(final String accountId) {
+        driver.findElement(By.xpath("//a[@data-recordid='" + accountId + "']")).click();
+        return new OneAccountLightPage();
+    }
 }
