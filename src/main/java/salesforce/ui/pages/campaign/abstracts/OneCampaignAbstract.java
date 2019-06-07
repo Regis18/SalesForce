@@ -13,6 +13,7 @@
 
 package salesforce.ui.pages.campaign.abstracts;
 
+import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 
 /**
@@ -23,9 +24,10 @@ import salesforce.ui.BasePage;
 public abstract class OneCampaignAbstract extends BasePage {
     /**
      * VerifyComponentsCampaign.
+     * @param campaign Campaign.
      * @return boolean.
      */
-    public abstract boolean verifyComponentsCampaign();
+    public abstract boolean verifyComponentsCampaign(Campaign campaign);
 
     /**
      * Get name to assert with steps.

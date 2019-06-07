@@ -14,6 +14,7 @@
 package runner;
 
 
+import core.selenium.WebDriverConfig;
 import core.utils.Logs;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
@@ -49,9 +50,10 @@ public class GenerateReport {
         Configuration configuration = new Configuration(reportOutputDirectory, projectName);
         configuration.setRunWithJenkins(runWithJenkins);
         configuration.setBuildNumber(buildNumber);
-// addidtional metadata presented on main page
+        // additional metadata presented on main page
         configuration.addClassifications("Platform", "Windows");
-        configuration.addClassifications("Browser", "Chrome");
+        configuration.addClassifications("Browser", WebDriverConfig.getBROWSER());
+        configuration.addClassifications("Style", WebDriverConfig.getSkin());
         configuration.addClassifications("Branch", "release/1.0");
 
 

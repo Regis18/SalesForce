@@ -100,7 +100,7 @@ public class CampaignSteps {
      */
     @Then("^I verify the page of Campaign that was created$")
     public void verifyThePageOfCampaignThatWasCreated() {
-        assertTrue(oneCampaignPage.verifyComponentsCampaign());
+        assertTrue(oneCampaignPage.verifyComponentsCampaign(campaign));
     }
 
     /**

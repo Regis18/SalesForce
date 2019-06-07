@@ -112,4 +112,12 @@ public class WebDriverConfig {
     public static String getSkin() {
       return style;
    }
+
+    /**
+     * Gets browser.
+     * @return string.
+     */
+    public static String getBROWSER() {
+        return BROWSER;
+    }
 }

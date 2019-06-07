@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
@@ -40,7 +41,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,\"OutputName\")]//span[contains(@class,\"OutputText\")]")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title=\"Details\" ]//span[@class=\"title\"]")
+    @FindBy(xpath = "//a[@title='Details' ]//span[@class='title']")
     private WebElement detailsTab;
 
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
@@ -58,6 +59,12 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
     private WebElement campaignTabBar;
+
+    @FindBy(css = "[class='uiOutputText']")
+    private WebElement nameCampaign;
+
+    @FindBy(css = "[class='uiImage uiOutputCheckbox']")
+    private WebElement isActive;
 
     //**can be removed
     @FindBy(css = "button[title='Delete']")
@@ -79,12 +86,18 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
 
     /**
      * Verify the components of the campaign.
-     * @return
+     * @return boolean.
      */
     @Override
-    public boolean verifyComponentsCampaign() {
+    public boolean verifyComponentsCampaign(Campaign campaign) {
         clickDetailsTab();
-        return detailsForm.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(detailsForm));
+        if (detailsForm.isDisplayed()) {
+            System.out.println("VERIFY COMPONENTES: "+nameCampaign.getText());
+            System.out.println("VERIFY COMPONENTES: "+campaign.getName());
+            return nameCampaign.getText().equals(campaign.getName());
+        }
+        return false;
     }
 
     /**
@@ -143,7 +156,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return Boolean
      */
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
-        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(element, value).replace(this.key, key)));
+        return DriverMethods.searchForExistentElement(By.xpath(valueCampaign.replace(this.element, value).replace(this.key, key)));
     }
 
     /**

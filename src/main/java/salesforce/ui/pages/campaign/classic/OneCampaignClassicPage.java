@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
@@ -66,7 +67,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      * @return boolean
      */
     @Override
-    public boolean verifyComponentsCampaign() {
+    public boolean verifyComponentsCampaign(Campaign campaign) {
         return campaignDetailForm.isDisplayed();
     }
 
@@ -109,7 +110,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public boolean isCampaignFieldValueDisplayed(final String key, final String value) {
-        return DriverMethods.isElementPresent(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
+        return DriverMethods.searchForExistentElement(By.xpath(valueCampaign.replace(ELEMENT, value).replace(KEY, key)));
     }
 
     /**
