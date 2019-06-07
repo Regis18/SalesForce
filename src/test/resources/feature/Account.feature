@@ -23,7 +23,7 @@ Feature: Create, read, update and delete a Account
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
       | Name             | New test             |
-      | Parent           | my account           |
+      | Parent           | hello                |
       | Number           | 12345667             |
       | Site             | new site             |
       | Type             | Prospect             |
