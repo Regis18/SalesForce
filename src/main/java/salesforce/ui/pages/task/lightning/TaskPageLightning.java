@@ -22,7 +22,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * TaskLightPage class in this class whe navigate for this page the
@@ -119,46 +121,80 @@ public class TaskPageLightning extends TaskPageAbstract {
      * @param task the task.
      * @return if successful
      */
+    @Override
     public boolean verifyTaskWasCreated(final Task task) {
+        HashMap<String, String> datos = fillLocatorMap();
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
-            WebElement subject = driver.findElement(By.xpath(SUBJECT));
-            String uiSubject = subject.getText();
-            if (!uiSubject.equals(task.getSubject())) {
-                return false;
-            }
-            WebElement comment = driver.findElement(By.xpath(COMMENT));
-            String uiComment = comment.getText();
-            if (!uiComment.equals(task.getComment())) {
-                return false;
-            }
-            WebElement priority = driver.findElement(By.xpath(PRIORITY));
-            String uiPriority = priority.getText();
-            if (!uiPriority.equals(task.getPriority())) {
-                return false;
-            }
-            WebElement status = driver.findElement(By.xpath(STATUS));
-            String uiStatus = status.getText();
-            if (!uiStatus.equals(task.getStatus())) {
-                return false;
-            }
-            WebElement contact = driver.findElement(By.xpath("//*[contains(@class,'slds-form')][*[*[starts-with(text(),"
-                    + " 'Name')]]]//a[contains(text()," + task.getContact() + ")]"));
-            String uiContact = contact.getText();
-            if (!uiContact.equals(task.getContact())) {
-                return false;
-            }
-            WebElement account = driver.findElement(By.xpath("//*[contains(@class,'slds-form')][*[*[starts-with(text(),"
-                    + " 'Related To')]]]//a[contains(text()," + task.getAccount() + ")]"));
-            String uiAccount = account.getText();
-            if (!uiAccount.equals(task.getAccount())) {
-                return false;
+
+            for (Map.Entry<String, String> dato : datos.entrySet()) {
+                if (!task.getField(dato.getKey()).equals("")) {
+                    WebElement field =
+                            driver.findElement(By.xpath(dato.getValue()));
+                    String uiSubject = field.getText();
+                    if (!uiSubject.equals(task.getField(dato.getKey()))) {
+                        return false;
+                    }
+                }
+
             }
         } catch (Exception e) {
             return false;
         }
         return true;
     }
+
+    private HashMap<String, String> fillLocatorMap() {
+        HashMap<String, String> locMap = new HashMap<>();
+        locMap.put("Subject", SUBJECT);
+        locMap.put("Comment", COMMENT);
+        locMap.put("Status", STATUS);
+       // locMap.put("DueDate", DUEDATE);
+        locMap.put("Priority", PRIORITY);
+       // locMap.put("Account", ACCOUNT);
+       // locMap.put("Contact", CONTACT);
+        return locMap;
+    }
+//    public boolean verifyTaskWasCreated(final Task task) {
+//        try {
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
+//            WebElement subject = driver.findElement(By.xpath(SUBJECT));
+//            String uiSubject = subject.getText();
+//            if (!uiSubject.equals(task.getSubject())) {
+//                return false;
+//            }
+//            WebElement comment = driver.findElement(By.xpath(COMMENT));
+//            String uiComment = comment.getText();
+//            if (!uiComment.equals(task.getComment())) {
+//                return false;
+//            }
+//            WebElement priority = driver.findElement(By.xpath(PRIORITY));
+//            String uiPriority = priority.getText();
+//            if (!uiPriority.equals(task.getPriority())) {
+//                return false;
+//            }
+//            WebElement status = driver.findElement(By.xpath(STATUS));
+//            String uiStatus = status.getText();
+//            if (!uiStatus.equals(task.getStatus())) {
+//                return false;
+//            }
+//            WebElement contact = driver.findElement(By.xpath("//*[contains(@class,'slds-form')][*[*[starts-with(text(),"
+//                    + " 'Name')]]]//a[contains(text()," + task.getContact() + ")]"));
+//            String uiContact = contact.getText();
+//            if (!uiContact.equals(task.getContact())) {
+//                return false;
+//            }
+//            WebElement account = driver.findElement(By.xpath("//*[contains(@class,'slds-form')][*[*[starts-with(text(),"
+//                    + " 'Related To')]]]//a[contains(text()," + task.getAccount() + ")]"));
+//            String uiAccount = account.getText();
+//            if (!uiAccount.equals(task.getAccount())) {
+//                return false;
+//            }
+//        } catch (Exception e) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     /**
      * Click task.
