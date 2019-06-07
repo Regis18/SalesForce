@@ -79,10 +79,28 @@ Feature: Create, read, update and delete a Account
     Given I have an Account with the following values
       | Name | New test 100 |
     When I open the Account Page
-    When I search the Account in the list of Accounts
+    Then I search the Account in the list of Accounts
     When I delete a Account in its own Page
-#    When I verify a message that confirms the new Account was deleted is displayed
+    Then I verify a message that confirms the new Account was deleted is displayed
+    When I open the Account Page
+    Then I verify the account is not in the list of accounts
+
+
+#  @deleteAccount
+#  Scenario: update Account
+#    Given I have an Account with the following values
+#      | Name  | Update Account |
 #    When I open the Account Page
-#    Then I verify the account is not in the list of accounts
+#    Then I search the Account in the list of Accounts
+#    When I update the Account with the following values
+#      | Name  | new Account |
+#    Then I verify a message that confirms the new Account was saved is displayed
+#    Then I verify the page of Account that was created
+#    When I open the Account details page from Account Page
+##    Then I verify the Account values are displayed in Account details page
+ #   When I perform a get request for the Account by API
+ #   Then I verify the Account response contains the Account value
+
+
 
 

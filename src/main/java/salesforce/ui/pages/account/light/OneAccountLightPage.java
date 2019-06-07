@@ -199,6 +199,16 @@ public class OneAccountLightPage extends OneAccountAbstract {
     }
 
     /**
+     * Click in to New Account button and initialize NewAccountClassicPage.
+     * @return NewAccountClassicPage.
+     */
+    @Override
+    public NewAccountPopup editAccount() {
+        //editBtn.click();
+        return new NewAccountPopup();
+    }
+
+    /**
      * Get the values of an account.
      *
      * @param accountInformation Map
@@ -220,14 +230,12 @@ public class OneAccountLightPage extends OneAccountAbstract {
                 System.out.println(key + " key: " + getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 if (isBillingAdrress) {
-                    System.out.println("");
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
                     getValue = value.replaceAll("\n", " ");
                     getValue = getValue.replaceAll(",", " ");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
-                    System.out.println(key + " key: " + getValue);
                 }
             } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
                 if (isShippingAdrress) {
@@ -237,12 +245,10 @@ public class OneAccountLightPage extends OneAccountAbstract {
                     getValue = getValue.replaceAll("\n", " ");
                     isShippingAdrress = false;
                     mapAccount.put(key, getValue);
-                    System.out.println(key + " key: " + getValue);
                 }
             } else {
                 getValue = getAccountFieldsValues(key);
                 mapAccount.put(key, getValue);
-                System.out.println(key + " key: " + getValue);
             }
         }
         return mapAccount;
@@ -250,7 +256,6 @@ public class OneAccountLightPage extends OneAccountAbstract {
 
     /**
      * Get the values of an account.
-     *
      * @param key Map
      * @return mapAccount Map
      */

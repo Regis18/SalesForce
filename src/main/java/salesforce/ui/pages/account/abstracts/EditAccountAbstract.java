@@ -1,5 +1,5 @@
 /*
- * @(#) NewAccountPageAbstract.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EditAccountAbstract.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -18,16 +18,15 @@ import salesforce.entities.Account;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * NewAccountPageAbstract.
+ * EditAccountAbstract.
  * @author Luis Guardia.
  * @version 0.0.1
  */
-public abstract class NewAccountPageAbstract extends BasePage {
+public abstract class EditAccountAbstract extends BasePage {
 
     /**
      * Create a new account, it create for classic and lightning pages.
@@ -243,7 +242,8 @@ public abstract class NewAccountPageAbstract extends BasePage {
     public abstract void setDescription(String description);
 
     /**
-     * Set Account Data.
+     * Set Campaign Data.
+     * Just is name, can be more.
      * @param account Account
      * @param accountInformation Map
      */
@@ -299,4 +299,5 @@ public abstract class NewAccountPageAbstract extends BasePage {
 
         return strategyMap;
     }
+
 }

@@ -75,11 +75,16 @@ public class AccountClassicPage extends AccountPageAbstract {
         return DriverMethods.isElementPresent(By.xpath(accountList.replace("account", name)));
     }
 
+    /**
+     * Search an Account by Id.
+     * @param accountId string.
+     * @return OneAccountClassicPage.
+     */
     @Override
-    public void selectAccount(final String accountId) {
+    public OneAccountClassicPage selectAccount(final String accountId) {
         String account = "/"+accountId.substring(0, accountId.length() - 3);
-        System.out.println(account + " 11111111111111111111111111");
         driver.findElement(By.xpath("//th[@class=' dataCell  ']//a[@href='"+account+"']")).click();
+        return new OneAccountClassicPage();
     }
 }
 

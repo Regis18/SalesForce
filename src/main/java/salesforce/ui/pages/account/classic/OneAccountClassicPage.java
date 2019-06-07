@@ -42,8 +42,11 @@ public class OneAccountClassicPage extends OneAccountAbstract {
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement accountTitleLbl;
 
-    @FindBy(xpath = "//td[@id=\"topButtonRow\"]//input[@name=\"delete\"]")
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='delete']")
     private WebElement deleteBtn;
+
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
+    private WebElement editBtn;
 
     @FindBy(xpath = "//h2[@class=\"topName\"]")
     private WebElement name;
@@ -167,9 +170,14 @@ public class OneAccountClassicPage extends OneAccountAbstract {
         driver.switchTo().alert().accept();
     }
 
-    public void deleteAccount(Account account) {
-        deleteBtn.click();
-        driver.switchTo().alert().accept();
+    /**
+     * Click in to New Account button and initialize NewAccountClassicPage.
+     * @return NewAccountClassicPage.
+     */
+    @Override
+    public NewAccountClassicPage editAccount() {
+        editBtn.click();
+        return new NewAccountClassicPage();
     }
 
     /**

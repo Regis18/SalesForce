@@ -50,6 +50,11 @@ public abstract class OneAccountAbstract extends BasePage {
     public abstract void deleteAccount();
 
     /**
+     * Edit an Account of Salesforce.
+     */
+    public abstract NewAccountPageAbstract editAccount();
+
+    /**
      * Delete Account of Salesforce with specific name.
      */
     public abstract Map<String, String> createHasMapAccount(Map<String, String> accountInformation);
