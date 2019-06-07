@@ -44,10 +44,41 @@ public class DriverMethods {
                 webDriver.manage()
                         .timeouts()
                         .implicitlyWait(TIMEWAIT, TimeUnit.MILLISECONDS);
-                webDriver.findElement(locator);
+                String value = webDriver.findElement(locator).getText();
+                System.out.println(value);
                 cont--;
             } catch (NoSuchElementException e) {
                 cont = 0;
+                result = false;
+            } finally {
+                webDriver.manage()
+                        .timeouts()
+                        .implicitlyWait(webDriverConfig.getImplicitWaitTime(), TimeUnit.SECONDS);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Wait for the locator, if it exists the result is true, if it is not false.
+     * @param locator by.
+     * @return boolean.
+     */
+    public static boolean searchForExistentElement(final By locator) {
+        webDriver = WebDriverManager.getInstance().getWebDriver();
+        int cont = 100;
+        boolean result = false;
+        while (cont > 0 && result == false) {
+            try {
+                webDriver.manage()
+                        .timeouts()
+                        .implicitlyWait(TIMEWAIT, TimeUnit.MILLISECONDS);
+                webDriver.findElement(locator);
+
+                result = true;
+                cont --;
+            } catch (NoSuchElementException e) {
+                cont --;
                 result = false;
             } finally {
                 webDriver.manage()

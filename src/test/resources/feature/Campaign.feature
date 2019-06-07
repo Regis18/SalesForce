@@ -49,7 +49,7 @@ Feature: Create, delete, update campaigns of Salesforce
   @deleteCampaign
   Scenario: Update a new Campaign in Salesforce
     Given I have a Campaign with the following values
-    | name             | New Campaign |
+    | Name             | New Campaign |
     | IsActive         | true         |
     | Type             | Webinar      |
     | Status           | Completed    |
