@@ -23,6 +23,7 @@ import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.EditAccountAbstract;
 import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 import salesforce.ui.pages.account.light.OneAccountLightPage;
@@ -47,6 +48,7 @@ public class AccountSteps {
     private EntityId entitiesId;
     private Account newAccount;
     private Map<String, String> dataInformation;
+    private EditAccountAbstract newEditAccount;
     AccountApi accountApi;
 
     /**

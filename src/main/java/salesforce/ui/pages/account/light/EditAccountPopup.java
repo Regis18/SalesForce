@@ -24,6 +24,9 @@ public class EditAccountPopup extends EditAccountAbstract {
     @FindBy(css = "[class='modal-container slds-modal__container']")
     private WebElement editAccount;
 
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[5]//a")
+    private WebElement editBtn;
+
     @FindBy(css = " [class=\"input uiInput uiInputText uiInput--default uiInput--input\"]")
     private WebElement nameAccount;
 

@@ -33,31 +33,31 @@ public class NewAccountPopup extends NewAccountPageAbstract {
     @FindBy(css = "div[class=\"modal-container slds-modal__container\"]")
     private WebElement newAccountPopup;
 
-    @FindBy(css = "input[id^='90']")
+    @FindBy(css = "input[id^='90:']")
     private WebElement nameAccountTxt;
 
-    @FindBy(css = "div[id^='47']")
+    @FindBy(css = "div[id^='47:']")
     private WebElement ratingAccountCmb;
 
     @FindBy(xpath = "//a[@title=\"Warm\"]")
     private WebElement ratingWarElement;
 
-    @FindBy(css = "input[id^='115']")
+    @FindBy(css = "input[id^='115:']")
     private WebElement phoneAccountTxt;
 
-    @FindBy(css = "input[id^='135']")
+    @FindBy(css = "input[id^='135:']")
     private WebElement parentAccountTxt;
 
-    @FindBy(css = "input[id^='211']")
+    @FindBy(css = "input[id^='211:']")
     private WebElement faxAccountTxt;
 
-    @FindBy(css = "input[id^='231']")
+    @FindBy(css = "input[id^='231:']")
     private WebElement accountNumberTxt;
 
     @FindBy(css = "input[id^='247']")
     private WebElement websiteAccountTxt;
 
-    @FindBy(css = "input[id^='268']")
+    @FindBy(css = "input[id^='268:']")
     private WebElement siteAccountTxt;
 
     @FindBy(css = "input[id^='284']")

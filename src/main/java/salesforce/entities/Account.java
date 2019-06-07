@@ -678,6 +678,7 @@ public class Account {
                     getValue = getValueAccount(key);
                     mapAccount.put(key, getValue);
                     isBillingStreet = false;
+                    System.out.println(" key: "+key+" value: "+getValue);
                 }
             } else if (key.equals("Shipping Street") || key.equals("Shipping City") || key.equals("Shipping State") || key.equals("Shipping Zip") || key.equals("Shipping Country")) {
                 if (isShippingStreet) {
@@ -685,10 +686,12 @@ public class Account {
                     getValue = getValueAccount(key);
                     mapAccount.put(key, getValue);
                     isShippingStreet = false;
+                    System.out.println(" key: "+key+" value: "+getValue);
                 }
             } else {
                 getValue = getValueAccount(key);
                 mapAccount.put(key, getValue);
+                System.out.println(" key: "+key+" value: "+getValue);
             }
         }
         return mapAccount;
