@@ -13,13 +13,10 @@
 
 package salesforce.api;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import salesforce.entities.Account;
-import salesforce.entities.Context;
-import salesforce.utils.EntityId;
 
 import static io.restassured.RestAssured.given;
 
