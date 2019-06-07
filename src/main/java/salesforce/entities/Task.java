@@ -30,14 +30,41 @@ public class Task {
     private String subject = "";
     private String comment = "";
     private String status = "";
-    private String email = "";
     private String dueDate = "";
     private String priority = "";
     private String contact = "";
     private String account = "";
 
     /**
+     *
+     * @param field
+     * @return field
+     */
+    public String getField(String field) {
+        switch (field){
+            case "Subject":
+                return getSubject();
+            case "Comment":
+                return getComment();
+            case "Status":
+                return getStatus();
+            case "Priority":
+                return getPriority();
+            case "Account":
+                return getAccount();
+            case "Contact":
+                return getContact();
+            case "DueDate":
+                return getDueDate();
+            default:
+                return getSubject();
+        }
+
+    }
+
+    /**
      * Gets contacts to task.
+     *
      * @return contact related to task.
      */
     public String getContact() {
@@ -46,6 +73,7 @@ public class Task {
 
     /**
      * Sets contacts to task.
+     *
      * @param contact related to task.
      */
     public void setContact(String contact) {
@@ -54,6 +82,7 @@ public class Task {
 
     /**
      * Gets Account to task.
+     *
      * @return account related to task.
      */
     public String getAccount() {
@@ -62,6 +91,7 @@ public class Task {
 
     /**
      * Sets account to task.
+     *
      * @param account related to task.
      */
     public void setAccount(String account) {
@@ -120,24 +150,6 @@ public class Task {
      */
     public void setStatus(final String status) {
         this.status = status;
-    }
-
-    /**
-     * Get email attribute to task.
-     *
-     * @return email task.
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * Set email attribute to task.
-     *
-     * @param email task.
-     */
-    public void setEmail(final String email) {
-        this.email = email;
     }
 
     /**
@@ -200,7 +212,6 @@ public class Task {
         strategyMap.put("Subject", () -> setSubject(taskMap.get("Subject")));
         strategyMap.put("Comment", () -> setComment(taskMap.get("Comment")));
         strategyMap.put("Status", () -> setStatus(taskMap.get("Status")));
-        strategyMap.put("Email", () -> setEmail(taskMap.get("Email")));
         strategyMap.put("DueDate", () -> setDueDate(Common.translateDate(taskMap.get("DueDate"))));
         strategyMap.put("Priority", () -> setPriority(taskMap.get("Priority")));
         strategyMap.put("Account", () -> setAccount(taskMap.get("Account")));
@@ -218,7 +229,6 @@ public class Task {
         strategyMap.put("Subject", () -> getSubject());
         strategyMap.put("Comment", () -> getComment());
         strategyMap.put("Status", () -> getStatus());
-        strategyMap.put("Email", () -> getEmail());
         strategyMap.put("DueDate", () -> getDueDate());
         strategyMap.put("Priority", () -> getPriority());
         strategyMap.put("account", () -> getAccount());

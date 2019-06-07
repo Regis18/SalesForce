@@ -82,14 +82,14 @@ public class TaskSteps {
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
-        task.setContact(task.getContact().replace("random", String.valueOf((int) (Math.random() * 100))));
-        task.setAccount(task.getAccount().replace("random", String.valueOf((int) (Math.random() * 100))));
+        task.setContact(Setup.getInstance().getTaskContact());
+        task.setAccount(Setup.getInstance().getTaskAccount());
 
         newTaskPage = homePage.displayCreateTask();
-        if (!task.getContact().equals("")){
+        if (!task.getContact().equals("")) {
             TaskApi.createContact(task.getContact());
         }
-        if (!task.getAccount().equals("")){
+        if (!task.getAccount().equals("")) {
             TaskApi.createAccount(task.getAccount());
         }
         newTaskPage.createNewTask(task);
@@ -155,12 +155,18 @@ public class TaskSteps {
 
     @Then("^I verify a message that confirms the new Task was \"([^\"]*)\" is displayed$")
     public void verifyMessageConfirmCreated(String taskCreated) {
+        if (newTaskPage == null) {
+            newTaskPage = PageFactory.getNewTaskPage();
+        }
         if (taskCreated.equals("created")) {
-        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created.")); }
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
+        }
         if (taskCreated.equals("updated")) {
-        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated.")); }
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated."));
+        }
         if (taskCreated.equals("deleted")) {
-            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was deleted.")); }
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was deleted."));
+        }
     }
 
     @When("^I open the Task details page from Tasks Homepage$")

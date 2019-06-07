@@ -49,7 +49,7 @@ public final class Common {
             default:
                 today = DateUtils.addDays(today, WEEK);
         }
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
         return format.format(today);
     }
 }
