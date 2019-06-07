@@ -36,25 +36,25 @@ Feature: Create, read, update and delete a Account
       | Ticker           | ticker               |
       | Ownership        | Private              |
       | Employee         | 12                   |
-      | Sic Code         | 100-2540             |
-      | Billing Street   | 111                  |
-      | Billing City     | 222                  |
-      | Billing State    | 333                  |
-      | Billing Zip      | 444                  |
-      | Billing Country  | 555                  |
-      | Shipping Street  | shipp street         |
-      | Shipping City    | shipp street         |
-      | Shipping State   | shipp street         |
-      | Shipping Zip     | shipp street         |
-      | Shipping Country | bill street          |
-      | Customer         | High                 |
-      | Sla Date         | 7/20/2020            |
-      | Locations        | 10                   |
-      | Active           | Yes                  |
-      | Sla              | Platinum             |
-      | Sla Serial       | 1425-458f            |
-      | Upsell           | Maybe                |
-      | Description      | Description          |
+#      | Sic Code         | 100-2540             |
+#      | Billing Street   | 111                  |
+#      | Billing City     | 222                  |
+#      | Billing State    | 333                  |
+#      | Billing Zip      | 444                  |
+#      | Billing Country  | 555                  |
+#      | Shipping Street  | shipp street         |
+#      | Shipping City    | shipp street         |
+#      | Shipping State   | shipp street         |
+#      | Shipping Zip     | shipp street         |
+#      | Shipping Country | bill street          |
+#      | Customer         | High                 |
+#      | Sla Date         | 7/20/2020            |
+#      | Locations        | 10                   |
+#      | Active           | Yes                  |
+#      | Sla              | Platinum             |
+#      | Sla Serial       | 1425-458f            |
+#      | Upsell           | Maybe                |
+#      | Description      | Description          |
 
     Then I verify a message that confirms the new Account was created is displayed
     Then I verify the page of Account that was created
