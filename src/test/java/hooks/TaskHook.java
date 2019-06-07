@@ -59,14 +59,14 @@ public class TaskHook {
 
     @Before("@createAccountForTask")
     public void createAccountForTask() {
-       String name = "accountForTask_" + String.valueOf((int) (Math.random() * 100));
+       String name = "accountForTask";
         TaskApi.createAccount(name);
         Setup.getInstance().setTaskAccount(name);
     }
 
     @Before("@createContactForTask")
     public void createContactForTask() {
-        String lastName = "contactForTask_" + String.valueOf((int) (Math.random() * 100));
+        String lastName = "contactForTask";
         TaskApi.createContact(lastName);
         Setup.getInstance().setTaskContact(lastName);
     }

@@ -81,17 +81,20 @@ public class TaskSteps {
     @When("^I create a new Task with this values$")
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
+        if (newTaskPage == null) {
+            newTaskPage = PageFactory.getNewTaskPage();
+        }
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
         task.setContact(Setup.getInstance().getTaskContact());
         task.setAccount(Setup.getInstance().getTaskAccount());
 
         newTaskPage = homePage.displayCreateTask();
-        if (!task.getContact().equals("")) {
-            TaskApi.createContact(task.getContact());
-        }
-        if (!task.getAccount().equals("")) {
-            TaskApi.createAccount(task.getAccount());
-        }
+//        if (!task.getContact().equals("")) {
+//            TaskApi.createContact(task.getContact());
+//        }
+//        if (!task.getAccount().equals("")) {
+//            TaskApi.createAccount(task.getAccount());
+//        }
         newTaskPage.createNewTask(task);
         Setup.getInstance().setTask(task);
     }
