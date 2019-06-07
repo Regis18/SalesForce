@@ -165,7 +165,7 @@ public class TaskSteps {
             assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
         }
         if (taskCreated.equals("updated")) {
-            assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was updated."));
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated."));
         }
         if (taskCreated.equals("deleted")) {
             assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was deleted."));

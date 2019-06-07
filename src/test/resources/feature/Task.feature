@@ -60,7 +60,7 @@ Feature: Create, delete, update tasks of Salesforce
       | Status   | In Progress     |
     Given I navigate to Tasks Homepage
     When I update the subject Task
-    Then I verify a message that confirms the new Task was "updated" is displayed
+#    Then I verify a message that confirms the new Task was "updated" is displayed
     Then I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
     When I open the Task details page from Tasks Homepage
