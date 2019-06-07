@@ -60,7 +60,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
     private WebElement campaignTabBar;
 
-    @FindBy(css = "[class='uiOutputText']")
+    @FindBy(xpath = "*//span[@class='uiOutputText']")
     private WebElement nameCampaign;
 
     @FindBy(css = "[class='uiImage uiOutputCheckbox']")
@@ -91,8 +91,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @Override
     public boolean verifyComponentsCampaign(Campaign campaign) {
         clickDetailsTab();
-        wait.until(ExpectedConditions.visibilityOf(detailsForm));
-        if (detailsForm.isDisplayed()) {
+        if (DriverMethods.searchForExistentElement(By.xpath("*//span[@class='uiOutputText']"))) {
             System.out.println("VERIFY COMPONENTES: "+nameCampaign.getText());
             System.out.println("VERIFY COMPONENTES: "+campaign.getName());
             return nameCampaign.getText().equals(campaign.getName());
