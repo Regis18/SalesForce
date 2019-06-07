@@ -35,7 +35,7 @@ public final class Common {
     }
 
     /**
-     * Translates date class for add days to current day. It is its base form.
+     * Translate date class for add days to current day.
      *
      * @param dateKey a word for example tomorrow.
      * @return date in format.

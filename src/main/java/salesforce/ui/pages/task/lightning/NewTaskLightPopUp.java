@@ -102,6 +102,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @return the text message.
      */
     public boolean verifyMessage(final String message) {
+        String uim =getMessageConfirmation();
         return message.equals(getMessageConfirmation());
     }
 
@@ -174,7 +175,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @param value result.
      */
     protected void setContact(final String value) {
-        if (!value.equals("") || !value.equals("Search Contacts")) {
+        if (!value.equals("Search Contacts") && !value.equals("")) {
             WebElement contactInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CONTACT)));
             contactInput.click();
             WebElement contactCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
@@ -188,7 +189,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @param value result.
      */
     protected void setAccount(final String value) {
-        if (!value.equals("") || !value.equals("Search Contacts")) {
+        if (!value.equals("Search Contacts" ) && !value.equals("")) {
             WebElement accountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ACCOUNT)));
             accountInput.click();
             WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(

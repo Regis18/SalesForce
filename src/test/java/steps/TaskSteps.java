@@ -81,17 +81,10 @@ public class TaskSteps {
     @When("^I create a new Task with this values$")
     public void createTask(Map<String, String> taskMap) {
         task.processInformation(taskMap);
+        if (newTaskPage == null) {
+            newTaskPage = PageFactory.getNewTaskPage();        }
         task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
-        task.setContact(task.getContact().replace("random", String.valueOf((int) (Math.random() * 100))));
-        task.setAccount(task.getAccount().replace("random", String.valueOf((int) (Math.random() * 100))));
-
         newTaskPage = homePage.displayCreateTask();
-        if (!task.getContact().equals("")){
-            TaskApi.createContact(task.getContact());
-        }
-        if (!task.getAccount().equals("")){
-            TaskApi.createAccount(task.getAccount());
-        }
         newTaskPage.createNewTask(task);
         Setup.getInstance().setTask(task);
     }
@@ -153,9 +146,20 @@ public class TaskSteps {
         taskPage.logout();
     }
 
-    @Then("^I verify a message that confirms the new Task was created is displayed$")
-    public void verifyMessageConfirmCreated() {
-        assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
+    @Then("^I verify a message that confirms the new Task was \"([^\"]*)\" is displayed$")
+    public void verifyMessageConfirmCreated(String taskCreated) {
+        if (newTaskPage == null) {
+            newTaskPage = PageFactory.getNewTaskPage();
+        }
+        if (taskCreated.equals("created")) {
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
+        }
+        if (taskCreated.equals("updated")) {
+            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated."));
+        }
+        if (taskCreated.equals("deleted")) {
+            assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was deleted."));
+        }
     }
 
     @When("^I open the Task details page from Tasks Homepage$")

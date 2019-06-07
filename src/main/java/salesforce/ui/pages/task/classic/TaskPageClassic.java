@@ -20,6 +20,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Task;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Task Page classic.
  *
@@ -29,55 +32,55 @@ import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 public class TaskPageClassic extends TaskPageAbstract {
     public static final int MILLIS = 2500;
     public static final int INT = 100;
-
-    // Recent Items
-    @FindBy(xpath = "//a[span[contains(text(),'callTask2')]]")
-    private WebElement taskList;
-
-    // Create a new task
-    // Task edit
-    @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
-    private WebElement saveTask;
-
-
-    // Task information
-    @FindBy(css = "input#tsk5")
-    private WebElement subjectTextBox;
-    // Description information
-
-    // Recurrence
-    @FindBy(xpath = "//input[@id='IsRecurrence'")
-    private WebElement getRecurrence;
-
-    // Reminder
-    @FindBy(xpath = "//input[@id='reminder_select_check'")
-    private WebElement getReminder;
-    // Attachments
-
-    // Edit task
-    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
-    private WebElement updateTask;
-
-    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='delete']")
-    private WebElement deleteTask;
-
-    @FindBy(xpath = "//input[@name='newTask']")
-    private WebElement newTaskButton;
-
-
     // Task Details
     private static final String SUBJECT = "//div[@id='tsk5_ileinner']";
     private static final String PRIORITY = "//div[@id='tsk13_ileinner']";
     private static final String STATUS = "//div[@id='tsk12_ileinner']";
+    // Description information
     private static final String CONTACT = "//div[@id='tsk2_ileinner']//a";
     private static final String ACCOUNT = "//div[@id='tsk3_ileinner']//a";
-
+    // Attachments
     // Description information
     private static final String COMMENT = "//div[@id='tsk6_ileinner']";
-
+    private static final String DUEDATE = "//div[@id='tsk4_ileinner']";
+    // Recent Items
+    @FindBy(xpath = "//a[span[contains(text(),'callTask2')]]")
+    private WebElement taskList;
+    // Create a new task
+    // Task edit
+    @FindBy(xpath = "//form[@id='editPage']//div[contains(@class,'pbHeader')]//input[1]")
+    private WebElement saveTask;
+    // Task information
+    @FindBy(css = "input#tsk5")
+    private WebElement subjectTextBox;
+    // Recurrence
+    @FindBy(xpath = "//input[@id='IsRecurrence'")
+    private WebElement getRecurrence;
+    // Reminder
+    @FindBy(xpath = "//input[@id='reminder_select_check'")
+    private WebElement getReminder;
+    // Edit task
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='edit']")
+    private WebElement updateTask;
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@name='delete']")
+    private WebElement deleteTask;
+    @FindBy(xpath = "//input[@name='newTask']")
+    private WebElement newTaskButton;
     // Tab bar
     @FindBy(xpath = "//div[span[@id='userNavLabel']]")
     private WebElement userIcon;
+
+    private HashMap<String, String> fillLocatorMap() {
+        HashMap<String, String> locMap = new HashMap<>();
+        locMap.put("Subject", SUBJECT);
+        locMap.put("Comment", COMMENT);
+        locMap.put("Status", STATUS);
+        locMap.put("DueDate", DUEDATE);
+        locMap.put("Priority", PRIORITY);
+        locMap.put("Account", ACCOUNT);
+        locMap.put("Contact", CONTACT);
+        return locMap;
+    }
 
     /**
      * Click on task list.
@@ -106,46 +109,20 @@ public class TaskPageClassic extends TaskPageAbstract {
 
     @Override
     public boolean verifyTaskWasCreated(final Task task) {
-
+        HashMap<String, String> datos = fillLocatorMap();
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SUBJECT)));
-            WebElement subject =
-                    driver.findElement(By.xpath(SUBJECT));
-            String uiSubject = subject.getText();
-            if (!uiSubject.equals(task.getSubject())) {
-                return false;
-            }
-            WebElement comment =
-                    driver.findElement(By.xpath(COMMENT));
-            String uiComment = comment.getText().trim();
-            if (!uiComment.equals(task.getComment())) {
-                return false;
-            }
-            WebElement priority =
-                    driver.findElement(By.xpath(PRIORITY));
-            String uiPriority = priority.getText().trim();
-            if (!uiPriority.equals(task.getPriority())) {
-                return false;
-            }
-            WebElement status =
-                    driver.findElement(By.xpath(STATUS));
-            String uiStatus = status.getText().trim();
-            if (!uiStatus.equals(task.getStatus())) {
-                return false;
-            }
 
-            WebElement contact = driver.findElement(By.xpath(CONTACT));
-            String uiContact = contact.getText();
-            if (!uiContact.equals(task.getContact())) {
-                return false;
+            for (Map.Entry<String, String> dato : datos.entrySet()) {
+                if (!task.getField(dato.getKey()).equals("")) {
+                    WebElement field =
+                            driver.findElement(By.xpath(dato.getValue()));
+                    String uiSubject = field.getText();
+                    if (!uiSubject.equals(task.getField(dato.getKey()))) {
+                        return false;
+                    }
+                }
             }
-
-            WebElement account = driver.findElement(By.xpath(ACCOUNT));
-            String uiAccount = account.getText();
-            if (!uiAccount.equals(task.getAccount())) {
-                return false;
-            }
-
         } catch (Exception e) {
             return false;
         }
