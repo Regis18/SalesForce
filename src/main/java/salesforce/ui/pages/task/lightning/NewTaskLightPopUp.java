@@ -33,57 +33,45 @@ import java.util.List;
  */
 public class NewTaskLightPopUp extends NewTaskAbstract {
 
+    private static final String CONTACT = "//input[@placeholder='Search Contacts...']";
+    private static final String ACCOUNT = "//input[@placeholder='Search Accounts...']";
     /**
      * Subject TextBox.
      */
     @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),'Subject')]]/div/div/"
             + "lightning-base-combobox/div/div/input")
     private WebElement subjectTextBox;
-
     /**
      * Save button.
      */
     @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveButton;
-
     /**
      * Notification close button.
      */
     @FindBy(xpath = "//button[@title='Close']")
     private WebElement notificationCloseButton;
-
     /**
      * Comments text area.
      */
     @FindBy(xpath = "//textarea")
     private WebElement commentsTextArea;
-
     @FindBy(xpath = "//input[@class='inputDate input']")
     private WebElement dueDateTextBox;
-
     @FindBy(xpath = "//a[@title='High']")
     private WebElement priorityDropDown;
-
     @FindBy(xpath = "//input[@id='reminder_select_check']")
     private WebElement statusDropDown;
-
     @FindBy(xpath = "//span[contains(@class, 'forceActionsText')]")
     private WebElement messageConfirmation;
-
     @FindBy(xpath = "//select[@id='tsk2_mlktp']")
     private WebElement nameDropDown;
-
     @FindBy(xpath = "//input[@id='207:873;a']")
     private WebElement name;
-
     @FindBy(xpath = "//select[@id='tsk3_mlktp']")
     private WebElement relatedToDropDown;
-
     @FindBy(xpath = "//input[@id='tsk3']")
     private WebElement relatedTo;
-
-    private static final String CONTACT = "//input[@placeholder='Search Contacts...']";
-    private static final String ACCOUNT = "//input[@placeholder='Search Accounts...']";
 
     /**
      * Gets message confirmation after create a task.
@@ -102,7 +90,8 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
      * @return the text message.
      */
     public boolean verifyMessage(final String message) {
-        String uim =getMessageConfirmation();
+        String uim = getMessageConfirmation();
+        System.out.println("+" + uim + "-" + message + "-");
         return message.equals(getMessageConfirmation());
     }
 
@@ -172,6 +161,7 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Sets contact for verifies task.
+     *
      * @param value result.
      */
     protected void setContact(final String value) {
@@ -186,10 +176,11 @@ public class NewTaskLightPopUp extends NewTaskAbstract {
 
     /**
      * Sets account for verifies task.
+     *
      * @param value result.
      */
     protected void setAccount(final String value) {
-        if (!value.equals("Search Contacts" ) && !value.equals("")) {
+        if (!value.equals("Search Contacts") && !value.equals("")) {
             WebElement accountInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ACCOUNT)));
             accountInput.click();
             WebElement accountCreated = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(

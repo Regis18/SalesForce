@@ -6,7 +6,7 @@ Feature: Create, delete, update tasks of Salesforce
     Given I navigate to HomePage
 
   @deleteTask @deleteAllTask
-  Scenario: Create a new Task
+  Scenario: Create a new Task with required information
     When I create a new Task with this values
       | Subject  | callTask_random |
       | Comment  | test task       |
@@ -22,7 +22,7 @@ Feature: Create, delete, update tasks of Salesforce
     Then I verify the task response contains the Task values
 
   @deleteTask @deleteAllTask @createAccountForTask @createContactForTask @deleteAccount @deleteContact
-  Scenario: CreatSetup.getInstance().getTaskAccount()e a new Task with all the fields.
+  Scenario: Create a new Task with all the fields.
     When I create a new Task with this values
       | Subject  | callTask_random        |
       | Comment  | test task              |
@@ -52,7 +52,24 @@ Feature: Create, delete, update tasks of Salesforce
     Then I verify the Task was removed form Task section
 
   @deleteTask
-  Scenario: update task
+  Scenario: Edit subject task when a is has any Task.
+    Given I have a Task with this values
+      | Subject  | callTask_random |
+      | Comment  | test task       |
+      | Priority | High            |
+      | Status   | In Progress     |
+    Given I navigate to Tasks Homepage
+    When I edit the subject Task
+    Then I verify a message that confirms the new Task was "edited" is displayed
+    Then I navigate to Tasks Homepage
+    Then I verify the Task subject is displayed in Tasks Homepage
+    When I open the Task details page from Tasks Homepage
+    Then I verify the Task values are displayed in Task details page
+    When I perform a get request for the Task by API
+    Then I verify the task response contains the Task values
+
+  @deleteTask
+  Scenario: Update subject task when a is has any Task.
     Given I have a Task with this values
       | Subject  | callTask_random |
       | Comment  | test task       |
@@ -60,7 +77,6 @@ Feature: Create, delete, update tasks of Salesforce
       | Status   | In Progress     |
     Given I navigate to Tasks Homepage
     When I update the subject Task
-#    Then I verify a message that confirms the new Task was "updated" is displayed
     Then I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
     When I open the Task details page from Tasks Homepage

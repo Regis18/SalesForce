@@ -134,6 +134,15 @@ public class TaskSteps {
     }
 
     /**
+     * I edit the subject task step.
+     */
+    @When("^I edit the subject Task$")
+    public void editTask() {
+        task = taskPage.editCurrentTask(Setup.getInstance().getTask());
+        Setup.getInstance().setTask(task);
+    }
+
+    /**
      * delete the task step.
      */
     @When("^I delete the Task$")
@@ -159,8 +168,8 @@ public class TaskSteps {
         if (taskCreated.equals("created")) {
             assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was created."));
         }
-        if (taskCreated.equals("updated")) {
-            assertTrue(newTaskPage.verifyMessage("Task " + task.getSubject() + " was updated."));
+        if (taskCreated.equals("edited")) {
+            assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was saved."));
         }
         if (taskCreated.equals("deleted")) {
             assertTrue(newTaskPage.verifyMessage("Task \"" + task.getSubject() + "\" was deleted."));

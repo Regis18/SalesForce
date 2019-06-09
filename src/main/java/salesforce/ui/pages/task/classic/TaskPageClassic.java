@@ -70,6 +70,10 @@ public class TaskPageClassic extends TaskPageAbstract {
     @FindBy(xpath = "//div[span[@id='userNavLabel']]")
     private WebElement userIcon;
 
+    /**
+     * Fill locators map.
+     * @return locators map.
+     */
     private HashMap<String, String> fillLocatorMap() {
         HashMap<String, String> locMap = new HashMap<>();
         locMap.put("Subject", SUBJECT);
@@ -127,6 +131,11 @@ public class TaskPageClassic extends TaskPageAbstract {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Task editCurrentTask(Task task) {
+        return updateCurrentTask(task);
     }
 
     @Override

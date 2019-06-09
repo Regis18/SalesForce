@@ -40,6 +40,13 @@ public abstract class TaskPageAbstract extends BasePage {
     public abstract boolean verifyTaskWasCreated(final Task task);
 
     /**
+     * Edit a current task.
+     * @param task information.
+     * @return task information.
+     */
+    public abstract Task editCurrentTask(final Task task);
+
+    /**
      * Click recent refresh.
      */
     public abstract void clickRecentTasksRefresh();
