@@ -4,11 +4,11 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import salesforce.ui.pages.classic.HomeClassicPage;
-import salesforce.ui.pages.lightning.HomeLightPage;
+import salesforce.ui.pages.home.HomeClassicPage;
+import salesforce.ui.pages.home.HomeLightPage;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.PageFactory;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.Setup;
 

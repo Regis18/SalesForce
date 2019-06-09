@@ -1,5 +1,5 @@
 /*
- *  @HomeLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) HomeLightPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,14 +11,16 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.home;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.search.SearchAbstractPage;
+import salesforce.ui.pages.search.SearchLightPage;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.task.lightning.NewTaskLightPopUp;
 import salesforce.ui.pages.account.light.AccountLightPage;
@@ -51,6 +53,9 @@ public class HomeLightPage extends HomePageAbstract {
 
     @FindBy(xpath = "//a[span[contains(text(),'Tasks')]]")
     private WebElement taskMenuButton;
+
+    @FindBy(css = "[class^='slds-input slds-text']")
+    private WebElement searchTxt;
 
     /**
      * Event click on tasks dropdown.
@@ -122,5 +127,17 @@ public class HomeLightPage extends HomePageAbstract {
     public CampaignLightPage clickCampaignBtn() {
         campaignBtn.click();
         return new CampaignLightPage();
+    }
+
+    /**
+     * Search element in the main Search.
+     * @param element string.
+     * @return SearchAbstractPage.
+     */
+    @Override
+    public SearchAbstractPage searchElement(String element) {
+        searchTxt.sendKeys(element);
+        searchTxt.sendKeys(Keys.ENTER);
+        return new SearchLightPage();
     }
 }

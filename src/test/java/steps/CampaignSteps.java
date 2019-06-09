@@ -14,6 +14,7 @@
 package steps;
 
 import core.utils.Common;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,13 +24,14 @@ import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.utils.EntityId;
 
 import java.util.ArrayList;
@@ -51,14 +53,17 @@ public class CampaignSteps {
     private NewCampaignAbstract newCampaignPage;
     private EditCampaignAbstract editCampaignPage;
     private OneCampaignAbstract oneCampaignPage;
+    private SearchAbstractPage searchPage;
     private TransporterPage transporterPage = TransporterPage.getInstance();
     private Context context;
     private Campaign campaign;
     private CampaignApi campaignApi = new CampaignApi();;
     private JsonPath jsonPath;
-    private Map<String, String> mapOut;
+    private List<Map<String, String>> mapOut = new ArrayList<>();
     private EntityId entityId;
     private List<String> ids = new ArrayList<>();
+    private String element;
+    private String key;
 
     /**
      * Campaign steps.
@@ -153,7 +158,8 @@ public class CampaignSteps {
     public void updateTheCampaignTheCharacteristics(final Map<String, String> mapOut) {
         campaign.processInformation(mapOut);
         oneCampaignPage = editCampaignPage.createNewCampaign(campaign, mapOut);
-        this.mapOut = mapOut;
+        this.mapOut.remove(0);
+        this.mapOut.add(mapOut);
     }
 
     /**
@@ -180,9 +186,9 @@ public class CampaignSteps {
     /**
      * Verifies the updated
      */
-    @Then("^I verify the updated values of Campaign in its own Page$")
-    public void verifyTheDataUpdatedOfCampaignInItsOwnPage() {
-        mapOut.forEach((key, value) -> {
+    @Then("^I verify the values of Campaign in its own Page$")
+    public void verifyTheDataOfCampaignInItsOwnPage() {
+        mapOut.get(0).forEach((key, value) -> {
             if (key.equals("IsActive")) {
                 key = "Active";
             } else if (key.equals("StartDate")) {
@@ -203,8 +209,7 @@ public class CampaignSteps {
                 key = "Num Sent";
             }
             assertTrue(oneCampaignPage.isCampaignFieldValueDisplayed(key, value),
-                    "The field " + key + " was not displayed. Expected value "
-                            + value);
+                    "The field " + key + " was not displayed. Expected value " + value);
         });
     }
 
@@ -222,6 +227,7 @@ public class CampaignSteps {
         campaign.setId(jsonPath.getString("Id"));
         ids.add(campaign.getId());
         context.setIds(ids);
+        this.mapOut.add(mapOut);
     }
 
     /**
@@ -236,7 +242,7 @@ public class CampaignSteps {
      * Search the campaign in the list of the Campaigns.
      * @param nameCampaign string.
      */
-    @And("^I search the campaign name \"([^\"]*)\" in the Search field of Campaign form$")
+    @And("^I search the Campaign name \"([^\"]*)\" in the Search field of Campaign form$")
     public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
         campaignPage.searchCampaignInList(nameCampaign);
     }
@@ -248,7 +254,7 @@ public class CampaignSteps {
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
     public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
-        mapOut.forEach((key, value) -> {
+        mapOut.get(0).forEach((key, value) -> {
             String values = value;
             if (key.equals("StartDate") || key.equals("EndDate")) {
                 values = Common.translateDateAPI(value.toLowerCase());
@@ -265,7 +271,7 @@ public class CampaignSteps {
      */
     @When("^I create a new Campaign for Campaigns$")
     public void createANewCampaignForCampaigns(final Map<String, String> mapOut) {
-        this.mapOut = mapOut;
+        this.mapOut.add(mapOut);
         campaign.processInformation(mapOut);
         newCampaignPage = campaignPage.clickNewCampaignBtn();
         oneCampaignPage = newCampaignPage.createNewCampaign(campaign, mapOut);
@@ -275,10 +281,40 @@ public class CampaignSteps {
     }
 
     /**
-     * Open Campaign page from Individual Campaign Page.
+     * Opens Campaign page from Individual Campaign Page.
      */
     @When("^I open the Campaigns Page from Individual Campaign Page$")
     public void openTheCampaignsPageFromIndividualCampaignPage() {
         campaignPage = oneCampaignPage.openCampaignPage();
+    }
+
+    /**
+     * Searches element.
+     * @param name string
+     */
+    @When("^I search \"([^\"]*)\" in the Search field$")
+    public void searchInTheSearchField(String name) {
+        homePage = context.getHomePage();
+        searchPage = homePage.searchElement(name);
+    }
+
+    /**
+     * Verifies the element is in the searches.
+     * @param element string.
+     * @param key string.
+     */
+    @Then("^I verify \"([^\"]*)\" of \"([^\"]*)\" is in the list of searches in Search Page$")
+    public void verifyOfIsInTheListOfSearchesInSearchPage(String element, String key) {
+        this.element = element;
+        this.key = key;
+        assertTrue(searchPage.doesElementExist(key, element));
+    }
+
+    /**
+     * Open the element that was searched.
+     */
+    @When("^I open the element that was searched$")
+    public void openTheElementThatWasSearched() {
+        oneCampaignPage = searchPage.accessToElementSearched(key, element);
     }
 }

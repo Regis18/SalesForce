@@ -72,6 +72,12 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(css = "textarea[id^='621']")
     private WebElement descriptionTxt;
 
+    @FindBy(css = "[class='genericError uiOutputText']")
+    private WebElement reviewErrorMessageLbl;
+
+    @FindBy(css = "[class='errorsList'] li")
+    private WebElement requiredFieldsMessageLbl;
+
     private String statusElements = "li[role='presentation'] a[title='element']";
 
     /**

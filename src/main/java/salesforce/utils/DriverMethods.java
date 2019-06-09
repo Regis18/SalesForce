@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverMethods {
     private static WebDriver webDriver;
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
-    private static final int TIMEWAIT = 500;
+    private static final int TIMEWAIT = 700;
 
     /**
      * Wait for the locator, if it exists the result is true, if it is not false.

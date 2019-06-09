@@ -52,7 +52,7 @@ public class GenerateReport {
         configuration.setBuildNumber(buildNumber);
         // additional metadata presented on main page
         configuration.addClassifications("Platform", "Windows");
-        configuration.addClassifications("Browser", WebDriverConfig.getBROWSER());
+        configuration.addClassifications("Browser", WebDriverConfig.getBrowser());
         configuration.addClassifications("Style", WebDriverConfig.getSkin());
         configuration.addClassifications("Branch", "release/1.0");
 

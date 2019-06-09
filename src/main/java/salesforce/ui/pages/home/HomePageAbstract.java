@@ -1,8 +1,22 @@
-package salesforce.ui.pages.abstracts;
+/*
+ * @(#) HomePageAbstract.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ *  Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
+ *
+ */
+
+package salesforce.ui.pages.home;
 
 import salesforce.ui.BasePage;
 
 
+import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
@@ -31,4 +45,11 @@ public abstract class HomePageAbstract extends BasePage {
      * @return Account Page abstract.
      */
     public abstract AccountPageAbstract clickAccountBtn();
+
+    /**
+     * Search element in the main Search.
+     * @param element string.
+     * @return SearchAbstractPage.
+     */
+    public abstract SearchAbstractPage searchElement(final String element);
 }
