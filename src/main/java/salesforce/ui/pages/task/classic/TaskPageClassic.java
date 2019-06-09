@@ -100,6 +100,11 @@ public class TaskPageClassic extends TaskPageAbstract {
         taskList.click();
     }
 
+    /**
+     * Verifies subject task exist.
+     * @param subjectTask subject Task.
+     * @return boolean value.
+     */
     @Override
     public boolean verifySubjectExist(final String subjectTask) {
         try {
@@ -111,6 +116,11 @@ public class TaskPageClassic extends TaskPageAbstract {
         return true;
     }
 
+    /**
+     * Verifies Task was created.
+     * @param task the task.
+     * @return boolean value.
+     */
     @Override
     public boolean verifyTaskWasCreated(final Task task) {
         HashMap<String, String> datos = fillLocatorMap();
@@ -133,15 +143,27 @@ public class TaskPageClassic extends TaskPageAbstract {
         return true;
     }
 
+    /**
+     * Edit current task.
+     * @param task information.
+     * @return task information.
+     */
     @Override
     public Task editCurrentTask(Task task) {
         return updateCurrentTask(task);
     }
 
+    /**
+     * Click Recent Task Refresh.
+     */
     @Override
     public void clickRecentTasksRefresh() {
     }
 
+    /**
+     * Delete Current task.
+     * @param task task infomation.
+     */
     @Override
     public void deleteCurrentTask(final Task task) {
         WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'"
@@ -150,6 +172,11 @@ public class TaskPageClassic extends TaskPageAbstract {
         deleteTask.click();
     }
 
+    /**
+     * Update current task.
+     * @param task task information.
+     * @return task information.
+     */
     @Override
     public Task updateCurrentTask(final Task task) {
         WebElement currentTask = driver.findElement(By.xpath("//a[span[contains(text(),'"
@@ -163,6 +190,10 @@ public class TaskPageClassic extends TaskPageAbstract {
         return task;
     }
 
+    /**
+     * Verifies task values.
+     * @param task information.
+     */
     @Override
     public void verifyTaskValues(final Task task) {
         WebElement subjectTask =

@@ -103,7 +103,6 @@ public class SetupPage extends BasePage {
         if (isLight) {
             wait.until(ExpectedConditions.elementToBeClickable(appLauncherBtn));
             appLauncherBtn.click();
-//            homeLink.click();
             wait.until(ExpectedConditions.elementToBeClickable(homeLink));
             homeLink.click();
         } else {
