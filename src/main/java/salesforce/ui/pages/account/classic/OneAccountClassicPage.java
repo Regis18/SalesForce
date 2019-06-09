@@ -194,6 +194,8 @@ public class OneAccountClassicPage extends OneAccountAbstract {
             String key = (String) it.next();
             if (key.equals("Name")) {
                 String value = nameAc.getText();
+                getValue = value.substring(0, value.length() - 17);
+                mapAccount.put(key, getValue);
             }
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);

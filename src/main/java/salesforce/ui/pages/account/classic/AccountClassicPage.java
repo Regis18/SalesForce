@@ -31,7 +31,7 @@ public class AccountClassicPage extends AccountPageAbstract {
     /**
      * AccountForm.
      */
-    @FindBy(xpath = "//li[@id='Account_Tab']")
+    @FindBy(id = "bodyCell")
     private WebElement accountForm;
 
     /**
