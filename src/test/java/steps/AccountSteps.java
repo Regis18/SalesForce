@@ -21,7 +21,7 @@ import org.testng.Assert;
 import salesforce.api.AccountApi;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;

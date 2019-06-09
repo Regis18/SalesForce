@@ -59,27 +59,25 @@ public class TaskHook {
 
     @Before("@createAccountForTask")
     public void createAccountForTask() {
-       String name = "accountForTask";
+       String name = "accountForTask" + String.valueOf((int) (Math.random() * 100));
         TaskApi.createAccount(name);
         Setup.getInstance().setTaskAccount(name);
     }
 
     @Before("@createContactForTask")
     public void createContactForTask() {
-        String lastName = "contactForTask";
+        String lastName = "contactForTask" + String.valueOf((int) (Math.random() * 100));
         TaskApi.createContact(lastName);
         Setup.getInstance().setTaskContact(lastName);
     }
 
-    @After("@deleteAllAccounts")
-    public void deleteAllAccounts() {
-        TaskApi.deleteAllAccounts();
+    @After("@deleteAccount")
+    public void deleteAccount() {
+        TaskApi.deleteAccount(Setup.getInstance().getTaskAccount());
     }
 
-    @After("@deleteAllContacts")
-    public void deleteAllContacts() {
-        TaskApi.deleteAllContacts();
+    @After("@deleteContact")
+    public void deleteContact() {
+        TaskApi.deleteContact(Setup.getInstance().getTaskContact());
     }
-
 }
-

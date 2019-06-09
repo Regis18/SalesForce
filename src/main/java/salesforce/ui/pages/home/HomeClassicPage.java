@@ -1,5 +1,5 @@
 /*
- * @(#) HomeLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) HomeClassicPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,12 +11,11 @@
  *
  */
 
-package salesforce.ui.pages.classic;
+package salesforce.ui.pages.home;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
 import salesforce.ui.pages.task.classic.NewTaskClassic;
@@ -24,7 +23,7 @@ import salesforce.ui.pages.account.classic.AccountClassicPage;
 
 /**
  * HomeLightPage.
- * @author Regis Humana
+ * @author Regis Humana.
  */
 public class HomeClassicPage extends HomePageAbstract {
 
