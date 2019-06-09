@@ -115,7 +115,7 @@ public class CampaignSteps {
      * @param name string.
      */
     @Then("^I verify the Campaign name was \"([^\"]*)\" in the list of campaigns in Campaigns Page$")
-    public void verifyIsInTheListOfCampaigns(String name) {
+    public void verifyIsInTheListOfCampaigns(final String name) {
         // It is false because means that the element exist in the list.
         assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
@@ -144,9 +144,10 @@ public class CampaignSteps {
 
     /**
      * Verifies campaign is not the list.
+     * @param name string.
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
-    public void verifyIsNotInTheListOfCampaigns() {
+    public void verifyIsNotInTheListOfCampaigns(String name) {
         boolean result = campaignPage.checkCampaignList(campaign.getName());
         System.out.println("DELETE: " + result);
         assertFalse(result);
@@ -244,7 +245,7 @@ public class CampaignSteps {
      * @param nameCampaign string.
      */
     @And("^I search the Campaign name \"([^\"]*)\" in the Search field of Campaign form$")
-    public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
+    public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(final String nameCampaign) {
         if (skin.equals("light")) {
             campaignPage.searchCampaignInList(nameCampaign);
         } else {
@@ -254,9 +255,10 @@ public class CampaignSteps {
 
     /**
      * Verify the values of the campaign with API result.
+     * @param name string.
      */
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
-    public void verifyThroughAPIIfTheAccountThatWas() {
+    public void verifyThroughAPIIfTheAccountThatWas(final String name) {
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
         mapOut.get(0).forEach((key, value) -> {
             String values = value;
@@ -297,7 +299,7 @@ public class CampaignSteps {
      * @param name string
      */
     @When("^I search \"([^\"]*)\" in the Search field$")
-    public void searchInTheSearchField(String name) {
+    public void searchInTheSearchField(final String name) {
         homePage = context.getHomePage();
         searchPage = homePage.searchElement(name);
     }
