@@ -17,7 +17,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Account;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.utils.DriverMethods;
 
@@ -82,8 +81,8 @@ public class AccountClassicPage extends AccountPageAbstract {
      */
     @Override
     public OneAccountClassicPage selectAccount(final String accountId) {
-        String account = "/"+accountId.substring(0, accountId.length() - 3);
-        driver.findElement(By.xpath("//th[@class=' dataCell  ']//a[@href='"+account+"']")).click();
+        String account = "/" + accountId.substring(0, accountId.length() - 3);
+        driver.findElement(By.xpath("//th[@class=' dataCell  ']//a[@href='" + account + "']")).click();
         return new OneAccountClassicPage();
     }
 }

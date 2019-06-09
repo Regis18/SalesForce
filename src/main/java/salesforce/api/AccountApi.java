@@ -41,6 +41,7 @@ public class AccountApi {
     /**
      * Delete an account by id.
      * @param id String.
+     * @return the name of an Account
      */
     public static Account getAccount(final String id) {
         Account resultAccount = new Account();
@@ -51,7 +52,7 @@ public class AccountApi {
         try {
             Object obj = new JSONParser().parse(response.getBody().asString());
             JSONObject jo = (JSONObject) obj;
-            resultAccount.setName((String)jo.get("Name"));
+            resultAccount.setName((String) jo.get("Name"));
         } catch (Exception e) {
         }
         return resultAccount;
@@ -59,18 +60,18 @@ public class AccountApi {
 
     /**
      * Create Account with API.
+     * @param account Account
      */
-    public void createAccount(Account account) {
+    public void createAccount(final Account account) {
         Response response = given()
                 .headers("Content-Type", "application/json")
                 .auth().oauth2(CommonApi.getToken())
                 .body("{" + "\"Name\": \"" + account.getName() + "\" }")
                 .when().request("POST", urlBase);
         try {
-
             Object obj = new JSONParser().parse(response.getBody().asString());
             JSONObject jo = (JSONObject) obj;
-            account.setId((String)jo.get("id"));
+            account.setId((String) jo.get("id"));
         } catch (Exception e) {
         }
     }

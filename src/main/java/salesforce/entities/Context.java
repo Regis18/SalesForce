@@ -1,6 +1,6 @@
 package salesforce.entities;
 
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 
 import java.util.List;
 

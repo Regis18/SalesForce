@@ -14,13 +14,12 @@
 package salesforce.ui.pages;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.BasePage;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
-import salesforce.ui.pages.classic.HomeClassicPage;
-import salesforce.ui.pages.lightning.HomeLightPage;
+import salesforce.ui.pages.home.HomePageAbstract;
+import salesforce.ui.pages.home.HomeClassicPage;
+import salesforce.ui.pages.home.HomeLightPage;
 
 /**
  * SetupPage.
@@ -102,7 +101,6 @@ public class SetupPage extends BasePage {
     public HomePageAbstract navigateHomeLight() {
         if (isLight) {
             appLauncherBtn.click();
-//            homeLink.click();
             wait.until(ExpectedConditions.elementToBeClickable(homeLink));
             homeLink.click();
         } else {
