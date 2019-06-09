@@ -1,5 +1,5 @@
 /*
- *  @HomeLightPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) HomeLightPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.lightning;
+package salesforce.ui.pages.home;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
