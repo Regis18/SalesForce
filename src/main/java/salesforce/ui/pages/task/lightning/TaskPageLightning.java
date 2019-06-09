@@ -42,6 +42,9 @@ public class TaskPageLightning extends TaskPageAbstract {
     private static final String PRIORITY = "//div[contains(.//div//div//span, 'Priority')]"
             + "//div//div//div[2]//span//span";
     private static final String STATUS = "//div[contains(.//div//div//span, 'Status')]//div//div[2]//span//span";
+    private static final String DUEDATE = "//div[div/span[contains(text(),'Due Date')]]//div//span//span";
+    private static final String CONTACT = "//div[div/span[contains(text(),'Name')]]//div//span//a";
+    private static final String ACCOUNT = "//div[div/span[contains(text(),'Related To')]]//div//span//a";
 
     /**
      * Task web element.
@@ -58,11 +61,16 @@ public class TaskPageLightning extends TaskPageAbstract {
      */
     @FindBy(xpath = "//a[contains(.,'Delete')]")
     private WebElement deletetask;
+
     /**
      * Delete confirmation web element.
      */
     @FindBy(xpath = "//button[span[contains(.,'Delete')]]")
     private WebElement deleteConfirmationtask;
+
+    @FindBy(xpath = "//a[div[text()='Edit']]")
+    private WebElement editTask;
+
     /**
      * Recent task refresh web element.
      */
@@ -85,6 +93,16 @@ public class TaskPageLightning extends TaskPageAbstract {
     private WebElement saveUpdateTask;
     @FindBy(xpath = "//div[span[img[@title='User']]]")
     private WebElement userIcon;
+
+    @FindBy(xpath = "//lightning-grouped-combobox[label[contains(text(),'Subject')]]/div/div/"
+            + "lightning-base-combobox/div/div/input")
+    private WebElement subjectTextBox;
+
+    /**
+     * Save button.
+     */
+    @FindBy(xpath = "//button[@title='Save']")
+    private WebElement saveButton;
 
     /**
      * Verify subject is displayed.
@@ -132,6 +150,8 @@ public class TaskPageLightning extends TaskPageAbstract {
                     WebElement field =
                             driver.findElement(By.xpath(dato.getValue()));
                     String uiSubject = field.getText();
+                    String taskField = task.getField(dato.getKey());
+                    System.out.println("-" + uiSubject + "-" + taskField + "-");
                     if (!uiSubject.equals(task.getField(dato.getKey()))) {
                         return false;
                     }
@@ -144,15 +164,19 @@ public class TaskPageLightning extends TaskPageAbstract {
         return true;
     }
 
+    /**
+     * Fill Loctors Map.
+     * @return locator map.
+     */
     private HashMap<String, String> fillLocatorMap() {
         HashMap<String, String> locMap = new HashMap<>();
         locMap.put("Subject", SUBJECT);
         locMap.put("Comment", COMMENT);
         locMap.put("Status", STATUS);
-       // locMap.put("DueDate", DUEDATE);
+        locMap.put("DueDate", DUEDATE);
         locMap.put("Priority", PRIORITY);
-       // locMap.put("Account", ACCOUNT);
-       // locMap.put("Contact", CONTACT);
+        locMap.put("Account", ACCOUNT);
+        locMap.put("Contact", CONTACT);
         return locMap;
     }
 
@@ -202,6 +226,13 @@ public class TaskPageLightning extends TaskPageAbstract {
     }
 
     /**
+     * Click i edit item of list.
+     */
+    public void clickEditItem() {
+        editTask.click();
+    }
+
+    /**
      * Click the delete confirmation.
      */
     public void clickDeleteConfirmationItem() {
@@ -216,12 +247,15 @@ public class TaskPageLightning extends TaskPageAbstract {
         editSubjectTask.click();
     }
 
+
     /**
      * Update task subject.
      *
      * @param newSubjectTask new subject
      */
+
     public void setUpdateNewSubjectTask(final String newSubjectTask) {
+
         if (WebDriverConfig.getInstance().getBrowser().toLowerCase().equals("chrome")) {
             updateNewSubjectTask.sendKeys(newSubjectTask);
         } else {
@@ -248,10 +282,48 @@ public class TaskPageLightning extends TaskPageAbstract {
     }
 
     /**
+     * Set Edit New Subject for task.
+     * @param nameTaskSubject name.
+     */
+    public void setEditNewSubjectTask(final String nameTaskSubject) {
+        subjectTextBox.sendKeys(nameTaskSubject);
+    }
+
+    /**
+     * Click on save button after edit a current task.
+     */
+    public void clickSaveEditTask() {
+        saveButton.click();
+    }
+
+    /**
      * Update current task.
      *
      * @param task the task
      * @return updated task
+     */
+    public Task editCurrentTask(final Task task) {
+        clickDropDownButton();
+        clickEditItem();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
+        String nameTaskSubject = "Updated" + String.valueOf((int) (Math.random() * INT));
+        setEditNewSubjectTask(nameTaskSubject);
+        clickSaveEditTask();
+        try {
+            Thread.sleep(MILLIS);
+        } catch (Exception e) {
+        }
+        task.setSubject(task.getSubject() + nameTaskSubject);
+        return task;
+    }
+
+    /**
+     * Updaten a current task.
+     * @param task task information.
+     * @return task information.
      */
     public Task updateCurrentTask(final Task task) {
         clickEditSubjectTask();

@@ -25,7 +25,7 @@ import salesforce.ui.pages.task.classic.NewTaskClassic;
 
 /**
  * HomeLightPage.
- * @author Regis Humana
+ * @author Regis Humana.
  */
 public class HomeClassicPage extends HomePageAbstract {
 
