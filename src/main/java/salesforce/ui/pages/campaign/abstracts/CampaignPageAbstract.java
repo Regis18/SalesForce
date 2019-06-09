@@ -33,11 +33,11 @@ public abstract class CampaignPageAbstract extends BasePage {
      * @param name string.
      * @return boolean.
      */
-    public abstract boolean checkCampaignList(String name);
+    public abstract boolean checkCampaignList(final String name);
 
     /**
      * Searches the campaign in the list.
      * @param name string.
      */
-    public abstract void searchCampaignInList(String name);
+    public abstract void searchCampaignInList(final String name);
 }

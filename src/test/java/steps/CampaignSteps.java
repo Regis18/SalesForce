@@ -44,7 +44,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Campaign steps
+ * Campaign steps.
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -144,10 +144,9 @@ public class CampaignSteps {
 
     /**
      * Verifies campaign is not the list.
-     * @param name string.
      */
     @And("^I verify \"([^\"]*)\" is not in the list of campaigns$")
-    public void verifyIsNotInTheListOfCampaigns(String name) {
+    public void verifyIsNotInTheListOfCampaigns() {
         boolean result = campaignPage.checkCampaignList(campaign.getName());
         System.out.println("DELETE: " + result);
         assertFalse(result);
@@ -255,10 +254,9 @@ public class CampaignSteps {
 
     /**
      * Verify the values of the campaign with API result.
-     * @param arg0 string.
      */
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
-    public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
+    public void verifyThroughAPIIfTheAccountThatWas() {
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
         mapOut.get(0).forEach((key, value) -> {
             String values = value;
@@ -310,7 +308,7 @@ public class CampaignSteps {
      * @param key string.
      */
     @Then("^I verify \"([^\"]*)\" of \"([^\"]*)\" is in the list of searches in Search Page$")
-    public void verifyOfIsInTheListOfSearchesInSearchPage(String element, String key) {
+    public void verifyOfIsInTheListOfSearchesInSearchPage(final String element, final String key) {
         this.element = element;
         this.key = key;
         assertTrue(searchPage.doesElementExist(key, element));

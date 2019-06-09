@@ -251,7 +251,6 @@ public abstract class EditAccountAbstract extends BasePage {
         HashMap<String, StrategySetter> strategyMap = composeStrategyMap(account, accountInformation);
         accountInformation.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
-            System.out.println(key);
         });
     }
 

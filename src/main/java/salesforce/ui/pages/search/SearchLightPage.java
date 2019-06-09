@@ -41,7 +41,7 @@ public class SearchLightPage extends SearchAbstractPage{
      * @return BasePage.
      */
     @Override
-    public OneCampaignAbstract accessToElementSearched(String key, String element) {
+    public OneCampaignAbstract accessToElementSearched(final String key, final String element) {
         driver.findElement(By.xpath(elementSearched.replace(this.key, key).replace(this.element, element))).click();
         return new OneCampaignLightPage();
     }
@@ -52,7 +52,7 @@ public class SearchLightPage extends SearchAbstractPage{
      * @param element string.
      * @return boolean
      */
-    public boolean doesElementExist(String key, String element) {
+    public boolean doesElementExist(final String key, final String element) {
         return DriverMethods.searchForExistentElement(By.xpath(elementSearched
                 .replace(this.key, key)
                 .replace(this.element, element)));

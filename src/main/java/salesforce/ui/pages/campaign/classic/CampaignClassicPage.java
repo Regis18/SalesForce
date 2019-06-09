@@ -76,7 +76,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      * @param name string.
      */
     @Override
-    public void searchCampaignInList(String name) {
+    public void searchCampaignInList(final String name) {
         searchTxt.click();
         searchTxt.sendKeys(name);
         if (autoCompletedSearch.getText().equals(name)) {

@@ -25,6 +25,7 @@ import salesforce.utils.DriverMethods;
 
 /**
  * OneCampaignClassicPage.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -65,15 +66,17 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Verify if the components of the Campaign exist.
+     *
      * @return boolean
      */
     @Override
-    public boolean verifyComponentsCampaign(Campaign campaign) {
+    public boolean verifyComponentsCampaign(final Campaign campaign) {
         return campaignDetailForm.isDisplayed();
     }
 
     /**
      * Gets the Name Campaign.
+     *
      * @return string
      */
     @Override
@@ -83,6 +86,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Deletes campaign.
+     *
      * @param nameCampaign string
      * @return CampaignClassicPage.
      */
@@ -95,6 +99,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Opens a form for edit a campaign.
+     *
      * @return EditCampaignClassic
      */
     @Override
@@ -105,7 +110,8 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Check if the values of Campaign is correct in the list.
-     * @param key String.
+     *
+     * @param key   String.
      * @param value Value.
      * @return Boolean.
      */
@@ -125,6 +131,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Click the button Campaign and redirected to CampaignPage.
+     *
      * @return CampaignPageAbstract.
      */
     @Override

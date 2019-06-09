@@ -72,73 +72,73 @@ public abstract class EditCampaignAbstract extends BasePage {
      *
      * @param name String
      */
-    protected abstract void setNameTxt(String name);
+    protected abstract void setNameTxt(final String name);
 
     /**
      * Set Active checkbox.
      * @param isActivate boolean
      */
-    protected abstract void setActiveChk(boolean isActivate);
+    protected abstract void setActiveChk(final boolean isActivate);
 
     /**
      * Set Type of the campaign.
      * @param type string.
      */
-    protected abstract void setTypeCmb(String type);
+    protected abstract void setTypeCmb(final String type);
 
     /**
      * Set Status combo box.
      * @param status string.
      */
-    protected abstract void setStatusCmb(String status);
+    protected abstract void setStatusCmb(final String status);
 
     /**
      * Set Start Date.
      * @param startDate string.
      */
-    protected abstract void setStartDate(String startDate);
+    protected abstract void setStartDate(final String startDate);
 
     /**
      * Set End Date.
      * @param endDate string.
      */
-    protected abstract void setEndDate(String endDate);
+    protected abstract void setEndDate(final String endDate);
 
     /**
      * Set Expected Revenue text.
      * @param expected integer.
      */
-    protected abstract void setExpectedRevenueTxt(Integer expected);
+    protected abstract void setExpectedRevenueTxt(final Integer expected);
 
     /**
      * Set Budgeted cost.
      * @param budgeted integer.
      */
-    protected abstract void setBudgetedCostTxt(Integer budgeted);
+    protected abstract void setBudgetedCostTxt(final Integer budgeted);
 
     /**
      * Set actual Cost text box.
      * @param actualCost integer.
      */
-    protected abstract void setActualCostTxt(Integer actualCost);
+    protected abstract void setActualCostTxt(final Integer actualCost);
 
     /**
      * Set num sent text box.
      * @param numSent integer.
      */
-    protected abstract void setNumSent(Integer numSent);
+    protected abstract void setNumSent(final Integer numSent);
 
     /**
      * Set Description text box.
      * @param description string.
      */
-    protected abstract void setDescriptionTxt(String description);
+    protected abstract void setDescriptionTxt(final String description);
 
     /**
      * Set Expected Response string.
      * @param expectedResponse string
      */
-    protected abstract void setExpectedResponse(Integer expectedResponse);
+    protected abstract void setExpectedResponse(final Integer expectedResponse);
 
     /**
      * Set Campaign Data.
