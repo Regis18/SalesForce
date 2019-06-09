@@ -17,9 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.BasePage;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
-import salesforce.ui.pages.campaign.classic.OneCampaignClassicPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
 import salesforce.utils.DriverMethods;
 

@@ -21,7 +21,6 @@ import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
-import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.utils.DriverMethods;
 
 /**
