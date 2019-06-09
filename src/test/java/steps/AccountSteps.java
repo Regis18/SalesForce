@@ -225,8 +225,8 @@ public class AccountSteps {
      */
     @When("^I update the Account with the following values$")
     public void updateAnAccountInSalesforce(Map<String, String> accountInformation) {
-        newAccountPage = oneAccountPage.editAccount();
-        oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
+        newEditAccount = oneAccountPage.editAccount();
+        oneAccountPage = newEditAccount.createNewAccount(account, accountInformation);
         account.setAccountInformation(accountInformation);
     }
 }

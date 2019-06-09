@@ -52,7 +52,7 @@ public abstract class OneAccountAbstract extends BasePage {
     /**
      * Edit an Account of Salesforce.
      */
-    public abstract NewAccountPageAbstract editAccount();
+    public abstract EditAccountAbstract editAccount();
 
     /**
      * Delete Account of Salesforce with specific name.

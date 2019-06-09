@@ -175,9 +175,9 @@ public class OneAccountClassicPage extends OneAccountAbstract {
      * @return NewAccountClassicPage.
      */
     @Override
-    public NewAccountClassicPage editAccount() {
+    public EditAccountClassic editAccount() {
         editBtn.click();
-        return new NewAccountClassicPage();
+        return new EditAccountClassic();
     }
 
     /**

@@ -21,14 +21,16 @@ import salesforce.ui.pages.account.abstracts.EditAccountAbstract;
 
 public class EditAccountPopup extends EditAccountAbstract {
 
+    private String statusElements = "div[role=\"menu\"] li[role='presentation'] a[title='element']";
+
     @FindBy(css = "[class='modal-container slds-modal__container']")
     private WebElement editAccount;
 
     @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[5]//a")
     private WebElement editBtn;
 
-    @FindBy(css = " [class=\"input uiInput uiInputText uiInput--default uiInput--input\"]")
-    private WebElement nameAccount;
+    @FindBy(xpath = "//input[@class='input uiInput uiInputText uiInput--default uiInput--input']")
+    private WebElement nameAc;
 
     @FindBy(xpath = "//*[label//*[contains(text(),'Parent Account')]]//*[@type='text']")
     private WebElement parentAccount;
@@ -93,17 +95,41 @@ public class EditAccountPopup extends EditAccountAbstract {
     @FindBy(xpath = "//*[label//*[contains(text(),'SLA Expiration Date')]]//*[@class=' input']")
     private WebElement slaDateAccount;
 
-    @FindBy(xpath = "//*[label//*[contains(text(),'SLA Serial Number')]]//*[@class=' input']")
+    @FindBy(xpath = "//input[@class=\"input uiInput uiInputText uiInput--default uiInput--input\"]")
     private WebElement slaSerialAccount;
 
     @FindBy(xpath = "//*[label//*[contains(text(),'Number of Locations')]]//*[@class=' input']")
     private WebElement numberLocationAccount;
 
-    @FindBy(xpath = "//textarea[@class=\" textarea\"]")
+    @FindBy(xpath = "//textarea[@class=' textarea']")
     private WebElement descriptionAccount;
 
     @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveBtn;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Rating')]]//*[@class='select']")
+    private WebElement ratingAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Type')]]//*[@class='select']")
+    private WebElement typeAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Ownership')]]//*[@class='select']")
+    private WebElement ownershipAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Industry')]]//*[@class='select']")
+    private WebElement industryAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Customer Priority')]]//*[@class='select']")
+    private WebElement customerAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'SLA')]]//*[@class='select']")
+    private WebElement slaAccountNumber;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Upsell Opportunity')]]//*[@class='select']")
+    private WebElement upsellAccount;
+
+    @FindBy(xpath = "//*[span//*[contains(text(),'Active')]]//*[@class='select']")
+    private WebElement activeAccount;
 
     /**
      * Waits for the Edit Campaign Popup appears.
@@ -119,8 +145,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      * @param name String
      */
     @Override
-    public void setNameTxt(final String name) {
-        nameAccount.sendKeys(name);
+    protected void setNameTxt(final String name) {
+        nameAc.click();
     }
 
     /**
@@ -129,8 +155,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setRating(final String rating) {
-//        ratingAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + rating + "\"]")).click();
+        ratingAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", rating))).click();
     }
 
     /**
@@ -169,6 +195,7 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setNumberAccount(final String number) {
+        numberAccount.clear();
         numberAccount.sendKeys(number);
     }
 
@@ -205,8 +232,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setType(final String type) {
-//        typeAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + type + "\"]")).click();
+        typeAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
     }
 
     /**
@@ -215,8 +242,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setOwnership(final String ownership) {
-//        ownershipAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + ownership + "\"]")).click();
+        ownershipAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", ownership))).click();
     }
 
     /**
@@ -225,8 +252,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setIndustry(final String industry) {
-//        industryAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + industry + "\"]")).click();
+        industryAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", industry))).click();
     }
 
     /**
@@ -352,8 +379,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setCustomerPriority(final String customerPriority) {
-//        customerAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + customerPriority + "\"]")).click();
+        customerAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", customerPriority))).click();
     }
 
     /**
@@ -362,8 +389,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setSlaAccount(final String slaAccount) {
-//        slaStateAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + slaAccount + "\"]")).click();
+        slaAccountNumber.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", slaAccount))).click();
     }
 
     /**
@@ -399,8 +426,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setUpsellOportunity(final String upsellOportunity) {
-//        upsellStateAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + upsellOportunity + "\"]")).click();
+        upsellAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", upsellOportunity))).click();
     }
 
     /**
@@ -409,8 +436,8 @@ public class EditAccountPopup extends EditAccountAbstract {
      */
     @Override
     public void setActive(final String active) {
-//        activeStateAccountCmb.click();
-//        driver.findElement(By.xpath("//a[@title=\"" + active + "\"]")).click();
+        activeAccount.click();
+        driver.findElement(By.cssSelector(statusElements.replace("element", active))).click();
     }
 
     /**

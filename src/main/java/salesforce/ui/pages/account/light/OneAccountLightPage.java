@@ -96,43 +96,43 @@ public class OneAccountLightPage extends OneAccountAbstract {
     @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Ticker Symbol']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement tickerAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Ownership']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[span[text()='Ownership']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement ownershipAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Employees']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Employees']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement employeeAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='SIC Code']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SIC Code']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement sicCodeAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Billing Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Billing Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement billingStreetAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Shipping Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Shipping Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement shippingStreetAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Customer Priority']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Customer Priority']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement customerAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='SLA Expiration Date']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA Expiration Date']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaDateAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='Number of Locations']]/following-sibling::input[@class=' input']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Number of Locations']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement locationsAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='Active']]/following-sibling::div//a[@class='select']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Active']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement activeAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='SLA']]/following-sibling::div//a[@class='select']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='SLA Serial Number']]/following-sibling::input[@class=' input']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA Serial Number']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaSerialAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//span[span[text()='Upsell Opportunity']]/following-sibling::div//a[@class='select']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Upsell Opportunity']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement upsellAccountLbl;
 
-    @FindBy(xpath = "//div[@class='column region-main']//label[span[text()='Description']]/following-sibling::textarea[@class=' textarea']")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Description']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement descriptionAccountLbl;
 
     /**
@@ -206,10 +206,10 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return NewAccountClassicPage.
      */
     @Override
-    public NewAccountPopup editAccount() {
+    public EditAccountPopup editAccount() {
         mainMenuCmb.click();
         editBtn.click();
-        return new NewAccountPopup();
+        return new EditAccountPopup();
     }
 
     /**
@@ -238,7 +238,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
                     getValue = value.replaceAll("\n", " ");
-                    getValue = getValue.replaceAll(",", " ");
+                    getValue = getValue.replaceAll(",", "");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
                     System.out.println(" key: "+key+" value: "+getValue);

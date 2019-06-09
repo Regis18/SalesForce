@@ -176,6 +176,7 @@ public class NewAccountPopup extends NewAccountPageAbstract {
      */
     @Override
     public void setNameTxt(final String name) {
+        nameAccountTxt.clear();
         nameAccountTxt.sendKeys(name);
     }
 
