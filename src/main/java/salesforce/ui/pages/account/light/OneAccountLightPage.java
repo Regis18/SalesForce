@@ -13,7 +13,6 @@
 
 package salesforce.ui.pages.account.light;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,9 +29,10 @@ import java.util.Map;
  */
 public class OneAccountLightPage extends OneAccountAbstract {
 
-    private String customerAccount = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]";
+    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[5]//a")
+    private WebElement editBtn;
 
-    @FindBy(xpath = "//div[@class=\"windowViewMode-normal oneContent active lafPageHost\"]//div[@class=\"row region-header\"]")
+    @FindBy(xpath = "//div[contains(@class,\"s1FixedTop forceHighlightsStencilDesktop\")]")
     private WebElement accountPanelTitle;
 
     @FindBy(xpath = "//span[contains(@class, \"forceActionsText\")]")
@@ -57,79 +57,79 @@ public class OneAccountLightPage extends OneAccountAbstract {
             + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"99\"] [class=\"uiOutputText\"]")
+    @FindBy(xpath = "//div[span[text()='Account Name']]/following-sibling::div//span[@class='uiOutputText']")
     private WebElement nameAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"132\"] [data-aura-class=\"forceOutputLookup\"]")
-    private WebElement parentAccountLbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"205\"] [class=\"uiOutputText\"]")
-    private WebElement numberAccountlbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"248\"] [class=\"uiOutputText\"]")
-    private WebElement siteAccountLbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"287\"] [data-aura-rendered-by^=\"278\"] ")
-    private WebElement typeAccountLbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"327\"] [data-aura-rendered-by^=\"318\"] ")
-    private WebElement industryAccountLbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"366\"] [data-aura-class^=\"forceOutputCurrency\"] ")
-    private WebElement revenueAccountLbl;
-
-    @FindBy(css = "[data-aura-rendered-by^=\"78\"] [data-aura-rendered-by^=\"69:\"] ")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Rating']]/following-sibling::div//span[@class=\"test-id__field-value slds-form-element__static slds-grow \"]")
     private WebElement ratingAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"118\"] [class=\"uiOutputPhone\"]")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Account Number']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement numberAccountlbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Account Site']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement siteAccountLbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Type']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement typeAccountLbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Industry']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement industryAccountLbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Annual Revenue']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement revenueAccountLbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Parent Account']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
+    private WebElement parentAccountLbl;
+
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Phone']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement phoneAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"184\"] [class=\"uiOutputPhone\"]")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Fax']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement faxAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"214\"] [class=\"uiOutputURL\"]")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Website']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement websiteAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"265\"] [class=\"uiOutputText\"]")
+    @FindBy(xpath = "//div[@class='column region-main']//div[span[text()='Ticker Symbol']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement tickerAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"305\"] [data-aura-rendered-by^=\"296\"]")
+    @FindBy(xpath = "//div[span[text()='Ownership']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement ownershipAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"344\"] [class=\"uiOutputNumber\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Employees']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement employeeAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"383\"] [class=\"uiOutputText\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SIC Code']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement sicCodeAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"427\"] [class=\"forceOutputAddress\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Billing Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement billingStreetAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"466\"] [class=\"forceOutputAddress\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Shipping Address']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement shippingStreetAccountLbl;
 
-    @FindBy(css = "//div[div[span[contains(text(),'Customer Priority')]]]//*//span[class=\"test-id__field-label\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Customer Priority']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement customerAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"534\"] [class=\"uiOutputDate\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA Expiration Date']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaDateAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"572\"] [class=\"uiOutputNumber\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Number of Locations']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement locationsAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"612\"] [data-aura-rendered-by^=\"603\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Active']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement activeAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"513\"] [data-aura-rendered-by^=\"504\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"551\"] [data-aura-class=\"uiOutputText\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='SLA Serial Number']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement slaSerialAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"590\"] [data-aura-rendered-by^=\"581\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Upsell Opportunity']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement upsellAccountLbl;
 
-    @FindBy(css = "[data-aura-rendered-by^=\"777\"] [class=\"uiOutputTextArea\"]")
+    @FindBy(xpath = "//div[@data-aura-class=\"forcePageBlockSectionRow\"]//div[span[text()='Description']]/following-sibling::div//span[@class='test-id__field-value slds-form-element__static slds-grow ']")
     private WebElement descriptionAccountLbl;
 
     /**
@@ -203,9 +203,10 @@ public class OneAccountLightPage extends OneAccountAbstract {
      * @return NewAccountClassicPage.
      */
     @Override
-    public NewAccountPopup editAccount() {
-        //editBtn.click();
-        return new NewAccountPopup();
+    public EditAccountPopup editAccount() {
+        mainMenuCmb.click();
+        editBtn.click();
+        return new EditAccountPopup();
     }
 
     /**
@@ -233,7 +234,7 @@ public class OneAccountLightPage extends OneAccountAbstract {
                     key = "Billing Street";
                     String value = getAccountFieldsValues(key);
                     getValue = value.replaceAll("\n", " ");
-                    getValue = getValue.replaceAll(",", " ");
+                    getValue = getValue.replaceAll(",", "");
                     isBillingAdrress = false;
                     mapAccount.put(key, getValue);
                 }

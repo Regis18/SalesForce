@@ -699,7 +699,7 @@ public class Account {
      * @param key Map
      * @return getValueAccount Map
      */
-    public String getValueAccount(String key) {
+    public String getValueAccount(final String key) {
         HashMap<String, String> getAccountFiledValues = new HashMap<>();
         getAccountFiledValues.put("Name", getName());
         getAccountFiledValues.put("Parent", getParent());
@@ -754,6 +754,10 @@ public class Account {
         return billingAdrress;
     }
 
+    /**
+     * Get the values of Shipping Address.
+     * @return shippingAdrress String
+     */
     private String getShippingAdrress() {
         String shippingAdrress = "";
         if (getShippingStreet() != null) {

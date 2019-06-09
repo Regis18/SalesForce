@@ -13,7 +13,6 @@
 
 package salesforce.ui.pages.account.abstracts;
 
-import salesforce.entities.Account;
 import salesforce.ui.BasePage;
 
 import java.util.Map;
@@ -51,8 +50,9 @@ public abstract class OneAccountAbstract extends BasePage {
 
     /**
      * Edit an Account of Salesforce.
+     * @return EditAccountAbstract page
      */
-    public abstract NewAccountPageAbstract editAccount();
+    public abstract EditAccountAbstract editAccount();
 
     /**
      * Delete Account of Salesforce with specific name.

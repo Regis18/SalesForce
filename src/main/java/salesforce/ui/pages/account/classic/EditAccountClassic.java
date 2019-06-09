@@ -1,5 +1,5 @@
 /*
- * @(#) NewAccountClassicPage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) EditAccountClassic.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -18,17 +18,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.EditAccountAbstract;
 
 import java.util.LinkedList;
 import java.util.Set;
 
 /**
- * NewAccountClassicPage.
+ * EditAccountClassic.
  * @author Luis Guardia.
  * @version 0.0.1
  */
-public class NewAccountClassicPage extends NewAccountPageAbstract {
+public class EditAccountClassic extends EditAccountAbstract {
 
     @FindBy(id = "bodyCell")
     private WebElement newAccountForm;
