@@ -67,7 +67,7 @@ public class SetupPage extends BasePage {
         while (driver.getTitle().equals("") || driver.getTitle().equals("Lightning Experience")) {
             continue;
         }
-
+        System.out.println(driver.getTitle());
         isLight = driver.getTitle().contains("Home | Salesforce");
         if (isLight) {
             wait.until(ExpectedConditions.visibilityOf(setupHeader));

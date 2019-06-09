@@ -13,8 +13,9 @@
 
 package steps;
 
+import core.selenium.WebDriverConfig;
 import core.utils.Common;
-import cucumber.api.PendingException;
+import core.utils.Logs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -24,13 +25,13 @@ import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.utils.EntityId;
 
@@ -48,6 +49,7 @@ import static org.testng.Assert.assertTrue;
  * @version 0.0.1
  */
 public class CampaignSteps {
+    private String skin = WebDriverConfig.getSkin();
     private CampaignPageAbstract campaignPage;
     private HomePageAbstract homePage;
     private NewCampaignAbstract newCampaignPage;
@@ -244,7 +246,11 @@ public class CampaignSteps {
      */
     @And("^I search the Campaign name \"([^\"]*)\" in the Search field of Campaign form$")
     public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
-        campaignPage.searchCampaignInList(nameCampaign);
+        if (skin.equals("light")) {
+            campaignPage.searchCampaignInList(nameCampaign);
+        } else {
+            Logs.getInstance().getLog().info("Just for LIGHT and not Classic");
+        }
     }
 
     /**
