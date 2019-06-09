@@ -8,7 +8,7 @@ import salesforce.ui.pages.home.HomeClassicPage;
 import salesforce.ui.pages.home.HomeLightPage;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.ui.PageFactory;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.utils.Setup;
 

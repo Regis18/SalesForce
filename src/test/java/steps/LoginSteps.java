@@ -7,7 +7,7 @@ import salesforce.entities.Context;
 import salesforce.ui.pages.LoginPage;
 import salesforce.ui.pages.SetupPage;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.utils.Setup;
 
 

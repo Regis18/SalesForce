@@ -16,7 +16,7 @@ package salesforce.ui;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.classic.CampaignClassicPage;
 import salesforce.ui.pages.account.classic.AccountClassicPage;

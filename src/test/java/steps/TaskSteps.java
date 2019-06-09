@@ -21,7 +21,7 @@ import salesforce.api.TaskApi;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
 import salesforce.ui.PageFactory;
-import salesforce.ui.pages.abstracts.HomePageAbstract;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
