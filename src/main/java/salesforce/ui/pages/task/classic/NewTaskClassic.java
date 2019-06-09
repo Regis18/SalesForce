@@ -77,8 +77,9 @@ public class NewTaskClassic extends NewTaskAbstract {
     @FindBy(xpath = "//input[@id = 'reminder_select_check']")
     private WebElement reminderCheckBox;
 
-     /**
+    /**
      * Verifies of message confirmation after to create a new task.
+     *
      * @param message value
      * @return true for a classic skin.
      */
@@ -95,10 +96,14 @@ public class NewTaskClassic extends NewTaskAbstract {
         commentTextArea.sendKeys(task.getComment());
         priorityDropDown.sendKeys(task.getPriority());
         statusDropDown.sendKeys(task.getStatus());
-        nameDropDown.sendKeys("Contact");
-        name.sendKeys(task.getContact());
-        relatedToDropDown.sendKeys("Account");
-        relatedTo.sendKeys(task.getAccount());
+        if (task.getContact() != (null)) {
+            nameDropDown.sendKeys("Contact");
+            name.sendKeys(task.getContact());
+        }
+        if (task.getAccount() != (null)) {
+            relatedToDropDown.sendKeys("Account");
+            relatedTo.sendKeys(task.getAccount());
+        }
         reminderCheckBox.click();
         saveTask.click();
         return task.getSubject();

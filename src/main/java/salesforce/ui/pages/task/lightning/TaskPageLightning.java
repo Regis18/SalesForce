@@ -42,6 +42,9 @@ public class TaskPageLightning extends TaskPageAbstract {
     private static final String PRIORITY = "//div[contains(.//div//div//span, 'Priority')]"
             + "//div//div//div[2]//span//span";
     private static final String STATUS = "//div[contains(.//div//div//span, 'Status')]//div//div[2]//span//span";
+    private static final String DUEDATE ="";
+    private static final String ACCOUNT ="";
+    private static final String CONTACT ="";
 
     /**
      * Task web element.

@@ -199,13 +199,13 @@ public final class TaskApi {
      *
      * @param task task
      */
-    public static void deleteAccount(final Task task) {
+    public static void deleteAccount(final String nameAccount) {
         List<String> taskIds = new ArrayList<>();
-
+        String accountEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
         //Get the task.
         Response response = given()
                 .contentType(ContentType.JSON)
-                .queryParam("q", "select id from account where name='" + task.getContact() + "' ")
+                .queryParam("q", "select id from account where name='" + nameAccount + "' ")
                 .auth().oauth2(CommonApi.getToken())
                 .when().get(Setup.getInstance().getQueryUrl());
 
@@ -227,7 +227,7 @@ public final class TaskApi {
             given().headers("Content-Type", "application/json")
                     .auth().oauth2(CommonApi.getToken())
                     .when()
-                    .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+                    .request("DELETE", accountEndPoint + taskIds.get(0));
         }
     }
 
@@ -251,13 +251,13 @@ public final class TaskApi {
      *
      * @param task task
      */
-    public static void deleteContact(final Task task) {
+    public static void deleteContact(final String lastnameContact) {
         List<String> taskIds = new ArrayList<>();
-
+        String accountEndPoint = "https://na132.salesforce.com/services/data/v39.0/sobjects/Account/";
         //Get the task.
         Response response = given()
                 .contentType(ContentType.JSON)
-                .queryParam("q", "select id from contact where lastname='" + task.getAccount() + "' ")
+                .queryParam("q", "select id from contact where lastname='" + lastnameContact + "' ")
                 .auth().oauth2(CommonApi.getToken())
                 .when().get(Setup.getInstance().getQueryUrl());
 
@@ -279,7 +279,7 @@ public final class TaskApi {
             given().headers("Content-Type", "application/json")
                     .auth().oauth2(CommonApi.getToken())
                     .when()
-                    .request("DELETE", Setup.getInstance().getTaskUrl() + taskIds.get(0));
+                    .request("DELETE", accountEndPoint + taskIds.get(0));
         }
     }
 

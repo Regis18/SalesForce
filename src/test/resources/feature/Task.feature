@@ -21,16 +21,16 @@ Feature: Create, delete, update tasks of Salesforce
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
 
-  @deleteTask @deleteAllTask @createAccountForTask @createContactForTask @deleteAllAccounts @deleteAllContacts
-  Scenario: Create a new Task with XY
+  @deleteTask @deleteAllTask @createAccountForTask @createContactForTask @deleteAccount @deleteContact
+  Scenario: CreatSetup.getInstance().getTaskAccount()e a new Task with all the fields.
     When I create a new Task with this values
-      | Subject  | callTask_random |
-      | Comment  | test task       |
-      | DueDate  | tomorrow        |
-      | Priority | High            |
-      | Status   | In Progress     |
-      | Contact  | contactForTask  |
-      | Account  | accountForTask  |
+      | Subject  | callTask_random        |
+      | Comment  | test task              |
+      | DueDate  | tomorrow               |
+      | Priority | High                   |
+      | Status   | In Progress            |
+      | Contact  | contactForTask_random  |
+      | Account  | accountForTask_random  |
     Then I verify a message that confirms the new Task was "created" is displayed
     When I navigate to Tasks Homepage
     Then I verify the Task subject is displayed in Tasks Homepage
