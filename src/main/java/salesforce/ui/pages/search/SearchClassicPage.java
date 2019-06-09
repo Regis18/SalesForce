@@ -23,10 +23,11 @@ import salesforce.utils.DriverMethods;
 
 /**
  * SearchClassicPage.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
-public class SearchClassicPage extends SearchAbstractPage{
+public class SearchClassicPage extends SearchAbstractPage {
     private String elementSearched = "//*[*[@class='pbHeader']//*[contains(text(),'key')]]//a[text()='element']";
     private final String key = "key";
     private final String element = "element";
@@ -36,7 +37,8 @@ public class SearchClassicPage extends SearchAbstractPage{
 
     /**
      * Accesses to the element that was searched.
-     * @param key string.
+     *
+     * @param key     string.
      * @param element string.
      * @return OneCampaignClassic.
      */
@@ -48,7 +50,8 @@ public class SearchClassicPage extends SearchAbstractPage{
 
     /**
      * Verifies that the element that was searched exist in the list.
-     * @param key string.
+     *
+     * @param key     string.
      * @param element string.
      * @return boolean
      */

@@ -90,7 +90,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return boolean.
      */
     @Override
-    public boolean verifyComponentsCampaign(Campaign campaign) {
+    public boolean verifyComponentsCampaign(final Campaign campaign) {
         clickDetailsTab();
         return DriverMethods.searchForExistentElement(By.xpath(nameCampaign.replace(
                 "element", campaign.getName())));

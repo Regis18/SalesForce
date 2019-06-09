@@ -51,5 +51,5 @@ public abstract class HomePageAbstract extends BasePage {
      * @param element string.
      * @return SearchAbstractPage.
      */
-    public abstract SearchAbstractPage searchElement(final String element);
+    public abstract SearchAbstractPage searchElement(String element);
 }

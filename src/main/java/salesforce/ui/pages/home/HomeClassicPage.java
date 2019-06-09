@@ -94,7 +94,7 @@ public class HomeClassicPage extends HomePageAbstract {
      * @return SearchClassicPage.
      */
     @Override
-    public SearchAbstractPage searchElement(String element) {
+    public SearchAbstractPage searchElement(final String element) {
         searchTxt.sendKeys(element);
         searchBtn.click();
         return new SearchClassicPage();

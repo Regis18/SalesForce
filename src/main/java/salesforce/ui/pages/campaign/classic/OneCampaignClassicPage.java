@@ -52,9 +52,9 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     private String valueActiveCampaign = "//*[td[contains(text(), 'key')]]//*//div//img[@title='element']";
 
-    private final String ELEMENT = "element";
+    private final String element = "element";
 
-    private final String KEY = "key";
+    private final String key = "key";
 
     /**
      * Wait for Campaign panel title.
@@ -120,12 +120,12 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
         if (key.equals("Active")) {
             String values = value.equals("true") ? "Checked" : "Not Checked";
             return DriverMethods.searchForExistentElement(By.xpath(valueActiveCampaign
-                    .replace(this.ELEMENT, values)
-                    .replace(this.KEY, key)));
+                    .replace(this.element, values)
+                    .replace(this.key, key)));
         } else {
             return DriverMethods.searchForExistentElement(By.xpath(valueCampaign
-                    .replace(this.ELEMENT, value)
-                    .replace(this.KEY, key)));
+                    .replace(this.element, value)
+                    .replace(this.key, key)));
         }
     }
 

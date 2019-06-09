@@ -40,7 +40,7 @@ public abstract class OneCampaignAbstract extends BasePage {
      * @param nameCampaign string
      * @return CampaignPageAbstract.
      */
-    public abstract CampaignPageAbstract deleteCampaign(final String nameCampaign);
+    public abstract CampaignPageAbstract deleteCampaign(String nameCampaign);
 
     /**
      * Opens Edit Campaign.
@@ -54,7 +54,7 @@ public abstract class OneCampaignAbstract extends BasePage {
      * @param value Value.
      * @return Boolean
      */
-    public abstract boolean isCampaignFieldValueDisplayed(final String key, final String value);
+    public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
 
     /**
      * Clicks the button Campaign and redirected to CampaignPage.

@@ -135,7 +135,7 @@ public class HomeLightPage extends HomePageAbstract {
      * @return SearchAbstractPage.
      */
     @Override
-    public SearchAbstractPage searchElement(String element) {
+    public SearchAbstractPage searchElement(final String element) {
         searchTxt.sendKeys(element);
         searchTxt.sendKeys(Keys.ENTER);
         return new SearchLightPage();
