@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.home;
+package salesforce.ui.pages.classic;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

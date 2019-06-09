@@ -11,7 +11,7 @@
  *
  */
 
-package salesforce.ui.pages.home;
+package salesforce.ui.pages.lightning;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

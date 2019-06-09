@@ -100,10 +100,12 @@ public class SetupPage extends BasePage {
      */
     public HomePageAbstract navigateHomeLight() {
         if (isLight) {
+            wait.until(ExpectedConditions.elementToBeClickable(appLauncherBtn));
             appLauncherBtn.click();
             wait.until(ExpectedConditions.elementToBeClickable(homeLink));
             homeLink.click();
         } else {
+            wait.until(ExpectedConditions.elementToBeClickable(switchLightLink));
             switchLightLink.click();
         }
         return new HomeLightPage();
