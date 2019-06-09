@@ -182,7 +182,7 @@ public class EditAccountClassic extends EditAccountAbstract {
         Set<String> windows = driver.getWindowHandles();
         driver.switchTo().window(new LinkedList<>(windows).getLast());
         driver.switchTo().frame("resultsFrame");
-        driver.findElement(By.cssSelector("table.list tr:nth-child(2) th:nth-child(2) a")).click();
+        driver.findElement(By.cssSelector("table.list tr:nth-child(2) th:nth-child(4) a")).click();
         driver.switchTo().window(parentWindowHandle);
     }
 

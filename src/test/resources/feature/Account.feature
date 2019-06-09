@@ -21,7 +21,7 @@ Feature: Create, read, update and delete a Account
     When I open the Account Page
     And I create a new Account from Accounts Page with the following values
       | Name             | New test             |
-      | Parent           | Edge Communications  |
+      | Parent           | GenePoint            |
       | Number           | 12345667             |
       | Site             | new site             |
       | Type             | Prospect             |
@@ -74,7 +74,7 @@ Feature: Create, read, update and delete a Account
   Scenario: update Account
     Given I have an Account with the following values
       | Name             | Update Account       |
-      | Parent           | Edge Communications  |
+      | Parent           | GenePoint            |
       | Number           | 77932458             |
       | Site             | new site             |
       | Type             | Prospect             |
@@ -110,7 +110,7 @@ Feature: Create, read, update and delete a Account
     Then I search the Account in the list of Accounts
     When I update the Account with the following values
       | Name             | Update Account       |
-      | Parent           | Edge Communications  |
+      | Parent           | GenePoint            |
       | Number           | 12345667             |
       | Site             | new site             |
       | Type             | Prospect             |
