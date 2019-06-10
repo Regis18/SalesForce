@@ -70,8 +70,10 @@ public class SetupPage extends BasePage {
         System.out.println(driver.getTitle());
         isLight = driver.getTitle().contains("Home | Salesforce");
         if (isLight) {
+            System.out.println("ENTER IN LIGHT");
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {
+            System.out.println("ENTER IN CLASSIC");
             wait.until(ExpectedConditions.visibilityOf(tabBarClassic));
         }
     }
@@ -88,6 +90,7 @@ public class SetupPage extends BasePage {
             wait.until(ExpectedConditions.visibilityOf(switchClassicLink));
             switchClassicLink.click();
         } else {
+            System.out.println("CLICK in HOME TAB");
             homeTabBtn.click();
         }
         return new HomeClassicPage();

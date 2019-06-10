@@ -88,7 +88,8 @@ public class EditCampaignLightPopup extends EditCampaignAbstract {
      * @param name **this is the name**
      */
     protected void setNameTxt(final String name) {
-        nameTxt.clear();
+        nameTxt.sendKeys(Keys.CONTROL + "a");
+        nameTxt.sendKeys(Keys.DELETE);
         nameTxt.sendKeys(name);
     }
 

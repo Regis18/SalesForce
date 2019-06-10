@@ -60,7 +60,7 @@ public class PageFactory {
     }
 
     /**
-     * Get the Page Object that is correct.
+     * Gets the Page Object that is correct.
      * @return CampaignPageAbstract.
      */
     public static CampaignPageAbstract getCampaignPage() {
@@ -75,7 +75,7 @@ public class PageFactory {
     }
 
     /**
-     * Get the Page Object that is correct.
+     * Gets the Page Object that is correct.
      * @return OneCampaignAbstract.
      */
     public static OneCampaignAbstract getOneCampaignPage() {
