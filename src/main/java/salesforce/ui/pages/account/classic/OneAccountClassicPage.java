@@ -199,7 +199,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
             }
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
-                getValue = value.replace("¤", "");
+                getValue = value.substring(1, value.length());
                 mapAccount.put(key, getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 if (isBillingAdrress) {
