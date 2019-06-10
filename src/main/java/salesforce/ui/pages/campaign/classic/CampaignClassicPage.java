@@ -58,6 +58,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public NewCampaignClassicPage clickNewCampaignBtn() {
+        wait.until(ExpectedConditions.visibilityOf(newCampaignBtn));
         newCampaignBtn.click();
         return new NewCampaignClassicPage();
     }

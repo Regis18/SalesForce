@@ -92,6 +92,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public CampaignPageAbstract deleteCampaign(final String nameCampaign) {
+        wait.until(ExpectedConditions.visibilityOf(deleteUpBtn));
         deleteUpBtn.click();
         driver.switchTo().alert().accept();
         return new CampaignClassicPage();
@@ -104,6 +105,7 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
      */
     @Override
     public EditCampaignAbstract openEditCampaign() {
+        wait.until(ExpectedConditions.visibilityOf(editUpBtn));
         editUpBtn.click();
         return new EditCampaignClassicPage();
     }
