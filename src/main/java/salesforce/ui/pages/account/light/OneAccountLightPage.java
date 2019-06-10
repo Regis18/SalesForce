@@ -226,9 +226,8 @@ public class OneAccountLightPage extends OneAccountAbstract {
             String key = (String) it.next();
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
-                getValue = value.replace("¤", "");
+                getValue = value.substring(1, value.length());
                 mapAccount.put(key, getValue);
-                System.out.println(key + " key: " + getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 if (isBillingAdrress) {
                     key = "Billing Street";
