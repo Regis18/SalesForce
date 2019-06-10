@@ -38,6 +38,7 @@ Feature: Create, delete, update and search campaigns of Salesforce
     Then I verify the Campaign name was "created" in the list of campaigns in Campaigns Page
     And I verify through API if the account that was "created"
 
+  @deleteCampaign
   Scenario: Delete a new Campaign in Salesforce
     Given I open the Campaigns Page
     When I have a Campaign with the following values

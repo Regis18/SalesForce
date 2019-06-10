@@ -42,12 +42,6 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,'uiInputCheckbox')]//input[@type='checkbox']")
     private WebElement activateChk;
 
-    @FindBy(css = "div[id^='133'] a")
-    private WebElement typeCmb;
-
-    @FindBy(css = "div[id^='197'] a")
-    private WebElement statusCmb;
-
     @FindBy(css = "input[id^='254']")
     private WebElement startDateTxt;
 
@@ -120,6 +114,8 @@ public class NewCampaignPopup extends NewCampaignAbstract {
      */
     @Override
     protected void setTypeCmb(final String type) {
+        WebElement typeCmb = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.cssSelector("div[id^='133'] a")));
         typeCmb.click();
         driver.findElement(By.cssSelector(statusElements.replace("element", type))).click();
     }
@@ -131,6 +127,8 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @Override
     protected void setStatusCmb(final String status) {
         //--None--, Planned, Completed, In Progress, Aborted
+        WebElement statusCmb = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.cssSelector("div[id^='197'] a")));
         statusCmb.click();
         driver.findElement(By.cssSelector(statusElements.replace("element", status))).click();
     }

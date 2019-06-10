@@ -48,9 +48,6 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
                     + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
 
-    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
-    private WebElement campaignTabBar;
-
     @FindBy(css = "[class='uiImage uiOutputCheckbox']")
     private WebElement isActive;
 
@@ -173,6 +170,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @Override
     public CampaignPageAbstract openCampaignPage() {
         closeMessageConfirmation.click();
+        WebElement campaignTabBar = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//one-app-nav-bar-item-root[@data-id='Campaign']")));
         campaignTabBar.click();
         return new CampaignLightPage();
     }
