@@ -16,6 +16,7 @@ package salesforce.ui.pages.home;
 import salesforce.ui.BasePage;
 
 
+import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
@@ -44,4 +45,11 @@ public abstract class HomePageAbstract extends BasePage {
      * @return Account Page abstract.
      */
     public abstract AccountPageAbstract clickAccountBtn();
+
+    /**
+     * Search element in the main Search.
+     * @param element string.
+     * @return SearchAbstractPage.
+     */
+    public abstract SearchAbstractPage searchElement(String element);
 }

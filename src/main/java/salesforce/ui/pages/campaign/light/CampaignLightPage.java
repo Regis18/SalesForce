@@ -30,9 +30,6 @@ public class CampaignLightPage extends CampaignPageAbstract {
     @FindBy(css = "[class='uiOutputText forceBreadCrumbItem']")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title='New']")
-    private WebElement newCampaignBtn;
-
     @FindBy(css = "[name='Campaign-search-input']")
     private WebElement searchCampaignTxt;
 
@@ -56,6 +53,9 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public NewCampaignPopup clickNewCampaignBtn() {
+        WebElement newCampaignBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//a[@title='New']")));
+        wait.until(ExpectedConditions.visibilityOf(newCampaignBtn));
         newCampaignBtn.click();
         return new NewCampaignPopup();
     }

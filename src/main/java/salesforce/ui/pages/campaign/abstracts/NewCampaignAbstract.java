@@ -131,6 +131,7 @@ public abstract class NewCampaignAbstract extends BasePage {
      */
     protected abstract void setExpectedResponse(Integer expectedResponse);
 
+
     /**
      * Set Campaign Data.
      * Just is name, can be more.

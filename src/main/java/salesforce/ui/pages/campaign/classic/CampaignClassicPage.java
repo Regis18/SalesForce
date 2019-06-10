@@ -40,6 +40,9 @@ public class CampaignClassicPage extends CampaignPageAbstract {
     @FindBy(id = "phSearchInput")
     private WebElement searchTxt;
 
+    @FindBy(css = "[class='autocompleteMatch']")
+    private WebElement autoCompletedSearch;
+
     private String campaignList = "//tr[@onmouseout='if (window.hiOff){hiOff(this);}']//a[contains(text(),'campaign')]";
     /**
      * Wait for Campaign Form.
@@ -55,6 +58,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public NewCampaignClassicPage clickNewCampaignBtn() {
+        wait.until(ExpectedConditions.visibilityOf(newCampaignBtn));
         newCampaignBtn.click();
         return new NewCampaignClassicPage();
     }
@@ -73,7 +77,11 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      * @param name string.
      */
     @Override
-    public void searchCampaignInList(String name) {
+    public void searchCampaignInList(final String name) {
         searchTxt.click();
+        searchTxt.sendKeys(name);
+        if (autoCompletedSearch.getText().equals(name)) {
+            autoCompletedSearch.click();
+        }
     }
 }

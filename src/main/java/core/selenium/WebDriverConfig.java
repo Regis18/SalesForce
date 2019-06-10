@@ -19,7 +19,7 @@ public class WebDriverConfig {
     private static final String BROWSER = "browser";
     private static final String SKIN = "style";
     private static WebDriverConfig instance;
-    private String browser;
+    private static String browser;
     private static String view;
     private static String style;
     private int implicitWaitTime;
@@ -74,7 +74,7 @@ public class WebDriverConfig {
      *
      * @return Browser.
      */
-    public String getBrowser() {
+    public static String getBrowser() {
         return browser;
     }
 
@@ -113,11 +113,4 @@ public class WebDriverConfig {
       return style;
    }
 
-    /**
-     * Gets browser.
-     * @return string.
-     */
-    public static String getBROWSER() {
-        return BROWSER;
-    }
 }

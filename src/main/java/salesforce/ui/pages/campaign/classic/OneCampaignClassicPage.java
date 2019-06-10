@@ -21,11 +21,11 @@ import salesforce.entities.Campaign;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
-import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.utils.DriverMethods;
 
 /**
  * OneCampaignClassicPage.
+ *
  * @author Regis Humana
  * @version 0.0.1
  */
@@ -52,9 +52,9 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     private String valueActiveCampaign = "//*[td[contains(text(), 'key')]]//*//div//img[@title='element']";
 
-    private final String ELEMENT = "element";
+    private final String element = "element";
 
-    private final String KEY = "key";
+    private final String key = "key";
 
     /**
      * Wait for Campaign panel title.
@@ -66,15 +66,17 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Verify if the components of the Campaign exist.
+     *
      * @return boolean
      */
     @Override
-    public boolean verifyComponentsCampaign(Campaign campaign) {
+    public boolean verifyComponentsCampaign(final Campaign campaign) {
         return campaignDetailForm.isDisplayed();
     }
 
     /**
      * Gets the Name Campaign.
+     *
      * @return string
      */
     @Override
@@ -84,11 +86,13 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Deletes campaign.
+     *
      * @param nameCampaign string
      * @return CampaignClassicPage.
      */
     @Override
     public CampaignPageAbstract deleteCampaign(final String nameCampaign) {
+        wait.until(ExpectedConditions.visibilityOf(deleteUpBtn));
         deleteUpBtn.click();
         driver.switchTo().alert().accept();
         return new CampaignClassicPage();
@@ -96,17 +100,20 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
 
     /**
      * Opens a form for edit a campaign.
+     *
      * @return EditCampaignClassic
      */
     @Override
     public EditCampaignAbstract openEditCampaign() {
+        wait.until(ExpectedConditions.visibilityOf(editUpBtn));
         editUpBtn.click();
         return new EditCampaignClassicPage();
     }
 
     /**
      * Check if the values of Campaign is correct in the list.
-     * @param key String.
+     *
+     * @param key   String.
      * @param value Value.
      * @return Boolean.
      */
@@ -115,17 +122,18 @@ public class OneCampaignClassicPage extends OneCampaignAbstract {
         if (key.equals("Active")) {
             String values = value.equals("true") ? "Checked" : "Not Checked";
             return DriverMethods.searchForExistentElement(By.xpath(valueActiveCampaign
-                    .replace(this.ELEMENT, values)
-                    .replace(this.KEY, key)));
+                    .replace(this.element, values)
+                    .replace(this.key, key)));
         } else {
             return DriverMethods.searchForExistentElement(By.xpath(valueCampaign
-                    .replace(this.ELEMENT, value)
-                    .replace(this.KEY, key)));
+                    .replace(this.element, value)
+                    .replace(this.key, key)));
         }
     }
 
     /**
      * Click the button Campaign and redirected to CampaignPage.
+     *
      * @return CampaignPageAbstract.
      */
     @Override
