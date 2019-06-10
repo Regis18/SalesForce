@@ -7,6 +7,8 @@ import salesforce.ui.BasePage;
 
 /**
  * Login page class.
+ * @author Melvi Caballero.
+ * @version 0.0.1
  */
 public class LoginPage extends BasePage {
     /**
@@ -30,11 +32,13 @@ public class LoginPage extends BasePage {
      *
      * @param userName     the user name.
      * @param userPassword the password.
+     * @return SetupPage.
      */
-    public void login(final String userName, final String userPassword) {
+    public SetupPage login(final String userName, final String userPassword) {
         setUserNameTextBox(userName);
         setUserPasswordTextBox(userPassword);
         clickOnSigninButton();
+        return new SetupPage();
     }
 
     /**
@@ -62,6 +66,9 @@ public class LoginPage extends BasePage {
         signinButton.click();
     }
 
+    /**
+     * Wait for userPasswordTextBox.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(userPasswordTextBox));
