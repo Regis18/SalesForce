@@ -1,5 +1,5 @@
 @funcional
-Feature: Create, delete, update tasks of Salesforce
+Feature: Create tasks of Salesforce
 
   Background:
     Given I log in to the Salesforce Application
