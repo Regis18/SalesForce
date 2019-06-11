@@ -5,7 +5,7 @@ Feature: Create, delete, update tasks of Salesforce
     Given I log in to the Salesforce Application
     Given I navigate to HomePage
 
-  @deleteTask @deleteAllTask
+  @deleteTask
   Scenario: Create a new Task with required information
     When I create a new Task with this values
       | Subject  | callTask_random |
@@ -21,7 +21,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
 
-  @deleteTask @deleteAllTask @createAccountForTask @createContactForTask @deleteAccount @deleteContact
+  @deleteTask @createAccountForTask @createContactForTask @deleteAccount @deleteContact
   Scenario: Create a new Task with all the fields.
     When I create a new Task with this values
       | Subject  | callTask_random        |
@@ -49,7 +49,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I navigate to Tasks Homepage
     And I delete the Task
     Then I verify a message that confirms the new Task was "deleted" is displayed
-    Then I verify the Task was removed form Task section
+    Then I verify the Task was removed from Task section
 
   @deleteTask
   Scenario: Edit subject task when a is has any Task.
@@ -83,4 +83,3 @@ Feature: Create, delete, update tasks of Salesforce
     Then I verify the Task values are displayed in Task details page
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
-
