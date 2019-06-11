@@ -50,7 +50,11 @@ public abstract class NewCampaignAbstract extends BasePage {
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
         setCampaignData(data, mapOut);
         clickSaveBtn();
-        return PageFactory.getOneCampaignPage();
+        if (getMessageErrorLbl().equals("")) {
+            return PageFactory.getOneCampaignPage();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -130,6 +134,24 @@ public abstract class NewCampaignAbstract extends BasePage {
      * @param expectedResponse string
      */
     protected abstract void setExpectedResponse(Integer expectedResponse);
+
+    /**
+     * Get Message Error.
+     * @return string.
+     */
+    public abstract String getMessageErrorLbl();
+
+    /**
+     * Get Message Field Necessary.
+     * @return string.
+     */
+    public abstract String getMessageFieldNecessaryLbl();
+
+    /**
+     * Get Message Completed Field.
+     * @return string.
+     */
+    public abstract String getMessageCompletedFieldLbl();
 
 
     /**

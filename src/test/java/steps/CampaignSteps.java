@@ -16,6 +16,7 @@ package steps;
 import core.selenium.WebDriverConfig;
 import core.utils.Common;
 import core.utils.Logs;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -322,5 +323,16 @@ public class CampaignSteps {
     @When("^I open the element that was searched$")
     public void openTheElementThatWasSearched() {
         oneCampaignPage = searchPage.accessToElementSearched(key, element);
+    }
+
+    @Then("^I verify a error message with the details of the problem$")
+    public void verifyAErrorMessageWithTheDetailsOfTheProblem() {
+        assertEquals(newCampaignPage.getMessageErrorLbl(), "Review the errors on this page.");
+        assertEquals(newCampaignPage.getMessageFieldNecessaryLbl(), "These required fields must be completed: Campaign Name");
+    }
+
+    @And("^I verify that a message \"([^\"]*)\" in the name Campaign field$")
+    public void verifyThatAMessageInTheNameCampaignField(String message) {
+        assertEquals(newCampaignPage.getMessageCompletedFieldLbl(), message);
     }
 }

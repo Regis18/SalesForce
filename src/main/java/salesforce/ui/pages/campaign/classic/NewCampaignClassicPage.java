@@ -207,4 +207,29 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
         expectedResponseTxt.sendKeys(Keys.DELETE);
         expectedResponseTxt.sendKeys(expectedResponse.toString());
     }
+
+    /**
+     * Get Message Error.
+     * @return string.
+     */
+    @Override
+    public String getMessageErrorLbl() {
+        return "";
+    }
+
+    /**
+     * Get Message Field Necessary.
+     * @return string.
+     */
+    public  String getMessageFieldNecessaryLbl() {
+        return "";
+    }
+
+    /**
+     * Get Message Completed Field.
+     * @return string.
+     */
+    public String getMessageCompletedFieldLbl() {
+        return "";
+    }
 }

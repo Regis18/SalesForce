@@ -32,10 +32,11 @@ Feature: Test positive and negative of create, delete, update and search campaig
     | This is an example of eighty characters in campaigns name, and nothing important |
     | Y                                                                                |
     | 123                                                                              |
+    | https://www.google.com                                                           |
 
   Scenario: Don't create a Campaign with empty name
     Given I open the Campaigns Page
     When I create a new Campaign for Campaigns
-      | Name              |               |
+    | Name              |               |
     Then I verify a error message with the details of the problem
     And I verify that a message "Complete this field" in the name Campaign field

@@ -72,6 +72,9 @@ public class NewCampaignPopup extends NewCampaignAbstract {
     @FindBy(css = "[class='errorsList'] li")
     private WebElement requiredFieldsMessageLbl;
 
+    @FindBy(css = "[class='form-element__help']")
+    private WebElement completeFieldLbl;
+
     private String statusElements = "li[role='presentation'] a[title='element']";
 
     /**
@@ -222,5 +225,34 @@ public class NewCampaignPopup extends NewCampaignAbstract {
         expectedResponseTxt.sendKeys(Keys.CONTROL + "a");
         expectedResponseTxt.sendKeys(Keys.DELETE);
         expectedResponseTxt.sendKeys(expectedResponse.toString());
+    }
+
+    /**
+     * Get Message Error.
+     * @return string.
+     */
+    @Override
+    public String getMessageErrorLbl() {
+        try {
+            return reviewErrorMessageLbl.getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get Message Field Necessary.
+     * @return string.
+     */
+    public String getMessageFieldNecessaryLbl() {
+        return requiredFieldsMessageLbl.getText();
+    }
+
+    /**
+     * Get Message Completed Field.
+     * @return string.
+     */
+    public String getMessageCompletedFieldLbl() {
+        return completeFieldLbl.getText();
     }
 }
