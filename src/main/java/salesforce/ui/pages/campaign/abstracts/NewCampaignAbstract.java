@@ -17,6 +17,7 @@ import salesforce.entities.Campaign;
 import salesforce.ui.BasePage;
 import salesforce.ui.PageFactory;
 import core.utils.StrategySetter;
+import salesforce.utils.DriverMethods;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,11 +51,8 @@ public abstract class NewCampaignAbstract extends BasePage {
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
         setCampaignData(data, mapOut);
         clickSaveBtn();
-        if (getMessageErrorLbl().equals("")) {
-            return PageFactory.getOneCampaignPage();
-        } else {
-            return null;
-        }
+        if (DriverMethods.searchForExistentElement())
+        return PageFactory.getOneCampaignPage();
     }
 
     /**

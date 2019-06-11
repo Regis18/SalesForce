@@ -8,7 +8,7 @@ Feature: Test positive and negative of create, delete, update and search campaig
   Scenario Outline: Cannot create a new Campaign with extreme values in Salesforce with all fields of Campaign
     Given I open the Campaigns Page
     When I create a new Campaign for Campaigns
-      | Name              | <Name> |
+      | Name              | <Name>       |
       | IsActive          | true         |
       | Type              | Webinar      |
       | Status            | Completed    |
