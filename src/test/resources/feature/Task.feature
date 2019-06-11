@@ -49,7 +49,7 @@ Feature: Create, delete, update tasks of Salesforce
     When I navigate to Tasks Homepage
     And I delete the Task
     Then I verify a message that confirms the new Task was "deleted" is displayed
-    Then I verify the Task was removed form Task section
+    Then I verify the Task was removed from Task section
 
   @deleteTask
   Scenario: Edit subject task when a is has any Task.
@@ -84,3 +84,18 @@ Feature: Create, delete, update tasks of Salesforce
     When I perform a get request for the Task by API
     Then I verify the task response contains the Task values
 
+  @deleteTask @deleteAllTask
+  Scenario Outline: Create a new Task with sample information
+    When I create a new Task with this <Subject>, <Priority> and <Status>
+    Then I verify a message that confirms the new Task was "created" is displayed
+    When I navigate to Tasks Homepage
+    Then I verify the Task subject is displayed in Tasks Homepage
+    When I open the Task details page from Tasks Homepage
+    Then I verify the Task values are displayed in Task details page
+    Examples:
+      | Subject           | Priority | Status                   |
+      | callTask_random   | High     | In Progress              |
+      | emailTask_random  | Low      | Not Started              |
+      | sendLetter_random | Normal   | Waiting on someone else  |
+      | sendQuote_random  | Low      | Deferred                 |
+      | complete_random   | Normal   | Completed                |

@@ -59,11 +59,6 @@ public class TaskSteps {
      */
     @When("^I navigate to Tasks Homepage$")
     public void navigateToTasksHome() {
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-        }
-        ;
         taskPage = transporterPage.navigateToTasksHomePage();
     }
 
@@ -113,14 +108,9 @@ public class TaskSteps {
     /**
      * verify the task was deleted step.
      */
-    @Then("^I verify the Task was removed form Task section$")
+    @Then("^I verify the Task was removed from Task section$")
     public void verifyTaskIsNotDisplayed() {
         taskPage.clickRecentTasksRefresh();
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-        }
-        ;
         Assert.assertFalse(taskPage.verifySubjectExist(task.getSubject()));
     }
 
@@ -206,5 +196,18 @@ public class TaskSteps {
         Assert.assertTrue(correct);
     }
 
+    @Then("^I create a new Task with this ([^\"]*), ([^\"]*) and ([^\"]*)$")
 
+    public void createTasks(String subject, String priority, String status) {
+        task.setSubject(subject);
+        task.setPriority(priority);
+        task.setStatus(status);
+        if (newTaskPage == null) {
+            newTaskPage = PageFactory.getNewTaskPage();
+        }
+        task.setSubject(task.getSubject().replace("random", String.valueOf((int) (Math.random() * 100))));
+        newTaskPage = homePage.displayCreateTask();
+        newTaskPage.createNewTask(task);
+        Setup.getInstance().setTask(task);
+    }
 }
