@@ -3,9 +3,9 @@ Feature: Test positive and negative of create, delete, update and search campaig
     Given I log in to the Salesforce Application
     And I navigate to HomePage
 
-  This is an example of eighty characters in campaigns name, and nothing important
+
   @deleteCampaign
-  Scenario Outline: Create a new Campaign with extreme values in Salesforce with all fields of Campaign
+  Scenario Outline: Cannot create a new Campaign with extreme values in Salesforce with all fields of Campaign
     Given I open the Campaigns Page
     When I create a new Campaign for Campaigns
       | Name              | <Name> |
@@ -30,6 +30,8 @@ Feature: Test positive and negative of create, delete, update and search campaig
     Examples:
     | Name                                                                             |
     | This is an example of eighty characters in campaigns name, and nothing important |
+    | Y                                                                                |
+    | 123                                                                              |
 
   Scenario: Don't create a Campaign with empty name
     Given I open the Campaigns Page
