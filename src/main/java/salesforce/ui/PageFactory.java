@@ -41,6 +41,8 @@ import salesforce.utils.Setup;
  * @author Regis Humana
  */
 public class PageFactory {
+    private static final String CLASSIC = "classic";
+    private static final String LIGHT = "light";
 
     private static Setup setup = Setup.getInstance();
 
@@ -50,9 +52,9 @@ public class PageFactory {
      */
     public static HomePageAbstract getHomePage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new HomeClassicPage();
-            case "light":
+            case LIGHT:
                 return new HomeLightPage();
             default:
                 return null;
@@ -65,9 +67,9 @@ public class PageFactory {
      */
     public static CampaignPageAbstract getCampaignPage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new CampaignClassicPage();
-            case "light":
+            case LIGHT:
                 return new CampaignLightPage();
             default:
                 return null;
@@ -80,9 +82,9 @@ public class PageFactory {
      */
     public static OneCampaignAbstract getOneCampaignPage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new OneCampaignClassicPage();
-            case "light":
+            case LIGHT:
                 return new OneCampaignLightPage();
             default:
                 return null;
@@ -95,9 +97,9 @@ public class PageFactory {
      */
     public static TaskPageAbstract getTaskHomePage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new TaskPageClassic();
-            case "light":
+            case LIGHT:
                 return new TaskPageLightning();
             default:
                 return null;
@@ -110,9 +112,9 @@ public class PageFactory {
      */
     public static NewTaskAbstract getNewTaskPage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new NewTaskClassic();
-            case "light":
+            case LIGHT:
                 return new NewTaskLightPopUp();
             default:
                 return null;
@@ -124,9 +126,9 @@ public class PageFactory {
      */
     public static AccountPageAbstract getAccountPage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new AccountClassicPage();
-            case "light":
+            case LIGHT:
                 return new AccountLightPage();
             default:
                 return null;
@@ -139,9 +141,9 @@ public class PageFactory {
      */
     public static OneAccountAbstract getOneAccountPage() {
         switch (setup.getLayout()) {
-            case "classic":
+            case CLASSIC:
                 return new OneAccountClassicPage();
-            case "light":
+            case LIGHT:
                 return new OneAccountLightPage();
             default:
                 return null;

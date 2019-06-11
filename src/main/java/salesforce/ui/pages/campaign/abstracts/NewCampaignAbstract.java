@@ -51,7 +51,6 @@ public abstract class NewCampaignAbstract extends BasePage {
     public OneCampaignAbstract createNewCampaign(final Campaign data, final Map mapOut) {
         setCampaignData(data, mapOut);
         clickSaveBtn();
-        if (DriverMethods.searchForExistentElement())
         return PageFactory.getOneCampaignPage();
     }
 
