@@ -19,12 +19,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.account.light.AccountLightPage;
+import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.ui.pages.search.SearchLightPage;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
 import salesforce.ui.pages.task.lightning.NewTaskLightPopUp;
-import salesforce.ui.pages.account.light.AccountLightPage;
-import salesforce.ui.pages.campaign.light.CampaignLightPage;
 
 /**
  * HomeLightPage.
@@ -135,7 +135,7 @@ public class HomeLightPage extends HomePageAbstract {
      * @return SearchAbstractPage.
      */
     @Override
-    public SearchAbstractPage searchElement(String element) {
+    public SearchAbstractPage searchElement(final String element) {
         searchTxt.sendKeys(element);
         searchTxt.sendKeys(Keys.ENTER);
         return new SearchLightPage();

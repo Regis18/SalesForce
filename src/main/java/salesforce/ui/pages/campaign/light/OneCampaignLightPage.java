@@ -41,24 +41,12 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @FindBy(xpath = "//div[contains(@class,\"OutputName\")]//span[contains(@class,\"OutputText\")]")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title='Details' ]//span[@class='title']")
-    private WebElement detailsTab;
-
     @FindBy(xpath = "//div[@data-component-id=\"flexipage_tabset\"]//section[contains(@class,\"active uiTab\")]")
     private WebElement detailsForm;
 
     @FindBy(xpath = "//ul[contains(@class,'slds-button-group slds-m-left--xx-small o')]"
                     + "//div[@data-aura-class='uiPopupTrigger']//a")
     private WebElement mainMenuCmb;
-
-    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")
-    private WebElement deleteMainMenuCmb;
-
-    @FindBy(xpath = "//div[starts-with(@class,'branding-actions ')]//child::li[2]//a")
-    private WebElement editMainMenuCmb;
-
-    @FindBy(xpath = "//one-app-nav-bar-item-root[@data-id='Campaign']")
-    private WebElement campaignTabBar;
 
     @FindBy(css = "[class='uiImage uiOutputCheckbox']")
     private WebElement isActive;
@@ -90,7 +78,7 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * @return boolean.
      */
     @Override
-    public boolean verifyComponentsCampaign(Campaign campaign) {
+    public boolean verifyComponentsCampaign(final Campaign campaign) {
         clickDetailsTab();
         return DriverMethods.searchForExistentElement(By.xpath(nameCampaign.replace(
                 "element", campaign.getName())));
@@ -118,7 +106,9 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      * Click to detailsTab.
      */
     private void clickDetailsTab() {
-        detailsTab.click();
+        WebElement detailTab = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//a[@title='Details' ]//span[@class='title']")));
+        detailTab.click();
     }
 
     /**
@@ -129,7 +119,10 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @Override
     public CampaignPageAbstract deleteCampaign(final String nameCampaign) {
         mainMenuCmb.click();
+        WebElement deleteMainMenuCmb = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[starts-with(@class,'branding-actions ')]//child::li[3]//a")));
         deleteMainMenuCmb.click();
+        wait.until(ExpectedConditions.visibilityOf(deletePopupBtn));
         deletePopupBtn.click();
         return new CampaignLightPage();
     }
@@ -140,7 +133,10 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
      */
     @Override
     public EditCampaignAbstract openEditCampaign() {
+        wait.until(ExpectedConditions.visibilityOf(mainMenuCmb));
         mainMenuCmb.click();
+        WebElement editMainMenuCmb = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[starts-with(@class,'branding-actions ')]//child::li[2]//a")));
         editMainMenuCmb.click();
         return new EditCampaignLightPopup();
     }
@@ -174,6 +170,8 @@ public class OneCampaignLightPage extends OneCampaignAbstract {
     @Override
     public CampaignPageAbstract openCampaignPage() {
         closeMessageConfirmation.click();
+        WebElement campaignTabBar = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//one-app-nav-bar-item-root[@data-id='Campaign']")));
         campaignTabBar.click();
         return new CampaignLightPage();
     }

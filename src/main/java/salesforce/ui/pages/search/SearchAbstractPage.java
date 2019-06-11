@@ -28,7 +28,7 @@ public abstract class SearchAbstractPage extends BasePage {
      * @param element string.
      * @return boolean
      */
-    public abstract boolean doesElementExist(String key, String element);
+    public abstract boolean doesElementExist(final String key, final String element);
 
     /**
      * Access to the element that was searched.
@@ -36,5 +36,5 @@ public abstract class SearchAbstractPage extends BasePage {
      * @param element string.
      * @return BasePage.
      */
-    public abstract OneCampaignAbstract accessToElementSearched(String key, String element);
+    public abstract OneCampaignAbstract accessToElementSearched(final String key, final String element);
 }

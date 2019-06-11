@@ -67,11 +67,13 @@ public class SetupPage extends BasePage {
         while (driver.getTitle().equals("") || driver.getTitle().equals("Lightning Experience")) {
             continue;
         }
-
+        System.out.println(driver.getTitle());
         isLight = driver.getTitle().contains("Home | Salesforce");
         if (isLight) {
+            System.out.println("ENTER IN LIGHT");
             wait.until(ExpectedConditions.visibilityOf(setupHeader));
         } else {
+            System.out.println("ENTER IN CLASSIC");
             wait.until(ExpectedConditions.visibilityOf(tabBarClassic));
         }
     }
@@ -88,6 +90,7 @@ public class SetupPage extends BasePage {
             wait.until(ExpectedConditions.visibilityOf(switchClassicLink));
             switchClassicLink.click();
         } else {
+            System.out.println("CLICK in HOME TAB");
             homeTabBtn.click();
         }
         return new HomeClassicPage();
@@ -100,11 +103,12 @@ public class SetupPage extends BasePage {
      */
     public HomePageAbstract navigateHomeLight() {
         if (isLight) {
+            wait.until(ExpectedConditions.elementToBeClickable(appLauncherBtn));
             appLauncherBtn.click();
-//            homeLink.click();
             wait.until(ExpectedConditions.elementToBeClickable(homeLink));
             homeLink.click();
         } else {
+            wait.until(ExpectedConditions.elementToBeClickable(switchLightLink));
             switchLightLink.click();
         }
         return new HomeLightPage();

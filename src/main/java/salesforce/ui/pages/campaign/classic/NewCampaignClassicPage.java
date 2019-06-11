@@ -36,7 +36,7 @@ public class NewCampaignClassicPage extends NewCampaignAbstract {
     @FindBy(id = "cpn1")
     private WebElement nameTxt;
 
-    @FindBy (xpath = "//td[@id=\"bottomButtonRow\"]//input[@name=\"save\"]")
+    @FindBy (xpath = "//td[@id='bottomButtonRow']//input[@name='save']")
     private WebElement saveBottomBtn;
 
     @FindBy(id = "cpn16")

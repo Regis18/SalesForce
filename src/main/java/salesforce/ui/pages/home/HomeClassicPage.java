@@ -13,7 +13,6 @@
 
 package salesforce.ui.pages.home;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -95,7 +94,7 @@ public class HomeClassicPage extends HomePageAbstract {
      * @return SearchClassicPage.
      */
     @Override
-    public SearchAbstractPage searchElement(String element) {
+    public SearchAbstractPage searchElement(final String element) {
         searchTxt.sendKeys(element);
         searchBtn.click();
         return new SearchClassicPage();

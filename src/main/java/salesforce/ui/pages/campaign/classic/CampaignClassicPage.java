@@ -58,6 +58,7 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public NewCampaignClassicPage clickNewCampaignBtn() {
+        wait.until(ExpectedConditions.visibilityOf(newCampaignBtn));
         newCampaignBtn.click();
         return new NewCampaignClassicPage();
     }
@@ -69,14 +70,14 @@ public class CampaignClassicPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        return DriverMethods.searchForExistentElement(By.xpath(campaignList.replace("campaign", name)));
+        return DriverMethods.isElementPresent(By.xpath(campaignList.replace("campaign", name)));
     }
     /**
      * Searches the campaign in the list.
      * @param name string.
      */
     @Override
-    public void searchCampaignInList(String name) {
+    public void searchCampaignInList(final String name) {
         searchTxt.click();
         searchTxt.sendKeys(name);
         if (autoCompletedSearch.getText().equals(name)) {

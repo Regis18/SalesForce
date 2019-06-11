@@ -23,6 +23,7 @@ import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.account.abstracts.AccountPageAbstract;
+import salesforce.ui.pages.account.abstracts.EditAccountAbstract;
 import salesforce.ui.pages.account.abstracts.NewAccountPageAbstract;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 import salesforce.ui.pages.account.light.OneAccountLightPage;
@@ -42,6 +43,7 @@ public class AccountSteps {
     private AccountPageAbstract accountPage;
     private NewAccountPageAbstract newAccountPage;
     private OneAccountAbstract oneAccountPage;
+    private EditAccountAbstract newEditAccount;
     private Context context;
     private Account account;
     private EntityId entitiesId;
@@ -223,8 +225,8 @@ public class AccountSteps {
      */
     @When("^I update the Account with the following values$")
     public void updateAnAccountInSalesforce(Map<String, String> accountInformation) {
-        newAccountPage = oneAccountPage.editAccount();
-        oneAccountPage = newAccountPage.createNewAccount(account, accountInformation);
+        newEditAccount = oneAccountPage.editAccount();
+        oneAccountPage = newEditAccount.createNewAccount(account, accountInformation);
         account.setAccountInformation(accountInformation);
     }
 }

@@ -30,9 +30,6 @@ public class CampaignLightPage extends CampaignPageAbstract {
     @FindBy(css = "[class='uiOutputText forceBreadCrumbItem']")
     private WebElement campaignTitleLbl;
 
-    @FindBy(xpath = "//a[@title='New']")
-    private WebElement newCampaignBtn;
-
     @FindBy(css = "[name='Campaign-search-input']")
     private WebElement searchCampaignTxt;
 
@@ -56,6 +53,9 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public NewCampaignPopup clickNewCampaignBtn() {
+        WebElement newCampaignBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//a[@title='New']")));
+        wait.until(ExpectedConditions.visibilityOf(newCampaignBtn));
         newCampaignBtn.click();
         return new NewCampaignPopup();
     }
@@ -67,7 +67,6 @@ public class CampaignLightPage extends CampaignPageAbstract {
      */
     @Override
     public boolean checkCampaignList(final String name) {
-        System.out.println("CHECKCAMPAIGN LIST: " + campaignList.replace(campaign, name));
         return DriverMethods.searchForExistentElement(By.xpath(campaignList.replace(campaign, name)));
     }
 

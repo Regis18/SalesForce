@@ -37,6 +37,8 @@ public abstract class AccountPageAbstract extends BasePage {
 
     /**
      * Select Account of Salesforce.
+     * @param name String
+     * @return selectAccount.
      */
     public abstract OneAccountAbstract selectAccount(String name);
 }

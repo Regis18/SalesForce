@@ -39,8 +39,6 @@ public class LoginSteps {
 
     @Given("^I navigate to HomePage$")
     public void navigateToHomePage() {
-        System.out.println("estamos en el homepage" + setupPage);
-
         if (setupPage != null) {
             homePage = transporterPage.navigateToHomePage(setupPage);
         } else {

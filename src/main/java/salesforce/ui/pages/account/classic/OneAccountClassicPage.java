@@ -16,12 +16,10 @@ package salesforce.ui.pages.account.classic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.entities.Account;
 import salesforce.ui.pages.account.abstracts.OneAccountAbstract;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -175,9 +173,9 @@ public class OneAccountClassicPage extends OneAccountAbstract {
      * @return NewAccountClassicPage.
      */
     @Override
-    public NewAccountClassicPage editAccount() {
+    public EditAccountClassic editAccount() {
         editBtn.click();
-        return new NewAccountClassicPage();
+        return new EditAccountClassic();
     }
 
     /**
@@ -196,10 +194,12 @@ public class OneAccountClassicPage extends OneAccountAbstract {
             String key = (String) it.next();
             if (key.equals("Name")) {
                 String value = nameAc.getText();
+                getValue = value.substring(0, value.length() - 17);
+                mapAccount.put(key, getValue);
             }
             if (key.equals("Revenue")) {
                 String value = getAccountFieldsValues(key);
-                getValue = value.replace( "¤", "");
+                getValue = value.substring(1, value.length());
                 mapAccount.put(key, getValue);
             } else if (key.equals("Billing Street") || key.equals("Billing City") || key.equals("Billing State") || key.equals("Billing Zip") || key.equals("Billing Country")) {
                 if (isBillingAdrress) {
@@ -214,7 +214,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
                 if (isShippingAdrress) {
                     key = "Shipping Street";
                     String value = getAccountFieldsValues(key);
-                    getValue = value.replace( ",", "");
+                    getValue = value.replace(",", "");
                     getValue = getValue.replaceAll("\n", " ");
                     isShippingAdrress = false;
                     mapAccount.put(key, getValue);
@@ -232,7 +232,7 @@ public class OneAccountClassicPage extends OneAccountAbstract {
      * @param key Map
      * @return mapAccount Map
      */
-    public String getAccountFieldsValues(String key) {
+    public String getAccountFieldsValues(final String key) {
         HashMap<String, WebElement> fieldWebElementsMap = new HashMap<>();
         fieldWebElementsMap.put("Name", name);
         fieldWebElementsMap.put("Parent", parent);

@@ -18,7 +18,7 @@ import salesforce.ui.BasePage;
 
 /**
  * OneCampaignAbstract class.
- * @author Regis Humana
+ * @author Regis Humana.
  * @version 0.0.1
  */
 public abstract class OneCampaignAbstract extends BasePage {
@@ -30,7 +30,7 @@ public abstract class OneCampaignAbstract extends BasePage {
     public abstract boolean verifyComponentsCampaign(Campaign campaign);
 
     /**
-     * Get name to assert with steps.
+     * Gets name to assert with steps.
      * @return String
      */
     public abstract String getNameCampaign();
@@ -43,13 +43,13 @@ public abstract class OneCampaignAbstract extends BasePage {
     public abstract CampaignPageAbstract deleteCampaign(String nameCampaign);
 
     /**
-     * Open Edit Campaign.
+     * Opens Edit Campaign.
      * @return EditCampaignAbstract
      */
     public abstract EditCampaignAbstract openEditCampaign();
 
     /**
-     * Check if the values of Campaign is correct in the list.
+     * Checks if the values of Campaign is correct in the list.
      * @param key String.
      * @param value Value.
      * @return Boolean
@@ -57,7 +57,7 @@ public abstract class OneCampaignAbstract extends BasePage {
     public abstract boolean isCampaignFieldValueDisplayed(String key, String value);
 
     /**
-     * Click the button Campaign and redirected to CampaignPage.
+     * Clicks the button Campaign and redirected to CampaignPage.
      * @return CampaignPageAbstract.
      */
     public abstract CampaignPageAbstract openCampaignPage();

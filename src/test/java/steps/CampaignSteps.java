@@ -13,8 +13,9 @@
 
 package steps;
 
+import core.selenium.WebDriverConfig;
 import core.utils.Common;
-import cucumber.api.PendingException;
+import core.utils.Logs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -24,13 +25,13 @@ import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
 import salesforce.ui.pages.TransporterPage;
-import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.OneCampaignAbstract;
 import salesforce.ui.pages.campaign.light.CampaignLightPage;
 import salesforce.ui.pages.campaign.light.OneCampaignLightPage;
+import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.search.SearchAbstractPage;
 import salesforce.utils.EntityId;
 
@@ -43,11 +44,12 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Campaign steps
+ * Campaign steps.
  * @author Regis Humana
  * @version 0.0.1
  */
 public class CampaignSteps {
+    private String skin = WebDriverConfig.getSkin();
     private CampaignPageAbstract campaignPage;
     private HomePageAbstract homePage;
     private NewCampaignAbstract newCampaignPage;
@@ -113,7 +115,7 @@ public class CampaignSteps {
      * @param name string.
      */
     @Then("^I verify the Campaign name was \"([^\"]*)\" in the list of campaigns in Campaigns Page$")
-    public void verifyIsInTheListOfCampaigns(String name) {
+    public void verifyIsInTheListOfCampaigns(final String name) {
         // It is false because means that the element exist in the list.
         assertTrue(campaignPage.checkCampaignList(campaign.getName()));
     }
@@ -243,16 +245,20 @@ public class CampaignSteps {
      * @param nameCampaign string.
      */
     @And("^I search the Campaign name \"([^\"]*)\" in the Search field of Campaign form$")
-    public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(String nameCampaign) {
-        campaignPage.searchCampaignInList(nameCampaign);
+    public void searchTheCampaignNameInTheSearchFieldOfCampaignForm(final String nameCampaign) {
+        if (skin.equals("light")) {
+            campaignPage.searchCampaignInList(nameCampaign);
+        } else {
+            Logs.getInstance().getLog().info("Just for LIGHT and not Classic");
+        }
     }
 
     /**
      * Verify the values of the campaign with API result.
-     * @param arg0 string.
+     * @param name string.
      */
     @And("^I verify through API if the account that was \"([^\"]*)\"$")
-    public void verifyThroughAPIIfTheAccountThatWas(String arg0) {
+    public void verifyThroughAPIIfTheAccountThatWas(final String name) {
         JsonPath jsonCampaign = campaignApi.getCampaignById(campaign.getId());
         mapOut.get(0).forEach((key, value) -> {
             String values = value;
@@ -293,7 +299,7 @@ public class CampaignSteps {
      * @param name string
      */
     @When("^I search \"([^\"]*)\" in the Search field$")
-    public void searchInTheSearchField(String name) {
+    public void searchInTheSearchField(final String name) {
         homePage = context.getHomePage();
         searchPage = homePage.searchElement(name);
     }
@@ -304,7 +310,7 @@ public class CampaignSteps {
      * @param key string.
      */
     @Then("^I verify \"([^\"]*)\" of \"([^\"]*)\" is in the list of searches in Search Page$")
-    public void verifyOfIsInTheListOfSearchesInSearchPage(String element, String key) {
+    public void verifyOfIsInTheListOfSearchesInSearchPage(final String element, final String key) {
         this.element = element;
         this.key = key;
         assertTrue(searchPage.doesElementExist(key, element));
