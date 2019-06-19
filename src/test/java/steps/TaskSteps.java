@@ -21,9 +21,9 @@ import salesforce.api.TaskApi;
 import salesforce.entities.Context;
 import salesforce.entities.Task;
 import salesforce.ui.PageFactory;
+import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.ui.pages.task.abstracts.NewTaskAbstract;
-import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.task.abstracts.TaskPageAbstract;
 import salesforce.utils.Setup;
 
@@ -38,7 +38,7 @@ import static org.testng.Assert.assertTrue;
  * @version 0.0.1
  */
 public class TaskSteps {
-    private TransporterPage transporterPage = TransporterPage.getInstance();
+    private PageTransporter pageTransporter = PageTransporter.getInstance();
     private HomePageAbstract homePage;
     private NewTaskAbstract newTaskPage;
     private TaskPageAbstract taskPage;
@@ -64,7 +64,7 @@ public class TaskSteps {
         } catch (Exception e) {
         }
         ;
-        taskPage = transporterPage.navigateToTasksHomePage();
+        taskPage = pageTransporter.navigateToTasksHomePage();
     }
 
     /**
@@ -72,7 +72,7 @@ public class TaskSteps {
      */
     @Given("^I navigate to Salesforce HomePage$")
     public void navigateToSalesForceHomePage() {
-        homePage = transporterPage.navigateToSalesForceHomePage();
+        homePage = pageTransporter.navigateToSalesForceHomePage();
     }
 
     /**
@@ -156,7 +156,7 @@ public class TaskSteps {
      */
     @Then("^I logout of the Salesforce Application$")
     public void logoutTask() {
-        taskPage = transporterPage.navigateToTasksHomePage();
+        taskPage = pageTransporter.navigateToTasksHomePage();
         taskPage.logout();
     }
 

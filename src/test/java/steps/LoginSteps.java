@@ -5,8 +5,8 @@ import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import salesforce.entities.Context;
 import salesforce.ui.pages.LoginPage;
+import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.SetupPage;
-import salesforce.ui.pages.TransporterPage;
 import salesforce.ui.pages.home.HomePageAbstract;
 import salesforce.utils.Setup;
 
@@ -16,7 +16,7 @@ import salesforce.utils.Setup;
  */
 public class LoginSteps {
     private WebDriver driver = WebDriverManager.getInstance().getWebDriver();
-    private TransporterPage transporterPage = TransporterPage.getInstance();
+    private PageTransporter pageTransporter = PageTransporter.getInstance();
     private LoginPage loginPage;
     private SetupPage setupPage;
     private HomePageAbstract homePage;
@@ -32,7 +32,7 @@ public class LoginSteps {
     @Given("^I log in to the Salesforce Application$")
     public void logInToTheSalesforceApplication() {
         if (driver.getTitle().equals("")) {
-            loginPage = transporterPage.navigateToLoginPage();
+            loginPage = pageTransporter.navigateToLoginPage();
             setupPage = loginPage.login(Setup.getInstance().getUsername(), Setup.getInstance().getPassword());
         }
     }
@@ -40,9 +40,9 @@ public class LoginSteps {
     @Given("^I navigate to HomePage$")
     public void navigateToHomePage() {
         if (setupPage != null) {
-            homePage = transporterPage.navigateToHomePage(setupPage);
+            homePage = pageTransporter.navigateToHomePage(setupPage);
         } else {
-            homePage = transporterPage.navigateToHomePage();
+            homePage = pageTransporter.navigateToHomePage();
         }
         context.setHomePage(homePage);
     }

@@ -18,11 +18,8 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import salesforce.api.CampaignApi;
 import salesforce.api.TaskApi;
-import salesforce.entities.Context;
 import salesforce.entities.Task;
-import salesforce.ui.pages.TransporterPage;
 import salesforce.utils.Setup;
 
 /**

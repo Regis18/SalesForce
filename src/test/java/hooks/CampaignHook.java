@@ -17,7 +17,6 @@ import core.selenium.WebDriverManager;
 import core.utils.Logs;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -25,7 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import salesforce.api.CampaignApi;
 import salesforce.entities.Context;
-import salesforce.ui.pages.TransporterPage;
+import salesforce.ui.pages.PageTransporter;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ import java.util.List;
  * @version 0.0.1
  */
 public class CampaignHook {
-    private TransporterPage pageTransporter = TransporterPage.getInstance();
+    private PageTransporter pageTransporter = PageTransporter.getInstance();
 
     private Context context;
 

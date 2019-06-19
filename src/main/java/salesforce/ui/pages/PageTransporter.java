@@ -16,12 +16,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * TransporterPage.
+ * PageTransporter.
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class TransporterPage {
-    private static TransporterPage instance;
+public class PageTransporter {
+    private static PageTransporter instance;
     private final String CLASSIC = "classic";
     private final String LIGHT = "light";
     private Logger log = Logs.getInstance().getLog();
@@ -34,8 +34,8 @@ public class TransporterPage {
     /**
      * Constructor of page transporter.
      */
-    protected TransporterPage() {
-        log.info("Initialize the TransporterPage class");
+    protected PageTransporter() {
+        log.info("Initialize the PageTransporter class");
         initialize();
     }
 
@@ -44,9 +44,9 @@ public class TransporterPage {
      *
      * @return the instance or a new instance.
      */
-    public static TransporterPage getInstance() {
+    public static PageTransporter getInstance() {
         if (instance == null) {
-            instance = new TransporterPage();
+            instance = new PageTransporter();
         }
         return instance;
     }

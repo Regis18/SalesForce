@@ -16,7 +16,6 @@ package steps;
 import core.selenium.WebDriverConfig;
 import core.utils.Common;
 import core.utils.Logs;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,7 +24,7 @@ import io.restassured.path.json.JsonPath;
 import salesforce.api.CampaignApi;
 import salesforce.entities.Campaign;
 import salesforce.entities.Context;
-import salesforce.ui.pages.TransporterPage;
+import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.abstracts.CampaignPageAbstract;
 import salesforce.ui.pages.campaign.abstracts.EditCampaignAbstract;
 import salesforce.ui.pages.campaign.abstracts.NewCampaignAbstract;
@@ -57,7 +56,7 @@ public class CampaignSteps {
     private EditCampaignAbstract editCampaignPage;
     private OneCampaignAbstract oneCampaignPage;
     private SearchAbstractPage searchPage;
-    private TransporterPage transporterPage = TransporterPage.getInstance();
+    private PageTransporter pageTransporter = PageTransporter.getInstance();
     private Context context;
     private Campaign campaign;
     private CampaignApi campaignApi = new CampaignApi();;
@@ -238,7 +237,7 @@ public class CampaignSteps {
      */
     @When("^I navigate to the Campaign Page$")
     public void navigateToTheCampaignPage() {
-        oneCampaignPage = transporterPage.navigateToOneCampaign(campaign.getId());
+        oneCampaignPage = pageTransporter.navigateToOneCampaign(campaign.getId());
     }
 
     /**
