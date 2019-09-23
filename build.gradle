@@ -27,7 +27,10 @@ dependencies {
     testCompile 'io.cucumber:cucumber-junit:2.4.0'
     compile group: 'com.vimalselvam', name: 'cucumber-extentsreport', version: '3.0.2'
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
-
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.0.0'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    
 }
 
 // Task to define arguments and configurations to properties file
@@ -48,4 +51,19 @@ tasks.withType(Test) {
 
     // Define the custom properties to run the regression
     systemProperty "browser", browser
+    systemProperty "style", style
+}
+
+
+
+task executeFeatures(type: Test) {
+    
+    options {
+        useDefaultListeners = false
+        jvmArgs = ['-Dcucumber options= ' +
+                           '--glue steps ' +
+                           '--plugin pretty ' +
+                           '--plugin json:target/cucumber.json ' +
+                           'classpath:' + featuresFolders + ' ' + cucumberOptions]
+    }
 }

@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 /**
  * Handles Chrome driver initialization.
+ * @author Regis Humana
+ * @version 0.0.1
  */
 public class Chrome implements IDriver {
     /**
@@ -21,6 +23,7 @@ public class Chrome implements IDriver {
         ChromeDriverManager.getInstance().version("74.0.3729.6").setup();
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
+        chromePrefs.put("profile.default_content_setting_values.notifications", 2);
 
         //Boolean which specifies whether we should ask the user if we should download a file (true) or just download it
         //automatically.
@@ -41,6 +44,7 @@ public class Chrome implements IDriver {
         // prevents Chrome from displaying this notification.
         // -- Chrome is being controlled by automated test software --
         chromeOptions.addArguments("disable-infobars");
+        chromeOptions.addArguments("disable-popup-blocking");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
 
         //Use to ignore ssl errors

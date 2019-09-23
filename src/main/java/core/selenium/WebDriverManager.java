@@ -1,6 +1,6 @@
 package core.selenium;
 
-import core.selenium.webdriver.FactoryBrowser;
+import core.selenium.webdriver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -41,7 +41,7 @@ public class WebDriverManager {
      */
     private void initialize() {
         webDriverConfig.initialize();
-        this.webDriver = FactoryBrowser.getWebDriver();
+        this.webDriver = WebDriverFactory.getWebDriver();
         this.webDriver.manage().window().maximize();
         this.webDriver.manage()
                 .timeouts()
